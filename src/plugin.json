@@ -1,0 +1,51 @@
+{
+  "type": "app",
+  "name": "Edge AI App",
+  "id": "proj-edge-ai-app",
+
+  "css": {
+    "dark":  "css/dark.css",
+    "light":  "css/light.css"
+  },
+
+  "info": {
+    "description": "Thingspin Edge AI Application",
+    "author": {
+      "name": "gunwoo@hancommds.com",
+      "url": "http://thingspin.io"
+    },
+    "keywords": ["thingspin app"],
+    "logos": {
+      "small": "img/M00.png",
+      "large": "img/M00.png"
+    },
+    "links": [
+      {"name": "Project site", "url": ""},
+      {"name": "License & Terms", "url": ""}
+    ],
+    "version": "1.0.2",
+    "updated": "2018-01-19"
+  },
+
+  "HideFromList": false,  
+  "includes": [
+    {"type": "menu", "name": "Menu1", "mainMenu": true, "slug": "Menu1", "img":"img/thignspin_ic_48dp_white-04.svg", "menuId": 0},
+    {"type": "dashboard", "name": "sample Dashboard", "path": "dashboards/PanelDashboard.json", "AddToNav": true, "menuID": 0, "ico":"fa fa-industry"}
+
+  ],
+  "routes": [
+    {
+      "path": "/",
+      "method": "*",
+      "url": "ws://localhost:8080",
+      "reqSignedIn": true
+    }
+  ],
+  
+  "dependencies": {
+    "grafanaVersion": "4.x.x 5.x.x",
+    "plugins": [
+    ]
+  }
+}
+

@@ -1,0 +1,13 @@
+{
+  "type": "panel",
+  "name": "Edge AI",
+  "id": "proj-edge-ai-panel",
+
+  "info": {
+    "description": "",
+    "author": {
+      "name": "gunwoo@hancommds.com",
+      "url": "http://thingspin.io"
+    }
+  }
+}
