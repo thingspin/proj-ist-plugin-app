@@ -1,4 +1,4 @@
-class AppConfigCtrl {
+export class AppConfigCtrl {
   static template = require("./config.html");
   appEditCtrl: any;
 
@@ -16,9 +16,3 @@ class AppConfigCtrl {
   }
 
 }
-
-// AppConfigCtrl.templateURL = './pages/config.html';
-
-export {
-  AppConfigCtrl
-};

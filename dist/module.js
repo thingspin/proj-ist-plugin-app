@@ -1,4 +1,4 @@
-define(["app/core/core_module","app/plugins/sdk"], function(__WEBPACK_EXTERNAL_MODULE_grafana_app_core_core_module__, __WEBPACK_EXTERNAL_MODULE_grafana_app_plugins_sdk__) { return /******/ (function(modules) { // webpackBootstrap
+define(["app/plugins/sdk"], function(__WEBPACK_EXTERNAL_MODULE_grafana_app_plugins_sdk__) { return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -93,7 +93,7 @@ define(["app/core/core_module","app/plugins/sdk"], function(__WEBPACK_EXTERNAL_M
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("module.exports = \"<div class=\\\"page-header\\\">\\n\\tHello Config Page\\n</div>\";\n\n//# sourceURL=webpack:///./app-config/config.html?");
+eval("module.exports = \"<div class=\\\"page-header\\\">\\n\\tThingSPIN에서 Appication을 Enable했을 경우 필요한 설정 페이지입니다.\\n</div>\\n<div class=\\\"page-body\\\">\\n\\t해당 Application을 동작이 필요한 경우 아래의 Enable 버튼을 클릭하여 활성해 주세요.\\n</div>\";\n\n//# sourceURL=webpack:///./app-config/config.html?");
 
 /***/ }),
 
@@ -105,7 +105,7 @@ eval("module.exports = \"<div class=\\\"page-header\\\">\\n\\tHello Config Page\
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"AppConfigCtrl\", function() { return AppConfigCtrl; });\nvar AppConfigCtrl = /** @class */ (function () {\n    function AppConfigCtrl($q) {\n        this.$q = $q;\n        this.appEditCtrl.setPreUpdateHook(this.preUpdate.bind(this));\n        this.appEditCtrl.setPostUpdateHook(this.postUpdate.bind(this));\n    }\n    AppConfigCtrl.prototype.preUpdate = function () {\n        return this.$q.resolve();\n    };\n    AppConfigCtrl.prototype.postUpdate = function () {\n        return this.$q.resolve();\n    };\n    AppConfigCtrl.template = __webpack_require__(/*! ./config.html */ \"./app-config/config.html\");\n    return AppConfigCtrl;\n}());\n// AppConfigCtrl.templateURL = './pages/config.html';\n\n\n\n//# sourceURL=webpack:///./app-config/config.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"AppConfigCtrl\", function() { return AppConfigCtrl; });\nvar AppConfigCtrl = /** @class */ (function () {\n    function AppConfigCtrl($q) {\n        this.$q = $q;\n        this.appEditCtrl.setPreUpdateHook(this.preUpdate.bind(this));\n        this.appEditCtrl.setPostUpdateHook(this.postUpdate.bind(this));\n    }\n    AppConfigCtrl.prototype.preUpdate = function () {\n        return this.$q.resolve();\n    };\n    AppConfigCtrl.prototype.postUpdate = function () {\n        return this.$q.resolve();\n    };\n    AppConfigCtrl.template = __webpack_require__(/*! ./config.html */ \"./app-config/config.html\");\n    return AppConfigCtrl;\n}());\n\n\n\n//# sourceURL=webpack:///./app-config/config.ts?");
 
 /***/ }),
 
@@ -113,57 +113,34 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /*!*******************!*\
   !*** ./module.ts ***!
   \*******************/
-/*! exports provided: ConfigCtrl, MachineLearningPageCtrl */
+/*! exports provided: ConfigCtrl, InferenceConfigurationPageCtrl */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! grafana/app/plugins/sdk */ \"grafana/app/plugins/sdk\");\n/* harmony import */ var grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _page_ML_PageCtrl__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./page/ML_PageCtrl */ \"./page/ML_PageCtrl.ts\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"MachineLearningPageCtrl\", function() { return _page_ML_PageCtrl__WEBPACK_IMPORTED_MODULE_1__[\"MachineLearningPageCtrl\"]; });\n\n/* harmony import */ var _services_projEdgeAiSrv__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./services/projEdgeAiSrv */ \"./services/projEdgeAiSrv.ts\");\n/* harmony import */ var _app_config_config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app-config/config */ \"./app-config/config.ts\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"ConfigCtrl\", function() { return _app_config_config__WEBPACK_IMPORTED_MODULE_3__[\"AppConfigCtrl\"]; });\n\n\n\n// register Remote Solution Services\n\n\nvar appId = \"proj-edge-ai-app\";\nvar baseCssFilename = \"proj-edge-ai-app\";\nObject(grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0__[\"loadPluginCss\"])({\n    dark: \"plugins/\" + appId + \"/css/\" + baseCssFilename + \".dark.css\",\n    light: \"plugins/\" + appId + \"/css/\" + baseCssFilename + \".light.css\"\n});\n\n\n\n//# sourceURL=webpack:///./module.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! grafana/app/plugins/sdk */ \"grafana/app/plugins/sdk\");\n/* harmony import */ var grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _page_IC_PageCtrl__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./page/IC_PageCtrl */ \"./page/IC_PageCtrl.ts\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"InferenceConfigurationPageCtrl\", function() { return _page_IC_PageCtrl__WEBPACK_IMPORTED_MODULE_1__[\"InferenceConfigurationPageCtrl\"]; });\n\n/* harmony import */ var _app_config_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app-config/config */ \"./app-config/config.ts\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"ConfigCtrl\", function() { return _app_config_config__WEBPACK_IMPORTED_MODULE_2__[\"AppConfigCtrl\"]; });\n\n\n// register Remote Solution Services\n// import './services/projEdgeAiSrv';\n\n\nvar appId = \"proj-edge-ai-app\";\nvar baseCssFilename = \"proj-edge-ai-app\";\nObject(grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0__[\"loadPluginCss\"])({\n    dark: \"plugins/\" + appId + \"/css/\" + baseCssFilename + \".dark.css\",\n    light: \"plugins/\" + appId + \"/css/\" + baseCssFilename + \".light.css\"\n});\n\n\n\n//# sourceURL=webpack:///./module.ts?");
 
 /***/ }),
 
-/***/ "./page/ML_PageCtrl.html":
+/***/ "./page/IC_PageCtrl.html":
 /*!*******************************!*\
-  !*** ./page/ML_PageCtrl.html ***!
+  !*** ./page/IC_PageCtrl.html ***!
   \*******************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("module.exports = \"Hello world\";\n\n//# sourceURL=webpack:///./page/ML_PageCtrl.html?");
+eval("module.exports = \"<div class=\\\"page-header\\\">\\n    <h2 class=\\\"modal-header-title\\\">\\n        <i class=\\\"fa fa-file-text\\\"></i>\\n        <span class=\\\"p-l-1\\\">Inference Configuration</span>\\n    </h2>\\n    <ul class=\\\"gf-tabs\\\">\\n        <li class=\\\"gf-tabs-item\\\" ng-repeat=\\\"tab in ctrl.tabs\\\">\\n            <a class=\\\"gf-tabs-link\\\" ng-click=\\\"ctrl.editor.index = $index\\\" ng-class=\\\"{active: ctrl.editor.index === $index}\\\">\\n                {{::tab.title}}\\n            </a>\\n        </li>\\n    </ul>\\n</div>\\n\\n<div class=\\\"page-body\\\" ng-repeat=\\\"tab in ctrl.tabs\\\" ng-if=\\\"ctrl.editor.index == $index\\\">\\n    <div ng-include src=\\\"tab.src\\\"></div>\\n</div>\\n\\n<script type=\\\"text/ng-template\\\" id=\\\"step1.html\\\">\\n    hello1\\n</script>\\n\\n<script type=\\\"text/ng-template\\\" id=\\\"step2.html\\\">\\n    hello2\\n</script>\\n\\n<script type=\\\"text/ng-template\\\" id=\\\"step3.html\\\">\\n    hello3\\n</script>\\n\\n<script type=\\\"text/ng-template\\\" id=\\\"step4.html\\\">\\n    hello4\\n</script>\\n\";\n\n//# sourceURL=webpack:///./page/IC_PageCtrl.html?");
 
 /***/ }),
 
-/***/ "./page/ML_PageCtrl.ts":
+/***/ "./page/IC_PageCtrl.ts":
 /*!*****************************!*\
-  !*** ./page/ML_PageCtrl.ts ***!
+  !*** ./page/IC_PageCtrl.ts ***!
   \*****************************/
-/*! exports provided: MachineLearningPageCtrl */
+/*! exports provided: InferenceConfigurationPageCtrl */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"MachineLearningPageCtrl\", function() { return MachineLearningPageCtrl; });\n/* harmony import */ var grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! grafana/app/plugins/sdk */ \"grafana/app/plugins/sdk\");\n/* harmony import */ var grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0__);\n\nvar appId = \"proj-edge-ai-app\";\nvar baseCssFilename = \"proj-edge-ai-app\";\nObject(grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0__[\"loadPluginCss\"])({\n    dark: \"plugins/\" + appId + \"/css/\" + baseCssFilename + \".dark.css\",\n    light: \"plugins/\" + appId + \"/css/\" + baseCssFilename + \".light.css\"\n});\nvar MachineLearningPageCtrl = /** @class */ (function () {\n    function MachineLearningPageCtrl() {\n    }\n    MachineLearningPageCtrl.template = __webpack_require__(/*! ./ML_PageCtrl.html */ \"./page/ML_PageCtrl.html\");\n    return MachineLearningPageCtrl;\n}());\n\n\n\n//# sourceURL=webpack:///./page/ML_PageCtrl.ts?");
-
-/***/ }),
-
-/***/ "./services/projEdgeAiSrv.ts":
-/*!***********************************!*\
-  !*** ./services/projEdgeAiSrv.ts ***!
-  \***********************************/
-/*! exports provided: ProjEdgeAiAppSrvCtrl */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"ProjEdgeAiAppSrvCtrl\", function() { return ProjEdgeAiAppSrvCtrl; });\n/* harmony import */ var grafana_app_core_core_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! grafana/app/core/core_module */ \"grafana/app/core/core_module\");\n/* harmony import */ var grafana_app_core_core_module__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(grafana_app_core_core_module__WEBPACK_IMPORTED_MODULE_0__);\n\nvar ProjEdgeAiAppSrvCtrl = /** @class */ (function () {\n    function ProjEdgeAiAppSrvCtrl() {\n    }\n    return ProjEdgeAiAppSrvCtrl;\n}());\n\ngrafana_app_core_core_module__WEBPACK_IMPORTED_MODULE_0___default.a.service('projEdgeAiSrv', ProjEdgeAiAppSrvCtrl);\n\n\n//# sourceURL=webpack:///./services/projEdgeAiSrv.ts?");
-
-/***/ }),
-
-/***/ "grafana/app/core/core_module":
-/*!***************************************!*\
-  !*** external "app/core/core_module" ***!
-  \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("module.exports = __WEBPACK_EXTERNAL_MODULE_grafana_app_core_core_module__;\n\n//# sourceURL=webpack:///external_%22app/core/core_module%22?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"InferenceConfigurationPageCtrl\", function() { return InferenceConfigurationPageCtrl; });\n/* harmony import */ var grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! grafana/app/plugins/sdk */ \"grafana/app/plugins/sdk\");\n/* harmony import */ var grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0__);\n\nvar appId = \"proj-edge-ai-app\";\nvar baseCssFilename = \"proj-edge-ai-app\";\nObject(grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0__[\"loadPluginCss\"])({\n    dark: \"plugins/\" + appId + \"/css/\" + baseCssFilename + \".dark.css\",\n    light: \"plugins/\" + appId + \"/css/\" + baseCssFilename + \".light.css\"\n});\nvar InferenceConfigurationPageCtrl = /** @class */ (function () {\n    function InferenceConfigurationPageCtrl() {\n        this.tabs = [\n            { title: \"Step 1\", src: \"step1.html\" },\n            { title: \"Step 2\", src: \"step2.html\" },\n            { title: \"Step 3\", src: \"step3.html\" },\n            { title: \"Step 4\", src: \"step4.html\" },\n        ];\n        this.editor = { index: 0 };\n    }\n    // view only Data\n    InferenceConfigurationPageCtrl.template = __webpack_require__(/*! ./IC_PageCtrl.html */ \"./page/IC_PageCtrl.html\");\n    return InferenceConfigurationPageCtrl;\n}());\n\n\n\n//# sourceURL=webpack:///./page/IC_PageCtrl.ts?");
 
 /***/ }),
 
