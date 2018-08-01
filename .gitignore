@@ -35,5 +35,5 @@ grafana
 .DS_Store
 .tscache
 .vscode-upload.json
-.package-lock.json
+package-lock.json
 yarn.lock
