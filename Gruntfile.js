@@ -4,6 +4,7 @@ module.exports = function(grunt) {
     require('load-grunt-tasks')(grunt);
   
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-webpack');
 
     grunt.initConfig({
@@ -22,6 +23,14 @@ module.exports = function(grunt) {
             "dist/css/proj-xxx-app.light.css": "src/sass/proj-xxx-app.light.scss",
             "dist/css/proj-xxx-app.office.css": "src/sass/proj-xxx-app.office.scss",
           }
+        }
+      },
+      copy: {
+        md: {
+          expand: true,
+          cwd: 'src',
+          src: ['*.md'],
+          dest: 'dist',
         }
       },
       webpack: {
@@ -46,6 +55,13 @@ module.exports = function(grunt) {
             livereload: true
           }
         },
+        markdown: {
+          files: ['<%= project.dev %>/*.md'],
+          tasks: ['copy:md'],
+          options: {
+            livereload: true
+          }
+        },
         scripts: {
           files: ['Gruntfile.js',
             '<%= project.dev %>/**/*.js',
@@ -62,6 +78,7 @@ module.exports = function(grunt) {
   
     grunt.registerTask('default', [
       'clean',
+      'copy:md',
       'sass',
       'webpack:prod',
     ]);
