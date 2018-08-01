@@ -94,59 +94,7 @@ define(["app/plugins/sdk"], function(__WEBPACK_EXTERNAL_MODULE_grafana_app_plugi
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PanelCtrl", function() { return ProjEdgeAiPanelCtrl; });
-/* harmony import */ var grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! grafana/app/plugins/sdk */ "grafana/app/plugins/sdk");
-/* harmony import */ var grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0__);
-var __extends = (undefined && undefined.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-
-var appId = "proj-edge-ai-app";
-var baseCssFilename = "proj-edge-ai-app";
-Object(grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0__["loadPluginCss"])({
-    dark: "plugins/" + appId + "/css/" + baseCssFilename + ".dark.css",
-    light: "plugins/" + appId + "/css/" + baseCssFilename + ".light.css"
-});
-var ProjEdgeAiPanelCtrl = /** @class */ (function (_super) {
-    __extends(ProjEdgeAiPanelCtrl, _super);
-    function ProjEdgeAiPanelCtrl($scope, $injector, $element) {
-        var _this = _super.call(this, $scope, $injector) || this;
-        _this.$element = $element;
-        _this.divID = "app-edge-ai-panel";
-        _this.events.on('panel-initialized', _this.onInitialized.bind(_this));
-        _this.events.on('data-received', _this.onDataReceived.bind(_this));
-        return _this;
-    }
-    Object.defineProperty(ProjEdgeAiPanelCtrl.prototype, "container", {
-        get: function () { return this._container; },
-        set: function (container) { this._container = container; },
-        enumerable: true,
-        configurable: true
-    });
-    ProjEdgeAiPanelCtrl.prototype.onInitialized = function () {
-        var node = this.$element.find("ng-transclude > div");
-        if (node.length === 0) {
-            console.error("cannot find element id '#" + this.divID + "'");
-            return;
-        }
-        this.container = node;
-    };
-    ProjEdgeAiPanelCtrl.prototype.onDataReceived = function (dataList) {
-        console.log(dataList);
-    };
-    ProjEdgeAiPanelCtrl.template = __webpack_require__(/*! ./partial/template.html */ "./panels/edge-ai/partial/template.html");
-    return ProjEdgeAiPanelCtrl;
-}(grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0__["MetricsPanelCtrl"]));
-
-
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"PanelCtrl\", function() { return ProjEdgeAiPanelCtrl; });\n/* harmony import */ var grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! grafana/app/plugins/sdk */ \"grafana/app/plugins/sdk\");\n/* harmony import */ var grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0__);\nvar __extends = (undefined && undefined.__extends) || (function () {\n    var extendStatics = Object.setPrototypeOf ||\n        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||\n        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };\n    return function (d, b) {\n        extendStatics(d, b);\n        function __() { this.constructor = d; }\n        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());\n    };\n})();\n\nvar appId = \"proj-edge-ai-app\";\nvar baseCssFilename = \"proj-edge-ai-app\";\nObject(grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0__[\"loadPluginCss\"])({\n    dark: \"plugins/\" + appId + \"/css/\" + baseCssFilename + \".dark.css\",\n    light: \"plugins/\" + appId + \"/css/\" + baseCssFilename + \".light.css\"\n});\nvar ProjEdgeAiPanelCtrl = /** @class */ (function (_super) {\n    __extends(ProjEdgeAiPanelCtrl, _super);\n    function ProjEdgeAiPanelCtrl($scope, $injector, $element) {\n        var _this = _super.call(this, $scope, $injector) || this;\n        _this.$element = $element;\n        _this.divID = \"app-edge-ai-panel\";\n        _this.events.on('panel-initialized', _this.onInitialized.bind(_this));\n        _this.events.on('data-received', _this.onDataReceived.bind(_this));\n        return _this;\n    }\n    Object.defineProperty(ProjEdgeAiPanelCtrl.prototype, \"container\", {\n        get: function () { return this._container; },\n        set: function (container) { this._container = container; },\n        enumerable: true,\n        configurable: true\n    });\n    ProjEdgeAiPanelCtrl.prototype.onInitialized = function () {\n        var node = this.$element.find(\"ng-transclude > div\");\n        if (node.length === 0) {\n            console.error(\"cannot find element id '#\" + this.divID + \"'\");\n            return;\n        }\n        this.container = node;\n    };\n    ProjEdgeAiPanelCtrl.prototype.onDataReceived = function (dataList) {\n        console.log(dataList);\n    };\n    ProjEdgeAiPanelCtrl.template = __webpack_require__(/*! ./partial/template.html */ \"./panels/edge-ai/partial/template.html\");\n    return ProjEdgeAiPanelCtrl;\n}(grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0__[\"MetricsPanelCtrl\"]));\n\n\n\n//# sourceURL=webpack:///./panels/edge-ai/module.ts?");
 
 /***/ }),
 
@@ -157,7 +105,7 @@ var ProjEdgeAiPanelCtrl = /** @class */ (function (_super) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"{{ctrl.divID}}\" class=\"app-edge-ai-panel\">\r\n    Hello Edge AI\r\n</div>\r\n";
+eval("module.exports = \"<div id=\\\"{{ctrl.divID}}\\\" class=\\\"app-edge-ai-panel\\\">\\n    Hello Edge AI\\n</div>\\n\";\n\n//# sourceURL=webpack:///./panels/edge-ai/partial/template.html?");
 
 /***/ }),
 
@@ -168,9 +116,8 @@ module.exports = "<div id=\"{{ctrl.divID}}\" class=\"app-edge-ai-panel\">\r\n   
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE_grafana_app_plugins_sdk__;
+eval("module.exports = __WEBPACK_EXTERNAL_MODULE_grafana_app_plugins_sdk__;\n\n//# sourceURL=webpack:///external_%22app/plugins/sdk%22?");
 
 /***/ })
 
 /******/ })});;
-//# sourceMappingURL=module.js.map

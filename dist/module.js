@@ -93,7 +93,7 @@ define(["app/core/core_module","app/plugins/sdk"], function(__WEBPACK_EXTERNAL_M
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page-header\">\r\n\tHello Config Page\r\n</div>";
+eval("module.exports = \"<div class=\\\"page-header\\\">\\n\\tHello Config Page\\n</div>\";\n\n//# sourceURL=webpack:///./app-config/config.html?");
 
 /***/ }),
 
@@ -105,26 +105,7 @@ module.exports = "<div class=\"page-header\">\r\n\tHello Config Page\r\n</div>";
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppConfigCtrl", function() { return AppConfigCtrl; });
-var AppConfigCtrl = /** @class */ (function () {
-    function AppConfigCtrl($q) {
-        this.$q = $q;
-        this.appEditCtrl.setPreUpdateHook(this.preUpdate.bind(this));
-        this.appEditCtrl.setPostUpdateHook(this.postUpdate.bind(this));
-    }
-    AppConfigCtrl.prototype.preUpdate = function () {
-        return this.$q.resolve();
-    };
-    AppConfigCtrl.prototype.postUpdate = function () {
-        return this.$q.resolve();
-    };
-    AppConfigCtrl.template = __webpack_require__(/*! ./config.html */ "./app-config/config.html");
-    return AppConfigCtrl;
-}());
-// AppConfigCtrl.templateURL = './pages/config.html';
-
-
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"AppConfigCtrl\", function() { return AppConfigCtrl; });\nvar AppConfigCtrl = /** @class */ (function () {\n    function AppConfigCtrl($q) {\n        this.$q = $q;\n        this.appEditCtrl.setPreUpdateHook(this.preUpdate.bind(this));\n        this.appEditCtrl.setPostUpdateHook(this.postUpdate.bind(this));\n    }\n    AppConfigCtrl.prototype.preUpdate = function () {\n        return this.$q.resolve();\n    };\n    AppConfigCtrl.prototype.postUpdate = function () {\n        return this.$q.resolve();\n    };\n    AppConfigCtrl.template = __webpack_require__(/*! ./config.html */ \"./app-config/config.html\");\n    return AppConfigCtrl;\n}());\n// AppConfigCtrl.templateURL = './pages/config.html';\n\n\n\n//# sourceURL=webpack:///./app-config/config.ts?");
 
 /***/ }),
 
@@ -136,25 +117,7 @@ var AppConfigCtrl = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! grafana/app/plugins/sdk */ "grafana/app/plugins/sdk");
-/* harmony import */ var grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _services_projEdgeAiSrv__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./services/projEdgeAiSrv */ "./services/projEdgeAiSrv.ts");
-/* harmony import */ var _app_config_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app-config/config */ "./app-config/config.ts");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "ConfigCtrl", function() { return _app_config_config__WEBPACK_IMPORTED_MODULE_2__["AppConfigCtrl"]; });
-
-
-// register Remote Solution Services
-
-
-var appId = "proj-edge-ai-app";
-var baseCssFilename = "proj-edge-ai-app";
-Object(grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0__["loadPluginCss"])({
-    dark: "plugins/" + appId + "/css/" + baseCssFilename + ".dark.css",
-    light: "plugins/" + appId + "/css/" + baseCssFilename + ".light.css"
-});
-
-
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! grafana/app/plugins/sdk */ \"grafana/app/plugins/sdk\");\n/* harmony import */ var grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _services_projEdgeAiSrv__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./services/projEdgeAiSrv */ \"./services/projEdgeAiSrv.ts\");\n/* harmony import */ var _app_config_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app-config/config */ \"./app-config/config.ts\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"ConfigCtrl\", function() { return _app_config_config__WEBPACK_IMPORTED_MODULE_2__[\"AppConfigCtrl\"]; });\n\n\n// register Remote Solution Services\n\n\nvar appId = \"proj-edge-ai-app\";\nvar baseCssFilename = \"proj-edge-ai-app\";\nObject(grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0__[\"loadPluginCss\"])({\n    dark: \"plugins/\" + appId + \"/css/\" + baseCssFilename + \".dark.css\",\n    light: \"plugins/\" + appId + \"/css/\" + baseCssFilename + \".light.css\"\n});\n\n\n\n//# sourceURL=webpack:///./module.ts?");
 
 /***/ }),
 
@@ -166,19 +129,7 @@ Object(grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0__["loadPluginCss"])({
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProjEdgeAiAppSrvCtrl", function() { return ProjEdgeAiAppSrvCtrl; });
-/* harmony import */ var grafana_app_core_core_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! grafana/app/core/core_module */ "grafana/app/core/core_module");
-/* harmony import */ var grafana_app_core_core_module__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(grafana_app_core_core_module__WEBPACK_IMPORTED_MODULE_0__);
-
-var ProjEdgeAiAppSrvCtrl = /** @class */ (function () {
-    function ProjEdgeAiAppSrvCtrl() {
-    }
-    return ProjEdgeAiAppSrvCtrl;
-}());
-
-grafana_app_core_core_module__WEBPACK_IMPORTED_MODULE_0___default.a.service('projEdgeAiSrv', ProjEdgeAiAppSrvCtrl);
-
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"ProjEdgeAiAppSrvCtrl\", function() { return ProjEdgeAiAppSrvCtrl; });\n/* harmony import */ var grafana_app_core_core_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! grafana/app/core/core_module */ \"grafana/app/core/core_module\");\n/* harmony import */ var grafana_app_core_core_module__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(grafana_app_core_core_module__WEBPACK_IMPORTED_MODULE_0__);\n\nvar ProjEdgeAiAppSrvCtrl = /** @class */ (function () {\n    function ProjEdgeAiAppSrvCtrl() {\n    }\n    return ProjEdgeAiAppSrvCtrl;\n}());\n\ngrafana_app_core_core_module__WEBPACK_IMPORTED_MODULE_0___default.a.service('projEdgeAiSrv', ProjEdgeAiAppSrvCtrl);\n\n\n//# sourceURL=webpack:///./services/projEdgeAiSrv.ts?");
 
 /***/ }),
 
@@ -189,7 +140,7 @@ grafana_app_core_core_module__WEBPACK_IMPORTED_MODULE_0___default.a.service('pro
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE_grafana_app_core_core_module__;
+eval("module.exports = __WEBPACK_EXTERNAL_MODULE_grafana_app_core_core_module__;\n\n//# sourceURL=webpack:///external_%22app/core/core_module%22?");
 
 /***/ }),
 
@@ -200,9 +151,8 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_grafana_app_core_core_module__;
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE_grafana_app_plugins_sdk__;
+eval("module.exports = __WEBPACK_EXTERNAL_MODULE_grafana_app_plugins_sdk__;\n\n//# sourceURL=webpack:///external_%22app/plugins/sdk%22?");
 
 /***/ })
 
 /******/ })});;
-//# sourceMappingURL=module.js.map
