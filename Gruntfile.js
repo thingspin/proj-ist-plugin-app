@@ -19,9 +19,9 @@ module.exports = function(grunt) {
         },
         dist: {
           files: {
-            "dist/css/proj-xxx-app.dark.css": "src/sass/proj-xxx-app.dark.scss",
-            "dist/css/proj-xxx-app.light.css": "src/sass/proj-xxx-app.light.scss",
-            "dist/css/proj-xxx-app.office.css": "src/sass/proj-xxx-app.office.scss",
+            "dist/css/proj-edge-ai-app.dark.css": "src/sass/proj-edge-ai-app.dark.scss",
+            "dist/css/proj-edge-ai-app.light.css": "src/sass/proj-edge-ai-app.light.scss",
+            "dist/css/proj-edge-ai-app.office.css": "src/sass/proj-edge-ai-app.office.scss",
           }
         }
       },

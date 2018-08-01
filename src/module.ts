@@ -1,4 +1,5 @@
 import {loadPluginCss} from 'grafana/app/plugins/sdk';
+import {MachineLearningPageCtrl} from './page/ML_PageCtrl';
 
 // register Remote Solution Services
 import './services/projEdgeAiSrv';
@@ -14,4 +15,5 @@ loadPluginCss({
 
 export {
   AppConfigCtrl as ConfigCtrl,
+  MachineLearningPageCtrl
 };

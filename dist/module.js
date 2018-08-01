@@ -113,11 +113,34 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /*!*******************!*\
   !*** ./module.ts ***!
   \*******************/
-/*! exports provided: ConfigCtrl */
+/*! exports provided: ConfigCtrl, MachineLearningPageCtrl */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! grafana/app/plugins/sdk */ \"grafana/app/plugins/sdk\");\n/* harmony import */ var grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _services_projEdgeAiSrv__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./services/projEdgeAiSrv */ \"./services/projEdgeAiSrv.ts\");\n/* harmony import */ var _app_config_config__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app-config/config */ \"./app-config/config.ts\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"ConfigCtrl\", function() { return _app_config_config__WEBPACK_IMPORTED_MODULE_2__[\"AppConfigCtrl\"]; });\n\n\n// register Remote Solution Services\n\n\nvar appId = \"proj-edge-ai-app\";\nvar baseCssFilename = \"proj-edge-ai-app\";\nObject(grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0__[\"loadPluginCss\"])({\n    dark: \"plugins/\" + appId + \"/css/\" + baseCssFilename + \".dark.css\",\n    light: \"plugins/\" + appId + \"/css/\" + baseCssFilename + \".light.css\"\n});\n\n\n\n//# sourceURL=webpack:///./module.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! grafana/app/plugins/sdk */ \"grafana/app/plugins/sdk\");\n/* harmony import */ var grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _page_ML_PageCtrl__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./page/ML_PageCtrl */ \"./page/ML_PageCtrl.ts\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"MachineLearningPageCtrl\", function() { return _page_ML_PageCtrl__WEBPACK_IMPORTED_MODULE_1__[\"MachineLearningPageCtrl\"]; });\n\n/* harmony import */ var _services_projEdgeAiSrv__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./services/projEdgeAiSrv */ \"./services/projEdgeAiSrv.ts\");\n/* harmony import */ var _app_config_config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app-config/config */ \"./app-config/config.ts\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"ConfigCtrl\", function() { return _app_config_config__WEBPACK_IMPORTED_MODULE_3__[\"AppConfigCtrl\"]; });\n\n\n\n// register Remote Solution Services\n\n\nvar appId = \"proj-edge-ai-app\";\nvar baseCssFilename = \"proj-edge-ai-app\";\nObject(grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0__[\"loadPluginCss\"])({\n    dark: \"plugins/\" + appId + \"/css/\" + baseCssFilename + \".dark.css\",\n    light: \"plugins/\" + appId + \"/css/\" + baseCssFilename + \".light.css\"\n});\n\n\n\n//# sourceURL=webpack:///./module.ts?");
+
+/***/ }),
+
+/***/ "./page/ML_PageCtrl.html":
+/*!*******************************!*\
+  !*** ./page/ML_PageCtrl.html ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = \"Hello world\";\n\n//# sourceURL=webpack:///./page/ML_PageCtrl.html?");
+
+/***/ }),
+
+/***/ "./page/ML_PageCtrl.ts":
+/*!*****************************!*\
+  !*** ./page/ML_PageCtrl.ts ***!
+  \*****************************/
+/*! exports provided: MachineLearningPageCtrl */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"MachineLearningPageCtrl\", function() { return MachineLearningPageCtrl; });\n/* harmony import */ var grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! grafana/app/plugins/sdk */ \"grafana/app/plugins/sdk\");\n/* harmony import */ var grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0__);\n\nvar appId = \"proj-edge-ai-app\";\nvar baseCssFilename = \"proj-edge-ai-app\";\nObject(grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0__[\"loadPluginCss\"])({\n    dark: \"plugins/\" + appId + \"/css/\" + baseCssFilename + \".dark.css\",\n    light: \"plugins/\" + appId + \"/css/\" + baseCssFilename + \".light.css\"\n});\nvar MachineLearningPageCtrl = /** @class */ (function () {\n    function MachineLearningPageCtrl() {\n    }\n    MachineLearningPageCtrl.template = __webpack_require__(/*! ./ML_PageCtrl.html */ \"./page/ML_PageCtrl.html\");\n    return MachineLearningPageCtrl;\n}());\n\n\n\n//# sourceURL=webpack:///./page/ML_PageCtrl.ts?");
 
 /***/ }),
 

@@ -1,0 +1,10 @@
+{
+	"version": 3,
+	"file": "proj-edge-ai-app.dark.css",
+	"sources": [
+		"../../src/sass/proj-edge-ai-app.dark.scss",
+		"../../src/sass/common.scss"
+	],
+	"names": [],
+	"mappings": ""
+}

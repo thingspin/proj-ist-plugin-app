@@ -32,7 +32,7 @@
   "includes": [
     {"type": "menu", "name": "Edge AI", "mainMenu": true, "slug": "wizard", "img":"img/M04.png", "menuId": 0},
     {"type": "dashboard", "name": "Inference Wizard", "path": "dashboards/wizard.json", "AddToNav": true, "menuID": 0, "ico":"fa fa-magic"},
-    {"type": "dashboard", "name": "sample Dashboard", "path": "dashboards/PanelDashboard.json", "AddToNav": true, "menuID": 0, "ico":"fa fa-factory"}
+    {"type": "page", "name": "Machine Learning","component": "MachineLearningPageCtrl", "AddToNav": true, "menuID": 0, "ico":"fa fa-factory"}
 
   ],
   "routes": [

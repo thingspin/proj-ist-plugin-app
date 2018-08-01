@@ -1,0 +1,10 @@
+{
+	"version": 3,
+	"file": "proj-edge-ai-app.light.css",
+	"sources": [
+		"../../src/sass/proj-edge-ai-app.light.scss",
+		"../../src/sass/common.scss"
+	],
+	"names": [],
+	"mappings": ""
+}
