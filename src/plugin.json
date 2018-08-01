@@ -27,10 +27,12 @@
     "updated": "2018-01-19"
   },
 
-  "HideFromList": false,  
+  "HideFromList": false,
+  "putSideBottom": true,
   "includes": [
-    {"type": "menu", "name": "Menu1", "mainMenu": true, "slug": "Menu1", "img":"img/thignspin_ic_48dp_white-04.svg", "menuId": 0},
-    {"type": "dashboard", "name": "sample Dashboard", "path": "dashboards/PanelDashboard.json", "AddToNav": true, "menuID": 0, "ico":"fa fa-industry"}
+    {"type": "menu", "name": "Edge AI", "mainMenu": true, "slug": "wizard", "img":"img/M04.png", "menuId": 0},
+    {"type": "dashboard", "name": "Inference Wizard", "path": "dashboards/wizard.json", "AddToNav": true, "menuID": 0, "ico":"fa fa-magic"},
+    {"type": "dashboard", "name": "sample Dashboard", "path": "dashboards/PanelDashboard.json", "AddToNav": true, "menuID": 0, "ico":"fa fa-factory"}
 
   ],
   "routes": [

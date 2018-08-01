@@ -93,7 +93,7 @@ define(["app/core/core_module","app/plugins/sdk"], function(__WEBPACK_EXTERNAL_M
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"page-header\">\n\tHello Config Page\n</div>";
+module.exports = "<div class=\"page-header\">\r\n\tHello Config Page\r\n</div>";
 
 /***/ }),
 

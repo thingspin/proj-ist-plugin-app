@@ -157,7 +157,7 @@ var ProjEdgeAiPanelCtrl = /** @class */ (function (_super) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"{{ctrl.divID}}\" class=\"app-edge-ai-panel\">\n    Hello Edge AI\n</div>\n";
+module.exports = "<div id=\"{{ctrl.divID}}\" class=\"app-edge-ai-panel\">\r\n    Hello Edge AI\r\n</div>\r\n";
 
 /***/ }),
 
