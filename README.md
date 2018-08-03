@@ -30,10 +30,10 @@ grunt
 | POST     | api/ml/save            |입력된 모든 configuration 정보를 저장한다.                              |
 |          |                        |저장위치는 {custom.ini의 ml path}/config/cid.                        |
 |          |                        |cid는 save 버튼 클릭시 입력한 이름.                                     |
-| POST     | api/ml/start/cid/type  |등록된 configuration를 run 한다.                                     |
+| POST     | api/ml/start/:cid/:type|등록된 configuration를 run 한다.                                     |
 |          |                        |여기서 type은 "python"                                              |
-| PUT      | api/ml/stop/pid        |running 중인 configuration를 stop 시킨다.                            |
-| Delete   | api/ml/remove/cid      |등록된 configuration를 삭제한다.                                      |
+| PUT      | api/ml/stop/:pid       |running 중인 configuration를 stop 시킨다.                            |
+| Delete   | api/ml/remove/:cid     |등록된 configuration를 삭제한다.                                      |
 | GET      | api/ml/check           |등록된 프로세스 상태를 OS의 프로세스 상태와 비교하여 틀리면 DB file를 update한다.|
 -----------------------------------------------------------------------------------------------------
 
