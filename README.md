@@ -91,19 +91,21 @@ this.http({
 });
 ```
 
-3. PUT : api/ml/start/cid/type
+3. PUT : api/ml/start/:cid/:type - 등록된 configuration를 run 한다. 
+                                 여기서 type은 "python"
 ```javascript
 this.backendSrv.put('api/ml/start/cid/python').then(result => {
 });
 ```
 
-4. PUT : api/ml/stop/pid
+4. PUT : api/ml/stop/:pid - running 중인 configuration를 stop 시킨다.
+
 ```javascript
 this.backendSrv.put('api/ml/stop/pid').then(result => {
 });
 ```
 
-5. Delete : api/ml/remove/cid
+5. Delete : api/ml/remove/:cid - 등록된 configuration를 삭제한다.
 ```javascript
 this.backendSrv.delete('api/ml/remove/cid').then(result => {
 });
@@ -111,7 +113,7 @@ this.backendSrv.delete('api/ml/remove/cid').then(result => {
 
 6. GET : api/ml/check
 ```javascript
-this.backendSrv.delete('api/ml/remove/cid').then(result => {
+this.backendSrv.delete('api/ml/check').then(result => {
   if (result.Result > 0 ) {
       something wrong and updated the status
   }
