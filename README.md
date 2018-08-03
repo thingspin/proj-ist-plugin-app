@@ -102,7 +102,7 @@ this.backendSrv.delete('api/ml/remove/cid').then(result => {
 
 6. GET : api/ml/check - 등록된 프로세스 상태를 OS의 프로세스 상태와 비교하여 틀리면 DB file를 update한다.
 ```javascript
-this.backendSrv.delete('api/ml/remove/cid').then(result => {
+this.backendSrv.delete('api/ml/check').then(result => {
   if (result.Result > 0 ) {
       something wrong and updated the status
   }
