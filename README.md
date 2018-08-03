@@ -15,13 +15,29 @@ sudo npm install -g yarn
 # grunt 명령어가 실행되지 않은 경우 아래의 명령을 실행해 주세요.
 sudo npm install grunt-cli
 ```
+
 # Build
 ```
 yarn install
 grunt
 ```
-# API
-1. GET : api/ml/get - 모든 등록된 configuration 정보를 가져온다.
+
+# Backend API
+
+|Rest Type | API                    | Description                                                     |
+|----------|------------------------|-----------------------------------------------------------------|
+| GET      | api/ml/get             |모든 등록된 configuration 정보를 가져온다.                              |
+| POST     | api/ml/save            |입력된 모든 configuration 정보를 저장한다.                              |
+|          |                        |저장위치는 {custom.ini의 ml path}/config/cid.                        |
+|          |                        |cid는 save 버튼 클릭시 입력한 이름.                                     |
+| POST     | api/ml/start/cid/type  |등록된 configuration를 run 한다.                                     |
+|          |                        |여기서 type은 "python"                                              |
+| PUT      | api/ml/stop/pid        |running 중인 configuration를 stop 시킨다.                            |
+| Delete   | api/ml/remove/cid      |등록된 configuration를 삭제한다.                                      |
+| GET      | api/ml/check           |등록된 프로세스 상태를 OS의 프로세스 상태와 비교하여 틀리면 DB file를 update한다.|
+-----------------------------------------------------------------------------------------------------
+
+1. GET : api/ml/get
 
 [example in javascript]
 ```javascript
@@ -31,10 +47,7 @@ this.backendSrv.get('api/ml/get').then(result => {
 });
 ```
 
-2. POST : api/ml/save - 입력된 모든 configuration 정보를 저장한다. 
-                 저장위치는 {custom.ini의 ml path}/config/cid.
-                 cid는 save 버튼 클릭시 입력한 이름.
-                 
+2. POST : api/ml/save
 [request body 정보]
 ```go
 type MLsaveReq struct {
@@ -49,9 +62,7 @@ type MLsaveReq struct {
 	UploadAlgorithm []*multipart.FileHeader `form:"algorithm[]"`
 }
 ```
-
 [example in javascript]
-
 ```javascript
 var data = new FormData();
 data.append("cid","test1");
@@ -80,27 +91,25 @@ this.http({
 });
 ```
 
-3. PUT : api/ml/start/cid/type - 등록된 configuration를 run 한다. 
-                                 여기서 type은 "python"
+3. PUT : api/ml/start/cid/type
 ```javascript
 this.backendSrv.put('api/ml/start/cid/python').then(result => {
 });
 ```
 
-4. PUT : api/ml/stop/pid - running 중인 configuration를 stop 시킨다.
-
+4. PUT : api/ml/stop/pid
 ```javascript
 this.backendSrv.put('api/ml/stop/pid').then(result => {
 });
 ```
 
-5. Delete : api/ml/remove/cid - 등록된 configuration를 삭제한다.
+5. Delete : api/ml/remove/cid
 ```javascript
 this.backendSrv.delete('api/ml/remove/cid').then(result => {
 });
 ```
 
-6. GET : api/ml/check - 등록된 프로세스 상태를 OS의 프로세스 상태와 비교하여 틀리면 DB file를 update한다.
+6. GET : api/ml/check
 ```javascript
 this.backendSrv.delete('api/ml/remove/cid').then(result => {
   if (result.Result > 0 ) {
