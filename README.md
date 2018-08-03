@@ -24,16 +24,19 @@ grunt
 1. GET : api/ml/get - 모든 등록된 configuration 정보를 가져온다.
 
 [example in javascript]
+```javascript
 this.backendSrv.get('api/ml/get').then(result => {
       // Use result.Result
       console.log(result.Result);
 });
+```
 
 2. POST : api/ml/save - 입력된 모든 configuration 정보를 저장한다. 
                  저장위치는 {custom.ini의 ml path}/config/cid.
                  cid는 save 버튼 클릭시 입력한 이름.
                  
 [request body 정보]
+```go
 type MLsaveReq struct {
 	Cid         string  `form:"cid"`
 	Pid         string  `form:"pid"`
@@ -45,9 +48,11 @@ type MLsaveReq struct {
 	UploadModel []*multipart.FileHeader `form:"model[]"`
 	UploadAlgorithm []*multipart.FileHeader `form:"algorithm[]"`
 }
+```
 
 [example in javascript]
 
+```javascript
 var data = new FormData();
 data.append("cid","test1");
 data.append("pid","test1");
@@ -73,43 +78,33 @@ this.http({
 }).then(result => {
   console.log(result);
 });
+```
 
 3. PUT : api/ml/start/cid/type - 등록된 configuration를 run 한다. 
                                  여기서 type은 "python"
-         
+```javascript
 this.backendSrv.put('api/ml/start/cid/python').then(result => {
 });
+```
 
 4. PUT : api/ml/stop/pid - running 중인 configuration를 stop 시킨다.
 
+```javascript
 this.backendSrv.put('api/ml/stop/pid').then(result => {
 });
+```
 
 5. Delete : api/ml/remove/cid - 등록된 configuration를 삭제한다.
+```javascript
 this.backendSrv.delete('api/ml/remove/cid').then(result => {
 });
+```
 
 6. GET : api/ml/check - 등록된 프로세스 상태를 OS의 프로세스 상태와 비교하여 틀리면 DB file를 update한다.
+```javascript
 this.backendSrv.delete('api/ml/remove/cid').then(result => {
   if (result.Result > 0 ) {
       something wrong and updated the status
   }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-             
+```
