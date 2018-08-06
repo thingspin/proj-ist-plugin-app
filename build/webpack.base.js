@@ -10,12 +10,13 @@ module.exports = {
   target: 'node',
   context: resolve('src'),
   entry:{
-      'module.js' : './module.ts',
-      'panels/edge-ai/module.js' : './panels/edge-ai/module.ts',
+    'module.js' : './module.ts',
+    'wizard.js' : './wizard/app.module.ts',
   },
   output: {
     path: resolve('dist'),
     filename: "[name]",
+    chunkFilename: '[name].bundle.js',
     libraryTarget: "amd"
   },
   externals: [
@@ -35,7 +36,15 @@ module.exports = {
       { from: '**/*.css' },
       { from: '**/*.svg' },
       { from: '**/*.html' },
+      { from: '**/*.eot' },
+      { from: '**/*.woff' },
+      { from: '**/*.woff2' },
+      { from: '**/*.ttf' },
     ]),
+    new webpack.ContextReplacementPlugin(
+      /\@angular(\\|\/)core(\\|\/)fesm5/,
+      path.resolve(__dirname, ".")
+    ),
   ],
   resolve: {
     extensions: [".ts", ".js", ".scss"]
@@ -55,6 +64,16 @@ module.exports = {
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [{
+            loader: 'file-loader',
+            options: {
+                name: '[name].[ext]',
+                outputPath: 'fonts/'
+            }
+        }]
       }
     ]
   }

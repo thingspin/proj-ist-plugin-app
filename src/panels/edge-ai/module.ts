@@ -22,8 +22,6 @@ class ProjEdgeAiPanelCtrl extends MetricsPanelCtrl {
         this.events.on('data-received', this.onDataReceived.bind(this));
     }
 
-
-
     onInitialized() {
         const node: any = this.$element.find("ng-transclude > div");
         if (node.length === 0) {

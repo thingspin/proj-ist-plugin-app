@@ -1,15 +1,15 @@
 {
   "type": "app",
-  "name": "Edge AI App",
+  "name": "Proj Edge AI App",
   "id": "proj-edge-ai-app",
 
   "css": {
-    "dark":  "css/dark.css",
-    "light":  "css/light.css"
+    "dark":  "css/proj-edge-ai-app.dark.css",
+    "light":  "css/proj-edge-ai-app.light.css"
   },
 
   "info": {
-    "description": "Thingspin Edge AI Application",
+    "description": "ThingSPIN Edge AI Application",
     "author": {
       "name": "gunwoo@hancommds.com",
       "url": "http://thingspin.io"
@@ -23,17 +23,16 @@
       {"name": "Project site", "url": ""},
       {"name": "License & Terms", "url": ""}
     ],
-    "version": "0.1.0",
+    "version": "1.0.2",
     "updated": "2018-01-19"
   },
 
   "HideFromList": false,
-  "putSideBottom": true,
+  "putSideBottom": false,
   "includes": [
-    {"type": "menu", "name": "Edge AI", "mainMenu": true, "slug": "wizard", "img":"img/M04.png", "menuId": 0},
-    {"type": "dashboard", "name": "Inference Wizard", "path": "dashboards/wizard.json", "AddToNav": true, "menuID": 0, "ico":"fa fa-magic"},
-    {"type": "page", "name": "Interence Configuration","component": "InferenceConfigurationPageCtrl", "AddToNav": true, "menuID": 0, "ico":"fa fa-factory"}
-
+    {"type": "menu", "name": "Edge AI", "mainMenu": true, "uid": "TE0000000001", "img":"img/M01.png", "menuId": 0},
+    {"type": "page", "name": "Wizard","component": "Wizard", "AddToNav": true, "menuID": 0, "ico":"fa fa-magic"},
+    {"type": "dashboard", "name": "Inferences", "path": "dashboards/list.json", "uid": "TE0000000001", "AddToNav": true, "menuID": 0, "ico":"fa fa-list-ul"}
   ],
   "routes": [
     {
