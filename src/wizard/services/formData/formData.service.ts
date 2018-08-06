@@ -1,8 +1,8 @@
-import { Inject, Injectable }           from '@angular/core';
+import { Inject, Injectable }                        from '@angular/core';
 
-import { FormData, Project, Platform, Model, Algorithm }       from './formData.model';
-import { WorkflowService }              from '../workflow/workflow.service';
-import { STEPS }                        from '../workflow/workflow.model';
+import { FormData, Project, Platform, Input, Model, Algorithm }       from './formData.model';
+import { WorkflowService }                   from '../workflow/workflow.service';
+import { STEPS }                             from '../workflow/workflow.model';
 
 @Injectable()
 export class FormDataService {
@@ -10,6 +10,7 @@ export class FormDataService {
     private data: FormData = new FormData();
 
     private isProjectFormValid: Boolean = false;
+    private isInputFormValid: Boolean = false;
     private isPlatformFormValid: Boolean = false;
     private isModelFormValid: Boolean = false;
     private isAlgorithmFormValid: Boolean = false;
@@ -27,6 +28,18 @@ export class FormDataService {
         this.data.project = data;
 
         this.workflowService.validateStep(STEPS.project);
+    }
+
+    getInput(): Input {
+        return this.data.input;
+    }
+
+    setInput(input: Input) {
+
+        this.isInputFormValid = true;
+        this.data.input = input;
+
+        this.workflowService.validateStep(STEPS.input);
     }
 
     getPlatform(): Platform {
@@ -73,16 +86,18 @@ export class FormDataService {
         this.data.clear();
 
         this.isProjectFormValid
-            = this.isPlatformFormValid
-            = this.isModelFormValid
-            = this.isAlgorithmFormValid
-            = false;
+        = this.isInputFormValid
+        = this.isPlatformFormValid
+        = this.isModelFormValid
+        = this.isAlgorithmFormValid
+        = false;
 
         return this.data;
     }
 
     isFormValid() {
         return this.isProjectFormValid &&
+                this.isInputFormValid &&
                 this.isPlatformFormValid &&
                 this.isModelFormValid &&
                 this.isAlgorithmFormValid;

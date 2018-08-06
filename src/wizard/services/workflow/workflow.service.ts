@@ -4,18 +4,19 @@ import { STEPS }              from './workflow.model';
 @Injectable()
 export class WorkflowService {
     private workflow = [
-        { step: STEPS.project,  valid: false },
+        { step: STEPS.project, valid: false },
+        { step: STEPS.input, valid: false },
         { step: STEPS.platform, valid: false },
-        { step: STEPS.model,    valid: false },
-        { step: STEPS.algorithm,valid: false },
-        { step: STEPS.result,   valid: false }
+        { step: STEPS.model, valid: false },
+        { step: STEPS.algorithm, valid: false },
+        { step: STEPS.result, valid: false }
     ];
 
     validateStep(step: string) {
-        for (let i = 0; i < this.workflow.length; i++) {
+        var found = false;
+        for (var i = 0; i < this.workflow.length && !found; i++) {
             if (this.workflow[i].step === step) {
-                this.workflow[i].valid = true;
-                break;
+                found = this.workflow[i].valid = true;
             }
         }
     }
@@ -27,14 +28,14 @@ export class WorkflowService {
     }
 
     getFirstInvalidStep(step: string): string {
-        let valid = true;
-        let redirectToStep = '';
-
-        for (let i = 0; i < this.workflow.length && valid; i++) {
+        var found = false;
+        var valid = true;
+        var redirectToStep = '';
+        for (var i = 0; i < this.workflow.length && !found && valid; i++) {
             let item = this.workflow[i];
             if (item.step === step) {
+                found = true;
                 redirectToStep = '';
-                break;
             } else {
                 valid = item.valid;
                 redirectToStep = item.step;
