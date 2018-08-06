@@ -11,7 +11,6 @@ module.exports = {
   context: resolve('src'),
   entry:{
     'module.js' : './module.ts',
-    'wizard.js' : './wizard/app.module.ts',
   },
   output: {
     path: resolve('dist'),
