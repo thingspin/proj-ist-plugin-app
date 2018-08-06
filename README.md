@@ -26,22 +26,24 @@ grunt
 
 |Rest Type | API                    | Description                                                     |
 |----------|------------------------|-----------------------------------------------------------------|
-| GET      | api/ml/get             |모든 등록된 configuration 정보를 가져온다.                              |
-| POST     | api/ml/save            |입력된 모든 configuration 정보를 저장한다.                              |
+| GET      | api/ml                 |모든 등록된 configuration 정보를 가져온다.                              |
+| GET      | api/ml:pid             |특정 configuration 정보를 가져온다.                                   |
+| POST     | api/ml                 |입력된 모든 configuration 정보를 저장한다.                              |
 |          |                        |저장위치는 {custom.ini의 ml path}/config/cid.                        |
 |          |                        |cid는 save 버튼 클릭시 입력한 이름.                                     |
-| POST     | api/ml/start/:cid/:type|등록된 configuration를 run 한다.                                     |
-|          |                        |여기서 type은 "python"                                              |
-| PUT      | api/ml/stop/:pid       |running 중인 configuration를 stop 시킨다.                            |
-| Delete   | api/ml/remove/:cid     |등록된 configuration를 삭제한다.                                      |
-| GET      | api/ml/check           |등록된 프로세스 상태를 OS의 프로세스 상태와 비교하여 틀리면 DB file를 update한다.|
------------------------------------------------------------------------------------------------------
+| POST     | api/ml:cid             |특정 configuration 정보를 수정한다.                                    |
+| POST     | api/ml/:cid/start      |등록된 configuration를 run 한다.                                     |
+| POST     | api/ml/:cid/stop       |running 중인 configuration를 stop 시킨다.                            |
+| Delete   | api/ml:cid             |등록된 configuration를 삭제한다.                                      |
+| GET      | api/ml/:cid/check      |등록된 configuration의 프로세스 상태가 running 중인지 확인.                |
+|          |                        |OS의 프로세스 상태와 비교하여 틀리면 DB file를 update한다.                  |
+--------------------------------------------------------------------------------------------------------
 
 1. GET : api/ml/get
 
 [example in javascript]
 ```javascript
-this.backendSrv.get('api/ml/get').then(result => {
+this.backendSrv.get('api/ml').then(result => {
       // Use result.Result
       console.log(result.Result);
 });
@@ -52,12 +54,12 @@ this.backendSrv.get('api/ml/get').then(result => {
 ```go
 type MLsaveReq struct {
 	Cid         string  `form:"cid"`
-	Pid         string  `form:"pid"`
 	Model       string  `form:"model"`
-	Algorithm   string  `form:"algorithm"`
 	Framework   string  `form:"framework"`
 	InputInfo   string  `form:"inputInfo"`
 	OutputInfo  string  `form:"outputInfo"`
+	AlgorithmType   string  `form:"algorithmType"`
+	AlgorithmName   string  `form:"algorithmName"`
 	UploadModel []*multipart.FileHeader `form:"model[]"`
 	UploadAlgorithm []*multipart.FileHeader `form:"algorithm[]"`
 }
@@ -66,12 +68,13 @@ type MLsaveReq struct {
 ```javascript
 var data = new FormData();
 data.append("cid","test1");
-data.append("pid","test1");
 data.append("model","test1");
-data.append("algorithm","test1");
 data.append("framework","test1");
 data.append("inputInfo","test1");
 data.append("outputInfo","test1");
+data.append("algorithmType","test1");
+data.append("algorithmName","test1");
+
 
 for (let model of modelList) {
   data.append('model[]', model);
@@ -82,7 +85,7 @@ for (let algorithm of algorithmList) {
 
 this.http({
   method: 'POST',
-  url: 'api/ml/save',
+  url: 'api/ml',
   data: data,
   headers: { 'Content-Type': undefined },
   transformResponse: angular.identity,
@@ -90,32 +93,33 @@ this.http({
   console.log(result);
 });
 ```
-
-3. PUT : api/ml/start/:cid/:type - 등록된 configuration를 run 한다. 
-                                 여기서 type은 "python"
+3. POST : api/ml/:cid - 등록된 configuration를 수정한다. 
 ```javascript
-this.backendSrv.put('api/ml/start/cid/python').then(result => {
+this.backendSrv.POST('api/ml/:cid/start').then(result => {
+});
+
+4. POST : api/ml/:cid/start - 등록된 configuration를 run 한다. 
+                                 
+```javascript
+this.backendSrv.POST('api/ml/:cid/start').then(result => {
 });
 ```
 
-4. PUT : api/ml/stop/:pid - running 중인 configuration를 stop 시킨다.
+5. POST : api/ml/:cid/stop - running 중인 configuration를 stop 시킨다.
 
 ```javascript
-this.backendSrv.put('api/ml/stop/pid').then(result => {
+this.backendSrv.put('api/ml/:cid/stop').then(result => {
 });
 ```
 
-5. Delete : api/ml/remove/:cid - 등록된 configuration를 삭제한다.
+6. Delete : api/ml/:cid - 등록된 configuration를 삭제한다.
 ```javascript
-this.backendSrv.delete('api/ml/remove/cid').then(result => {
+this.backendSrv.delete('api/ml/:cid').then(result => {
 });
 ```
 
-6. GET : api/ml/check
+7. GET : api/ml/check
 ```javascript
-this.backendSrv.delete('api/ml/check').then(result => {
-  if (result.Result > 0 ) {
-      something wrong and updated the status
-  }
+this.backendSrv.get('api/ml/check').then(result => {
 });
 ```
