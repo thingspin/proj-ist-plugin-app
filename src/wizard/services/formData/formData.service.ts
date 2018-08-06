@@ -1,8 +1,8 @@
 import { Inject, Injectable }                        from '@angular/core';
 
-import { FormData, Project, Platform, Input, Model, Algorithm }       from './formData.model';
-import { WorkflowService }                   from '../workflow/workflow.service';
-import { STEPS }                             from '../workflow/workflow.model';
+import { FormData, Project, Platform, Model, Algorithm }       from './formData.model';
+import { StepService }                   from '../step/step.service';
+import { STEPS }                             from '../step/step.model';
 
 @Injectable()
 export class FormDataService {
@@ -15,7 +15,7 @@ export class FormDataService {
     private isModelFormValid: Boolean = false;
     private isAlgorithmFormValid: Boolean = false;
 
-    constructor(@Inject(WorkflowService) private workflowService: WorkflowService) {
+    constructor(@Inject(StepService) private workflowService: StepService) {
     }
 
     getProject(): Project {
@@ -28,18 +28,6 @@ export class FormDataService {
         this.data.project = data;
 
         this.workflowService.validateStep(STEPS.project);
-    }
-
-    getInput(): Input {
-        return this.data.input;
-    }
-
-    setInput(input: Input) {
-
-        this.isInputFormValid = true;
-        this.data.input = input;
-
-        this.workflowService.validateStep(STEPS.input);
     }
 
     getPlatform(): Platform {

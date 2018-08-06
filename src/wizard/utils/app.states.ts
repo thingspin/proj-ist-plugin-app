@@ -2,7 +2,7 @@ import {APP_BASE_HREF, LocationStrategy} from '@angular/common';
 
 /* App Root */
 import { AppComponent } from '../components/app.component';
-import { NavbarComponent } from '../components/navbar/component';
+import { WorkflowComponent } from '../components/workflow/component';
 
 import { ProjectComponent }  from '../components/project/component';
 import { PlatformComponent }      from '../components/platform/component';
@@ -12,7 +12,7 @@ import { ResultComponent }    from '../components/result/component';
 
 /* Shared Service */
 import { FormDataService } from '../services/formData/formData.service';
-import { WorkflowService } from '../services/workflow/workflow.service';
+import { StepService } from '../services/step/step.service';
 
 import { CustomLocationStrategy} from "./common";
 
@@ -20,9 +20,9 @@ const verifyWorkFlow = (transition, state) => {
     // console.debug("Entered '" + state.name + "' state.");
 
     var $stateService = transition.router.stateService;
-    var workflowService = transition.injector().get(WorkflowService);
+    var stepService = transition.injector().get(StepService);
 
-    let firstState = workflowService.getFirstInvalidStep(state.name);
+    let firstState = stepService.getFirstInvalidStep(state.name);
     if (firstState.length > 0) {
         // console.debug("Redirected to '" + firstState + "' state which it is the first invalid step.");
         return $stateService.target(firstState);
@@ -31,7 +31,7 @@ const verifyWorkFlow = (transition, state) => {
 
 export const appProviders = [
     { provide: FormDataService, useClass: FormDataService },
-    { provide: WorkflowService, useClass: WorkflowService },
+    { provide: StepService, useClass: StepService },
     { provide: APP_BASE_HREF,   useValue: window.location.pathname},
     { provide: LocationStrategy, useClass: CustomLocationStrategy},
 ];
@@ -47,7 +47,7 @@ export const appRouters = [
 
 export const appDeclarations = [
     AppComponent,
-    NavbarComponent,
+    WorkflowComponent,
     ProjectComponent,
     PlatformComponent,
     ModelComponent,
