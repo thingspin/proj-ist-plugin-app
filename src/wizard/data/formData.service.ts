@@ -1,8 +1,9 @@
-import { Inject, Injectable }                        from '@angular/core';
+import { Inject, Injectable }           from '@angular/core';
 
-import { FormData, Project, Platform, Input, Model, Algorithm }       from './formData.model';
-import { WorkflowService }                   from '../workflow/workflow.service';
-import { STEPS }                             from '../workflow/workflow.model';
+import { FormData, Project, Platform,
+        Input, Model, Algorithm }       from './formData.model';
+import { WorkflowService }              from '../workflow/workflow.service';
+import { STEPS }                        from '../workflow/workflow.model';
 
 @Injectable()
 export class FormDataService {

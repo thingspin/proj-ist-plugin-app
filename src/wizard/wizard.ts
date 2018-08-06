@@ -1,30 +1,30 @@
+// angular 2 Modules
 import { WizardModule } from './app.module';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
+// Grafana SDK
 import { loadPluginCss } from 'grafana/app/plugins/sdk';
-import '../css/loading-bars.css';
+
+const appId = "proj-edge-ai-app";
+loadPluginCss({
+    dark: `plugins/${appId}/css/${appId}.dark.css`,
+    light: `plugins/${appId}/css/${appId}.light.css`
+});
 
 export class Wizard {
     appModel: any;
     splash: any;
     static template = require(`./wizard.html`);
-    appId = "proj-edge-ai-app";
 
     /** ngInject **/
     constructor($scope, $rootScope, $window) {
-        if (this.appModel !== undefined && this.appModel !== null && 'baseUrl' in this.appModel) {
-            this.splash = this.appModel.baseUrl + '/img/splash.svg';
-        } else {
-            this.splash = 'public/plugins/' + this.appId + '/img/splash.svg';
-        }
+        this.splash = ('appModel' in this && 'baseUrl' in this.appModel) ?
+            `${this.appModel.baseUrl}/img/splash.svg` :
+            `public/plugins/${appId}/img/splash.svg`;
 
-        loadPluginCss({
-            dark: `plugins/${this.appId}/css/${this.appId}.dark.css`,
-            light: `plugins/${this.appId}/css/${this.appId}.light.css`
-        });
 
         setTimeout(function() {
             platformBrowserDynamic().bootstrapModule(WizardModule);
-        }, 300);
+        }, 300); // ????
     }
 }

@@ -1,29 +1,36 @@
+import {APP_BASE_HREF, LocationStrategy} from '@angular/common';
+
+/* App Root */
+import { AppComponent } from './app.component';
+import { NavbarComponent } from './navbar/component';
+
 import { ProjectComponent }  from './project/component';
 import { InputComponent }  from './input/component';
 import { PlatformComponent }      from './platform/component';
 import { ModelComponent }      from './model/component';
 import { AlgorithmComponent }   from './algorithm/component';
 import { ResultComponent }    from './result/component';
-import { WorkflowService }    from './workflow/workflow.service';
 
-export const appStates = [
-    { name: 'project', url: '/project',  component: ProjectComponent },
-    { name: 'input', url: '/input',  component: InputComponent },
-    { name: 'platform', url: '/platform',  component: PlatformComponent, onEnter: verifyWorkFlow },
-    { name: 'model', url: '/model',  component: ModelComponent, onEnter: verifyWorkFlow },
-    { name: 'algorithm', url: '/algorithm',  component: AlgorithmComponent, onEnter: verifyWorkFlow },
-    { name: 'result', url: '/result',  component: ResultComponent, onEnter: verifyWorkFlow }
+/* Shared Service */
+import { FormDataService } from './data/formData.service';
+import { WorkflowService } from './workflow/workflow.service';
+
+import { CustomLocationStrategy} from "./custom/common";
+
+export const appProviders = [
+    { provide: FormDataService, useClass: FormDataService },
+    { provide: WorkflowService, useClass: WorkflowService },
+    { provide: APP_BASE_HREF,   useValue: window.location.pathname},
+    { provide: LocationStrategy, useClass: CustomLocationStrategy},
 ];
 
-function verifyWorkFlow(transition, state) {
-    // console.debug("Entered '" + state.name + "' state.");
-
-    var $stateService = transition.router.stateService;
-    var workflowService = transition.injector().get(WorkflowService);
-
-    let firstState = workflowService.getFirstInvalidStep(state.name);
-    if (firstState.length > 0) {
-        // console.debug("Redirected to '" + firstState + "' state which it is the first invalid step.");
-        return $stateService.target(firstState);
-    }
-}
+export const appDeclarations = [
+    AppComponent,
+    NavbarComponent,
+    ProjectComponent,
+    InputComponent,
+    PlatformComponent,
+    ModelComponent,
+    AlgorithmComponent,
+    ResultComponent
+];

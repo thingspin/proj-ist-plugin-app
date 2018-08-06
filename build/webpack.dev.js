@@ -1,7 +1,7 @@
 const baseWebpackConfig = require('./webpack.base');
 
 var conf = baseWebpackConfig;
-conf.devtool = "cheap-module-source-map";
+conf.devtool = "eval";
 // conf.watch = true;
 conf.mode = 'development';
 
