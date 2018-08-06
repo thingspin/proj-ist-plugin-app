@@ -31,7 +31,7 @@ grunt
 | POST     | api/ml                 |입력된 모든 configuration 정보를 저장한다.                              |
 |          |                        |저장위치는 {custom.ini의 ml path}/config/cid.                        |
 |          |                        |cid는 save 버튼 클릭시 입력한 이름.                                     |
-| POST     | api/ml:cid             |특정 configuration 정보를 수정한다.                                    |
+| PUT     | api/ml:cid             |특정 configuration 정보를 수정한다.                                    |
 | POST     | api/ml/:cid/start      |등록된 configuration를 run 한다.                                     |
 | POST     | api/ml/:cid/stop       |running 중인 configuration를 stop 시킨다.                            |
 | Delete   | api/ml:cid             |등록된 configuration를 삭제한다.                                      |
@@ -95,7 +95,7 @@ this.http({
   console.log(result);
 });
 ```
-3. POST : api/ml/:cid - 등록된 configuration를 수정한다. 
+3. PUT : api/ml/:cid - 등록된 configuration를 수정한다. 
 ```javascript
 this.backendSrv.POST('api/ml/:cid/start').then(result => {
 });
