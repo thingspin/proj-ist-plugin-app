@@ -54,6 +54,7 @@ this.backendSrv.get('api/ml').then(result => {
 ```go
 type MLsaveReq struct {
 	Cid         string  `form:"cid"`
+	Cname       string  `form:"cname"`
 	Model       string  `form:"model"`
 	Framework   string  `form:"framework"`
 	InputInfo   string  `form:"inputInfo"`
@@ -68,6 +69,7 @@ type MLsaveReq struct {
 ```javascript
 var data = new FormData();
 data.append("cid","test1");
+data.append("cname","test1");
 data.append("model","test1");
 data.append("framework","test1");
 data.append("inputInfo","test1");
