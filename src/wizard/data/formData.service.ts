@@ -8,14 +8,14 @@ import { STEPS }                             from '../workflow/workflow.model';
 export class FormDataService {
 
     private data: FormData = new FormData();
-    
-    private isProjectFormValid: boolean = false;
-    private isInputFormValid: boolean = false;
-    private isPlatformFormValid: boolean = false;
-    private isModelFormValid: boolean = false;
-    private isAlgorithmFormValid: boolean = false;
 
-    constructor(@Inject(WorkflowService) private workflowService: WorkflowService) { 
+    private isProjectFormValid: Boolean = false;
+    private isInputFormValid: Boolean = false;
+    private isPlatformFormValid: Boolean = false;
+    private isModelFormValid: Boolean = false;
+    private isAlgorithmFormValid: Boolean = false;
+
+    constructor(@Inject(WorkflowService) private workflowService: WorkflowService) {
     }
 
     getProject(): Project {
@@ -42,28 +42,28 @@ export class FormDataService {
         this.workflowService.validateStep(STEPS.input);
     }
 
-    getPlatform() : Platform {
+    getPlatform(): Platform {
         return this.data.platform;
     }
-    
+
     setPlatform(platform: Platform) {
         this.isPlatformFormValid = true;
         this.data.platform = platform;
         this.workflowService.validateStep(STEPS.platform);
     }
 
-    getModel() : Model {
+    getModel(): Model {
         return this.data.model;
     }
 
     setModel(model: Model) {
         this.isModelFormValid = true;
-        
+
         this.data.model = model;
         this.workflowService.validateStep(STEPS.model);
     }
 
-    getAlgorithm() : Algorithm {
+    getAlgorithm(): Algorithm {
         return this.data.algorithm;
     }
 
@@ -85,12 +85,12 @@ export class FormDataService {
 
         this.data.clear();
 
-        this.isProjectFormValid 
-        = this.isInputFormValid 
-        = this.isPlatformFormValid 
-        = this.isModelFormValid 
-        = this.isAlgorithmFormValid 
-        = false;
+        this.isProjectFormValid
+            = this.isInputFormValid
+            = this.isPlatformFormValid
+            = this.isModelFormValid
+            = this.isAlgorithmFormValid
+            = false;
 
         return this.data;
     }
@@ -98,7 +98,7 @@ export class FormDataService {
     isFormValid() {
         return this.isProjectFormValid &&
                 this.isInputFormValid &&
-                this.isPlatformFormValid && 
+                this.isPlatformFormValid &&
                 this.isModelFormValid &&
                 this.isAlgorithmFormValid;
     }

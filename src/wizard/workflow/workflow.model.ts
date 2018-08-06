@@ -5,4 +5,4 @@ export const STEPS = {
     model: 'model',
     algorithm: 'algorithm',
     result: 'result'
-}
+};

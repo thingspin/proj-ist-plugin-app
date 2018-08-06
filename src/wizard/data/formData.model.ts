@@ -1,24 +1,24 @@
 export class Project {
-    name: string = '';
+    name: String = '';
 }
 
 export class Input {
-    name: string = '';
-    topic: string = '';
+    name: String = '';
+    topic: String = '';
 }
 
 export class Platform {
-    name: string = '';
+    name: String = '';
 }
 
 export class Model {
-    name: string = '';
-    path: string = '';
+    name: String = '';
+    path: String = '';
 }
 
 export class Algorithm {
-    name: string = '';
-    path: string = '';
+    name: String = '';
+    path: String = '';
 }
 
 export class FormData {

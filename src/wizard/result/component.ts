@@ -6,14 +6,14 @@ import { FormDataService }            from '../data/formData.service';
 @Component ({
     selector:  'edge-ai-wizard-result',
     template:  require(`./component.html`),
-    styleUrls: styleUrls,    
+    styleUrls: styleUrls,
 })
 
 export class ResultComponent implements OnInit {
     title = 'Confirm & Save your project.';
     @Input() formData: FormData;
-    isFormValid: boolean = false;
-    
+    isFormValid: Boolean = false;
+
     constructor(@Inject(FormDataService) private formDataService: FormDataService) {
     }
 

@@ -11,7 +11,7 @@ export class InputComponent implements OnInit {
     title = 'Input data';
     data: any;
     form: any;
-    
+
     constructor(@Inject(FormDataService) private formDataService: FormDataService) {
     }
 
@@ -20,8 +20,9 @@ export class InputComponent implements OnInit {
     }
 
     save(form: any) {
-        if (!form.valid) 
+        if (!form.valid) {
             return;
+        }
 
         this.formDataService.setInput(this.data);
     }

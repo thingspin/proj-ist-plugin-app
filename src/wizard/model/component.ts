@@ -7,7 +7,7 @@ import { FormDataService } from '../data/formData.service';
 @Component ({
     selector:  'edge-ai-wizard-model',
     template:  require(`./component.html`),
-    styleUrls: styleUrls,    
+    styleUrls: styleUrls,
 })
 export class ModelComponent implements OnInit {
     title = 'Upload or select your model.';
@@ -23,8 +23,9 @@ export class ModelComponent implements OnInit {
     }
 
     save(form: any) {
-        if (!form.valid) 
+        if (!form.valid) {
             return;
+        }
 
         this.formDataService.setModel(this.data);
     }

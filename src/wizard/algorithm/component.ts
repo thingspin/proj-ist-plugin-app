@@ -5,13 +5,13 @@ import { FormDataService }     from '../data/formData.service';
 @Component ({
     selector:  'edge-ai-wizard-algorithm',
     template:  require(`./component.html`),
-    styleUrls: styleUrls,    
+    styleUrls: styleUrls,
 })
 export class AlgorithmComponent implements OnInit {
     title = 'Upload your inference algorithm script(s)!';
     data: any;
     form: any;
-    
+
     constructor(@Inject(FormDataService) private formDataService: FormDataService) {
     }
 
@@ -20,8 +20,9 @@ export class AlgorithmComponent implements OnInit {
     }
 
     save(form: any) {
-        if (!form.valid) 
+        if (!form.valid) {
             return;
+        }
 
         this.formDataService.setAlgorithm(this.data);
     }

@@ -16,14 +16,14 @@ export const appStates = [
 ];
 
 function verifyWorkFlow(transition, state) {
-    console.debug("Entered '" + state.name + "' state.");
+    // console.debug("Entered '" + state.name + "' state.");
 
     var $stateService = transition.router.stateService;
     var workflowService = transition.injector().get(WorkflowService);
 
     let firstState = workflowService.getFirstInvalidStep(state.name);
     if (firstState.length > 0) {
-        console.debug("Redirected to '" + firstState + "' state which it is the first invalid step.");
+        // console.debug("Redirected to '" + firstState + "' state which it is the first invalid step.");
         return $stateService.target(firstState);
-    };
+    }
 }

@@ -12,7 +12,7 @@ export class Wizard {
 
     /** ngInject **/
     constructor($scope, $rootScope, $window) {
-        if(this.appModel !== undefined && this.appModel !== null && 'baseUrl' in this.appModel) {
+        if (this.appModel !== undefined && this.appModel !== null && 'baseUrl' in this.appModel) {
             this.splash = this.appModel.baseUrl + '/img/splash.svg';
         } else {
             this.splash = 'public/plugins/' + this.appId + '/img/splash.svg';
@@ -23,7 +23,7 @@ export class Wizard {
             light: `plugins/${this.appId}/css/${this.appId}.light.css`
         });
 
-        setTimeout(function() { 
+        setTimeout(function() {
             platformBrowserDynamic().bootstrapModule(WizardModule);
         }, 300);
     }

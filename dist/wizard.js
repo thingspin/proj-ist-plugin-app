@@ -69434,8 +69434,9 @@ var AlgorithmComponent = /** @class */ (function () {
         this.data = this.formDataService.getAlgorithm();
     };
     AlgorithmComponent.prototype.save = function (form) {
-        if (!form.valid)
+        if (!form.valid) {
             return;
+        }
         this.formDataService.setAlgorithm(this.data);
     };
     AlgorithmComponent = __decorate([
@@ -69658,15 +69659,14 @@ var appStates = [
     { name: 'result', url: '/result', component: _result_component__WEBPACK_IMPORTED_MODULE_5__["ResultComponent"], onEnter: verifyWorkFlow }
 ];
 function verifyWorkFlow(transition, state) {
-    console.debug("Entered '" + state.name + "' state.");
+    // console.debug("Entered '" + state.name + "' state.");
     var $stateService = transition.router.stateService;
     var workflowService = transition.injector().get(_workflow_workflow_service__WEBPACK_IMPORTED_MODULE_6__["WorkflowService"]);
     var firstState = workflowService.getFirstInvalidStep(state.name);
     if (firstState.length > 0) {
-        console.debug("Redirected to '" + firstState + "' state which it is the first invalid step.");
+        // console.debug("Redirected to '" + firstState + "' state which it is the first invalid step.");
         return $stateService.target(firstState);
     }
-    ;
 }
 
 
@@ -69927,8 +69927,9 @@ var InputComponent = /** @class */ (function () {
         this.data = this.formDataService.getInput();
     };
     InputComponent.prototype.save = function (form) {
-        if (!form.valid)
+        if (!form.valid) {
             return;
+        }
         this.formDataService.setInput(this.data);
     };
     InputComponent = __decorate([
@@ -69992,8 +69993,9 @@ var ModelComponent = /** @class */ (function () {
         console.log('Model feature loaded!');
     };
     ModelComponent.prototype.save = function (form) {
-        if (!form.valid)
+        if (!form.valid) {
             return;
+        }
         this.formDataService.setModel(this.data);
     };
     ModelComponent = __decorate([
@@ -70104,8 +70106,9 @@ var PlatformComponent = /** @class */ (function () {
         this.data = this.formDataService.getPlatform();
     };
     PlatformComponent.prototype.save = function (form) {
-        if (!form.valid)
+        if (!form.valid) {
             return;
+        }
         this.formDataService.setPlatform(this.data);
     };
     PlatformComponent = __decorate([
@@ -70204,7 +70207,7 @@ __webpack_require__.r(__webpack_exports__);
 Copyright 2017-2018 Google Inc. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at http://angular.io/license
-*/ 
+*/
 
 
 /***/ }),
@@ -70254,8 +70257,9 @@ var ProjectComponent = /** @class */ (function () {
         this.data = this.formDataService.getProject();
     };
     ProjectComponent.prototype.save = function (form) {
-        if (!form.valid)
+        if (!form.valid) {
             return;
+        }
         this.formDataService.setProject(this.data);
     };
     ProjectComponent = __decorate([

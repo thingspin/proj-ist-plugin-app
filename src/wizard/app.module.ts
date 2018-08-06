@@ -27,25 +27,25 @@ import { FormDataService }    from './data/formData.service';
 import { WorkflowService }    from './workflow/workflow.service';
 
 @NgModule({
-    imports:[ BrowserModule, 
+    imports: [ BrowserModule,
               FormsModule,
-              UIRouterModule.forRoot({ 
+              UIRouterModule.forRoot({
                 states: appStates,
                 useHash: true,
                 config: UIRouterConfigFn
-                }) 
+                })
     ],
     providers:    [ { provide: FormDataService, useClass: FormDataService },
                     { provide: WorkflowService, useClass: WorkflowService }],
-    declarations: [ 
-        AppComponent, 
+    declarations: [
+        AppComponent,
         NavbarComponent,
         ProjectComponent,
         InputComponent,
         PlatformComponent,
         ModelComponent,
         AlgorithmComponent,
-        ResultComponent 
+        ResultComponent
     ],
     bootstrap:    [ AppComponent ]
 })

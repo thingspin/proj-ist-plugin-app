@@ -11,7 +11,7 @@ export class WorkflowService {
         { step: STEPS.algorithm, valid: false },
         { step: STEPS.result, valid: false }
     ];
-    
+
     validateStep(step: string) {
         var found = false;
         for (var i = 0; i < this.workflow.length && !found; i++) {
@@ -27,7 +27,7 @@ export class WorkflowService {
         });
     }
 
-    getFirstInvalidStep(step: string) : string {
+    getFirstInvalidStep(step: string): string {
         var found = false;
         var valid = true;
         var redirectToStep = '';
@@ -36,10 +36,9 @@ export class WorkflowService {
             if (item.step === step) {
                 found = true;
                 redirectToStep = '';
-            }
-            else {
+            } else {
                 valid = item.valid;
-                redirectToStep = item.step
+                redirectToStep = item.step;
             }
         }
         return redirectToStep;
