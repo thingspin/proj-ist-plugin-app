@@ -61,6 +61,8 @@ type MLsaveReq struct {
 	Framework   string  `form:"framework"`
 	InputInfo   string  `form:"inputInfo"`
 	OutputInfo  string  `form:"outputInfo"`
+	ModelFiles []string 'form:"modelFiles"`
+	AlgorithmFiles []string 'form:"algorithmFiles"`
 	AlgorithmType   string  `form:"algorithmType"`
 	AlgorithmName   string  `form:"algorithmName"`
 	UploadModel []*multipart.FileHeader `form:"model[]"`
