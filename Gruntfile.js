@@ -25,6 +25,16 @@ module.exports = function(grunt) {
           }
         }
       },
+      less: {
+        development: {
+          files: {
+            'dist/css/bootstrap-iso.css': '<%= project.dev %>/less/bootstrap-iso.less'
+          },
+          options: {
+            compress: true,
+          }
+        },
+      },
       copy: {
         md: {
           expand: true,
@@ -80,6 +90,7 @@ module.exports = function(grunt) {
       'clean',
       'copy:md',
       'sass',
+      'less:development',
       'webpack:prod',
     ]);
   };

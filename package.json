@@ -24,6 +24,7 @@
     "grunt-contrib-clean": "^1.1.0",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-watch": "^1.1.0",
+    "grunt-contrib-less": "^2.0.0",
     "grunt-sass": "^2.0.0",
     "grunt-webpack": "^3.1.2",
     "html-loader": "^0.5.5",
@@ -58,6 +59,7 @@
     "rxjs": "6.2.2",
     "systemjs": "0.21.4",
     "timers": "~0.1.1",
-    "zone.js": "~0.8.26"
+    "zone.js": "~0.8.26",
+    "bootstrap": "^4.1.3"
   }
 }
