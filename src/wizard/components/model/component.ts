@@ -28,11 +28,12 @@ export class ModelComponent implements OnInit {
         this.data = this.formDataService.getModel();
         $(`#${this.fileInputId}`).fileinput(defaultFileinputConf);
         $(`#${this.fileInputId}`).on("change", ({target: {files}}) => {
-
             // const validFileExts: String[] = ["data","index", "meta"];
             this.data.name = this.getAssistantName(files);
-            this.data.files = files;
         });
+        if (this.data.files) {
+            $(`#${this.fileInputId}`).fileinput("readFiles", this.data.files);
+        }
         $(`#kvFileinputModal`).hide();
     }
 
@@ -40,7 +41,6 @@ export class ModelComponent implements OnInit {
         if (!form.valid) {
             return;
         }
-
         this.formDataService.setModel(this.data);
     }
 

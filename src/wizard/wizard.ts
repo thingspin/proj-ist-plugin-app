@@ -8,6 +8,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { UIRouterModule } from "@uirouter/angular";
 import { FormsModule } from '@angular/forms';
+import { FileInputAccessorModule} from "file-input-accessor";
 
 /* App Root */
 import { AppComponent } from './components/app.component';
@@ -27,6 +28,7 @@ loadPluginCss({
 
 @NgModule({
     imports: [BrowserModule,
+        FileInputAccessorModule,
         FormsModule,
         UIRouterModule.forRoot({
             states: appRouters,

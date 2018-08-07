@@ -11,7 +11,8 @@
         <div class='row ts-proj-bootstrap-iso'>
             <div class='container-fluid'>
                 <div class="empty-list-cta">
-                    <input id="modelFileInput" type="file" multiple accept=".data, .index, .meta">
+                    <input id="modelFileInput" #files="ngModel" type="file" name="files" multiple accept=".data, .index, .meta" 
+                        [(ngModel)]="data.files">
                 </div>
             </div>
         </div>
