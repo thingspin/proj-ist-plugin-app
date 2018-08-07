@@ -1,6 +1,6 @@
 {
   "type": "app",
-  "name": "Proj Edge AI App",
+  "name": "Edge AI",
   "id": "proj-edge-ai-app",
 
   "css": {
@@ -9,7 +9,7 @@
   },
 
   "info": {
-    "description": "ThingSPIN Edge AI Application",
+    "description": "ThingSPIN Edge AI",
     "author": {
       "name": "gunwoo@hancommds.com",
       "url": "http://thingspin.io"
