@@ -1,5 +1,8 @@
 export class Project {
     name: String = '';
+    cid: String;
+    inputInfo: String;
+    outputInfo: String;
 }
 
 export class Platform {
@@ -8,12 +11,14 @@ export class Platform {
 
 export class Model {
     name: String = '';
-    path: String = '';
+    models: String[];
+    files: FileList;
 }
 
 export class Algorithm {
     name: String = '';
-    path: String = '';
+    algorithms: String[];
+    files: FileList;
 }
 
 export class FormData {

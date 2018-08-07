@@ -6,6 +6,7 @@ import { Component, Inject, OnInit }   from '@angular/core';
 import { FormDataService } from '../../services/formData/formData.service';
 import { FormGroup } from '../../../../node_modules/@angular/forms';
 import { defaultFileinputConf } from '../../utils/common';
+import { Model } from '../../services/formData/formData.model';
 
 @Component ({
     selector:  'edge-ai-wizard-model',
@@ -18,8 +19,7 @@ export class ModelComponent implements OnInit {
     fileInputId: String = "modelFileInput";
 
     title = 'Upload or select your model.';
-    data: any;
-    models: FileList;
+    data: Model;
 
     constructor(@Inject(FormDataService) private formDataService: FormDataService) {
     }
@@ -30,17 +30,8 @@ export class ModelComponent implements OnInit {
         $(`#${this.fileInputId}`).on("change", ({target: {files}}) => {
 
             // const validFileExts: String[] = ["data","index", "meta"];
-            Array.from(files).forEach( ({name, size}) => {
-                const names = name.split(".");
-                let assistantName = "";
-                names.forEach((name, idx) => {
-                    if (idx < (names.length-1) ) {
-                        assistantName = `${assistantName}${idx === 0 ? '' : '.'}${name}`;
-                    }
-                });
-                this.data.name = assistantName;
-            });
-            this.models = files;
+            this.data.name = this.getAssistantName(files);
+            this.data.files = files;
         });
         $(`#kvFileinputModal`).hide();
     }
@@ -51,5 +42,21 @@ export class ModelComponent implements OnInit {
         }
 
         this.formDataService.setModel(this.data);
+    }
+
+    getAssistantName(files: FileList): String {
+        let assistantName = "";
+
+        Array.from(files).forEach( ({name, size}) => {
+            assistantName = "";
+            const names = name.split(".");
+            names.forEach((name, idx) => {
+                if (idx < (names.length-1) ) {
+                    assistantName = `${assistantName}${idx === 0 ? '' : '.'}${name}`;
+                }
+            });
+        });
+
+        return assistantName;
     }
 }

@@ -63,6 +63,7 @@
     "systemjs": "0.21.4",
     "timers": "~0.1.1",
     "zone.js": "~0.8.26",
-    "bootstrap-fileinput": "^4.4.9"
+    "bootstrap-fileinput": "^4.4.9",
+    "guid-typescript": "^1.0.7"
   }
 }

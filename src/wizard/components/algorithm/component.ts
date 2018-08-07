@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { styleUrls }  from '../../utils/app.style';
 import { FormDataService }     from '../../services/formData/formData.service';
+import { Algorithm } from '../../services/formData/formData.model';
 
 @Component ({
     selector:  'edge-ai-wizard-algorithm',
@@ -9,8 +10,7 @@ import { FormDataService }     from '../../services/formData/formData.service';
 })
 export class AlgorithmComponent implements OnInit {
     title = 'Upload your inference algorithm script(s)!';
-    data: any;
-    form: any;
+    data: Algorithm;
 
     constructor(@Inject(FormDataService) private formDataService: FormDataService) {
     }

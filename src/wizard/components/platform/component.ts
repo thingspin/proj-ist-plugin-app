@@ -2,6 +2,7 @@ import { Component, Inject, OnInit }   from '@angular/core';
 import { styleUrls }  from '../../utils/app.style';
 import { FormDataService }     from '../../services/formData/formData.service';
 import { FormGroup } from '../../../../node_modules/@angular/forms';
+import { Platform } from '../../services/formData/formData.model';
 
 @Component ({
     selector:  'edge-ai-wizard-platform',
@@ -10,8 +11,7 @@ import { FormGroup } from '../../../../node_modules/@angular/forms';
 })
 export class PlatformComponent implements OnInit {
     title = 'Which platform will be used for?';
-    data: any;
-    form: any;
+    data: Platform;
 
     constructor(@Inject(FormDataService) private formDataService: FormDataService) {
     }
