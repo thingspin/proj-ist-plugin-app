@@ -10,7 +10,6 @@ export class FormDataService {
     private data: FormData = new FormData();
 
     private isProjectFormValid: Boolean = false;
-    private isInputFormValid: Boolean = false;
     private isPlatformFormValid: Boolean = false;
     private isModelFormValid: Boolean = false;
     private isAlgorithmFormValid: Boolean = false;
@@ -74,7 +73,6 @@ export class FormDataService {
         this.data.clear();
 
         this.isProjectFormValid
-        = this.isInputFormValid
         = this.isPlatformFormValid
         = this.isModelFormValid
         = this.isAlgorithmFormValid
@@ -85,7 +83,6 @@ export class FormDataService {
 
     isFormValid() {
         return this.isProjectFormValid &&
-                this.isInputFormValid &&
                 this.isPlatformFormValid &&
                 this.isModelFormValid &&
                 this.isAlgorithmFormValid;

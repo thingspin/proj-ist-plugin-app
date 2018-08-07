@@ -33,14 +33,8 @@
                 </div>
         </div>
         <div class='edit-row text-center'>
-            <button uiSref="input" class="btn btn-outline-rounded btn-default" (click)="save(form)"> 
-                <span style="margin-right:10px;" class="glyphicon glyphicon-arrow-left"></span> 
-                Previous
-            </button>
-            <button uiSref="model" class="btn btn-success btn-outline-rounded btn-info" [disabled]="!form.valid" (click)="save(form)"> 
-                Next 
-                <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span>
-            </button>
+            <button uiSref="project" class="btn btn-outline-rounded btn-default" (click)="save(form)"> <span style="margin-right:10px;" class="glyphicon glyphicon-arrow-left"></span> Previous</button>
+            <button uiSref="model" class="btn btn-success btn-outline-rounded btn-info" [disabled]="!form.valid" (click)="save(form)"> Next <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></button>
         </div>
     </div>
 </form>
