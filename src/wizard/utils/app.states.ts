@@ -37,11 +37,11 @@ export const appProviders = [
 ];
 
 export const appRouters = [
-    { name: 'project',      url: `/project`,    component: ProjectComponent },
-    { name: 'platform',     url: `/platform`,   component: PlatformComponent,   onEnter: verifyWorkFlow },
-    { name: 'model',        url: `/model`,      component: ModelComponent,      onEnter: verifyWorkFlow },
-    { name: 'algorithm',    url: `/algorithm`,  component: AlgorithmComponent,  onEnter: verifyWorkFlow },
-    { name: 'result',       url: `/result`,     component: ResultComponent,     onEnter: verifyWorkFlow }
+    { name: 'project',      url: `project`,    component: ProjectComponent },
+    { name: 'platform',     url: `platform`,   component: PlatformComponent,   onEnter: verifyWorkFlow },
+    { name: 'model',        url: `model`,      component: ModelComponent,      onEnter: verifyWorkFlow },
+    { name: 'algorithm',    url: `algorithm`,  component: AlgorithmComponent,  onEnter: verifyWorkFlow },
+    { name: 'result',       url: `result`,     component: ResultComponent,     onEnter: verifyWorkFlow }
 ];
 
 

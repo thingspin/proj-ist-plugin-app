@@ -11,11 +11,15 @@
         <div class='row'>
             <div class='col-xs-offset-3 col-xs-6 col-sm-offset-3 col-sm-6'>
                 <label class="control-label" for="name">Project Name</label>  
-                <input class="form-control input-md" #name="ngModel" required id="name" name="name" type="text" placeholder="Project Name" [(ngModel)]="data.name">
+                <input class="form-control input-md" type="text" name="name" placeholder="Project Name" required
+                    #name="ngModel" [(ngModel)]="data.name" />
+                <div class="alert alert-danger" [hidden]="name.valid"> Please Enter project name.</div>
             </div>
         </div>
         <div class='edit-row text-center'>
-            <button uiSref="platform" class="btn btn-success btn-outline-rounded btn-info" [disabled]="!form.valid" (click)="save(form)"> Next <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span></button>
+            <button uiSref="platform" class="btn btn-success btn-outline-rounded btn-info" [disabled]="!form.valid" (click)="save(form)"> 
+                Next <span style="margin-left:10px;" class="glyphicon glyphicon-arrow-right"></span>
+            </button>
         </div>
     </div>
 </form>

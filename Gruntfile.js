@@ -27,9 +27,13 @@ module.exports = function(grunt) {
       },
       less: {
         development: {
-          files: {
-            'dist/css/bootstrap-iso.css': '<%= project.dev %>/less/bootstrap-iso.less'
-          },
+          files: [{
+            expand: true,
+            cwd: 'src/less',
+            src: ['*.less'],
+            dest: 'dist/css/',
+            ext: '.css',
+          }],
           options: {
             compress: true,
           }
@@ -68,6 +72,13 @@ module.exports = function(grunt) {
         markdown: {
           files: ['<%= project.dev %>/*.md'],
           tasks: ['copy:md'],
+          options: {
+            livereload: true
+          }
+        },
+        less: {
+          files: ['<%= project.dev %>/less/*.less'],
+          tasks: ['less:development'],
           options: {
             livereload: true
           }

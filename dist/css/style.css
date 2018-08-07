@@ -76,3 +76,12 @@
 .iradio_buttons.checked {
     background-position: -168px 0;
 }
+.nav-tabs > li {
+    float:none;
+    display:inline-block;
+    zoom:1;
+}
+
+.nav-tabs {
+    text-align:center;
+}

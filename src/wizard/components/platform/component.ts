@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit }   from '@angular/core';
 import { styleUrls }  from '../../utils/app.style';
 import { FormDataService }     from '../../services/formData/formData.service';
+import { FormGroup } from '../../../../node_modules/@angular/forms';
 
 @Component ({
     selector:  'edge-ai-wizard-platform',
@@ -19,7 +20,7 @@ export class PlatformComponent implements OnInit {
         this.data = this.formDataService.getPlatform();
     }
 
-    save(form: any) {
+    save(form: FormGroup) {
         if (!form.valid) {
             return;
         }

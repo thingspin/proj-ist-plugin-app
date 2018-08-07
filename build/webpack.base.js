@@ -62,7 +62,18 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        use: ['style-loader', 'css-loader'],
+        include: [/node_modules/],
+      },
+      {
+        test: /\.css$/,
+        loaders: ['to-string-loader', 'css-loader'],
+        exclude: [/node_modules/] //add this line so we ignore css coming from node_modules
+      },
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        loaders: ['raw-loader', 'sass-loader'] // sass-loader not scss-loader
       },
       {
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,

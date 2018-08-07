@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit }   from '@angular/core';
 import { styleUrls }  from '../../utils/app.style';
 import { FormDataService }     from '../../services/formData/formData.service';
+import { FormGroup } from '../../../../node_modules/@angular/forms';
 
 @Component ({
     selector:  'edge-ai-wizard-project',
@@ -10,7 +11,6 @@ import { FormDataService }     from '../../services/formData/formData.service';
 export class ProjectComponent implements OnInit {
     title = 'Please configure Your Inference Project';
     data: any;
-    form: any;
 
     constructor(@Inject(FormDataService) private formDataService: FormDataService) {
     }
@@ -19,7 +19,7 @@ export class ProjectComponent implements OnInit {
         this.data = this.formDataService.getProject();
     }
 
-    save(form: any) {
+    save(form: FormGroup) {
         if (!form.valid) {
             return;
         }
