@@ -17,6 +17,10 @@ export class FormDataService {
     constructor(@Inject(StepService) private workflowService: StepService) {
     }
 
+    setSettings(data: any) {
+        this.data.settings = data;
+    }
+
     getProject(): Project {
         return this.data.project;
     }

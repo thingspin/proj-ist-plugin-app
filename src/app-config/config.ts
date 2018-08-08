@@ -4,8 +4,6 @@ class AppConfigCtrl {
   appEditCtrl: any;
   appModel: any;
   editForm: any;
-  mqtt: any;
-  storage: any;
 
   suggest: any = {
     storage: {

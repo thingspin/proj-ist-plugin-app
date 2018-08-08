@@ -21,6 +21,9 @@ import { appRouters, appProviders, appDeclarations} from "./utils/app.states";
 // Grafana SDK
 import { loadPluginCss } from 'grafana/app/plugins/sdk';
 
+// App Service
+import { EdgeAiService } from "../services/edgeAiSrv";
+
 const appId = "proj-edge-ai-app";
 loadPluginCss({
     dark: `plugins/${appId}/css/${appId}.dark.css`,
@@ -50,7 +53,7 @@ export class Wizard {
     static template = require(`./wizard.html`);
 
     /** ngInject **/
-    constructor($scope, $rootScope, $window, private backendSrv) {
+    constructor(private backendSrv) {
         this.splash = ('appModel' in this && 'baseUrl' in this.appModel) ?
             `${this.appModel.baseUrl}/img/splash.svg` :
             `public/plugins/${appId}/img/splash.svg`;
@@ -59,7 +62,8 @@ export class Wizard {
             // Ref : https://stackoverflow.com/questions/38948463/passing-server-parameters-to-ngmodule-after-rc5-upgrade
             platformBrowserDynamic( [
                 { provide: 'backendSrv', useValue: this.backendSrv },
+                { provide: 'edgeAiService', useValue: new EdgeAiService(this.appModel) },
             ]).bootstrapModule(WizardModule);
-        }, 300);
+        }, 500);
     }
 }

@@ -16,12 +16,15 @@ export class ProjectComponent implements OnInit {
 
     constructor(
         @Inject(FormDataService) private formDataService: FormDataService,
-        @Inject('backendSrv') private backendsrv
+        @Inject('backendSrv') private backendSrv,
+        @Inject('edgeAiService') private edgeAiService,
     ) {
-        console.log(this.backendsrv);
+        console.log(this.backendSrv);
+        console.log(this.edgeAiService);
     }
 
     ngOnInit() {
+        this.formDataService.setSettings(this.edgeAiService.getSettings());
         this.data = this.formDataService.getProject();
     }
 

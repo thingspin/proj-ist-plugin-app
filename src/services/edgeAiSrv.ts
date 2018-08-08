@@ -1,8 +1,17 @@
 import coreModule from 'grafana/app/core/core_module';
+import { Injectable } from '../../node_modules/@angular/core';
 
-export class ProjEdgeAiAppSrvCtrl {
-    constructor() {
+@Injectable()
+export class EdgeAiService {
+    appModel: any;
+
+    constructor(appModel: any) {
+        this.appModel = appModel;
+    }
+
+    getSettings() : any {
+        return this.appModel.jsonData;
     }
 }
 
-coreModule.service('edgeAiSrv', ProjEdgeAiAppSrvCtrl);
+coreModule.service('edgeAiService', EdgeAiService);

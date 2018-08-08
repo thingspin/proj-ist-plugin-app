@@ -25,6 +25,7 @@ export class Algorithm {
 
 export class FormData {
 
+    settings: any;
     project: Project = new Project();
     platform: Platform = new Platform();
     model: Model = new Model();
