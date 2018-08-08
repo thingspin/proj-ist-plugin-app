@@ -134,7 +134,7 @@ this.backendSrv.get('api/ml/check').then(result => {
 import { liveSrv } from 'app/core/core';
 
 // Start logging
-var observable = liveSrv.subscribe('service_' + row.cid);
+var observable = liveSrv.subscribe('service_' + cid);
 this.subscription = observable.subscribe(data => {
 console.log(data);
 });
