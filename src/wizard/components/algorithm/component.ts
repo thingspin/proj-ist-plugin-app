@@ -78,6 +78,8 @@ export class AlgorithmComponent implements OnInit {
         this.data.files = convFiles;
         // this.data.algorithm = this.getfilenames();
         this.data.name = this.getAssistantName(this.data.files);
+
+        // Ref : https://dzone.com/articles/how-to-create-custom-validators-in-angular
         this.form.controls.files.setValidators([Validators.required, this.algorithmValidator.bind(this)]);
         this.form.controls.files.updateValueAndValidity();
     }

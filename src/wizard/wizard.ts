@@ -1,21 +1,22 @@
 //ref : https://www.cc28tech.com/angular-2-multi-step-wizard-ui-router-part-1/
 
-// angular 2 Modules
+// angular 2
 import './utils/polyfills';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { UIRouterModule } from "@uirouter/angular";
-import { FormsModule } from '@angular/forms';
 
 /* App Root */
 import { AppComponent } from './components/app.component';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-/* App Router */
+/* App Modules */
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { UIRouterModule } from "@uirouter/angular";
+import { FileInputAccessorModule } from "file-input-accessor";
+
+/* App Utils */
 import { UIRouterConfigFn } from "./utils/app.router";
 import { appRouters, appProviders, appDeclarations} from "./utils/app.states";
-import { FileInputAccessorModule } from "file-input-accessor";
 
 // Grafana SDK
 import { loadPluginCss } from 'grafana/app/plugins/sdk';
