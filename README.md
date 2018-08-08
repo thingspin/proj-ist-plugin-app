@@ -129,3 +129,20 @@ this.backendSrv.delete('api/ml/:cid').then(result => {
 this.backendSrv.get('api/ml/check').then(result => {
 });
 ```
+# live service for checking logs
+```javascript
+import { liveSrv } from 'app/core/core';
+
+// Start logging
+var observable = liveSrv.subscribe('service_' + row.cid);
+this.subscription = observable.subscribe(data => {
+console.log(data);
+});
+
+// Stop logging
+liveSrv.removeObserver('service_' + this.isLogging, null);
+this.subscription.unsubscribe();
+
+```
+
+
