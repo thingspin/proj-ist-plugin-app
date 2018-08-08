@@ -12,6 +12,13 @@ import { Platform } from '../../services/formData/formData.model';
 export class PlatformComponent implements OnInit {
     title = 'Which platform will be used for?';
     data: Platform;
+    options: String[] = [
+        'TensorFlow',
+        'Scikits',
+        'SparkML',
+        'DataRobot',
+        'Mixed'
+    ];
 
     constructor(@Inject(FormDataService) private formDataService: FormDataService) {
     }
