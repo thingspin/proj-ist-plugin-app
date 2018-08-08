@@ -1,16 +1,12 @@
 .splash {
-    position: inherit;
+    position: absolute;
     z-index: 2000;
-    background: black;
-    background-color: black;
-    color: white;
+    background: white;
+    color: gray;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    margin-left: -42px;
-    width: 1980px;
-    height: 1080px;
 }
 
 .splash-title{

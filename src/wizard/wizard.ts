@@ -50,15 +50,8 @@ export class Wizard {
     /** ngInject **/
     constructor($scope, $rootScope, $window) {
         this.splash = ('appModel' in this && 'baseUrl' in this.appModel) ?
-            `${this.appModel.baseUrl}/img/thingspin-logo.gif` :
-            `public/plugins/${appId}/img/thingspin-logo.gif`;
-
-        var link = document.createElement( "link" );
-        link.href = `public/plugins/${appId}/css/loading-bars.css`;
-        link.type = "text/css";
-        link.rel = "stylesheet";
-    
-        document.getElementsByTagName( "head" )[0].appendChild( link );
+            `${this.appModel.baseUrl}/img/splash.svg` :
+            `public/plugins/${appId}/img/splash.svg`;
 
         setTimeout(function() {
             platformBrowserDynamic().bootstrapModule(WizardModule);
