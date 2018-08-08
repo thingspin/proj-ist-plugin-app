@@ -6,20 +6,17 @@
     top: 0;
     bottom: 0;
     left: 0;
-    right: 0
+    right: 0;
 }
 
-.splash-title {
-    text-align: center;
-    max-width: 500px;
-    margin: 15% auto;
-    padding: 20px
-}
-
-.splash-title h1{
+.splash-title{
     font-size: 26px
 }
 
 .color-line {
     border-radius:4px 4px 0 0
+}
+
+.bg-fit {
+    object-fit: contain;
 }
