@@ -8,7 +8,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { UIRouterModule } from "@uirouter/angular";
 import { FormsModule } from '@angular/forms';
-import { UpgradeModule } from '@angular/upgrade/static';
 
 /* App Root */
 import { AppComponent } from './components/app.component';
@@ -16,6 +15,7 @@ import { AppComponent } from './components/app.component';
 /* App Router */
 import { UIRouterConfigFn } from "./utils/app.router";
 import { appRouters, appProviders, appDeclarations} from "./utils/app.states";
+import { FileInputAccessorModule } from "file-input-accessor";
 
 // Grafana SDK
 import { loadPluginCss } from 'grafana/app/plugins/sdk';
@@ -28,7 +28,7 @@ loadPluginCss({
 
 @NgModule({
     imports: [BrowserModule,
-        UpgradeModule,
+        FileInputAccessorModule,
         FormsModule,
         UIRouterModule.forRoot({
             states: appRouters,

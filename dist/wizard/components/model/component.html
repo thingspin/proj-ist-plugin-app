@@ -12,7 +12,7 @@
             <div class='container-fluid'>
                 <div class="empty-list-cta">
                     <input id="modelFileInput" type="file" name="files" accept=".data, .index, .meta" multiple
-                        #files="ngModel" [(ngModel)]="temp.files" (change)="onNgFileInputChange($event)" requiredFile >
+                        #files="ngModel" [(ngModel)]="temp.files" required>
                 </div>
                 <div class="alert alert-danger" [hidden]="files.valid"> Please Enter project name.</div>
             </div>
