@@ -7,7 +7,7 @@ import { FormDataService } from '../../services/formData/formData.service';
 import { FormGroup, NgForm } from '@angular/forms';
 import { defaultFileinputConf } from '../../utils/common';
 import { Model } from '../../services/formData/formData.model';
-// import { ICustomFile } from "file-input-accessor";
+
 @Component ({
     selector:  'edge-ai-wizard-model',
     template:  require(`./component.html`),

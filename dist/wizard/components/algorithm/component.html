@@ -8,21 +8,21 @@
             </div>
         </div>
         
-        <div class='row'>
-                <div class='col-xs-offset-3 col-xs-6 col-sm-offset-3 col-sm-6'>
+        <div class='row ts-proj-bootstrap-iso'>
+            <div class='container-fluid'>
                 <div class="empty-list-cta">
-                    <div class="empty-list-cta__title">There are no algorithms(scripts) added yet</div>
-                    <input class="form-control input-md hide" #path="ngModel" required id="path" name="path" type="file" placeholder="path Name" [(ngModel)]="data.path">
-                    <label class="btn btn-success" for="path">
-                        <i class="gicon gicon-add-variable"></i>
-                        Upload Algorithm script File(s)
-                    </label>
+                    <input id="algorithmFileInput" type="file" name="files" accept=".py" multiple
+                        #files="ngModel" [(ngModel)]="temp.files" required>
+                </div>
+                <div class="alert alert-danger" [hidden]="files.valid"> 
+                    <div [hidden]="!files.hasError('required')">Please Upload algorithm(s) file.</div>
+                    <div [hidden]="!files.hasError('isNotExistAlgorithmMain')">Please Upload "main.py" file.</div>
                 </div>
             </div>
         </div>
-        
-        <div class='row'>
-            <div class='col-xs-offset-3 col-xs-6 col-sm-offset-3 col-sm-6'>
+
+        <div class='row ts-proj-bootstrap-iso'>
+            <div class='container-fluid'>
                 <label class="control-label" for="name">Algorithm(s) Name - (OPTIONAL)</label>  
                 <input class="form-control input-md" #name="ngModel" id="name" name="name" type="text" placeholder="Algorithm Name" [(ngModel)]="data.name">
             </div>

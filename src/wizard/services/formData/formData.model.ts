@@ -19,7 +19,7 @@ export class Model {
 
 export class Algorithm {
     name: String = '';
-    algorithms: String[];
+    algorithm: String;
     files: File[] = [];
 }
 
