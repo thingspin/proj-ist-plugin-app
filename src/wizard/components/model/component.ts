@@ -7,7 +7,7 @@ import { FormDataService } from '../../services/formData/formData.service';
 import { FormGroup, NgForm } from '@angular/forms';
 import { defaultFileinputConf } from '../../utils/common';
 import { Model } from '../../services/formData/formData.model';
-// import { ICustomFile } from "file-input-accessor";
+
 @Component ({
     selector:  'edge-ai-wizard-model',
     template:  require(`./component.html`),
@@ -25,7 +25,6 @@ export class ModelComponent implements OnInit {
     temp: any = {};
 
     constructor(@Inject(FormDataService) private formDataService: FormDataService) {
-        this.temp.files = [];
     }
 
     ngOnInit() {
@@ -35,10 +34,16 @@ export class ModelComponent implements OnInit {
         $(inputId).fileinput(defaultFileinputConf);
         $(inputId).on("fileloaded", this.onFileinputLoaded.bind(this));
         $(inputId).on('fileremoved', this.onFileinputRemoved.bind(this));
+        $(inputId).on('filecleared', this.onFileinputCleared.bind(this));
 
         $(`#kvFileinputModal`).hide();
+        this.temp = this.data.files;
+        this.temp.files = [];
         if (this.data.files && this.data.files.length !== 0) {
-            $(`#${this.fileInputId}`).fileinput("readFiles", this.data.files);
+            const { files } = this.data;
+            this.data.files = [];
+            this.temp.files = files;
+            $(`#${this.fileInputId}`).fileinput("readFiles", files);
             $(`#${this.fileInputId}`).fileinput('refresh');
         }
     }
@@ -65,16 +70,14 @@ export class ModelComponent implements OnInit {
 
         return assistantName;
     }
-    onNgFileInputChange(event) {
-        console.log(event);
-    }
 
-    onFileinputLoaded(event, file) {
-        console.log(this.form);
-        this.data.name = this.getAssistantName(this.data.files);
-        this.temp.files.push(file);
-        this.data.files.push(file);
+    onFileinputLoaded(event, currFile) {
+        const convFiles: File[] = $(`#${this.fileInputId}`).fileinput('getFileStack');
+        this.temp.files = convFiles;
+        this.data.files = convFiles;
         this.data.models = this.getfilenames();
+        this.data.name = this.getAssistantName(this.data.files);
+        this.form.controls.files.updateValueAndValidity();
     }
 
     onFileinputRemoved(event, id, index) {
@@ -82,6 +85,14 @@ export class ModelComponent implements OnInit {
         this.temp.files = convFiles;
         this.data.files = convFiles;
         this.data.models = this.getfilenames();
+        this.form.controls.files.updateValueAndValidity();
+    }
+
+    onFileinputCleared(event) {
+        this.temp.files = [];
+        this.data.files = [];
+        this.data.models = [];
+        this.form.controls.files.updateValueAndValidity();
     }
 
     getfilenames(): String[] {
