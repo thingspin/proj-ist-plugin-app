@@ -55,9 +55,11 @@ export class Wizard {
             `${this.appModel.baseUrl}/img/splash.svg` :
             `public/plugins/${appId}/img/splash.svg`;
 
-        // Ref : https://stackoverflow.com/questions/38948463/passing-server-parameters-to-ngmodule-after-rc5-upgrade
-        platformBrowserDynamic( [
-            { provide: 'backendSrv', useValue: this.backendSrv },
-        ]).bootstrapModule(WizardModule);
+        setTimeout(() => {
+            // Ref : https://stackoverflow.com/questions/38948463/passing-server-parameters-to-ngmodule-after-rc5-upgrade
+            platformBrowserDynamic( [
+                { provide: 'backendSrv', useValue: this.backendSrv },
+            ]).bootstrapModule(WizardModule);
+        }, 300);
     }
 }
