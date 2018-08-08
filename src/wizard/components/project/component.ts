@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit }   from '@angular/core';
 import { styleUrls }  from '../../utils/app.style';
 import { FormDataService }     from '../../services/formData/formData.service';
-import { FormGroup } from '../../../../node_modules/@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { Guid } from "guid-typescript";
 import { Project } from '../../services/formData/formData.model';
 
@@ -14,7 +14,11 @@ export class ProjectComponent implements OnInit {
     title = 'Please configure Your Inference Project';
     data: Project;
 
-    constructor(@Inject(FormDataService) private formDataService: FormDataService) {
+    constructor(
+        @Inject(FormDataService) private formDataService: FormDataService,
+        @Inject('backendSrv') private backendsrv
+    ) {
+        console.log(this.backendsrv);
     }
 
     ngOnInit() {

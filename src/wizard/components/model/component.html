@@ -11,16 +11,18 @@
         <div class='row ts-proj-bootstrap-iso'>
             <div class='container-fluid'>
                 <div class="empty-list-cta">
-                    <input id="modelFileInput" #files="ngModel" type="file" name="files" multiple accept=".data, .index, .meta" 
-                        [(ngModel)]="data.files">
+                    <input id="modelFileInput" type="file" name="files" accept=".data, .index, .meta" multiple
+                        #files="ngModel" [(ngModel)]="temp.files" (change)="onNgFileInputChange($event)" requiredFile >
                 </div>
+                <div class="alert alert-danger" [hidden]="files.valid"> Please Enter project name.</div>
             </div>
         </div>
         
         <div class='row ts-proj-bootstrap-iso'>
             <div class='container-fluid'>
-                <label class="control-label" for="name">Model Name - (OPTIONAL)</label>  
-                <input class="form-control input-md" #name="ngModel" id="name" name="name" type="text" placeholder="Model Name" [(ngModel)]="data.name">
+                <label class="control-label" for="name">Model Name</label>  
+                <input class="form-control input-md" id="name" name="name" type="text" placeholder="Model Name"
+                    #name="ngModel" [(ngModel)]="data.name" required>
             </div>
         </div>
         

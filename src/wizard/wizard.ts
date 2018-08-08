@@ -8,7 +8,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { UIRouterModule } from "@uirouter/angular";
 import { FormsModule } from '@angular/forms';
-import { FileInputAccessorModule} from "file-input-accessor";
+import { UpgradeModule } from '@angular/upgrade/static';
 
 /* App Root */
 import { AppComponent } from './components/app.component';
@@ -28,7 +28,7 @@ loadPluginCss({
 
 @NgModule({
     imports: [BrowserModule,
-        FileInputAccessorModule,
+        UpgradeModule,
         FormsModule,
         UIRouterModule.forRoot({
             states: appRouters,
@@ -40,7 +40,8 @@ loadPluginCss({
     declarations: appDeclarations,
     bootstrap: [AppComponent]
 })
-class WizardModule { }
+export class WizardModule {
+}
 
 export class Wizard {
     appModel: any;
@@ -48,14 +49,14 @@ export class Wizard {
     static template = require(`./wizard.html`);
 
     /** ngInject **/
-    constructor($scope, $rootScope, $window) {
+    constructor($scope, $rootScope, $window, private backendSrv) {
         this.splash = ('appModel' in this && 'baseUrl' in this.appModel) ?
             `${this.appModel.baseUrl}/img/splash.svg` :
             `public/plugins/${appId}/img/splash.svg`;
 
-
-        setTimeout(function() {
-            platformBrowserDynamic().bootstrapModule(WizardModule);
-        }, 300); // ????
+        // Ref : https://stackoverflow.com/questions/38948463/passing-server-parameters-to-ngmodule-after-rc5-upgrade
+        platformBrowserDynamic( [
+            { provide: 'backendSrv', useValue: this.backendSrv },
+        ]).bootstrapModule(WizardModule);
     }
 }

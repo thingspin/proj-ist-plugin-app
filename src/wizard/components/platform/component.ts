@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit }   from '@angular/core';
 import { styleUrls }  from '../../utils/app.style';
 import { FormDataService }     from '../../services/formData/formData.service';
-import { FormGroup } from '../../../../node_modules/@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { Platform } from '../../services/formData/formData.model';
 
 @Component ({

@@ -14,6 +14,9 @@ import { ResultComponent }    from '../components/result/component';
 import { FormDataService } from '../services/formData/formData.service';
 import { StepService } from '../services/step/step.service';
 
+/* Directives */
+import { FileValidator } from '../directives/file-input.validator';
+
 import { CustomLocationStrategy} from "./common";
 
 const verifyWorkFlow = (transition, state) => {
@@ -52,5 +55,6 @@ export const appDeclarations = [
     PlatformComponent,
     ModelComponent,
     AlgorithmComponent,
-    ResultComponent
+    ResultComponent,
+    FileValidator
 ];

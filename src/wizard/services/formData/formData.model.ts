@@ -1,3 +1,5 @@
+// import { ICustomFile } from "file-input-accessor";
+
 export class Project {
     name: String = '';
     cid: String;
@@ -11,14 +13,14 @@ export class Platform {
 
 export class Model {
     name: String = '';
-    models: String[];
-    files: FileList;
+    models: String[] = [];
+    files: File[] = [];
 }
 
 export class Algorithm {
     name: String = '';
     algorithms: String[];
-    files: FileList;
+    files: File[] = [];
 }
 
 export class FormData {
