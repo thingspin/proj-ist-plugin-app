@@ -135,7 +135,14 @@ export class AlgorithmComponent implements OnInit {
 
     private setSelectActivate(): void {
         if (this.data.files.length !== 0) {
-            const {name} = this.data.files[0];
+            let {name} = this.data.files[0];
+
+            for (const file of this.data.files) {
+                if (file.name === "main.py") {
+                    name = file.name;
+                    break;
+                }
+            }
 
             this.data.name = name;
             this.selectActive = [{
