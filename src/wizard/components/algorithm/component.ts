@@ -111,6 +111,7 @@ export class AlgorithmComponent implements OnInit {
         return res;
     }
 
+    // Ref : https://dzone.com/articles/how-to-create-custom-validators-in-angular
     algorithmValidator(c: FormControl): { [key: string]: boolean } | null {
         if (c.value !== undefined) {
             const files: File[] = c.value;

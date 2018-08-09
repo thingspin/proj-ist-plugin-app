@@ -8,7 +8,7 @@ export class Project {
 }
 
 export class Platform {
-    name: String = 'TensorFlow';
+    framework: String = 'TensorFlow';
 }
 
 export class Model {

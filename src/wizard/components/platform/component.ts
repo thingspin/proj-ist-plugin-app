@@ -1,7 +1,7 @@
-import { Component, Inject, OnInit }   from '@angular/core';
+import { Component, Inject, OnInit, ViewChild }   from '@angular/core';
 import { styleUrls }  from '../../utils/app.style';
 import { FormDataService }     from '../../services/formData/formData.service';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, NgForm } from '@angular/forms';
 import { Platform } from '../../services/formData/formData.model';
 
 @Component ({
@@ -19,6 +19,8 @@ export class PlatformComponent implements OnInit {
         'DataRobot',
         'Mixed'
     ];
+
+    @ViewChild('form') public form: NgForm;
 
     constructor(@Inject(FormDataService) private formDataService: FormDataService) {
     }

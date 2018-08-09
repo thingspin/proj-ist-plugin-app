@@ -9,15 +9,16 @@
         </div>
         
         <div class='row'>
-            <div class='col-xs-offset-3 col-xs-6 col-sm-offset-3 col-sm-6'>
+            <div class='container-fluid'>
                 <div class="form-group" *ngFor="let option of options">
-                        <div class="radio">
-                            <label>
-                                <input type="radio" #name="ngModel" name="name" [(ngModel)]="data.name" [value]="option" [attr.disabled]='true'>{{ option }}
-                            </label>
-                        </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" #framework="ngModel" name="framework" [(ngModel)]="data.framework" [value]="option" [attr.disabled]='true' required />{{ option }} 
+                        </label>
                     </div>
                 </div>
+                <div class="alert alert-warning" [hidden]="form.valid">Please select a platform to apply.</div>
+            </div>
         </div>
         <div class='edit-row text-center'>
             <button uiSref="project" class="btn btn-outline-rounded btn-default" (click)="save(form)"> <span style="margin-right:10px;" class="glyphicon glyphicon-arrow-left"></span> Previous</button>

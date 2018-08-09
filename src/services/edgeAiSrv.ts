@@ -9,7 +9,7 @@ export class EdgeAiService {
         this.appModel = appModel;
     }
 
-    getSettings() : any {
+    getSettings(): any {
         return this.appModel.jsonData;
     }
 }
