@@ -13,6 +13,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { UIRouterModule } from "@uirouter/angular";
 import { FileInputAccessorModule } from "file-input-accessor";
+import { SelectModule } from 'ng2-select';
 
 /* App Utils */
 import { UIRouterConfigFn } from "./utils/app.router";
@@ -30,12 +31,13 @@ loadPluginCss({
 @NgModule({
     imports: [BrowserModule,
         FileInputAccessorModule,
+        SelectModule,
         FormsModule,
         UIRouterModule.forRoot({
             states: appRouters,
             useHash: true,
             config: UIRouterConfigFn
-        })
+        }),
     ],
     providers: appProviders,
     declarations: appDeclarations,
@@ -58,8 +60,8 @@ export class Wizard {
         setTimeout(() => {
             // Ref : https://stackoverflow.com/questions/38948463/passing-server-parameters-to-ngmodule-after-rc5-upgrade
             platformBrowserDynamic( [
-                { provide: 'backendSrv', useValue: this.backendSrv },
-                { provide: 'appModel', useValue: this.appModel}
+                { provide: 'backendSrv',    useValue: this.backendSrv },
+                { provide: 'appModel',      useValue: this.appModel }
             ]).bootstrapModule(WizardModule);
         }, 500);
     }

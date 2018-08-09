@@ -22,8 +22,6 @@ export const defaultFileinputConf = {
     showCaption: false,
     showRemove: false,
     showUpload: false,
-    minFileCount: 2,
-    maxFileCount: 5,
     overwriteInitial: false,
     previewFileIcon: '<i class="fa fa-file"></i>',
     initialPreviewAsData: true, // defaults markup

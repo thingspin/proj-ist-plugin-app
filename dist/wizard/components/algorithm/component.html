@@ -24,7 +24,15 @@
         <div class='row ts-proj-bootstrap-iso'>
             <div class='container-fluid'>
                 <label class="control-label" for="name">Algorithm(s) Name - (OPTIONAL)</label>  
-                <input class="form-control input-md" #name="ngModel" id="name" name="name" type="text" placeholder="Algorithm Name" [(ngModel)]="data.name">
+                <!-- <input class="form-control input-md" #name="ngModel" id="name" name="name" type="text" placeholder="Algorithm Name" [(ngModel)]="data.name"> -->
+                <ng-select 
+                    #algorithmMain
+                    [allowClear]="true"
+                    [active]="selectActive"
+                    [(items)]="assistantfilenames"
+                    (data)="refreshValue($event)"
+                    placeholder="No Algorithm main file selected">
+                </ng-select>
             </div>
         </div>
         
