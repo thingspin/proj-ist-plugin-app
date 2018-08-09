@@ -74,6 +74,7 @@ export class AlgorithmComponent implements OnInit {
         this.temp.files = convFiles;
         this.data.files = convFiles;
         this.assistantfilenames = this.getCurrFilenames();
+        console.log(convFiles);
 
         // Ref : https://dzone.com/articles/how-to-create-custom-validators-in-angular
         this.form.controls.files.setValidators([Validators.required, this.algorithmValidator.bind(this)]);
@@ -112,20 +113,20 @@ export class AlgorithmComponent implements OnInit {
     // Ref : https://dzone.com/articles/how-to-create-custom-validators-in-angular
     algorithmValidator(c: FormControl): { [key: string]: boolean } | null {
         if (c.value !== undefined) {
-            const files: File[] = c.value;
+            // const files: File[] = c.value;
 
-            let isExistAlgorithmMain: Boolean = false;
-            files.forEach(({name}) => {
-                if (name === "main.py") {
-                    isExistAlgorithmMain = true;
-                }
-            });
+            // let isExistAlgorithmMain: Boolean = false;
+            // files.forEach(({name}) => {
+            //     if (name === "main.py") {
+            //         isExistAlgorithmMain = true;
+            //     }
+            // });
 
-            if (!isExistAlgorithmMain) {
-                return {
-                    isNotExistAlgorithmMain: true
-                };
-            }
+            // if (!isExistAlgorithmMain) {
+            //     return {
+            //         isNotExistAlgorithmMain: true
+            //     };
+            // }
         }
         return null;
     }
