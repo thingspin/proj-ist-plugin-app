@@ -1,25 +1,25 @@
 // import { ICustomFile } from "file-input-accessor";
 
 export class Project {
-    name: String = '';
-    cid: String;
-    inputInfo: String;
-    outputInfo: String;
+    name: string;
+    cid: string;
+    inputInfo: string;
+    outputInfo: string;
 }
 
 export class Platform {
-    framework: String = 'TensorFlow';
+    framework: string;
 }
 
 export class Model {
-    name: String = '';
-    models: String[] = [];
+    name: string;
+    models: string[] = [];
     files: File[] = [];
 }
 
 export class Algorithm {
-    name: String = '';
-    algorithm: String;
+    name: string;
+    algorithm: string;
     files: File[] = [];
 }
 

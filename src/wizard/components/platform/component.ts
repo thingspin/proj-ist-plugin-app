@@ -27,6 +27,9 @@ export class PlatformComponent implements OnInit {
 
     ngOnInit() {
         this.data = this.formDataService.getPlatform();
+        if (!this.data.framework) {
+            this.data.framework = "TensorFlow";
+        }
     }
 
     save(form: FormGroup) {

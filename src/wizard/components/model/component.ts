@@ -55,7 +55,7 @@ export class ModelComponent implements OnInit {
         this.formDataService.setModel(this.data);
     }
 
-    getAssistantModelname(files: File[]): String {
+    getAssistantModelname(files: File[]): string {
         let assistantName = "";
 
         files.forEach( ({name, size}) => {
@@ -92,8 +92,8 @@ export class ModelComponent implements OnInit {
         this.form.controls.files.updateValueAndValidity();
     }
 
-    getfilenames(): String[] {
-        const res: String[] = [];
+    getfilenames(): string[] {
+        const res: string[] = [];
         const {files} = this.data;
 
         files.forEach( (file) => {
