@@ -143,13 +143,14 @@ export class AlgorithmComponent implements OnInit {
                     break;
                 }
             }
-
-            this.data.name = name;
-            this.selectActive = [{
-                id: name,
-                text: name
-            }];
-        }else {
+            if (!this.data.name) {
+                this.data.name = name;
+                this.selectActive = [{
+                    id: name,
+                    text: name
+                }];
+            }
+       }else {
             this.selectActive = [];
         }
     }
