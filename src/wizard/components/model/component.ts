@@ -58,7 +58,7 @@ export class ModelComponent implements OnInit {
     getAssistantModelname(files: File[]): String {
         let assistantName = "";
 
-        Array.from(files).forEach( ({name, size}) => {
+        files.forEach( ({name, size}) => {
             assistantName = "";
             const names: String[] = name.split(".");
             names.forEach( (name: String, idx: Number) => {
@@ -72,33 +72,23 @@ export class ModelComponent implements OnInit {
     }
 
     onFileinputLoaded(event, currFile: File) {
-        this.setData({
-            files: $(`#${this.fileInputId}`).fileinput('getFileStack'),
-            models: this.getfilenames(),
-            name: this.getAssistantModelname(this.data.files),
-        });
-        this.form.controls.files.updateValueAndValidity();
+        this.setData($(`#${this.fileInputId}`).fileinput('getFileStack'));
     }
 
     onFileinputRemoved(event, id: String, index: Number) {
-        this.setData({
-            files: $(`#${this.fileInputId}`).fileinput('getFileStack'),
-            models: this.getfilenames(),
-            name: this.getAssistantModelname(this.data.files),
-        });
+        this.setData($(`#${this.fileInputId}`).fileinput('getFileStack'));
     }
 
     onFileinputCleared(event) {
-        this.setData({
-            files: [],
-            models: [],
-            name: '',
-        });
+        this.setData([]);
     }
 
-    setData(data: Model) {
-        this.temp.files = data.files;
-        this.data = data;
+    setData(files: File[]) {
+        this.temp.files = files;
+        this.data.files = files;
+        this.data.models = this.getfilenames();
+        this.data.name = this.getAssistantModelname(this.data.files);
+
         this.form.controls.files.updateValueAndValidity();
     }
 

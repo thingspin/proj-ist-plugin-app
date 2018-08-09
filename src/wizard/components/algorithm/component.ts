@@ -74,7 +74,6 @@ export class AlgorithmComponent implements OnInit {
         this.temp.files = convFiles;
         this.data.files = convFiles;
         this.assistantfilenames = this.getCurrFilenames();
-        console.log(convFiles);
 
         // Ref : https://dzone.com/articles/how-to-create-custom-validators-in-angular
         this.form.controls.files.setValidators([Validators.required, this.algorithmValidator.bind(this)]);
