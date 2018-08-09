@@ -2,6 +2,7 @@ import { Component, Inject, OnInit, Input }   from '@angular/core';
 import { styleUrls }    from '../../utils/app.style';
 import { FormData }                   from '../../services/formData/formData.model';
 import { FormDataService }            from '../../services/formData/formData.service';
+import { FormGroup } from '@angular/forms';
 
 @Component ({
     selector:  'edge-ai-wizard-result',
@@ -20,6 +21,8 @@ export class ResultComponent implements OnInit {
     ngOnInit() {
         this.formData = this.formDataService.getFormData();
         this.isFormValid = this.formDataService.isFormValid();
+    }
+    save(form: FormGroup): void {
     }
 
     submit() {
