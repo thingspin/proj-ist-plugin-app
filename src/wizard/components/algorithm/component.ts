@@ -72,7 +72,7 @@ export class AlgorithmComponent implements OnInit {
         return assistantName;
     }
 
-    onFileinputLoaded(event, currFile) {
+    onFileinputLoaded(event, currFile: File) {
         const convFiles: File[] = $(`#${this.fileInputId}`).fileinput('getFileStack');
         this.temp.files = convFiles;
         this.data.files = convFiles;
@@ -84,7 +84,7 @@ export class AlgorithmComponent implements OnInit {
         this.form.controls.files.updateValueAndValidity();
     }
 
-    onFileinputRemoved(event, id, index) {
+    onFileinputRemoved(event, id: String, index: Number) {
         const convFiles: File[] = $(`#${this.fileInputId}`).fileinput('getFileStack');
         this.temp.files = convFiles;
         this.data.files = convFiles;

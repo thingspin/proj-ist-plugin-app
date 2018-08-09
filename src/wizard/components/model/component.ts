@@ -55,13 +55,13 @@ export class ModelComponent implements OnInit {
         this.formDataService.setModel(this.data);
     }
 
-    getAssistantName(files: File[]): String {
+    getAssistantModelname(files: File[]): String {
         let assistantName = "";
 
         Array.from(files).forEach( ({name, size}) => {
             assistantName = "";
-            const names = name.split(".");
-            names.forEach((name, idx) => {
+            const names: String[] = name.split(".");
+            names.forEach( (name: String, idx: Number) => {
                 if (idx < (names.length-1) ) {
                     assistantName = `${assistantName}${idx === 0 ? '' : '.'}${name}`;
                 }
@@ -71,27 +71,34 @@ export class ModelComponent implements OnInit {
         return assistantName;
     }
 
-    onFileinputLoaded(event, currFile) {
-        const convFiles: File[] = $(`#${this.fileInputId}`).fileinput('getFileStack');
-        this.temp.files = convFiles;
-        this.data.files = convFiles;
-        this.data.models = this.getfilenames();
-        this.data.name = this.getAssistantName(this.data.files);
+    onFileinputLoaded(event, currFile: File) {
+        this.setData({
+            files: $(`#${this.fileInputId}`).fileinput('getFileStack'),
+            models: this.getfilenames(),
+            name: this.getAssistantModelname(this.data.files),
+        });
         this.form.controls.files.updateValueAndValidity();
     }
 
-    onFileinputRemoved(event, id, index) {
-        const convFiles: File[] = $(`#${this.fileInputId}`).fileinput('getFileStack');
-        this.temp.files = convFiles;
-        this.data.files = convFiles;
-        this.data.models = this.getfilenames();
-        this.form.controls.files.updateValueAndValidity();
+    onFileinputRemoved(event, id: String, index: Number) {
+        this.setData({
+            files: $(`#${this.fileInputId}`).fileinput('getFileStack'),
+            models: this.getfilenames(),
+            name: this.getAssistantModelname(this.data.files),
+        });
     }
 
     onFileinputCleared(event) {
-        this.temp.files = [];
-        this.data.files = [];
-        this.data.models = [];
+        this.setData({
+            files: [],
+            models: [],
+            name: '',
+        });
+    }
+
+    setData(data: Model) {
+        this.temp.files = data.files;
+        this.data = data;
         this.form.controls.files.updateValueAndValidity();
     }
 

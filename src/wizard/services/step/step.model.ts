@@ -5,3 +5,8 @@ export const STEPS = {
     algorithm: 'algorithm',
     result: 'result'
 };
+
+export interface Step {
+    step: any;
+    valid: Boolean;
+}

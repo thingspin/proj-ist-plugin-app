@@ -1,9 +1,9 @@
 import { Injectable }         from '@angular/core';
-import { STEPS }              from './step.model';
+import { STEPS, Step }              from './step.model';
 
 @Injectable()
 export class StepService {
-    private steps = [
+    private steps: Step[] = [
         { step: STEPS.project,  valid: false },
         { step: STEPS.platform, valid: false },
         { step: STEPS.model,    valid: false },
@@ -11,8 +11,8 @@ export class StepService {
         { step: STEPS.result,   valid: false }
     ];
 
-    validateStep(step: string) {
-        var found = false;
+    validateStep(step: String) {
+        var found: Boolean = false;
         for (var i = 0; i < this.steps.length && !found; i++) {
             if (this.steps[i].step === step) {
                 found = this.steps[i].valid = true;
@@ -26,10 +26,10 @@ export class StepService {
         });
     }
 
-    getFirstInvalidStep(step: string): string {
-        var found = false;
-        var valid = true;
-        var redirectToStep = '';
+    getFirstInvalidStep(step: String): String {
+        var found: Boolean = false;
+        var valid: Boolean = true;
+        var redirectToStep: String = '';
         for (var i = 0; i < this.steps.length && !found && valid; i++) {
             let item = this.steps[i];
             if (item.step === step) {
