@@ -74,6 +74,7 @@ export class AlgorithmComponent implements OnInit {
         this.temp.files = convFiles;
         this.data.files = convFiles;
         this.assistantfilenames = this.getCurrFilenames();
+        this.setSelectActivate();
 
         // Ref : https://dzone.com/articles/how-to-create-custom-validators-in-angular
         this.form.controls.files.setValidators([Validators.required, this.algorithmValidator.bind(this)]);
@@ -85,6 +86,7 @@ export class AlgorithmComponent implements OnInit {
         this.temp.files = convFiles;
         this.data.files = convFiles;
         this.assistantfilenames = this.getCurrFilenames();
+        this.setSelectActivate();
 
         this.form.controls.files.setValidators([Validators.required, this.algorithmValidator.bind(this)]);
         this.form.controls.files.updateValueAndValidity();
@@ -94,6 +96,7 @@ export class AlgorithmComponent implements OnInit {
         this.temp.files = [];
         this.data.files = [];
         this.assistantfilenames = this.getCurrFilenames();
+        this.setSelectActivate();
 
         this.form.controls.files.setValidators([Validators.required, this.algorithmValidator.bind(this)]);
         this.form.controls.files.updateValueAndValidity();
@@ -128,6 +131,20 @@ export class AlgorithmComponent implements OnInit {
             // }
         }
         return null;
+    }
+
+    private setSelectActivate(): void {
+        if (this.data.files.length !== 0) {
+            const {name} = this.data.files[0];
+
+            this.data.name = name;
+            this.selectActive = [{
+                id: name,
+                text: name
+            }];
+        }else {
+            this.selectActive = [];
+        }
     }
 
     public selected(value: any): void {
