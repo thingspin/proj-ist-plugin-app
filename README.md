@@ -23,7 +23,8 @@ grunt
 ```
 # API 사용전 유의 사항
 custom.ini에 다음 사항을 추가. 
-입력한 path에서 없는 디렉토리가 있다면 만들어주어야함
+입력한 path에서 없는 디렉토리가 있다면 만들어주어야함.
+또한, ml/config 디렉토리도 필요함.
 
 [assets]
 ml = data/thingspin/ml
