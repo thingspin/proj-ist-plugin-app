@@ -1,9 +1,13 @@
+// Angular Libraries
 import { Component, Inject, OnInit, Input }   from '@angular/core';
 import { styleUrls }    from '../../utils/app.style';
 import * as CustomFormData          from '../../services/formData/formData.model';
 import { FormDataService }            from '../../services/formData/formData.service';
 import { FormGroup } from '@angular/forms';
 import { Http, Response } from '@angular/http';
+
+// Thingspin(grafana) Libraries
+import appEvents  from 'grafana/app/core/app_events';
 
 @Component ({
     selector:  'edge-ai-wizard-result',
@@ -95,10 +99,16 @@ export class ResultComponent implements OnInit {
     }
 
     submit() {
-        alert('Excellent Job!');
-
-        this.http.post('/api/ml', this.sendData).subscribe((res: Response) => {
-            console.log(res);
+        appEvents.emit('confirm-modal', {
+            title: 'New Inference Configuration',
+            text: 'Are you sure you want to add?',
+            yesText: "Add",
+            icon: "fa-thumbs-o-up",
+            onConfirm: () => {
+                this.http.post('/api/ml', this.sendData).subscribe((res: Response) => {
+                    console.log(res);
+                });
+            }
         });
     }
 }
