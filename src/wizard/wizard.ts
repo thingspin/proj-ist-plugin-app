@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { UIRouterModule } from "@uirouter/angular";
 import { FileInputAccessorModule } from "file-input-accessor";
 import { SelectModule } from 'ng2-select';
+import { HttpModule } from '@angular/http';
 
 /* App Utils */
 import { UIRouterConfigFn } from "./utils/app.router";
@@ -33,6 +34,7 @@ loadPluginCss({
         FileInputAccessorModule,
         SelectModule,
         FormsModule,
+        HttpModule,
         UIRouterModule.forRoot({
             states: appRouters,
             useHash: true,

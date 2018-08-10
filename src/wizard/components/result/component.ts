@@ -3,6 +3,7 @@ import { styleUrls }    from '../../utils/app.style';
 import * as CustomFormData          from '../../services/formData/formData.model';
 import { FormDataService }            from '../../services/formData/formData.service';
 import { FormGroup } from '@angular/forms';
+import { Http, Response } from '@angular/http';
 
 @Component ({
     selector:  'edge-ai-wizard-result',
@@ -16,8 +17,8 @@ export class ResultComponent implements OnInit {
     isFormValid: Boolean = false;
 
     constructor(@Inject(FormDataService) private formDataService: FormDataService,
-        @Inject('backendSrv') private backendSrv,
-    ) {
+        // @Inject('backendSrv') private backendSrv,
+        @Inject(Http) private http: Http ) {
     }
 
     ngOnInit() {
@@ -36,7 +37,7 @@ export class ResultComponent implements OnInit {
         data.append("framework",this.formData.platform.framework);
         data.append("inputInfo",this.formData.project.inputInfo);
         data.append("outputInfo",this.formData.project.outputInfo);
-        data.append("algorithmType","py");
+        data.append("algorithmType",".py");
         data.append("algorithmName",this.formData.algorithm.name);
 
         for (let file of this.formData.model.files) {
@@ -45,10 +46,8 @@ export class ResultComponent implements OnInit {
         for (let file of this.formData.algorithm.files) {
             data.append('algorithm[]', file);
         }
-        this.backendSrv.post('/api/ml', data).then(result => {
-            console.log(result);
-        }, err => {
-            console.error(err);
+        this.http.post('/api/ml', data).subscribe((res: Response) => {
+            console.log(res);
         });
     }
 }
