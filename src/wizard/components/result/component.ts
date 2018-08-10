@@ -13,40 +13,91 @@ import { Http, Response } from '@angular/http';
 
 export class ResultComponent implements OnInit {
     title = 'Confirm & Save your project.';
-    @Input() formData: CustomFormData.FormData;
+    sendData: FormData;
+    @Input() formData: Object;
     isFormValid: Boolean = false;
 
     constructor(@Inject(FormDataService) private formDataService: FormDataService,
-        // @Inject('backendSrv') private backendSrv,
         @Inject(Http) private http: Http ) {
     }
 
     ngOnInit() {
-        this.formData = this.formDataService.getFormData();
+        const formData: CustomFormData.FormData = this.formDataService.getFormData();
+        this.formData = this.getViewData(formData);
+        this.sendData = this.getSendData(formData);
         this.isFormValid = this.formDataService.isFormValid();
+    }
+
+    getViewData(formData: CustomFormData.FormData): Object {
+
+        const names: String[] = formData.algorithm.name.split(".");
+        const algorithmType = `.${names[names.length-1]}`;
+
+        // Ref : https://stackoverflow.com/questions/14727044/typescript-difference-between-string-and-string
+        let algorithmName: string = String("");
+        names.forEach( (name: String, idx: Number) => {
+            if (idx < (names.length-1) ) {
+                algorithmName = `${algorithmName}${idx === 0 ? '' : '.'}${name}`;
+            }
+        });
+
+        let data: Object = {
+            cid: formData.project.cid,
+            cname: formData.project.name,
+            model: formData.model.name,
+            framework: formData.platform.framework,
+            inputInfo: formData.project.inputInfo,
+            outputInfo: formData.project.outputInfo,
+            algorithmType,
+            algorithmName,
+            'model[]': [],
+            'algorithm[]': [],
+        };
+        for (let file of formData.model.files) {
+            data['model[]'].push(file);
+        }
+        for (let file of formData.algorithm.files) {
+            data['algorithm[]'].push(file);
+        }
+
+        return data;
+    }
+
+    getSendData(formData: CustomFormData.FormData): FormData {
+        const data = new FormData();
+        data.append("cid",  formData.project.cid);
+        data.append("cname", formData.project.name);
+        data.append("model", formData.model.name);
+        data.append("framework", formData.platform.framework);
+        data.append("inputInfo", formData.project.inputInfo);
+        data.append("outputInfo", formData.project.outputInfo);
+
+        const names: String[] = formData.algorithm.name.split(".");
+        const algorithmType = `.${names[names.length-1]}`;
+        let assistantName: string = String("");
+        names.forEach( (name: String, idx: Number) => {
+            if (idx < (names.length-1) ) {
+                assistantName = `${assistantName}${idx === 0 ? '' : '.'}${name}`;
+            }
+        });
+        data.append("algorithmType",algorithmType);
+        data.append("algorithmName",assistantName);
+
+        for (let file of formData.model.files) {
+            data.append('model[]', file);
+        }
+        for (let file of formData.algorithm.files) {
+            data.append('algorithm[]', file);
+        }
+        return data;
     }
     save(form: FormGroup): void {
     }
 
     submit() {
         alert('Excellent Job!');
-        const data = new FormData();
-        data.append("cid", this.formData.project.cid);
-        data.append("cname",this.formData.project.name);
-        data.append("model",this.formData.model.name);
-        data.append("framework",this.formData.platform.framework);
-        data.append("inputInfo",this.formData.project.inputInfo);
-        data.append("outputInfo",this.formData.project.outputInfo);
-        data.append("algorithmType",".py");
-        data.append("algorithmName",this.formData.algorithm.name);
 
-        for (let file of this.formData.model.files) {
-            data.append('model[]', file);
-        }
-        for (let file of this.formData.algorithm.files) {
-            data.append('algorithm[]', file);
-        }
-        this.http.post('/api/ml', data).subscribe((res: Response) => {
+        this.http.post('/api/ml', this.sendData).subscribe((res: Response) => {
             console.log(res);
         });
     }
