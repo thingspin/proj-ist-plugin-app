@@ -31,6 +31,7 @@
   "putSideBottom": false,
   "includes": [
     {"type": "menu", "name": "Edge AI", "mainMenu": true, "uid": "TE0000000001", "img":"img/M01.png", "menuId": 0},
+    {"type": "page", "name": "Monitoring","component": "Monitoring", "AddToNav": true, "menuID": 0, "ico":"fa fa-magic"},
     {"type": "page", "name": "Wizard","component": "Wizard", "AddToNav": true, "menuID": 0, "ico":"fa fa-magic"},
     {"type": "dashboard", "name": "Inferences", "path": "dashboards/list.json", "uid": "TE0000000001", "AddToNav": true, "menuID": 0, "ico":"fa fa-list-ul"}
   ],
