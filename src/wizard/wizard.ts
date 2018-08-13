@@ -18,7 +18,7 @@ import { HttpModule } from '@angular/http';
 
 /* App Utils */
 import { UIRouterConfigFn } from "./utils/app.router";
-import { appRouters, appProviders, appDeclarations} from "./utils/app.states";
+import { appRouters, appProviders, appDeclarations, appEntryCompoents} from "./utils/app.states";
 
 // Grafana SDK
 import { loadPluginCss } from 'grafana/app/plugins/sdk';
@@ -41,6 +41,7 @@ loadPluginCss({
             config: UIRouterConfigFn
         }),
     ],
+    entryComponents: appEntryCompoents,
     providers: appProviders,
     declarations: appDeclarations,
     bootstrap: [AppComponent]
@@ -63,7 +64,7 @@ export class Wizard {
             // Ref : https://stackoverflow.com/questions/38948463/passing-server-parameters-to-ngmodule-after-rc5-upgrade
             platformBrowserDynamic( [
                 { provide: 'backendSrv',    useValue: this.backendSrv },
-                { provide: 'appModel',      useValue: this.appModel }
+                { provide: 'appModel',      useValue: this.appModel },
             ]).bootstrapModule(WizardModule);
         }, 500);
     }

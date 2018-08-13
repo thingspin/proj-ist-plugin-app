@@ -119,3 +119,5 @@ export const defaultFileinputConf = {
     uploadIcon: '<i class="fa fa-upload"></i>',
     msgValidationErrorIcon: '<i class="fa fa-exclamation-circle"></i> '
 };
+
+export const WIZARD_BASE_HREF = '/plugins/proj-edge-ai-app/page/wizard';

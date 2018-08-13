@@ -11,7 +11,7 @@
         <div class='row ts-proj-bootstrap-iso'>
             <div class='container-fluid'>
                 <div class="empty-list-cta">
-                    <input id="modelFileInput" type="file" name="files" accept=".data, .index, .meta" multiple
+                    <input id="modelFileInput" type="file" name="files" multiple
                         #files="ngModel" [(ngModel)]="temp.files" required>
                 </div>
                 <div class="alert alert-danger" [hidden]="files.valid">Please Upload model(s) file.</div>

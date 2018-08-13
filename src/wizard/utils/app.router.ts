@@ -1,8 +1,9 @@
 import { UIRouter }  from "@uirouter/angular";
 
 /** UIRouter Config  */
-export function UIRouterConfigFn(router: UIRouter) {
-    router.urlService.rules.otherwise({
-        state: 'project'
-    });
-}
+export const UIRouterConfigFn = (router: UIRouter) => {
+    console.log(router.urlService.config.baseHref());
+    // router.urlService.rules.otherwise({
+    //     state: 'project'
+    // });
+};

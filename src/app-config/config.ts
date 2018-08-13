@@ -1,6 +1,6 @@
 class AppConfigCtrl {
   static template = require("./config.html");
-  title: string = "Edge AI Configurator";
+  title: string = String("Edge AI Configurator");
   appEditCtrl: any;
   appModel: any;
   editForm: any;
@@ -16,7 +16,7 @@ class AppConfigCtrl {
       inprefix: 'IN',
       outprefix: 'OUT',
     }
-  }; 
+  };
 
   constructor(private $q) {
     this.appEditCtrl.setPreUpdateHook(this.preUpdate.bind(this));

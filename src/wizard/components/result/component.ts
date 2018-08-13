@@ -21,11 +21,13 @@ export class ResultComponent implements OnInit {
     @Input() formData: Object;
     isFormValid: Boolean = false;
 
-    constructor(@Inject(FormDataService) private formDataService: FormDataService,
-        @Inject(Http) private http: Http ) {
+    constructor(
+        @Inject(FormDataService)    private formDataService:    FormDataService,
+        @Inject(Http)               private http:               Http,
+    ) {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         const formData: CustomFormData.FormData = this.formDataService.getFormData();
         this.formData = this.getViewData(formData);
         this.sendData = this.getSendData(formData);
@@ -98,7 +100,7 @@ export class ResultComponent implements OnInit {
     save(form: FormGroup): void {
     }
 
-    submit() {
+    submit(): void {
         appEvents.emit('confirm-modal', {
             title: 'New Inference Configuration',
             text: 'Are you sure you want to add?',

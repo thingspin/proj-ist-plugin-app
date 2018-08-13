@@ -4,6 +4,7 @@ import {APP_BASE_HREF, LocationStrategy} from '@angular/common';
 import { AppComponent } from '../components/app.component';
 import { WorkflowComponent } from '../components/workflow/component';
 
+/* Angular2 Components */
 import { ProjectComponent }  from '../components/project/component';
 import { PlatformComponent }      from '../components/platform/component';
 import { ModelComponent }      from '../components/model/component';
@@ -14,7 +15,7 @@ import { ResultComponent }    from '../components/result/component';
 import { FormDataService } from '../services/formData/formData.service';
 import { StepService } from '../services/step/step.service';
 
-import { CustomLocationStrategy} from "./common";
+import { CustomLocationStrategy, WIZARD_BASE_HREF } from "./common";
 
 const verifyWorkFlow = (transition, state) => {
     // console.debug("Entered '" + state.name + "' state.");
@@ -29,14 +30,15 @@ const verifyWorkFlow = (transition, state) => {
     }
 };
 
-export const appProviders = [
+export const appProviders: any[] = [
     { provide: FormDataService, useClass: FormDataService },
     { provide: StepService, useClass: StepService },
-    { provide: APP_BASE_HREF,   useValue: window.location.pathname},
+    // { provide: APP_BASE_HREF,   useValue: window.location.pathname},
+    { provide: APP_BASE_HREF,   useValue: WIZARD_BASE_HREF},
     { provide: LocationStrategy, useClass: CustomLocationStrategy},
 ];
 
-export const appRouters = [
+export const appRouters: any[] = [
     { name: 'project',      url: `project`,    component: ProjectComponent },
     { name: 'platform',     url: `platform`,   component: PlatformComponent,   onEnter: verifyWorkFlow },
     { name: 'model',        url: `model`,      component: ModelComponent,      onEnter: verifyWorkFlow },
@@ -44,8 +46,11 @@ export const appRouters = [
     { name: 'result',       url: `result`,     component: ResultComponent,     onEnter: verifyWorkFlow }
 ];
 
+export const appEntryCompoents: any[] = [
+];
 
-export const appDeclarations = [
+
+export const appDeclarations: any[] = [
     AppComponent,
     WorkflowComponent,
     ProjectComponent,

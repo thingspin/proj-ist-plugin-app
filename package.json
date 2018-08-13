@@ -66,6 +66,7 @@
     "bootstrap-fileinput": "^4.4.9",
     "guid-typescript": "^1.0.7",
     "file-input-accessor": "^2.0.0",
-    "ng2-select": "^2.0.0"
+    "ng2-select": "^2.0.0",
+    "ng2-bootstrap-modal": "^1.0.1"
   }
 }
