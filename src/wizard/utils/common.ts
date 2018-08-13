@@ -23,7 +23,7 @@ export const defaultFileinputConf = {
     showRemove: false,
     showUpload: false,
     overwriteInitial: false,
-    previewFileIcon: '<i class="fa fa-file"></i>',
+    previewFileIcon: '<i class="fa fa-file-text-o text-info"></i>',
     initialPreviewAsData: true, // defaults markup
     preferIconicPreview: true, // this will force thumbnails to display icons for following file extensions
     previewFileIconSettings: { // configure your icon file extensions
@@ -48,7 +48,7 @@ export const defaultFileinputConf = {
         'ppt': function(ext) { return ext.match(/(ppt|pptx)$/i); },
         'zip': function(ext) { return ext.match(/(zip|rar|tar|gzip|gz|7z)$/i); },
         'htm': function(ext) { return ext.match(/(htm|html)$/i); },
-        'txt': function(ext) { return ext.match(/(txt|ini|csv|java|php|js|css)$/i); },
+        'txt': function(ext) { return ext.match(/(txt|ini|csv|java|php|js|css|meta|index|data)$/i); },
         'mov': function(ext) { return ext.match(/(avi|mpg|mkv|mov|mp4|3gp|webm|wmv)$/i); },
         'mp3': function(ext) { return ext.match(/(mp3|wav)$/i); }
     },
