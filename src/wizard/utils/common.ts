@@ -40,7 +40,8 @@ export const defaultFileinputConf = {
         // has been configured (the keys itself will be used as extensions)
         'jpg': '<i class="fa fa-file-photo-o text-danger"></i>',
         'gif': '<i class="fa fa-file-photo-o text-muted"></i>',
-        'png': '<i class="fa fa-file-photo-o text-primary"></i>'
+        'png': '<i class="fa fa-file-photo-o text-primary"></i>',
+        'py': '<i class="icon-python"></i>',
     },
     previewFileExtSettings: { // configure the logic for determining icon file extensions
         'doc': function(ext) { return ext.match(/(doc|docx)$/i); },
@@ -50,7 +51,8 @@ export const defaultFileinputConf = {
         'htm': function(ext) { return ext.match(/(htm|html)$/i); },
         'txt': function(ext) { return ext.match(/(txt|ini|csv|java|php|js|css|meta|index|data)$/i); },
         'mov': function(ext) { return ext.match(/(avi|mpg|mkv|mov|mp4|3gp|webm|wmv)$/i); },
-        'mp3': function(ext) { return ext.match(/(mp3|wav)$/i); }
+        'mp3': function(ext) { return ext.match(/(mp3|wav)$/i); },
+        'py': function(ext) { return ext.match(/(py)$/i); },
     },
     layoutTemplates: {
         preview: '<div class="file-preview {class}">\n' +
