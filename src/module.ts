@@ -13,6 +13,6 @@ loadPluginCss({
 
 export {
   AppConfigCtrl as ConfigCtrl,
-  Wizard ,
-  Monitoring
+  Wizard,
+  Monitoring,
 };

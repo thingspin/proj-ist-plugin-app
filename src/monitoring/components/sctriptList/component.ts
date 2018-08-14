@@ -1,85 +1,35 @@
-import {
-  Component,
-  // EventEmitter,
-  // Input,
-  // Output
-} from '@angular/core';
-import { ScriptInfo } from '../formData/formData.script';
+import { Component, Inject, ViewChild, OnInit } from '@angular/core';
+import { InferenceConfig } from '../../models/default.model';
+import { MonitoringBackendService } from '../../services/monitoringBackendSrv/monitoringBackendSrv.service';
+import { Response } from '@angular/http';
+import { MatPaginator, MatTableDataSource } from '@angular/material';
 
-/**
- * @ProductsList: A component for rendering all ProductRows and
- * storing the currently selected Product
- */
 @Component({
-  selector: 'scripts-list',
-  templateUrl: './component.html'
+    selector: 'scripts-list',
+    template: require(`./component.html`),
+    styleUrls: [
+        'public/plugins/proj-edge-ai-app/css/monitoring.css',
+    ],
 })
-export class ScriptListComponent {
-  /**
-   * @input productList - the Product[] passed to us
-   */
-  // @Input() scriptsList: ScriptInfo[];
+export class ScriptListComponent implements OnInit {
 
-  /**
-   * @output onProductSelected - outputs the current
-   *          Product whenever a new Product is selected
-   */
-  // @Output() onScriptSelected: EventEmitter<ScriptInfo>;
+    scriptsList: InferenceConfig[] = [];
 
-  /**
-   * @property currentProduct - local state containing
-   *             the currently selected `Product`
-   */
-  // private currentScript: ScriptInfo;
-  scriptsList: ScriptInfo[];
+    displayedColumns: string[] = ['cname', 'algorithmName', 'model'];
+    dataSource: MatTableDataSource<InferenceConfig>;
+    @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor() {
-    // this.onScriptSelected = new EventEmitter();
-    this.scriptsList = [
-      new ScriptInfo(
-          'test1',
-          'test1',
-          'test1',
-          'test1',
-          'test1',
-          'test1',
-          'test1',
-          'test1'
-      ),
-      new ScriptInfo(
-          'test2',
-          'test2',
-          'test2',
-          'test2',
-          'test2',
-          'test2',
-          'test2',
-          'test2'
-      ),
-      new ScriptInfo(
-          'test3',
-          'test3',
-          'test3',
-          'test3',
-          'test3',
-          'test3',
-          'test3',
-          'test3'
-      )
-  ];
+    constructor(
+        @Inject(MonitoringBackendService) private monitoringBackendService: MonitoringBackendService,
+    ) {
+        this.monitoringBackendService.getConfigList().then((res: Response) => {
+            console.log(res.json().Result);
+            this.scriptsList = res.json().Result;
 
-  }
-
-  // clicked(script: ScriptInfo): void {
-    // this.currentScript = script;
-    // this.onScriptSelected.emit(script);
-  // }
-
-  // isSelected(script: ScriptInfo): boolean {
-    // if (!script || !this.currentScript) {
-      // return false;
-    // }
-    // return script.cid === this.currentScript.cid;
-  // }
-
+            this.dataSource = new MatTableDataSource<InferenceConfig>(res.json().Result);
+            this.dataSource.paginator = this.paginator;
+        });
+    }
+    ngOnInit() {
+    }
 }

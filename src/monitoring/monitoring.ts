@@ -12,12 +12,15 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule, MatPaginatorModule } from '@angular/material';
 
 /* App Utils */
-import { appProviders, appDeclarations} from "./utils/app.states";
+import { appProviders, appDeclarations, appRouters} from "./utils/app.states";
 
 // Grafana SDK
 import { loadPluginCss } from 'grafana/app/plugins/sdk';
+import { UIRouterModule } from '@uirouter/angular';
 
 const appId = "proj-edge-ai-app";
 loadPluginCss({
@@ -26,9 +29,17 @@ loadPluginCss({
 });
 
 @NgModule({
-    imports: [BrowserModule,
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
         FormsModule,
         HttpModule,
+        MatTableModule,
+        MatPaginatorModule,
+        UIRouterModule.forRoot({
+            states: appRouters,
+            useHash: true,
+        }),
     ],
     providers: appProviders,
     declarations: appDeclarations,
@@ -48,8 +59,8 @@ export class Monitoring {
             `${this.appModel.baseUrl}/img/thingspin-text-ani.svg` :
             `public/plugins/${appId}/img/thingspin-text-ani.svg`;
 
+        // Ref : https://stackoverflow.com/questions/38948463/passing-server-parameters-to-ngmodule-after-rc5-upgrade
         setTimeout(() => {
-            // Ref : https://stackoverflow.com/questions/38948463/passing-server-parameters-to-ngmodule-after-rc5-upgrade
             platformBrowserDynamic( [
                 { provide: 'backendSrv', useValue: this.backendSrv },
                 { provide: 'appModel', useValue: this.appModel}

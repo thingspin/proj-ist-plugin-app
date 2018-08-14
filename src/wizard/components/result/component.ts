@@ -52,8 +52,9 @@ export class ResultComponent implements OnInit {
             cname: formData.project.name,
             model: formData.model.name,
             framework: formData.platform.framework,
-            inputInfo: formData.project.inputInfo,
-            outputInfo: formData.project.outputInfo,
+            // inputInfo: formData.project.inputInfo,
+            // outputInfo: formData.project.outputInfo,
+            mlSetting: formData.settings,
             algorithmType,
             algorithmName,
             'model[]': [],
@@ -75,8 +76,9 @@ export class ResultComponent implements OnInit {
         data.append("cname", formData.project.name);
         data.append("model", formData.model.name);
         data.append("framework", formData.platform.framework);
-        data.append("inputInfo", formData.project.inputInfo);
-        data.append("outputInfo", formData.project.outputInfo);
+        // data.append("inputInfo", formData.project.inputInfo);
+        // data.append("outputInfo", formData.project.outputInfo);
+        data.append("mlSetting", formData.settings);
 
         const names: String[] = formData.algorithm.name.split(".");
         const algorithmType = `.${names[names.length-1]}`;

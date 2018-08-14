@@ -1,39 +1,24 @@
-import { Component, /*Inject,*/ OnInit } from '@angular/core';
-
-import { ScriptInfo } from './formData/formData.script';
+import { Component, OnInit, Inject } from '@angular/core';
+import { StateService, UIRouter } from '@uirouter/core';
 
 @Component ({
-    selector: 'app-root',
+    selector: 'edge-ai-inference-monitoring',
     template: require(`./app.component.html`),
     styleUrls: [
-        'public/plugins/proj-edge-ai-app/css/bootstrap.min.css',
-        'public/plugins/proj-edge-ai-app/css/style.css',
-        'public/plugins/proj-edge-ai-app/css/loading-bars.css',
-        'public/plugins/proj-edge-ai-app/css/riliwan-rabo.css'
+        'public/plugins/proj-edge-ai-app/css/monitoring.css',
     ],
 })
 export class AppComponent implements OnInit {
     title: String = 'Script Monitoring';
-    scriptsList : ScriptInfo[];
+    $stateService: StateService;
 
-    constructor(/*@Inject('backendSrv') private backendService*/) {
+    constructor( @Inject(UIRouter) private router: UIRouter) {
         console.log(this.title + ' constructor!');
     }
 
     ngOnInit() {
         console.log(this.title + ' loaded!');
-        // this.dataReceive();        
+        this.$stateService = this.router.stateService;
+        this.$stateService.go("list");
     }
-
-    // scriptInfoWasSelected(script: ScriptInfo): void {
-    //     console.log('Product clicked: ', script);
-    // }        
-
-    // dataReceive() {
-    //     this.backendService.get('api/ml').then(result => {
-    //         // Use result.Result
-    //         console.log(result.Result);
-    //     });
-    //     console.log(this.backendService);        
-    // }
 }

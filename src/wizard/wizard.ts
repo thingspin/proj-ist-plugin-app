@@ -8,8 +8,8 @@ import { AppComponent } from './components/app.component';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 /* App Modules */
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { UIRouterModule } from "@uirouter/angular";
 import { FileInputAccessorModule } from "file-input-accessor";
@@ -30,7 +30,8 @@ loadPluginCss({
 });
 
 @NgModule({
-    imports: [BrowserModule,
+    imports: [
+        BrowserModule,
         FileInputAccessorModule,
         SelectModule,
         FormsModule,
@@ -57,11 +58,11 @@ export class Wizard {
     /** ngInject **/
     constructor(private backendSrv) {
         this.splash = ('appModel' in this && 'baseUrl' in this.appModel) ?
-            `${this.appModel.baseUrl}/img/splash.svg` :
-            `public/plugins/${appId}/img/splash.svg`;
+            `${this.appModel.baseUrl}/img/thingspin-text-ani.svg` :
+            `public/plugins/${appId}/img/thingspin-text-ani.svg`;
+        // Ref : https://stackoverflow.com/questions/38948463/passing-server-parameters-to-ngmodule-after-rc5-upgrade
 
         setTimeout(() => {
-            // Ref : https://stackoverflow.com/questions/38948463/passing-server-parameters-to-ngmodule-after-rc5-upgrade
             platformBrowserDynamic( [
                 { provide: 'backendSrv',    useValue: this.backendSrv },
                 { provide: 'appModel',      useValue: this.appModel },
