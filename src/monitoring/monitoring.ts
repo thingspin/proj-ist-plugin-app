@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule, MatPaginatorModule } from '@angular/material';
+import { MatIconModule } from '@angular/material/icon';
 
 /* App Utils */
 import { appProviders, appDeclarations, appRouters} from "./utils/app.states";
@@ -34,8 +35,8 @@ loadPluginCss({
         BrowserAnimationsModule,
         FormsModule,
         HttpModule,
-        MatTableModule,
-        MatPaginatorModule,
+        // Mateiral Design Modules
+        MatTableModule, MatPaginatorModule, MatIconModule,
         UIRouterModule.forRoot({
             states: appRouters,
             useHash: true,

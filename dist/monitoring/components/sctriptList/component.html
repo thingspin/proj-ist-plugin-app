@@ -7,16 +7,26 @@
             <td mat-cell *matCellDef="let el"> {{el.cname}} </td>
         </ng-container>
 
+        <!-- Algorithm Model Column -->
+        <ng-container matColumnDef="model">
+            <th mat-header-cell *matHeaderCellDef> Model </th>
+            <td mat-cell *matCellDef="let el"> {{el.model}} </td>
+        </ng-container>
+
         <!-- Algorithm file Column -->
         <ng-container matColumnDef="algorithmName">
             <th mat-header-cell *matHeaderCellDef> Algorithm </th>
             <td mat-cell *matCellDef="let el"> {{el.algorithmName}} </td>
         </ng-container>
 
-        <!-- Algorithm Model Column -->
-        <ng-container matColumnDef="model">
-            <th mat-header-cell *matHeaderCellDef> Model </th>
-            <td mat-cell *matCellDef="let el"> {{el.model}} </td>
+        <!-- Algorithm file Column -->
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Action </th>
+            <td mat-cell *matCellDef="let el"> 
+                <button mat-flat-button color="warn">delete</button>
+
+                <button mat-icon-button color="primary">edit</button>
+            </td>
         </ng-container>
 
 

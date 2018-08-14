@@ -15,7 +15,7 @@ export class ScriptListComponent implements OnInit {
 
     scriptsList: InferenceConfig[] = [];
 
-    displayedColumns: string[] = ['cname', 'algorithmName', 'model'];
+    displayedColumns: string[] = ['cname', 'algorithmName', 'model', "action"];
     dataSource: MatTableDataSource<InferenceConfig>;
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
