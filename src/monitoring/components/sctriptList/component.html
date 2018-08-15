@@ -23,8 +23,9 @@
         <ng-container matColumnDef="action">
             <th mat-header-cell *matHeaderCellDef> Action </th>
             <td mat-cell *matCellDef="let el"> 
-                <button mat-flat-button color="warn">delete</button>
-
+                <button *ngIf="!el.running" mat-flat-button color="success" (click)="runAlgorithm(el.cid)">play</button>
+                <button *ngIf="el.running" mat-flat-button color="success" (click)="stopAlgorithm(el.cid)">Stop</button>
+                <button mat-flat-button color="warn" (click)="deleteConfig(el.cid)">delete</button>
                 <button mat-icon-button color="primary">edit</button>
             </td>
         </ng-container>

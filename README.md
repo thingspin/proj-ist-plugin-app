@@ -22,7 +22,7 @@ yarn install
 grunt
 ```
 # API 사용전 유의 사항
-custom.ini에 다음 사항을 추가. 
+custom.ini에 다음 사항을 추가.
 입력한 path에서 없는 디렉토리가 있다면 만들어주어야함.
 또한, ml/config 디렉토리도 필요함.
 
@@ -66,8 +66,7 @@ type MLsaveReq struct {
 	Cname       	string  				`form:"cname"`
 	Model       	string  				`form:"model"`
 	Framework   	string  				`form:"framework"`
-	InputInfo   	string  				`form:"inputInfo"`
-	OutputInfo  	string  				`form:"outputInfo"`
+	MlSetting		string					`form:"mlSetting"`
 	ModelFiles 		[]string 				`form:"modelFiles"`
 	AlgorithmFiles	[]string 				`form:"algorithmFiles"`
 	AlgorithmType   string  				`form:"algorithmType"`
@@ -83,11 +82,11 @@ data.append("cid","test1");
 data.append("cname","test1");
 data.append("model","test1");
 data.append("framework","test1");
-data.append("inputInfo","test1");
-data.append("outputInfo","test1");
 data.append("algorithmType","test1");
 data.append("algorithmName","test1");
-
+data.append("mlSetting", JSON.Stringify({
+	Unknowns: "unknown",
+}))
 
 for (let model of modelList) {
   data.append('model[]', model);
