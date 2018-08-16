@@ -35,8 +35,10 @@ ml = data/thingspin/ml
 |----------|-----------------------------------------|-----------------------------------------------------------------|
 | GET      | api/ml                                  |모든 등록된 configuration 정보를 가져온다.                              |
 | GET      | api/ml/:cid                             |특정 configuration 정보를 가져온다.                                   |
-| GET      | api/ml/:cid/modelDownload/:fileName     |특정 configuration 에서 특정 모델 파일을 가져온다.                        |
-| GET      | api/ml/:cid/algorithmDownload/:fileName |특정 configuration 에서 특정 알고리즘 파일을 가져온다.                     |
+| GET      | api/ml/:cid/model/:fileName             |특정 configuration 에서 특정 모델 파일을 가져온다.                        |
+| GET      | api/ml/:cid/algorithm/:fileName         |특정 configuration 에서 특정 알고리즘 파일을 가져온다.                     |
+| PUT      | api/ml/:cid/model/:fileName             |특정 configuration의 특정 모델을 수정한다.                              |
+| PUT      | api/ml/:cid/algorithm/:fileName         |특정 configuration의 특정 알고리즘을 수정한다.                           |
 | POST     | api/ml                                  |입력된 모든 configuration 정보를 저장한다.                              |
 |          |                                         |저장위치는 {custom.ini의 ml path}/config/cid.                        |
 |          |                                         |cid는 save 버튼 클릭시 입력한 이름.                                     |
