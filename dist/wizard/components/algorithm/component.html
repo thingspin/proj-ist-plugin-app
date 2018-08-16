@@ -1,9 +1,15 @@
 <form #form="ngForm" class="tabbed-view tabbed-view--panel-edit" novalidate>
     <div class="tab-pane fade in active">
         <div class='row'>
-            <div class='col-xs-offset-1 col-xs-10 col-sm-offset-1 col-sm-10 editor-row'>
+            <div class='col-xs-offset-1 col-xs-10 col-sm-offset-1 col-sm-10 editor-row' [hidden]="!files.hasError('required')">
                 <div class="thingspin-info-box text-center">
-                    <h4>{{title}}</h4>
+                    <h4>Please Upload algorithm(s) file.</h4>
+                </div>
+            </div>
+
+            <div class='col-xs-offset-1 col-xs-10 col-sm-offset-1 col-sm-10 editor-row' [hidden]="!files.hasError('isNotExistAlgorithmMain')">
+                <div class="thingspin-info-box text-center">
+                    <h4>Please Upload "main.py" file.</h4>
                 </div>
             </div>
         </div>
@@ -13,10 +19,6 @@
                 <div class="empty-list-cta">
                     <input id="algorithmFileInput" type="file" name="files" accept=".py" multiple
                         #files="ngModel" [(ngModel)]="temp.files" required>
-                </div>
-                <div class="alert alert-danger" [hidden]="files.valid"> 
-                    <div [hidden]="!files.hasError('required')">Please Upload algorithm(s) file.</div>
-                    <div [hidden]="!files.hasError('isNotExistAlgorithmMain')">Please Upload "main.py" file.</div>
                 </div>
             </div>
         </div>

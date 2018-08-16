@@ -13,7 +13,7 @@
                 <div class="form-group" *ngFor="let option of options">
                     <div class="radio">
                         <label>
-                            <input type="radio" #framework="ngModel" name="framework" [(ngModel)]="data.framework" [value]="option" [attr.disabled]='true' required />{{ option }} 
+                            <input type="radio" style='color: red;' #framework="ngModel" name="framework" [(ngModel)]="data.framework" [value]="option" [attr.disabled]='true' required />{{ option }} 
                         </label>
                     </div>
                 </div>
