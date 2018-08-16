@@ -56,7 +56,7 @@ export class Wizard {
     static template = require(`./wizard.html`);
 
     /** ngInject **/
-    constructor(private backendSrv) {
+    constructor(private backendSrv, private $location) {
         this.splash = ('appModel' in this && 'baseUrl' in this.appModel) ?
             `${this.appModel.baseUrl}/img/thingspin-text-ani.svg` :
             `public/plugins/${appId}/img/thingspin-text-ani.svg`;
@@ -66,6 +66,7 @@ export class Wizard {
             platformBrowserDynamic( [
                 { provide: 'backendSrv',    useValue: this.backendSrv },
                 { provide: 'appModel',      useValue: this.appModel },
+                { provide: '$location',     useValue: this.$location, },
             ]).bootstrapModule(WizardModule);
         }, 500);
     }

@@ -3,8 +3,6 @@
 export class Project {
     name: string;
     cid: string;
-    inputInfo: string;
-    outputInfo: string;
 }
 
 export class Platform {

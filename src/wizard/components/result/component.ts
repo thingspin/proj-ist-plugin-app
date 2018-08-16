@@ -20,10 +20,12 @@ export class ResultComponent implements OnInit {
     sendData: FormData;
     @Input() formData: Object;
     isFormValid: Boolean = false;
+    isNew: Boolean;
 
     constructor(
         @Inject(FormDataService)    private formDataService:    FormDataService,
         @Inject(Http)               private http:               Http,
+        @Inject('$location') private $location,
     ) {
     }
 
@@ -32,6 +34,8 @@ export class ResultComponent implements OnInit {
         this.formData = this.getViewData(formData);
         this.sendData = this.getSendData(formData);
         this.isFormValid = this.formDataService.isFormValid();
+        const { cid } = this.$location.search();
+        this.isNew = (cid) ? false : true;
     }
 
     getViewData(formData: CustomFormData.FormData): Object {
@@ -102,18 +106,33 @@ export class ResultComponent implements OnInit {
     save(form: FormGroup): void {
     }
 
-    submit(): void {
-        appEvents.emit('confirm-modal', {
-            title: 'New Inference Configuration',
-            text: 'Are you sure you want to add?',
-            yesText: "Add",
-            icon: "fa-thumbs-o-up",
-            onConfirm: () => {
-                this.http.post('/api/ml', this.sendData).subscribe((res: Response) => {
-                    // console.log(res.json().Result);
-                    window.location.href = "/plugins/proj-edge-ai-app/page/monitoring";
-                });
-            }
-        });
+    submit(isNew: Boolean): void {
+        if (isNew) {
+            appEvents.emit('confirm-modal', {
+                title: 'New Inference Configuration',
+                text: 'Are you sure you want to add?',
+                yesText: "Add",
+                icon: "fa-thumbs-o-up",
+                onConfirm: () => {
+                    this.http.post('/api/ml', this.sendData).subscribe((res: Response) => {
+                        // console.log(res.json().Result);
+                        window.location.href = "/plugins/proj-edge-ai-app/page/monitoring";
+                    });
+                }
+            });
+        } else {
+            appEvents.emit('confirm-modal', {
+                title: 'Edit Inference Configuration',
+                text: 'Are you sure you want to Edit?',
+                yesText: "Edit",
+                icon: "fa-thumbs-o-up",
+                onConfirm: () => {
+                    this.http.put('/api/ml', this.sendData).subscribe((res: Response) => {
+                        // console.log(res.json().Result);
+                        window.location.href = "/plugins/proj-edge-ai-app/page/monitoring";
+                    });
+                }
+            });
+        }
     }
 }

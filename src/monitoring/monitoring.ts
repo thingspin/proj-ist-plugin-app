@@ -55,7 +55,7 @@ export class Monitoring {
     static template = require(`./monitoring.html`);
 
     /** ngInject **/
-    constructor(private backendSrv) {
+    constructor(private backendSrv, private $location) {
         this.splash = ('appModel' in this && 'baseUrl' in this.appModel) ?
             `${this.appModel.baseUrl}/img/thingspin-text-ani.svg` :
             `public/plugins/${appId}/img/thingspin-text-ani.svg`;
@@ -64,7 +64,8 @@ export class Monitoring {
         setTimeout(() => {
             platformBrowserDynamic( [
                 { provide: 'backendSrv', useValue: this.backendSrv },
-                { provide: 'appModel', useValue: this.appModel}
+                { provide: 'appModel', useValue: this.appModel, },
+                { provide: '$location', useValue: this.$location, },
             ]).bootstrapModule(MonitoringModule);
         }, 500);
     }
