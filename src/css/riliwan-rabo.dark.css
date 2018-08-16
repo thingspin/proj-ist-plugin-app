@@ -43,10 +43,6 @@ a.hover span.round-tabs {
     background: transparent;
 }
 
-input[type='radio'][disabled],
-input[type='checkbox'][disabled],
-input[type='radio'][readonly],
-input[type='checkbox'][readonly] {
-  color: darkblue !important;
-  background-color: white !important;
+.nav-tabs {
+    border-bottom-color: rgba(50, 50, 50, 0.95) !important;
 }
