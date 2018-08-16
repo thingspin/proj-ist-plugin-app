@@ -31,6 +31,7 @@ export class ModelComponent implements OnInit {
         const inputId = `#${this.fileInputId}`;
         this.data = this.formDataService.getModel();
 
+        defaultFileinputConf.browseLabel = this.title;
         $(inputId).fileinput(defaultFileinputConf);
         $(inputId).on("fileloaded", this.onFileinputLoaded.bind(this));
         $(inputId).on('fileremoved', this.onFileinputRemoved.bind(this));

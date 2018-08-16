@@ -43,6 +43,8 @@ export class AlgorithmComponent implements OnInit {
             }];
         }
 
+        defaultFileinputConf.browseLabel = this.title;
+
         $(inputId).fileinput(defaultFileinputConf);
         $(inputId).on("fileloaded", this.onFileinputLoaded.bind(this));
         $(inputId).on('fileremoved', this.onFileinputRemoved.bind(this));
