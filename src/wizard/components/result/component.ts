@@ -1,6 +1,6 @@
 // Angular Libraries
 import { Component, Inject, OnInit, Input }   from '@angular/core';
-import { styleUrls }    from '../../utils/app.style';
+import { getStyleUrls }    from '../../utils/app.style';
 import * as CustomFormData          from '../../services/formData/formData.model';
 import { FormDataService }            from '../../services/formData/formData.service';
 import { FormGroup } from '@angular/forms';
@@ -12,7 +12,7 @@ import appEvents  from 'grafana/app/core/app_events';
 @Component ({
     selector:  'edge-ai-wizard-result',
     template:  require(`./component.html`),
-    styleUrls: styleUrls,
+    styleUrls: getStyleUrls(),
 })
 
 export class ResultComponent implements OnInit {

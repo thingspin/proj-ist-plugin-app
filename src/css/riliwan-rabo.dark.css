@@ -1,0 +1,78 @@
+.board{
+    background: transparent;
+}
+
+.board > div.board-inner{
+    background: transparent;
+}
+
+.liner{
+    background: transparent;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    color: yellow;
+}
+
+span.round-tabs{
+    color: white;
+    background: transparent;
+}
+
+span.round-tabs.one{
+    border: 2px solid rgb(34, 194, 34);
+}
+
+a.active span.round-tabs.one { 
+    background: white;
+    color:  rgb(34, 194, 34);
+}
+
+span.round-tabs.two{
+    border: 2px solid #febe29;
+}
+
+a.active span.round-tabs.two { 
+    background: white;
+    color: #febe29;
+}
+
+span.round-tabs.three{
+    border: 2px solid #3e5e9a;
+}
+
+a.active span.round-tabs.three{
+    background: white;
+    color: #3e5e9a;
+}
+
+span.round-tabs.four{
+    border: 2px solid #f1685e;
+}
+
+a.active span.round-tabs.four{
+    background: white;
+    color: #f1685e;
+}
+
+span.round-tabs.five{
+    border: 2px solid rgb(34, 194, 34);
+}
+
+a.active span.round-tabs.five { 
+    background: white;
+    color:  rgb(34, 194, 34);
+}
+
+.nav-tabs > li.active > a span.round-tabs{
+    background: transparent;
+}
+.nav-tabs > li:after {
+    border-bottom-color: transparent;
+}
+.nav-tabs > li.active:after {
+    border-bottom-color: transparent;
+}
+.nav-tabs > li a:hover{
+    background: transparent;
+}

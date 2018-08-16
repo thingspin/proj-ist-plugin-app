@@ -1,4 +1,4 @@
-import { styleUrls } from '../utils/app.style';
+import { getStyleUrls } from '../utils/app.style';
 import { enableProdMode, Component, Inject, OnInit, Input } from '@angular/core';
 import { FormDataService }  from '../services/formData/formData.service';
 import { UIRouter, StateService } from '@uirouter/core';
@@ -8,7 +8,7 @@ enableProdMode();
 @Component ({
     selector: 'edge-ai-inference-wizard',
     template: require(`./app.component.html`),
-    styleUrls: styleUrls,
+    styleUrls: getStyleUrls()
 })
 export class AppComponent implements OnInit {
     title: String = 'Wizard';

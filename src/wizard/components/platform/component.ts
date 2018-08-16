@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit, ViewChild }   from '@angular/core';
-import { styleUrls }  from '../../utils/app.style';
+import { getStyleUrls }  from '../../utils/app.style';
 import { FormDataService }     from '../../services/formData/formData.service';
 import { FormGroup, NgForm } from '@angular/forms';
 import { Platform } from '../../services/formData/formData.model';
@@ -7,7 +7,7 @@ import { Platform } from '../../services/formData/formData.model';
 @Component ({
     selector:  'edge-ai-wizard-platform',
     template:  require(`./component.html`),
-    styleUrls: styleUrls,
+    styleUrls: getStyleUrls(),
 })
 export class PlatformComponent implements OnInit {
     title = 'Which platform will be used for?';

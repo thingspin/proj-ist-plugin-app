@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit }   from '@angular/core';
-import { styleUrls }  from '../../utils/app.style';
+import { getStyleUrls }  from '../../utils/app.style';
 import { FormDataService }     from '../../services/formData/formData.service';
 import { FormGroup } from '@angular/forms';
 import { Guid } from "guid-typescript";
@@ -8,7 +8,7 @@ import { Project } from '../../services/formData/formData.model';
 @Component ({
     selector:  'edge-ai-wizard-project',
     template:  require(`./component.html`),
-    styleUrls: styleUrls,
+    styleUrls: getStyleUrls(),
 })
 export class ProjectComponent implements OnInit {
     title = 'Please configure Your Inference Project';

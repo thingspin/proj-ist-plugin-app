@@ -20,14 +20,7 @@ import { HttpModule } from '@angular/http';
 import { UIRouterConfigFn } from "./utils/app.router";
 import { appRouters, appProviders, appDeclarations, appEntryCompoents} from "./utils/app.states";
 
-// Grafana SDK
-import { loadPluginCss } from 'grafana/app/plugins/sdk';
-
 const appId = "proj-edge-ai-app";
-loadPluginCss({
-    dark: `plugins/${appId}/css/${appId}.dark.css`,
-    light: `plugins/${appId}/css/${appId}.light.css`
-});
 
 @NgModule({
     imports: [
@@ -53,6 +46,7 @@ export class WizardModule {
 export class Wizard {
     appModel: any;
     splash: any;
+    theme: string;
     static template = require(`./wizard.html`);
 
     /** ngInject **/
