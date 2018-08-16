@@ -63,6 +63,7 @@ this.backendSrv.get('api/ml').then(result => {
 2. POST : api/ml/save
 [request body 정보]
 ```go
+// Saving a configuration
 type MLsaveReq struct {
 	Cid         	string 					`form:"cid"`
 	Cname       	string  				`form:"cname"`
@@ -75,6 +76,10 @@ type MLsaveReq struct {
 	AlgorithmName	string  				`form:"algorithmName"`
 	UploadModel 	[]*multipart.FileHeader `form:"model[]"`
 	UploadAlgorithm []*multipart.FileHeader	`form:"algorithm[]"`
+}
+// Editing a model or an algorithm
+type MLuploadReq struct {
+	MlFile *multipart.FileHeader `form:"mlFile"`
 }
 ```
 [example in javascript]
