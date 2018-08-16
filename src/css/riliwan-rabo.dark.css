@@ -11,57 +11,23 @@
 }
 
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
-    color: yellow;
+    color: blue;
 }
 
 span.round-tabs{
-    color: white;
     background: transparent;
+    color: rgb(182, 176, 176);
+    border: 2px solid rgb(182, 176, 176);
 }
 
-span.round-tabs.one{
-    border: 2px solid rgb(34, 194, 34);
+a.active span.round-tabs { 
+    color: white;
+    border: 2px solid white;
+    background: rgb(182, 176, 176);
 }
 
-a.active span.round-tabs.one { 
-    background: white;
-    color:  rgb(34, 194, 34);
-}
-
-span.round-tabs.two{
-    border: 2px solid #febe29;
-}
-
-a.active span.round-tabs.two { 
-    background: white;
-    color: #febe29;
-}
-
-span.round-tabs.three{
-    border: 2px solid #3e5e9a;
-}
-
-a.active span.round-tabs.three{
-    background: white;
-    color: #3e5e9a;
-}
-
-span.round-tabs.four{
-    border: 2px solid #f1685e;
-}
-
-a.active span.round-tabs.four{
-    background: white;
-    color: #f1685e;
-}
-
-span.round-tabs.five{
-    border: 2px solid rgb(34, 194, 34);
-}
-
-a.active span.round-tabs.five { 
-    background: white;
-    color:  rgb(34, 194, 34);
+a.hover span.round-tabs { 
+    border: 4px;
 }
 
 .nav-tabs > li.active > a span.round-tabs{
@@ -75,4 +41,12 @@ a.active span.round-tabs.five {
 }
 .nav-tabs > li a:hover{
     background: transparent;
+}
+
+input[type='radio'][disabled],
+input[type='checkbox'][disabled],
+input[type='radio'][readonly],
+input[type='checkbox'][readonly] {
+  color: darkblue !important;
+  background-color: white !important;
 }
