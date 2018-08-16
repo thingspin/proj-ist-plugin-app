@@ -21,21 +21,24 @@ export class ScriptListComponent implements OnInit {
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
     constructor(
-        // @Inject(ChangeDetectorRef) private chRef: ChangeDetectorRef,
         @Inject(MonitoringBackendService) private backendSrv: MonitoringBackendService,
     ) {
         this.dataSource = new MatTableDataSource<InferenceConfig>();
-        this.updateList();
+        this.updateList().then( (value) => {
+            this.dataSource.paginator = this.paginator;
+        });
     }
 
     ngOnInit(): void {
     }
 
-    updateList() {
-        this.backendSrv.getConfigList().then((res: Response) => {
-            this.scriptsList = this.updateRunning(res.json().Result);
-            this.dataSource.paginator = this.paginator;
-            this.dataSource.data = res.json().Result;
+    updateList(): Promise<any> {
+        return this.backendSrv.getConfigList().then((res: Response) => {
+            const { Result }: {Result: any} = res.json();
+            // console.log(Result);
+
+            this.scriptsList = this.updateRunning(Result);
+            this.dataSource.data = Result;
         });
     }
 
@@ -54,6 +57,7 @@ export class ScriptListComponent implements OnInit {
         });
         return list;
     }
+
     runAlgorithm(cid: String): void {
         console.log(`running ${cid}`);
         this.backendSrv.runAlgorithm(cid).then( (res: Response) => {
@@ -72,7 +76,7 @@ export class ScriptListComponent implements OnInit {
     stopAlgorithm(cid: String): void {
         console.log(`stoped ${cid}`);
         this.backendSrv.stopAlgorithm(cid).then( (res: Response) => {
-            console.log(res);
+            // console.log(res);
             this.scriptsList.forEach((config: InferenceConfig, idx: number, arr: any) => {
                 if (config.cid === cid) {
                     arr[idx].running = false;
@@ -97,5 +101,9 @@ export class ScriptListComponent implements OnInit {
                 });
             }
         });
+    }
+
+    editConfig(cid: string): void {
+        window.location.href = `/plugins/proj-edge-ai-app/page/wizard?cid=${cid}`;
     }
 }

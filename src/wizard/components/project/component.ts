@@ -31,8 +31,6 @@ export class ProjectComponent implements OnInit {
         if (!this.data.cid) {
             const guid = Guid.create();
             this.data.cid = `${guid}`;
-            this.data.inputInfo = `thingspin/edge-ai/in/${guid}`;
-            this.data.outputInfo = `thingspin/edge-ai/output/${guid}`;
         }
 
         this.formDataService.setProject(this.data);

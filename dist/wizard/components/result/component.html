@@ -18,9 +18,13 @@
             <span style="margin-right:10px;" class="glyphicon glyphicon-arrow-left"></span> 
             Previous
         </button>
-        <button class="btn btn-success btn-outline-rounded" [disabled]="!isFormValid" (click)="submit()"> 
+        <button *ngIf="isNew" class="btn btn-success btn-outline-rounded" [disabled]="!isFormValid" (click)="submit(true)"> 
             <span style="margin-left:10px;" class="fa fa-save"></span> 
             Save
+        </button>
+        <button *ngIf="!isNew" class="btn btn-success btn-outline-rounded" [disabled]="!isFormValid" (click)="submit(false)"> 
+            <span style="margin-left:10px;" class="fa fa-save"></span> 
+            Edit
         </button>
     </div>
 </div>

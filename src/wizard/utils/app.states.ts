@@ -16,6 +16,7 @@ import { FormDataService } from '../services/formData/formData.service';
 import { StepService } from '../services/step/step.service';
 
 import { CustomLocationStrategy, WIZARD_BASE_HREF } from "./common";
+import { BackendService } from '../services/backendSrv/backendSrv.service';
 
 const verifyWorkFlow = (transition, state) => {
     // console.debug("Entered '" + state.name + "' state.");
@@ -31,6 +32,7 @@ const verifyWorkFlow = (transition, state) => {
 };
 
 export const appProviders: any[] = [
+    { provide: BackendService,    useClass: BackendService},
     { provide: FormDataService, useClass: FormDataService },
     { provide: StepService, useClass: StepService },
     // { provide: APP_BASE_HREF,   useValue: window.location.pathname},
