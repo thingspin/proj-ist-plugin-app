@@ -26,7 +26,7 @@
                 <button *ngIf="!el.running" mat-flat-button color="success" (click)="runAlgorithm(el.cid)">play</button>
                 <button *ngIf="el.running" mat-flat-button color="success" (click)="stopAlgorithm(el.cid)">Stop</button>
                 <button mat-flat-button color="warn" (click)="deleteConfig(el.cid)">delete</button>
-                <button mat-icon-button color="primary">edit</button>
+                <button mat-icon-button color="primary" (click)="editConfig(el.cid)">edit</button>
             </td>
         </ng-container>
 

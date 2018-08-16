@@ -21,7 +21,6 @@ export class ScriptListComponent implements OnInit {
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
     constructor(
-        // @Inject(ChangeDetectorRef) private chRef: ChangeDetectorRef,
         @Inject(MonitoringBackendService) private backendSrv: MonitoringBackendService,
     ) {
         this.dataSource = new MatTableDataSource<InferenceConfig>();
@@ -102,5 +101,9 @@ export class ScriptListComponent implements OnInit {
                 });
             }
         });
+    }
+
+    editConfig(cid: string): void {
+        window.location.href = `/plugins/proj-edge-ai-app/page/wizard?cid=${cid}`;
     }
 }

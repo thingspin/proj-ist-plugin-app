@@ -121,13 +121,14 @@ export class ResultComponent implements OnInit {
                 }
             });
         } else {
+            const { cid } = this.$location.search();
             appEvents.emit('confirm-modal', {
                 title: 'Edit Inference Configuration',
                 text: 'Are you sure you want to Edit?',
                 yesText: "Edit",
                 icon: "fa-thumbs-o-up",
                 onConfirm: () => {
-                    this.http.put('/api/ml', this.sendData).subscribe((res: Response) => {
+                    this.http.put(`/api/ml/${cid}`, this.sendData).subscribe((res: Response) => {
                         // console.log(res.json().Result);
                         window.location.href = "/plugins/proj-edge-ai-app/page/monitoring";
                     });
