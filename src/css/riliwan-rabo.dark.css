@@ -26,6 +26,13 @@ a.active span.round-tabs {
     background: rgb(182, 176, 176);
 }
 
+.nav-tabs > li.active > a {
+    background: rgb(182, 176, 176);
+}
+.nav-tabs > li.active > a:hover {
+    background: rgb(182, 176, 176);
+}
+
 a:hover span.round-tabs { 
     border: 4px;
 }
