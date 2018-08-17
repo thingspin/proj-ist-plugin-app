@@ -8,6 +8,21 @@ import { Project, Platform, Model } from '../services/formData/formData.model';
 
 enableProdMode();
 
+interface QueryResult {
+    cid: string;
+    cname: string;
+
+    framework: string;
+    mlSetting: string;
+
+    model: string;
+    modelFiles: string[];
+
+    algorithmName: string;
+    algorithmType: string;
+    algorithmFiles: string[];
+}
+
 @Component ({
     selector: 'edge-ai-inference-wizard',
     template: require(`./app.component.html`),
@@ -53,7 +68,7 @@ export class AppComponent implements OnInit {
         });
     }
 
-    setProject(Result): Promise<any> {
+    setProject(Result: QueryResult): Promise<any> {
         const project: Project = {
             cid: Result.cid,
             name: Result.cname,
@@ -62,7 +77,7 @@ export class AppComponent implements OnInit {
         return Promise.resolve(Result);
     }
 
-    setPlatform(Result): Promise<any> {
+    setPlatform(Result: QueryResult): Promise<any> {
         const platform: Platform = {
             framework: Result.framework,
         };
@@ -70,7 +85,7 @@ export class AppComponent implements OnInit {
         return Promise.resolve(Result);
     }
 
-    setModel(Result): Promise<any> {
+    setModel(Result: QueryResult): Promise<any> {
         const promiseList = [];
         const { cid } = Result;
         Result.modelFiles.forEach((fileName: string) => {
@@ -88,7 +103,7 @@ export class AppComponent implements OnInit {
         });
     }
 
-    setAlgorithm(Result): Promise<any> {
+    setAlgorithm(Result: QueryResult): Promise<any> {
         const promiseList = [];
         const { cid } = Result;
         Result.algorithmFiles.forEach((fileName: string) => {
