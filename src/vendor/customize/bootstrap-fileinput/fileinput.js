@@ -1312,7 +1312,8 @@
         },
         _getPreviewIcon: function (fname) {
             var self = this, ext, out = null;
-            if (fname && fname.indexOf('.') > -1) {
+            // if (fname && fname.indexOf('.') > -1) {
+            if (fname) {
                 ext = fname.split('.').pop();
                 if (self.previewFileIconSettings) {
                     out = self.previewFileIconSettings[ext] || self.previewFileIconSettings[ext.toLowerCase()] || null;

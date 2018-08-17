@@ -52,6 +52,7 @@ export const defaultFileinputConf = {
         'go': '<i class="icon-go"></i>',
         'sass': '<i class="icon-sass"></i>',
         'sh': '<i class="icon-shell"></i>',
+        'other': '<i class="fa fa-file-text-o text-info"></i>',
     },
     previewFileExtSettings: { // configure the logic for determining icon file extensions
         'doc': function(ext) { return ext.match(/(doc|docx)$/i); },
@@ -59,8 +60,11 @@ export const defaultFileinputConf = {
         'ppt': function(ext) { return ext.match(/(ppt|pptx)$/i); },
         'zip': function(ext) { return ext.match(/(zip|rar|tar|gzip|gz|7z)$/i); },
         'htm': function(ext) { return ext.match(/(htm|html)$/i); },
-        'txt': function(ext) { return ext.match(/(txt|ini|csv|java|php|js|css|meta|index|data)$/i); },
+        // 'txt': function(ext) { return ext.match(/(txt|ini|csv|java|php|js|css|meta|index|data)$/i); },
         'mov': function(ext) { return ext.match(/(avi|mpg|mkv|mov|mp4|3gp|webm|wmv)$/i); },
+        'png': function(ext) { return ext.match(/(png)$/i); },
+        'gif': function(ext) { return ext.match(/(gif)$/i); },
+        'jpg': function(ext) { return ext.match(/(jpg|jpeg)$/i); },
         'mp3': function(ext) { return ext.match(/(mp3|wav)$/i); },
         'py': function(ext) { return ext.match(/(py)$/i); },
         'java': function(ext) { return ext.match(/(java)$/i); },
@@ -73,6 +77,12 @@ export const defaultFileinputConf = {
         'cpp': function(ext) { return ext.match(/(cpp)$/i); },
         'sass': function(ext) { return ext.match(/(sass)$/i); },
         'sh': function(ext) { return ext.match(/(sh|bash)$/i); },
+        'other': (ext) => {
+            const regex: RegExp = new RegExp(
+/(py|java|php|js|html|css|go|c|cpp|sass|sh|bash|mp3|wav|htm|html|zip|rar|tar|gzip|gz|7z|ppt|pptx|doc|docx|xls|xlsx|avi|mpg|mkv|mov|mp4|3gp|webm|wmv|jpg|jpeg|gif|png)$/i
+            );
+            return !regex.test(ext) ? ext : null;
+        },
     },
     layoutTemplates: {
         preview: '<div class="file-preview {class}">\n' +
