@@ -21,7 +21,8 @@ module.exports = function(grunt) {
           files: {
             "dist/css/proj-edge-ai-app.dark.css": "src/sass/proj-edge-ai-app.dark.scss",
             "dist/css/proj-edge-ai-app.light.css": "src/sass/proj-edge-ai-app.light.scss",
-            "dist/css/proj-edge-ai-app.office.css": "src/sass/proj-edge-ai-app.office.scss",
+            "dist/css/monitoring/dark.css": "src/monitoring/sass/monitoring.dark.scss",
+            "dist/css/monitoring/light.css": "src/monitoring/sass/monitoring.light.scss",
           }
         }
       },

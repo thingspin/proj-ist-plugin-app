@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 function resolve(dir) {
   return path.join(__dirname, '..', dir)
@@ -10,7 +11,7 @@ module.exports = {
   target: 'node',
   context: resolve('src'),
   entry:{
-    'module.js' : './module.ts',
+    'module.js' : './module.ts'
   },
   output: {
     path: resolve('dist'),
@@ -44,6 +45,10 @@ module.exports = {
       /\@angular(\\|\/)core(\\|\/)fesm5/,
       path.resolve(__dirname, ".")
     ),
+    new ExtractTextPlugin({
+      filename: 'css/[name].bundle.css',
+      allChunks: true,
+    }),
   ],
   resolve: {
     extensions: [".ts", ".js", ".scss"]
@@ -71,9 +76,13 @@ module.exports = {
         exclude: [/node_modules/] //add this line so we ignore css coming from node_modules
       },
       {
-        test: /\.scss$/,
+        test: /\.less$/,
+        loader: ExtractTextPlugin.extract('style', 'css?-autoprefixer!less!postcss')
+      },
+      {
+        test: /\.(sass|scss)$/,
         exclude: /node_modules/,
-        loaders: ['raw-loader', 'sass-loader'] // sass-loader not scss-loader
+        loaders: ExtractTextPlugin.extract(['css-loader', 'sass-loader', 'style', 'css?-autoprefixer!sass!postcss'])
       },
       {
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,

@@ -5,12 +5,21 @@ import { Response } from '@angular/http';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { appEvents } from 'grafana/app/core/core';
 
+function getStyleUrls(): string [] {
+    let theme: string = ((<any>window).thingspinBootData.user.lightTheme) ? 'light' : 'dark';
+    let csss: string[] = [];
+
+    let prefix = 'public/plugins/proj-edge-ai-app/css/monitoring/';
+
+    csss.push(prefix + theme + '.css');
+
+    return csss;
+}
+
 @Component({
     selector: 'scripts-list',
     template: require(`./component.html`),
-    styleUrls: [
-        'public/plugins/proj-edge-ai-app/css/monitoring.css',
-    ],
+    styleUrls: getStyleUrls(),
 })
 export class ScriptListComponent implements OnInit {
 
