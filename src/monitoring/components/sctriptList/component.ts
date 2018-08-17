@@ -35,7 +35,6 @@ export class ScriptListComponent implements OnInit {
     updateList(): Promise<any> {
         return this.backendSrv.getConfigList().then((res: Response) => {
             const { Result }: {Result: any} = res.json();
-            // console.log(Result);
 
             this.scriptsList = this.updateRunning(Result);
             this.dataSource.data = Result;
@@ -45,14 +44,17 @@ export class ScriptListComponent implements OnInit {
     updateRunning(list: any[]): Array<InferenceConfig> {
         list.forEach(({ cid }: {cid: String}, idx: number) => {
             this.backendSrv.getConfigStatus(cid).then( (res: Response) => {
-                list[idx].running = true;
-            }, (error: Response) => {
-                const { message }: {message: String} = error.json();
-                switch (message) {
-                    case "not running":
-                        list[idx].running = false;
+                const message: {CodeNum: number, Error: string} = res.json();
+                switch (message.CodeNum) {
+                    case 0: list[idx].running = true; break;
+                    case 1: list[idx].running = false;break;
+                    case 2: list[idx].running = false;
+                        console.log(message.Error);
                     break;
                 }
+                list[idx].running = true;
+            }, (error: Response) => {
+                console.error(error);
             });
         });
         return list;
@@ -61,7 +63,6 @@ export class ScriptListComponent implements OnInit {
     runAlgorithm(cid: String): void {
         console.log(`running ${cid}`);
         this.backendSrv.runAlgorithm(cid).then( (res: Response) => {
-            console.log(res);
             this.scriptsList.forEach((config: InferenceConfig, idx: number, arr: any) => {
                 if (config.cid === cid) {
                     arr[idx].running = true;
@@ -76,7 +77,6 @@ export class ScriptListComponent implements OnInit {
     stopAlgorithm(cid: String): void {
         console.log(`stoped ${cid}`);
         this.backendSrv.stopAlgorithm(cid).then( (res: Response) => {
-            // console.log(res);
             this.scriptsList.forEach((config: InferenceConfig, idx: number, arr: any) => {
                 if (config.cid === cid) {
                     arr[idx].running = false;

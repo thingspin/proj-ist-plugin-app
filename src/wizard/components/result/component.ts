@@ -115,7 +115,6 @@ export class ResultComponent implements OnInit {
                 icon: "fa-thumbs-o-up",
                 onConfirm: () => {
                     this.http.post('/api/ml', this.sendData).subscribe((res: Response) => {
-                        // console.log(res.json().Result);
                         window.location.href = "/plugins/proj-edge-ai-app/page/monitoring";
                     });
                 }
@@ -129,7 +128,6 @@ export class ResultComponent implements OnInit {
                 icon: "fa-thumbs-o-up",
                 onConfirm: () => {
                     this.http.put(`/api/ml/${cid}`, this.sendData).subscribe((res: Response) => {
-                        // console.log(res.json().Result);
                         window.location.href = "/plugins/proj-edge-ai-app/page/monitoring";
                     });
                 }

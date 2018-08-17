@@ -81,11 +81,7 @@ export const defaultFileinputConf = {
             const regex: RegExp = new RegExp(
 /(py|java|php|js|html|css|go|c|cpp|sass|sh|bash|mp3|wav|htm|html|zip|rar|tar|gzip|gz|7z|ppt|pptx|doc|docx|xls|xlsx|avi|mpg|mkv|mov|mp4|3gp|webm|wmv|jpg|jpeg|gif|png)$/i
             );
-            console.log(ext, !regex.test(ext));
-            if (!regex.test(ext)) {
-                return ext;
-            }
-            return null;
+            return !regex.test(ext) ? ext : null;
         },
     },
     layoutTemplates: {
