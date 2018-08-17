@@ -52,7 +52,6 @@ export class ScriptListComponent implements OnInit {
                         console.log(message.Error);
                     break;
                 }
-                list[idx].running = true;
             }, (error: Response) => {
                 console.error(error);
             });
