@@ -63,7 +63,6 @@
     "events": "~3.0.0",
     "file-input-accessor": "^2.0.0",
     "fs": "0.0.1-security",
-    "guid-typescript": "^1.0.7",
     "ng2-bootstrap-modal": "^1.0.1",
     "ng2-select": "^2.0.0",
     "rxjs": "6.2.2",

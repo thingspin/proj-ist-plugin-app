@@ -2,7 +2,6 @@ import { Component, Inject, OnInit }   from '@angular/core';
 import { getStyleUrls }  from '../../utils/app.style';
 import { FormDataService }     from '../../services/formData/formData.service';
 import { FormGroup } from '@angular/forms';
-import { Guid } from "guid-typescript";
 import { Project } from '../../services/formData/formData.model';
 
 @Component ({
@@ -24,12 +23,22 @@ export class ProjectComponent implements OnInit {
         this.data = this.formDataService.getProject();
     }
 
+    generateUID() {
+        // I generate the UID from two parts here 
+        // to ensure the random number provide enough bits.
+        var n1 = (Math.random() * 46656) | 0;
+        var n2 = (Math.random() * 46656) | 0;
+        let firstPart = ("000" + n1.toString(36)).slice(-3);
+        let secondPart = ("000" + n2.toString(36)).slice(-3);
+        return firstPart + secondPart;
+    }
+
     save(form: FormGroup) {
         if (!form.valid) {
             return;
         }
         if (!this.data.cid) {
-            const guid = Guid.create();
+            const guid = this.generateUID();
             this.data.cid = `${guid}`;
         }
 
