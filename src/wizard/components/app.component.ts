@@ -30,7 +30,6 @@ interface QueryResult {
 })
 export class AppComponent implements OnInit {
     title: String = 'Wizard';
-    $stateService: StateService;
     params: any;
     @Input() formData;
 
@@ -39,36 +38,37 @@ export class AppComponent implements OnInit {
         @Inject(UIRouter) private router: UIRouter,
         @Inject(BackendService) private backendSrv: BackendService,
         @Inject('$location') private $location,
-    ) {
-        console.log(this.title + ' constructor!');
-    }
+    ) { }
 
     ngOnInit() {
-        this.params = this.$location.search();
-        this.$stateService = this.router.stateService;
-        if (this.params.cid) {
-            this.updateEditData(this.params.cid).then( () => {
+        const $stateService: StateService = this.router.stateService;
+
+        console.log(this.title + ' loaded!');
+        const params: any = this.$location.search();
+        if (params.cid) {
+            // Edit mode
+            this.updateEditData(params.cid).then( () => {
                 this.formData = this.formDataService.getFormData();
-                this.$stateService.go("project", this.params);
+                $stateService.go("project", params);
             });
         } else {
+            // new mode
             this.formData = this.formDataService.getFormData();
-            this.$stateService.go("project");
+            $stateService.go("project");
         }
-        console.log(this.title + ' loaded!');
     }
 
     updateEditData(cid: string): Promise<any> {
-        return this.backendSrv.getConfig(cid).then((res: Response) => {
-            return res.json().Result;
-        }).then(Result => { return this.setProject(Result);
-        }).then(Result => { return this.setPlatform(Result);
-        }).then(Result => { return this.setModel(Result);
-        }).then(Result => { return this.setAlgorithm(Result);
-        });
+        return this.backendSrv.getConfig(cid).then((res: Response) =>
+            res.json().Result
+        ).then(Result => this.setProject(Result)
+        ).then(Result => this.setPlatform(Result)
+        ).then(Result => this.setModel(Result)
+        ).then(Result => this.setAlgorithm(Result)
+        );
     }
 
-    setProject(Result: QueryResult): Promise<any> {
+    setProject(Result: QueryResult): Promise<QueryResult> {
         const project: Project = {
             cid: Result.cid,
             name: Result.cname,
@@ -77,7 +77,7 @@ export class AppComponent implements OnInit {
         return Promise.resolve(Result);
     }
 
-    setPlatform(Result: QueryResult): Promise<any> {
+    setPlatform(Result: QueryResult): Promise<QueryResult> {
         const platform: Platform = {
             framework: Result.framework,
         };
@@ -85,7 +85,7 @@ export class AppComponent implements OnInit {
         return Promise.resolve(Result);
     }
 
-    setModel(Result: QueryResult): Promise<any> {
+    setModel(Result: QueryResult): Promise<QueryResult> {
         const promiseList = [];
         const { cid } = Result;
         Result.modelFiles.forEach((fileName: string) => {
@@ -103,7 +103,7 @@ export class AppComponent implements OnInit {
         });
     }
 
-    setAlgorithm(Result: QueryResult): Promise<any> {
+    setAlgorithm(Result: QueryResult): Promise<QueryResult> {
         const promiseList = [];
         const { cid } = Result;
         Result.algorithmFiles.forEach((fileName: string) => {
