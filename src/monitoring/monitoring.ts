@@ -15,13 +15,14 @@ import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule, MatPaginatorModule } from '@angular/material';
 import { MatIconModule } from '@angular/material/icon';
+import { CodemirrorModule } from 'ng2-codemirror';
+import { UIRouterModule } from '@uirouter/angular';
 
 /* App Utils */
 import { appProviders, appDeclarations, appRouters} from "./utils/app.states";
 
 // Grafana SDK
 import { loadPluginCss } from 'grafana/app/plugins/sdk';
-import { UIRouterModule } from '@uirouter/angular';
 
 const appId = "proj-edge-ai-app";
 loadPluginCss({
@@ -35,6 +36,7 @@ loadPluginCss({
         BrowserAnimationsModule,
         FormsModule,
         HttpModule,
+        CodemirrorModule,
         // Mateiral Design Modules
         MatTableModule, MatPaginatorModule, MatIconModule,
         UIRouterModule.forRoot({

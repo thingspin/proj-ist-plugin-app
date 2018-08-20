@@ -4,17 +4,13 @@ import { MonitoringBackendService } from '../../services/monitoringBackendSrv/mo
 import { Response } from '@angular/http';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { appEvents } from 'grafana/app/core/core';
+import { getStyleUrls } from '../../utils/common';
 
-function getStyleUrls(): string [] {
-    let theme: string = ((<any>window).thingspinBootData.user.lightTheme) ? 'light' : 'dark';
-    let csss: string[] = [];
+/* load codemirror  */
+import 'codemirror/mode/python/python';
+import "../../../../node_modules/codemirror/lib/codemirror.css";
+import "../../../../node_modules/codemirror/theme/material.css";
 
-    let prefix = 'public/plugins/proj-edge-ai-app/css/monitoring/';
-
-    csss.push(prefix + theme + '.css');
-
-    return csss;
-}
 
 @Component({
     selector: 'scripts-list',
@@ -23,6 +19,7 @@ function getStyleUrls(): string [] {
 })
 export class ScriptListComponent implements OnInit {
 
+    codemirrorConfig: any;
     scriptsList: InferenceConfig[] = [];
 
     displayedColumns: string[] = ['cname', 'algorithmName', 'model', "action"];
@@ -36,6 +33,11 @@ export class ScriptListComponent implements OnInit {
         this.updateList().then( (value) => {
             this.dataSource.paginator = this.paginator;
         });
+
+        this.codemirrorConfig = {
+            mode: 'python',
+            lineNumbers: true,
+        };
     }
 
     ngOnInit(): void {
