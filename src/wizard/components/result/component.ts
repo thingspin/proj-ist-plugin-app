@@ -8,6 +8,8 @@ import { Http, Response } from '@angular/http';
 
 // Thingspin(grafana) Libraries
 import appEvents  from 'grafana/app/core/app_events';
+import { MqttService } from '../../services/mqtt/mqttSrv.service';
+import { BackendService } from '../../services/backendSrv/backendSrv.service';
 
 @Component ({
     selector:  'edge-ai-wizard-result',
@@ -18,6 +20,7 @@ import appEvents  from 'grafana/app/core/app_events';
 export class ResultComponent implements OnInit {
     title = 'Confirm & Save your project.';
     sendData: FormData;
+    mqttData: CustomFormData.MqttSendData;
     @Input() formData: Object;
     isFormValid: Boolean = false;
     isNew: Boolean;
@@ -25,7 +28,10 @@ export class ResultComponent implements OnInit {
     constructor(
         @Inject(FormDataService)    private formDataService:    FormDataService,
         @Inject(Http)               private http:               Http,
+        @Inject(MqttService) private mqttSrv: MqttService,
         @Inject('$location') private $location,
+        @Inject('appModel') private appModel,
+        @Inject(BackendService) private backendSrv: BackendService,
     ) {
     }
 
@@ -36,6 +42,10 @@ export class ResultComponent implements OnInit {
         this.isFormValid = this.formDataService.isFormValid();
         const { cid } = this.$location.search();
         this.isNew = (cid) ? false : true;
+
+        const urlPath = "/";
+        const baseUrl = `ws://${this.$location.host()}:${this.$location.port()}/api/plugin-proxy/${this.appModel.id}`;
+        this.mqttSrv.connect(`${baseUrl}${urlPath}`);
     }
 
     getViewData(formData: CustomFormData.FormData): Object {
@@ -116,6 +126,7 @@ export class ResultComponent implements OnInit {
                 onConfirm: () => {
                     this.http.post('/api/ml', this.sendData).subscribe((res: Response) => {
                         window.location.href = "/plugins/proj-edge-ai-app/page/monitoring";
+                        this.mqttPublish();
                     });
                 }
             });
@@ -129,9 +140,21 @@ export class ResultComponent implements OnInit {
                 onConfirm: () => {
                     this.http.put(`/api/ml/${cid}`, this.sendData).subscribe((res: Response) => {
                         window.location.href = "/plugins/proj-edge-ai-app/page/monitoring";
+                        this.mqttPublish();
                     });
                 }
             });
         }
     }
+
+    mqttPublish(): void {
+        this.backendSrv.getConfigList().then( (res: Response) => {
+            this.mqttSrv.publishMessage('/', JSON.stringify(res.json().Result), {
+                qos: 0,
+                retain: true,
+                dup: false,
+            });
+        });
+    }
+
 }

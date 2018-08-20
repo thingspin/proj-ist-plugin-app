@@ -41,3 +41,15 @@ export class FormData {
         this.algorithm = new Algorithm();
     }
 }
+
+export interface MqttSendData {
+    cid:            String;
+    cname:          String;
+    model:          String;
+    modelFiles:     String[];
+    algorithmName:  String;
+    algorithmType:  String;
+    algorithmFiles: String[];
+    framework:      String;
+    mlSetting:      any;
+}

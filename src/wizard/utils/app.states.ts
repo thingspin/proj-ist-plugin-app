@@ -17,6 +17,7 @@ import { StepService } from '../services/step/step.service';
 
 import { CustomLocationStrategy, WIZARD_BASE_HREF } from "./common";
 import { BackendService } from '../services/backendSrv/backendSrv.service';
+import { MqttService } from '../services/mqtt/mqttSrv.service';
 
 const verifyWorkFlow = (transition, state) => {
     // console.debug("Entered '" + state.name + "' state.");
@@ -32,6 +33,7 @@ const verifyWorkFlow = (transition, state) => {
 };
 
 export const appProviders: any[] = [
+    { provide: MqttService, useClass: MqttService },
     { provide: BackendService,    useClass: BackendService},
     { provide: FormDataService, useClass: FormDataService },
     { provide: StepService, useClass: StepService },
