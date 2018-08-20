@@ -1,0 +1,9 @@
+{
+	"version": 3,
+	"file": "monitoring.style-light.css",
+	"sources": [
+		"../../../src/monitoring/sass/monitoring.style-light.scss"
+	],
+	"names": [],
+	"mappings": ""
+}

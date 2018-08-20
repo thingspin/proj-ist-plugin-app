@@ -13,6 +13,6 @@ export const MONITORING_BASE_HREF = `/plugins/proj-edge-ai-app/page/monitoring`;
 
 export function getStyleUrls(): string[] {
     return [
-        `${MONITORING_BASE_HREF}/${((<any>window).thingspinBootData.user.lightTheme) ? 'light' : 'dark'}.css`,
+        `${MONITORING_BASE_HREF}/${ (<any>window).thingspinBootData.user.lightTheme ? 'light' : 'dark' }.css`,
     ];
 }

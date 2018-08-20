@@ -1,0 +1,9 @@
+{
+	"version": 3,
+	"file": "monitoring.style-dark.css",
+	"sources": [
+		"../../../src/monitoring/sass/monitoring.style-dark.scss"
+	],
+	"names": [],
+	"mappings": ""
+}

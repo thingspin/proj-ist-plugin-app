@@ -17,13 +17,19 @@ module.exports = function(grunt) {
         options: {
           sourceMap: true
         },
-        dist: {
-          files: {
-            "dist/css/proj-edge-ai-app.dark.css": "src/sass/proj-edge-ai-app.dark.scss",
-            "dist/css/proj-edge-ai-app.light.css": "src/sass/proj-edge-ai-app.light.scss",
-            "dist/css/monitoring/dark.css": "src/monitoring/sass/monitoring.dark.scss",
-            "dist/css/monitoring/light.css": "src/monitoring/sass/monitoring.light.scss",
-          }
+        dev: {
+          files: [{
+            extDot: 'scss',
+            expand: true,
+            cwd: 'src',
+            src: ['**/sass/*'],
+            dest: 'dist/css/',
+            rename: function(dest, src) {
+              const filename = dest + src.replace('sass/', "").replace("scss", "css");
+              console.log(`created ${filename}`);
+              return filename;
+            },
+          }],
         }
       },
       less: {
@@ -101,8 +107,8 @@ module.exports = function(grunt) {
     grunt.registerTask('default', [
       'clean',
       'copy:md',
-      'sass',
       'less:development',
+      'sass',
       'webpack:prod',
     ]);
   };
