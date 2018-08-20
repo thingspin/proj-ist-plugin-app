@@ -71,14 +71,20 @@ export class MqttService {
         }
     }
 
-    publishMessage(topic: string, message: string, options: object) {
-        if (this.client) {
-            console.log('[MQTT publish]',topic, message, options);
-            try {
-                this.client.publish(topic, message, options);
-            } catch (e) {
-                console.error(e);
+    publishMessage(topic: string, message: string, options: object): Promise<any> {
+        return new Promise((resolve,reject) => {
+            if (this.client) {
+                console.log('[MQTT publish]',topic, message, options);
+                try {
+                    this.client.publish(topic, message, options, (e) => {
+                        console.log(e);
+                        return resolve(true);
+                    });
+                } catch (e) {
+                    console.error(e);
+                    return reject(e);
+                }
             }
-        }
+        });
     }
 }

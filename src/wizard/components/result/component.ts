@@ -43,7 +43,7 @@ export class ResultComponent implements OnInit {
         const { cid } = this.$location.search();
         this.isNew = (cid) ? false : true;
 
-        const urlPath = "/";
+        const urlPath = "/mqtt";
         const baseUrl = `ws://${this.$location.host()}:${this.$location.port()}/api/plugin-proxy/${this.appModel.id}`;
         this.mqttSrv.connect(`${baseUrl}${urlPath}`);
     }
@@ -125,8 +125,9 @@ export class ResultComponent implements OnInit {
                 icon: "fa-thumbs-o-up",
                 onConfirm: () => {
                     this.http.post('/api/ml', this.sendData).subscribe((res: Response) => {
-                        window.location.href = "/plugins/proj-edge-ai-app/page/monitoring";
-                        this.mqttPublish();
+                        this.mqttPublish().then(() => {
+                            window.location.href = "/plugins/proj-edge-ai-app/page/monitoring";
+                        });
                     });
                 }
             });
@@ -139,17 +140,19 @@ export class ResultComponent implements OnInit {
                 icon: "fa-thumbs-o-up",
                 onConfirm: () => {
                     this.http.put(`/api/ml/${cid}`, this.sendData).subscribe((res: Response) => {
-                        window.location.href = "/plugins/proj-edge-ai-app/page/monitoring";
-                        this.mqttPublish();
+                        this.mqttPublish().then(() => {
+                            window.location.href = "/plugins/proj-edge-ai-app/page/monitoring";
+                        });
                     });
                 }
             });
         }
     }
 
-    mqttPublish(): void {
-        this.backendSrv.getConfigList().then( (res: Response) => {
-            this.mqttSrv.publishMessage('/', JSON.stringify(res.json().Result), {
+    mqttPublish(): Promise<any> {
+        const topic = `config`;
+        return this.backendSrv.getConfigList().then( (res: Response) => {
+           return this.mqttSrv.publishMessage(topic, JSON.stringify(res.json().Result), {
                 qos: 0,
                 retain: true,
                 dup: false,
