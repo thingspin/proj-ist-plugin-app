@@ -1,40 +1,28 @@
-<div class="monitoring-theme mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource">
-
-        <!-- Config Name Column -->
+<mat-table [dataSource]="dataSource" class="monitoring-theme mat-elevation-z8">
         <ng-container matColumnDef="cname">
-            <th mat-header-cell *matHeaderCellDef> Project </th>
-            <td mat-cell *matCellDef="let el"> {{el.cname}} </td>
+            <mat-header-cell *matHeaderCellDef> Project </mat-header-cell>
+            <mat-cell *matCellDef="let el">{{el.cname}}</mat-cell>
         </ng-container>
 
-        <!-- Algorithm Model Column -->
         <ng-container matColumnDef="model">
-            <th mat-header-cell *matHeaderCellDef> Model </th>
-            <td mat-cell *matCellDef="let el"> {{el.model}} </td>
+            <mat-header-cell *matHeaderCellDef> Model </mat-header-cell>
+            <mat-cell *matCellDef="let el"> {{el.model}} </mat-cell>
         </ng-container>
 
-        <!-- Algorithm file Column -->
         <ng-container matColumnDef="algorithmName">
-            <th mat-header-cell *matHeaderCellDef> Algorithm </th>
-            <td mat-cell *matCellDef="let el"> {{el.algorithmName}} </td>
+            <mat-header-cell *matHeaderCellDef> Algorithm </mat-header-cell>
+            <mat-cell *matCellDef="let el"> {{el.algorithmName}} </mat-cell>
         </ng-container>
 
-        <!-- Algorithm file Column -->
         <ng-container matColumnDef="action">
-            <th mat-header-cell *matHeaderCellDef> Action </th>
-            <td mat-cell *matCellDef="let el"> 
+            <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+            <mat-cell *matCellDef="let el"> 
                 <button *ngIf="!el.running" class="ml mat-mini-fab" mat-mini-fab="" color="primary" (click)="runAlgorithm(el.cid)">play</button>
                 <button *ngIf="el.running" class="ml mat-mini-fab" mat-mini-fab="" color="success" (click)="stopAlgorithm(el.cid)">Stop</button>
                 <button class="ml mat-mini-fab" mat-mini-fab="" color="warn" (click)="deleteConfig(el.cid)">delete</button>
                 <button class="ml mat-mini-fab" mat-mini-fab="" color="primary" (click)="editConfig(el.cid)">edit</button>
-            </td>
+            </mat-cell>
         </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;">
-            hellowrold
-        </tr>
-    </table>
-
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-</div>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
