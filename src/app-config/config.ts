@@ -11,7 +11,7 @@ class AppConfigCtrl {
       data: 'data'
     },
     mqtt: {
-      brocker: 'localhost:3306',
+      brocker: 'localhost:1883',
       base: 'THINGSPIN/EDGEAI',
       inprefix: 'IN',
       outprefix: 'OUT',

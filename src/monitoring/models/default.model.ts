@@ -11,3 +11,20 @@ export interface InferenceConfig {
     outputInfo:     String;
     running:       any;
 }
+
+export interface AppModel {
+    name: string;
+    defaultNavUrl: string;
+    enabled: boolean;
+    hasUpdate: boolean;
+    id: string;
+    inlcudes: any[];
+    info: any;
+    jsonData: any;
+    latestVersion: string;
+    module: string;
+    pinned: boolean;
+    state: string;
+    type: string;
+    dependencies: any;
+}

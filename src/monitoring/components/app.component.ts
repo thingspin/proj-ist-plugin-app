@@ -21,7 +21,9 @@ export class AppComponent implements OnInit {
     title: String = 'Script Monitoring';
     $stateService: StateService;
 
-    constructor( @Inject(UIRouter) private router: UIRouter) {
+    constructor( @Inject(UIRouter) private router: UIRouter,
+        // @Inject("appModel") private appModel, 
+    ) {
         console.log(this.title + ' constructor!');
     }
 

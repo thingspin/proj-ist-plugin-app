@@ -8,14 +8,15 @@ import { getStyleUrls } from '../../utils/common';
 
 /* load codemirror  */
 import 'codemirror/mode/python/python';
-import "../../../../node_modules/codemirror/lib/codemirror.css";
-import "../../../../node_modules/codemirror/theme/material.css";
+
+import './component.css';
+import { MqttService } from '../../services/mqtt/mqttSrv.service';
 
 
 @Component({
     selector: 'scripts-list',
     template: require(`./component.html`),
-    styleUrls: getStyleUrls(),
+    styleUrls: getStyleUrls([]),
 })
 export class ScriptListComponent implements OnInit {
 
@@ -28,6 +29,9 @@ export class ScriptListComponent implements OnInit {
 
     constructor(
         @Inject(MonitoringBackendService) private backendSrv: MonitoringBackendService,
+        @Inject(MqttService) private mqttSrv: MqttService,
+        @Inject('$location') private $location,
+        @Inject('appModel') private appModel,
     ) {
         this.dataSource = new MatTableDataSource<InferenceConfig>();
         this.updateList().then( (value) => {
@@ -41,6 +45,9 @@ export class ScriptListComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        const urlPath = "/mqtt";
+        const baseUrl = `ws://${this.$location.host()}:${this.$location.port()}/api/plugin-proxy/${this.appModel.id}`;
+        this.mqttSrv.connect(`${baseUrl}${urlPath}`);
     }
 
     updateList(): Promise<any> {
@@ -108,6 +115,8 @@ export class ScriptListComponent implements OnInit {
                 this.backendSrv.deleteConfig(cid).then( (res: Response) => {
                     console.log(`removed ${cid}`);
                     this.updateList();
+                    this.mqttPublish().then( () => {
+                    });
                 });
             }
         });
@@ -115,5 +124,21 @@ export class ScriptListComponent implements OnInit {
 
     editConfig(cid: string): void {
         window.location.href = `/plugins/proj-edge-ai-app/page/wizard?cid=${cid}`;
+    }
+
+    isMain(el: InferenceConfig, file: string): boolean {
+        const mainFile: String = `${el.algorithmName}${el.algorithmType}`;
+        return (mainFile === file) ? true : false;
+    }
+
+    mqttPublish(): Promise<any> {
+        const topic = `config`;
+        return this.backendSrv.getConfigList().then( (res: Response) => {
+           return this.mqttSrv.publishMessage(topic, JSON.stringify(res.json().Result), {
+                qos: 0,
+                retain: true,
+                dup: false,
+            });
+        });
     }
 }
