@@ -2,30 +2,39 @@
 
 @include mat-core();
 
-@import 'monitoring.style-light.scss';
+$theme-primary: mat-palette($mat-blue-grey, 700, 300, 900);
+$theme-accent: mat-palette($mat-grey);
+$theme-warn: mat-palette($mat-orange, A700);
+
+$theme: mat-light-theme(
+    $theme-primary,
+    $theme-accent,
+    $theme-warn
+);
+
+@mixin monitoring-theme($theme) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+
+  table {
+      width: 100%;
+  }
+  
+  .example-detail-row {
+    height: 0;
+  }
+  
+  .example-element-row td {
+    border-bottom-width: 0;
+  }
+  
+  .example-element-detail {
+    overflow: hidden;
+    display: flex;
+  }
+};
 
 .monitoring-theme {
-  @include mat-core-theme($thingspin-theme);
-  @include mat-button-theme($thingspin-theme);
-  @include mat-checkbox-theme($thingspin-theme);
-  @include mat-table-theme($thingspin-theme);
-  @include mix-app-theme($thingspin-theme);
-  @include angular-material-theme($thingspin-theme);
-}
-
-table {
-    width: 100%;
-}
-
-.example-detail-row {
-  height: 0;
-}
-
-.example-element-row td {
-  border-bottom-width: 0;
-}
-
-.example-element-detail {
-  overflow: hidden;
-  display: flex;
+  @include angular-material-theme($theme);
 }

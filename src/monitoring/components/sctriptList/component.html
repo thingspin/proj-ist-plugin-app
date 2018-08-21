@@ -1,3 +1,5 @@
+<div style='margin-top: 10px;' class='row'></div>
+
 <mat-table [dataSource]="dataSource" class="monitoring-theme mat-elevation-z8" multiTemplateDataRows>
     <ng-container matColumnDef="cname">
         <mat-header-cell *matHeaderCellDef> Project </mat-header-cell>
@@ -17,11 +19,14 @@
     <ng-container matColumnDef="action">
         <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
         <mat-cell *matCellDef="let el">
-            <button *ngIf="!el.running" class="ml" mat-mini-fab color="primary" (click)="runAlgorithm(el.cid)">play</button>
-            <button *ngIf="el.running" class="ml" mat-mini-fab color="success" (click)="stopAlgorithm(el.cid)">Stop</button>
-            <button class="ml" mat-mini-fab color="warn" (click)="deleteConfig(el.cid)">delete</button>
+            <button *ngIf="!el.running" mat-raised-button color="primary" (click)="runAlgorithm(el.cid)">play</button>
+            <button *ngIf="el.running" mat-stroked-button color="accent" (click)="stopAlgorithm(el.cid)">Stop</button>
+            <button class="ml" mat-flat-button color="warn" (click)="deleteConfig(el.cid)">delete</button>
             <button class="ml" mat-mini-fab color="primary" (click)="editConfig(el.cid)">edit</button>
             <button class="ml" mat-mini-fab color="primary" (click)="showLog(el)">log</button>
+            <button mat-icon-button>
+                <mat-icon aria-label="log" (click)="showLog(el)">favorite</mat-icon>
+            </button>
         </mat-cell>
     </ng-container>
 
@@ -32,7 +37,7 @@
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let element; columns: displayedColumns" 
+    <mat-row *matRowDef="let element; columns: displayedColumns"
         class="example-element-row"
         [class.example-expanded-row]="expandedElement === element">
     </mat-row>

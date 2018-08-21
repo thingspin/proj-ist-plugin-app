@@ -44,6 +44,9 @@ loadPluginCss({
             useHash: true,
         }),
     ],
+    exports: [
+        MatTableModule, MatPaginatorModule, MatIconModule, MatButtonModule
+    ],
     providers: appProviders,
     declarations: appDeclarations,
     bootstrap: [AppComponent]
