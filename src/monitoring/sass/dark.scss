@@ -29,3 +29,7 @@ table {
   overflow: hidden;
   display: flex;
 }
+
+mwlResizable {
+  box-sizing: border-box; // required for the enableGhostResize option to work
+}

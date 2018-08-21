@@ -41,3 +41,6 @@
         [@detailExpand]="row === expandedElement ? 'expanded' : 'collapsed'">
     </mat-row>
 </mat-table>
+<div mwlResizable [enableGhostResize]="true" [resizeEdges]="{bottom: true, right: true, top: true, left: true}">
+    <div id="terminal" #terminal></div>
+</div>
