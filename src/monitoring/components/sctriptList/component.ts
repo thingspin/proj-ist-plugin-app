@@ -1,22 +1,37 @@
-import { Component, Inject, ViewChild, OnInit } from '@angular/core';
-import { InferenceConfig } from '../../models/default.model';
-import { MonitoringBackendService } from '../../services/monitoringBackendSrv/monitoringBackendSrv.service';
+/* Grafana Libraries */
+import { appEvents } from 'grafana/app/core/core';
+
+/* Angular */
 import { Response } from '@angular/http';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
-import { appEvents } from 'grafana/app/core/core';
-import { getStyleUrls } from '../../utils/common';
+import { Component, Inject, ViewChild, OnInit } from '@angular/core';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
-/* load codemirror  */
-import 'codemirror/mode/python/python';
+/* Data Structs */
+import { InferenceConfig } from '../../models/default.model';
 
-import './component.css';
+/* Custom Services*/
+import { MonitoringBackendService } from '../../services/monitoringBackendSrv/monitoringBackendSrv.service';
 import { MqttService } from '../../services/mqtt/mqttSrv.service';
 
+/* npm(yarn) libraries */
+import 'codemirror/mode/python/python';
+
+/* style loader (css or sass or less) */
+import './component.css';
+import { getStyleUrls } from '../../utils/common';
 
 @Component({
     selector: 'scripts-list',
     template: require(`./component.html`),
     styleUrls: getStyleUrls([]),
+    animations: [
+        trigger('detailExpand', [
+            state('collapsed', style({ height: '0px', minHeight: '0', display: 'none' })),
+            state('expanded', style({ height: '*' })),
+            transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+        ]),
+    ],
 })
 export class ScriptListComponent implements OnInit {
 
@@ -26,6 +41,7 @@ export class ScriptListComponent implements OnInit {
     displayedColumns: string[] = ['cname', 'algorithmName', 'model', "action"];
     dataSource: MatTableDataSource<InferenceConfig>;
     @ViewChild(MatPaginator) paginator: MatPaginator;
+    expandedElement: InferenceConfig;
 
     constructor(
         @Inject(MonitoringBackendService) private backendSrv: MonitoringBackendService,
@@ -142,6 +158,7 @@ export class ScriptListComponent implements OnInit {
         });
     }
 
-    showLog(cid: string): void {
+    showLog(element: InferenceConfig): void {
+        this.expandedElement = element;
     }
 }

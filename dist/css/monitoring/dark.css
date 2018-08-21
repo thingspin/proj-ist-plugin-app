@@ -149,9 +149,7 @@
   margin: 0 0 64px; }
 
 .mat-bottom-sheet-container {
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  font-size: 16px;
-  font-weight: 400; }
+  font: 400 14px/20px Roboto, "Helvetica Neue", sans-serif; }
 
 .mat-button, .mat-raised-button, .mat-icon-button, .mat-stroked-button,
 .mat-flat-button, .mat-fab, .mat-mini-fab {
@@ -380,7 +378,7 @@ input.mat-input-element {
   height: 1.125em; }
 
 .mat-slide-toggle-content {
-  font: 400 14px/20px Roboto, "Helvetica Neue", sans-serif; }
+  font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .mat-slider-thumb-label-text {
   font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -424,8 +422,8 @@ input.mat-input-element {
 
 .mat-tooltip-handset {
   font-size: 14px;
-  padding-top: 9px;
-  padding-bottom: 9px; }
+  padding-top: 8px;
+  padding-bottom: 8px; }
 
 .mat-list-item {
   font-family: Roboto, "Helvetica Neue", sans-serif; }
@@ -512,7 +510,8 @@ input.mat-input-element {
   font-size: 14px; }
 
 .mat-ripple {
-  overflow: hidden; }
+  overflow: hidden;
+  position: relative; }
 
 .mat-ripple.mat-ripple-unbounded {
   overflow: visible; }
@@ -603,7 +602,13 @@ input.mat-input-element {
   width: 100%;
   overflow-y: scroll; }
 
-@keyframes cdk-text-field-autofill-start {}@keyframes cdk-text-field-autofill-end {}.cdk-text-field-autofill-monitored:-webkit-autofill {
+@keyframes cdk-text-field-autofill-start {
+  /*!*/ }
+
+@keyframes cdk-text-field-autofill-end {
+  /*!*/ }
+
+.cdk-text-field-autofill-monitored:-webkit-autofill {
   animation-name: cdk-text-field-autofill-start; }
 
 .cdk-text-field-autofill-monitored:not(:-webkit-autofill) {
@@ -617,10 +622,6 @@ textarea.cdk-textarea-autosize-measuring {
   overflow: hidden !important;
   padding: 2px 0 !important;
   box-sizing: content-box !important; }
-
-.button-row button,
-.button-row a {
-  margin-right: 8px; }
 
 .monitoring-theme .mat-ripple-element {
   background-color: rgba(255, 255, 255, 0.1); }
@@ -1668,10 +1669,10 @@ textarea.cdk-textarea-autosize-measuring {
   background-color: rgba(176, 181, 208, 0.5); }
 
 .monitoring-theme .mat-slide-toggle:not(.mat-checked) .mat-ripple-element {
-  background-color: rgba(255, 255, 255, 0.12); }
+  background-color: white; }
 
 .monitoring-theme .mat-slide-toggle .mat-ripple-element {
-  background-color: rgba(176, 181, 208, 0.12); }
+  background-color: #b0b5d0; }
 
 .monitoring-theme .mat-slide-toggle.mat-primary.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
   background-color: #9fa0a6; }
@@ -1680,10 +1681,10 @@ textarea.cdk-textarea-autosize-measuring {
   background-color: rgba(159, 160, 166, 0.5); }
 
 .monitoring-theme .mat-slide-toggle.mat-primary:not(.mat-checked) .mat-ripple-element {
-  background-color: rgba(255, 255, 255, 0.12); }
+  background-color: white; }
 
 .monitoring-theme .mat-slide-toggle.mat-primary .mat-ripple-element {
-  background-color: rgba(159, 160, 166, 0.12); }
+  background-color: #9fa0a6; }
 
 .monitoring-theme .mat-slide-toggle.mat-warn.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
   background-color: #f8e199; }
@@ -1692,10 +1693,10 @@ textarea.cdk-textarea-autosize-measuring {
   background-color: rgba(248, 225, 153, 0.5); }
 
 .monitoring-theme .mat-slide-toggle.mat-warn:not(.mat-checked) .mat-ripple-element {
-  background-color: rgba(255, 255, 255, 0.12); }
+  background-color: white; }
 
 .monitoring-theme .mat-slide-toggle.mat-warn .mat-ripple-element {
-  background-color: rgba(248, 225, 153, 0.12); }
+  background-color: #f8e199; }
 
 .monitoring-theme .mat-disabled .mat-slide-toggle-thumb {
   background-color: #424242; }
@@ -1979,5 +1980,15 @@ textarea.cdk-textarea-autosize-measuring {
 
 table {
   width: 100%; }
+
+.example-detail-row {
+  height: 0; }
+
+.example-element-row td {
+  border-bottom-width: 0; }
+
+.example-element-detail {
+  overflow: hidden;
+  display: flex; }
 
 /*# sourceMappingURL=dark.css.map */
