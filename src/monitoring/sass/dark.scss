@@ -1,10 +1,4 @@
-@import 'node_modules/@angular/material/theming';
-
-@include mat-core();
-
-$theme-primary: mat-palette($mat-blue-grey, 700, 300, 900);
-$theme-accent: mat-palette($mat-grey);
-$theme-warn: mat-palette($mat-orange, A700);
+@import 'common-header';
 
 $theme: mat-dark-theme(
     $theme-primary,
@@ -12,50 +6,7 @@ $theme: mat-dark-theme(
     $theme-warn
 );
 
-@mixin monitoring-theme($t) {
-    $primary: map-get($t, primary);
-    $accent: map-get($t, accent);
-    $warn: map-get($t, warn);
-    $foreground: map-get($t, foreground);
-    $background: map-get($t, background);
-  
-    $text: map-get($foreground, text);
-    $card: map-get($background, card);
-
-    mat-header-cell {
-      color: $text;
-      background-color: mat-color($accent, 900);
-      min-height: 32px;
-      max-height: 48px;
-    };
-
-    mat-header-row {
-      min-height: 32px;
-      max-height: 48px;
-    };
-
-    mat-row {
-      min-height: 32px;
-      max-height: 48px;
-    };
-
-    table {
-        width: 100%;
-    };
-
-    .example-detail-row {
-      height: 0;
-    };
-
-    .example-element-row td {
-      border-bottom-width: 0;
-    };
-
-    .example-element-detail {
-      overflow: hidden;
-      display: flex;
-    };
-};
+@import 'common-tail';
 
 .monitoring-theme {
   @include angular-material-theme($theme);

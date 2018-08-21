@@ -1,48 +1,42 @@
-<div style='margin-top: 10px;' class='row'></div>
+<div  class="monitoring-theme">
+    <div style='margin-top: 10px;' class='row'></div>
 
-<mat-table [dataSource]="dataSource" class="monitoring-theme mat-elevation-z8" multiTemplateDataRows>
-    <ng-container matColumnDef="cname">
-        <mat-header-cell *matHeaderCellDef> Project </mat-header-cell>
-        <mat-cell *matCellDef="let el">{{el.cname}}</mat-cell>
-    </ng-container>
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8" multiTemplateDataRows>
+        <ng-container matColumnDef="cname">
+            <mat-header-cell *matHeaderCellDef> Project </mat-header-cell>
+            <mat-cell *matCellDef="let el">{{el.cname}}</mat-cell>
+        </ng-container>
 
-    <ng-container matColumnDef="model">
-        <mat-header-cell *matHeaderCellDef> Model </mat-header-cell>
-        <mat-cell *matCellDef="let el"> {{el.model}} </mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="model">
+            <mat-header-cell *matHeaderCellDef> Model </mat-header-cell>
+            <mat-cell *matCellDef="let el"> {{el.model}} </mat-cell>
+        </ng-container>
 
-    <ng-container matColumnDef="algorithmName">
-        <mat-header-cell *matHeaderCellDef> Algorithm </mat-header-cell>
-        <mat-cell *matCellDef="let el"> {{el.algorithmName}} </mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="algorithmName">
+            <mat-header-cell *matHeaderCellDef> Algorithm </mat-header-cell>
+            <mat-cell *matCellDef="let el"> {{el.algorithmName}} </mat-cell>
+        </ng-container>
 
-    <ng-container matColumnDef="action">
-        <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
-        <mat-cell *matCellDef="let el">
-            <button *ngIf="!el.running" mat-raised-button color="primary" (click)="runAlgorithm(el.cid)">play</button>
-            <button *ngIf="el.running" mat-stroked-button color="accent" (click)="stopAlgorithm(el.cid)">Stop</button>
-            <button class="ml" mat-flat-button color="warn" (click)="deleteConfig(el.cid)">delete</button>
-            <button class="ml" mat-mini-fab color="primary" (click)="editConfig(el.cid)">edit</button>
-            <button class="ml" mat-mini-fab color="primary" (click)="showLog(el)">log</button>
-            <button mat-icon-button>
-                <mat-icon aria-label="log" (click)="showLog(el)">favorite</mat-icon>
-            </button>
-        </mat-cell>
-    </ng-container>
+        <ng-container matColumnDef="action">
+            <mat-header-cell *matHeaderCellDef class="mat-column-action"> Action </mat-header-cell>
+            <mat-cell class="mat-column-action button-row" *matCellDef="let el">
+                <button *ngIf="!el.running" mat-stroked-button (click)="runAlgorithm(el.cid)"><mat-icon>play_circle_filled_white</mat-icon>Play </button>
+                <button *ngIf="!el.running" mat-stroked-button (click)="editConfig(el.cid)"><mat-icon>edit</mat-icon>Edit </button>
+                <button *ngIf="!el.running" mat-stroked-button color="warn" (click)="deleteConfig(el.cid)"><mat-icon>delete</mat-icon>Remove </button>
+                <button *ngIf="el.running" mat-stroked-button (click)="stopAlgorithm(el.cid)"><mat-icon>pause</mat-icon>Stop </button>
 
-    <ng-container matColumnDef="expandedDetail">
-        <mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
-            {{element.algorithmName}}
-        </mat-cell>
-    </ng-container>
+                <button *ngIf="!el.running" mat-stroked-button (click)="showHistory(el)"><mat-icon>list</mat-icon>History </button>
+                <button *ngIf="el.running" mat-stroked-button (click)="showLog(el)"><mat-icon>art_track</mat-icon>Log </button>
+            </mat-cell>
+        </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let element; columns: displayedColumns"
-        class="example-element-row"
-        [class.example-expanded-row]="expandedElement === element">
-    </mat-row>
-    <mat-row *matRowDef="let row; columns: ['expandedDetail']" 
-        class="example-detail-row" 
-        [@detailExpand]="row === expandedElement ? 'expanded' : 'collapsed'">
-    </mat-row>
-</mat-table>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let element; columns: displayedColumns"></mat-row>
+    </mat-table>
+
+    <div style='margin-top: 10px;' class='row'></div>
+
+    <div mwlResizable [enableGhostResize]="true" [resizeEdges]="{bottom: true, right: true, top: true, left: true}">
+        <div id="terminal" #terminal></div>
+    </div>
+</div>

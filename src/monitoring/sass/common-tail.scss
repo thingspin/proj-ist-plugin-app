@@ -1,0 +1,105 @@
+@import 'node_modules/@angular/material/theming';
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 360;
+  src: url(public/plugins/proj-edge-ai-app/fonts/iconfont/MaterialIcons-Regular.eot); /* For IE6-8 */
+  src: local('Material Icons'),
+    local('MaterialIcons-Regular'),
+    url(public/plugins/proj-edge-ai-app/fonts/iconfont/MaterialIcons-Regular.woff2) format('woff2'),
+    url(public/plugins/proj-edge-ai-app/fonts/iconfont/MaterialIcons-Regular.woff) format('woff'),
+    url(public/plugins/proj-edge-ai-app/fonts/iconfont/MaterialIcons-Regular.ttf) format('truetype');
+};
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 14px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+};
+
+@mixin monitoring-theme($t) {
+    $primary: map-get($t, primary);
+    $accent: map-get($t, accent);
+    $warn: map-get($t, warn);
+    $foreground: map-get($t, foreground);
+    $background: map-get($t, background);
+  
+    $text: map-get($foreground, text);
+    $card: map-get($background, card);
+
+    mat-table {
+      width: 90vw;
+    };
+
+    mat-header-cell {
+      color: $text;
+      background-color: mat-color($accent, 900);
+      min-height: 32px;
+      max-height: 48px;
+    };
+
+    mat-header-row {
+      min-height: 32px;
+      max-height: 48px;
+    };
+
+    mat-row {
+      min-height: 32px;
+      max-height: 48px;
+    };
+
+    .button-row button,
+    .button-row a {
+      font-size: 12px;
+      margin-right: 1px;
+      margin-left: 1px;
+      min-height: 14px;
+      max-height: 28px;
+    };
+
+    .mat-column-action {
+      flex: 0 0 420px;
+      white-space: nowrap !important;
+    }
+
+    table {
+        width: 100%;
+    };
+
+    .example-detail-row {
+      height: 0;
+    };
+
+    .example-element-row td {
+      border-bottom-width: 0;
+    };
+
+    .example-element-detail {
+      overflow: hidden;
+      display: flex;
+    };
+
+    mwlResizable {
+      box-sizing: border-box; // required for the enableGhostResize option to work
+    };
+};

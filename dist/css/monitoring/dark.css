@@ -623,203 +623,45 @@ textarea.cdk-textarea-autosize-measuring {
   padding: 2px 0 !important;
   box-sizing: content-box !important; }
 
-.monitoring-theme .mat-ripple-element {
-  background-color: rgba(255, 255, 255, 0.1); }
+/**
+ * Applies styles for users in high contrast mode. Note that this only applies
+ * to Microsoft browsers. Chrome can be included by checking for the `html[hc]`
+ * attribute, however Chrome handles high contrast differently.
+ * @param target Which kind of high contrast setting to target. Defaults to `active`, can be
+ *    `white-on-black` or `black-on-white`.
+ */
+/* Theme for the ripple elements.*/
+/* stylelint-disable material/no-prefixes */
+/* stylelint-enable */
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 360;
+  src: url(public/plugins/proj-edge-ai-app/fonts/iconfont/MaterialIcons-Regular.eot);
+  /* For IE6-8 */
+  src: local("Material Icons"), local("MaterialIcons-Regular"), url(public/plugins/proj-edge-ai-app/fonts/iconfont/MaterialIcons-Regular.woff2) format("woff2"), url(public/plugins/proj-edge-ai-app/fonts/iconfont/MaterialIcons-Regular.woff) format("woff"), url(public/plugins/proj-edge-ai-app/fonts/iconfont/MaterialIcons-Regular.ttf) format("truetype"); }
 
-.monitoring-theme .mat-option {
-  color: white; }
-  .monitoring-theme .mat-option:hover:not(.mat-option-disabled), .monitoring-theme .mat-option:focus:not(.mat-option-disabled) {
-    background: rgba(255, 255, 255, 0.04); }
-  .monitoring-theme .mat-option.mat-selected:not(.mat-option-multiple):not(.mat-option-disabled) {
-    background: rgba(255, 255, 255, 0.04); }
-  .monitoring-theme .mat-option.mat-active {
-    background: rgba(255, 255, 255, 0.04);
-    color: white; }
-  .monitoring-theme .mat-option.mat-option-disabled {
-    color: rgba(255, 255, 255, 0.5); }
-
-.monitoring-theme .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
-  color: #30323d; }
-
-.monitoring-theme .mat-accent .mat-option.mat-selected:not(.mat-option-disabled) {
-  color: #616ba1; }
-
-.monitoring-theme .mat-warn .mat-option.mat-selected:not(.mat-option-disabled) {
-  color: #ffd896; }
-
-.monitoring-theme .mat-optgroup-label {
-  color: rgba(255, 255, 255, 0.7); }
-
-.monitoring-theme .mat-optgroup-disabled .mat-optgroup-label {
-  color: rgba(255, 255, 255, 0.5); }
-
-.monitoring-theme .mat-pseudo-checkbox {
-  color: rgba(255, 255, 255, 0.7); }
-  .monitoring-theme .mat-pseudo-checkbox::after {
-    color: #303030; }
-
-.monitoring-theme .mat-pseudo-checkbox-checked,
-.monitoring-theme .mat-pseudo-checkbox-indeterminate,
-.monitoring-theme .mat-accent .mat-pseudo-checkbox-checked,
-.monitoring-theme .mat-accent .mat-pseudo-checkbox-indeterminate {
-  background: #616ba1; }
-
-.monitoring-theme .mat-primary .mat-pseudo-checkbox-checked,
-.monitoring-theme .mat-primary .mat-pseudo-checkbox-indeterminate {
-  background: #30323d; }
-
-.monitoring-theme .mat-warn .mat-pseudo-checkbox-checked,
-.monitoring-theme .mat-warn .mat-pseudo-checkbox-indeterminate {
-  background: #ffd896; }
-
-.monitoring-theme .mat-pseudo-checkbox-checked.mat-pseudo-checkbox-disabled,
-.monitoring-theme .mat-pseudo-checkbox-indeterminate.mat-pseudo-checkbox-disabled {
-  background: #686868; }
-
-.monitoring-theme .mat-app-background, .monitoring-theme.mat-app-background {
-  background-color: #303030;
-  color: white; }
-
-.mat-theme-loaded-marker {
-  display: none; }
-
-.monitoring-theme .mat-button, .monitoring-theme .mat-icon-button, .monitoring-theme .mat-stroked-button {
-  color: inherit;
-  background: transparent; }
-  .monitoring-theme .mat-button.mat-primary, .monitoring-theme .mat-icon-button.mat-primary, .monitoring-theme .mat-stroked-button.mat-primary {
-    color: #30323d; }
-  .monitoring-theme .mat-button.mat-accent, .monitoring-theme .mat-icon-button.mat-accent, .monitoring-theme .mat-stroked-button.mat-accent {
-    color: #616ba1; }
-  .monitoring-theme .mat-button.mat-warn, .monitoring-theme .mat-icon-button.mat-warn, .monitoring-theme .mat-stroked-button.mat-warn {
-    color: #ffd896; }
-  .monitoring-theme .mat-button.mat-primary[disabled], .monitoring-theme .mat-button.mat-accent[disabled], .monitoring-theme .mat-button.mat-warn[disabled], .monitoring-theme .mat-button[disabled][disabled], .monitoring-theme .mat-icon-button.mat-primary[disabled], .monitoring-theme .mat-icon-button.mat-accent[disabled], .monitoring-theme .mat-icon-button.mat-warn[disabled], .monitoring-theme .mat-icon-button[disabled][disabled], .monitoring-theme .mat-stroked-button.mat-primary[disabled], .monitoring-theme .mat-stroked-button.mat-accent[disabled], .monitoring-theme .mat-stroked-button.mat-warn[disabled], .monitoring-theme .mat-stroked-button[disabled][disabled] {
-    color: rgba(255, 255, 255, 0.3); }
-  .monitoring-theme .mat-button.mat-primary .mat-button-focus-overlay, .monitoring-theme .mat-icon-button.mat-primary .mat-button-focus-overlay, .monitoring-theme .mat-stroked-button.mat-primary .mat-button-focus-overlay {
-    background-color: rgba(48, 50, 61, 0.12); }
-  .monitoring-theme .mat-button.mat-accent .mat-button-focus-overlay, .monitoring-theme .mat-icon-button.mat-accent .mat-button-focus-overlay, .monitoring-theme .mat-stroked-button.mat-accent .mat-button-focus-overlay {
-    background-color: rgba(97, 107, 161, 0.12); }
-  .monitoring-theme .mat-button.mat-warn .mat-button-focus-overlay, .monitoring-theme .mat-icon-button.mat-warn .mat-button-focus-overlay, .monitoring-theme .mat-stroked-button.mat-warn .mat-button-focus-overlay {
-    background-color: rgba(255, 216, 150, 0.12); }
-  .monitoring-theme .mat-button[disabled] .mat-button-focus-overlay, .monitoring-theme .mat-icon-button[disabled] .mat-button-focus-overlay, .monitoring-theme .mat-stroked-button[disabled] .mat-button-focus-overlay {
-    background-color: transparent; }
-  .monitoring-theme .mat-button.mat-primary .mat-ripple-element, .monitoring-theme .mat-icon-button.mat-primary .mat-ripple-element, .monitoring-theme .mat-stroked-button.mat-primary .mat-ripple-element {
-    background-color: rgba(48, 50, 61, 0.1); }
-  .monitoring-theme .mat-button.mat-accent .mat-ripple-element, .monitoring-theme .mat-icon-button.mat-accent .mat-ripple-element, .monitoring-theme .mat-stroked-button.mat-accent .mat-ripple-element {
-    background-color: rgba(97, 107, 161, 0.1); }
-  .monitoring-theme .mat-button.mat-warn .mat-ripple-element, .monitoring-theme .mat-icon-button.mat-warn .mat-ripple-element, .monitoring-theme .mat-stroked-button.mat-warn .mat-ripple-element {
-    background-color: rgba(255, 216, 150, 0.1); }
-
-.monitoring-theme .mat-flat-button, .monitoring-theme .mat-raised-button, .monitoring-theme .mat-fab, .monitoring-theme .mat-mini-fab {
-  color: white;
-  background-color: #424242; }
-  .monitoring-theme .mat-flat-button.mat-primary, .monitoring-theme .mat-raised-button.mat-primary, .monitoring-theme .mat-fab.mat-primary, .monitoring-theme .mat-mini-fab.mat-primary {
-    color: white; }
-  .monitoring-theme .mat-flat-button.mat-accent, .monitoring-theme .mat-raised-button.mat-accent, .monitoring-theme .mat-fab.mat-accent, .monitoring-theme .mat-mini-fab.mat-accent {
-    color: white; }
-  .monitoring-theme .mat-flat-button.mat-warn, .monitoring-theme .mat-raised-button.mat-warn, .monitoring-theme .mat-fab.mat-warn, .monitoring-theme .mat-mini-fab.mat-warn {
-    color: black; }
-  .monitoring-theme .mat-flat-button.mat-primary[disabled], .monitoring-theme .mat-flat-button.mat-accent[disabled], .monitoring-theme .mat-flat-button.mat-warn[disabled], .monitoring-theme .mat-flat-button[disabled][disabled], .monitoring-theme .mat-raised-button.mat-primary[disabled], .monitoring-theme .mat-raised-button.mat-accent[disabled], .monitoring-theme .mat-raised-button.mat-warn[disabled], .monitoring-theme .mat-raised-button[disabled][disabled], .monitoring-theme .mat-fab.mat-primary[disabled], .monitoring-theme .mat-fab.mat-accent[disabled], .monitoring-theme .mat-fab.mat-warn[disabled], .monitoring-theme .mat-fab[disabled][disabled], .monitoring-theme .mat-mini-fab.mat-primary[disabled], .monitoring-theme .mat-mini-fab.mat-accent[disabled], .monitoring-theme .mat-mini-fab.mat-warn[disabled], .monitoring-theme .mat-mini-fab[disabled][disabled] {
-    color: rgba(255, 255, 255, 0.3); }
-  .monitoring-theme .mat-flat-button.mat-primary, .monitoring-theme .mat-raised-button.mat-primary, .monitoring-theme .mat-fab.mat-primary, .monitoring-theme .mat-mini-fab.mat-primary {
-    background-color: #30323d; }
-  .monitoring-theme .mat-flat-button.mat-accent, .monitoring-theme .mat-raised-button.mat-accent, .monitoring-theme .mat-fab.mat-accent, .monitoring-theme .mat-mini-fab.mat-accent {
-    background-color: #616ba1; }
-  .monitoring-theme .mat-flat-button.mat-warn, .monitoring-theme .mat-raised-button.mat-warn, .monitoring-theme .mat-fab.mat-warn, .monitoring-theme .mat-mini-fab.mat-warn {
-    background-color: #ffd896; }
-  .monitoring-theme .mat-flat-button.mat-primary[disabled], .monitoring-theme .mat-flat-button.mat-accent[disabled], .monitoring-theme .mat-flat-button.mat-warn[disabled], .monitoring-theme .mat-flat-button[disabled][disabled], .monitoring-theme .mat-raised-button.mat-primary[disabled], .monitoring-theme .mat-raised-button.mat-accent[disabled], .monitoring-theme .mat-raised-button.mat-warn[disabled], .monitoring-theme .mat-raised-button[disabled][disabled], .monitoring-theme .mat-fab.mat-primary[disabled], .monitoring-theme .mat-fab.mat-accent[disabled], .monitoring-theme .mat-fab.mat-warn[disabled], .monitoring-theme .mat-fab[disabled][disabled], .monitoring-theme .mat-mini-fab.mat-primary[disabled], .monitoring-theme .mat-mini-fab.mat-accent[disabled], .monitoring-theme .mat-mini-fab.mat-warn[disabled], .monitoring-theme .mat-mini-fab[disabled][disabled] {
-    background-color: rgba(255, 255, 255, 0.12); }
-  .monitoring-theme .mat-flat-button.mat-primary .mat-ripple-element, .monitoring-theme .mat-raised-button.mat-primary .mat-ripple-element, .monitoring-theme .mat-fab.mat-primary .mat-ripple-element, .monitoring-theme .mat-mini-fab.mat-primary .mat-ripple-element {
-    background-color: rgba(255, 255, 255, 0.1); }
-  .monitoring-theme .mat-flat-button.mat-accent .mat-ripple-element, .monitoring-theme .mat-raised-button.mat-accent .mat-ripple-element, .monitoring-theme .mat-fab.mat-accent .mat-ripple-element, .monitoring-theme .mat-mini-fab.mat-accent .mat-ripple-element {
-    background-color: rgba(255, 255, 255, 0.1); }
-  .monitoring-theme .mat-flat-button.mat-warn .mat-ripple-element, .monitoring-theme .mat-raised-button.mat-warn .mat-ripple-element, .monitoring-theme .mat-fab.mat-warn .mat-ripple-element, .monitoring-theme .mat-mini-fab.mat-warn .mat-ripple-element {
-    background-color: rgba(0, 0, 0, 0.1); }
-
-.monitoring-theme .mat-icon-button.mat-primary .mat-ripple-element {
-  background-color: rgba(48, 50, 61, 0.2); }
-
-.monitoring-theme .mat-icon-button.mat-accent .mat-ripple-element {
-  background-color: rgba(97, 107, 161, 0.2); }
-
-.monitoring-theme .mat-icon-button.mat-warn .mat-ripple-element {
-  background-color: rgba(255, 216, 150, 0.2); }
-
-.monitoring-theme .mat-checkbox-frame {
-  border-color: rgba(255, 255, 255, 0.7); }
-
-.monitoring-theme .mat-checkbox-checkmark {
-  fill: #303030; }
-
-.monitoring-theme .mat-checkbox-checkmark-path {
-  stroke: #303030 !important; }
-  @media screen and (-ms-high-contrast: black-on-white) {
-    .monitoring-theme .mat-checkbox-checkmark-path {
-      stroke: #000 !important; } }
-
-.monitoring-theme .mat-checkbox-mixedmark {
-  background-color: #303030; }
-
-.monitoring-theme .mat-checkbox-indeterminate.mat-primary .mat-checkbox-background, .monitoring-theme .mat-checkbox-checked.mat-primary .mat-checkbox-background {
-  background-color: #30323d; }
-
-.monitoring-theme .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .monitoring-theme .mat-checkbox-checked.mat-accent .mat-checkbox-background {
-  background-color: #616ba1; }
-
-.monitoring-theme .mat-checkbox-indeterminate.mat-warn .mat-checkbox-background, .monitoring-theme .mat-checkbox-checked.mat-warn .mat-checkbox-background {
-  background-color: #ffd896; }
-
-.monitoring-theme .mat-checkbox-disabled.mat-checkbox-checked .mat-checkbox-background, .monitoring-theme .mat-checkbox-disabled.mat-checkbox-indeterminate .mat-checkbox-background {
-  background-color: #686868; }
-
-.monitoring-theme .mat-checkbox-disabled:not(.mat-checkbox-checked) .mat-checkbox-frame {
-  border-color: #686868; }
-
-.monitoring-theme .mat-checkbox-disabled .mat-checkbox-label {
-  color: #686868; }
-
-@media screen and (-ms-high-contrast: active) {
-  .monitoring-theme .mat-checkbox-disabled {
-    opacity: 0.5; } }
-
-@media screen and (-ms-high-contrast: active) {
-  .monitoring-theme .mat-checkbox-background {
-    background: none; } }
-
-.monitoring-theme .mat-checkbox:not(.mat-checkbox-disabled).mat-primary .mat-checkbox-ripple .mat-ripple-element {
-  background-color: rgba(48, 50, 61, 0.26); }
-
-.monitoring-theme .mat-checkbox:not(.mat-checkbox-disabled).mat-accent .mat-checkbox-ripple .mat-ripple-element {
-  background-color: rgba(97, 107, 161, 0.26); }
-
-.monitoring-theme .mat-checkbox:not(.mat-checkbox-disabled).mat-warn .mat-checkbox-ripple .mat-ripple-element {
-  background-color: rgba(255, 216, 150, 0.26); }
-
-.monitoring-theme .mat-table {
-  background: #424242; }
-
-.monitoring-theme .mat-table thead, .monitoring-theme .mat-table tbody, .monitoring-theme .mat-table tfoot,
-.monitoring-theme mat-header-row, .monitoring-theme mat-row, .monitoring-theme mat-footer-row,
-.monitoring-theme [mat-header-row], .monitoring-theme [mat-row], .monitoring-theme [mat-footer-row],
-.monitoring-theme .mat-table-sticky {
-  background: inherit; }
-
-.monitoring-theme mat-row, .monitoring-theme mat-header-row, .monitoring-theme mat-footer-row,
-.monitoring-theme th.mat-header-cell, .monitoring-theme td.mat-cell, .monitoring-theme td.mat-footer-cell {
-  border-bottom-color: rgba(255, 255, 255, 0.12); }
-
-.monitoring-theme .mat-header-cell {
-  color: rgba(255, 255, 255, 0.7); }
-
-.monitoring-theme .mat-cell, .monitoring-theme .mat-footer-cell {
-  color: white; }
-
-.monitoring-theme .mat-button-toggle {
-  background-color: #30323d;
-  color: white; }
-
-.monitoring-theme .mat-button-toggle-checked {
-  background-color: #616ba1;
-  color: white; }
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 14px;
+  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: 'liga'; }
 
 .monitoring-theme .mat-ripple-element {
   background-color: rgba(255, 255, 255, 0.1); }
@@ -837,13 +679,13 @@ textarea.cdk-textarea-autosize-measuring {
     color: rgba(255, 255, 255, 0.5); }
 
 .monitoring-theme .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
-  color: #30323d; }
+  color: #455a64; }
 
 .monitoring-theme .mat-accent .mat-option.mat-selected:not(.mat-option-disabled) {
-  color: #616ba1; }
+  color: #9e9e9e; }
 
 .monitoring-theme .mat-warn .mat-option.mat-selected:not(.mat-option-disabled) {
-  color: #ffd896; }
+  color: #ff6d00; }
 
 .monitoring-theme .mat-optgroup-label {
   color: rgba(255, 255, 255, 0.7); }
@@ -860,15 +702,15 @@ textarea.cdk-textarea-autosize-measuring {
 .monitoring-theme .mat-pseudo-checkbox-indeterminate,
 .monitoring-theme .mat-accent .mat-pseudo-checkbox-checked,
 .monitoring-theme .mat-accent .mat-pseudo-checkbox-indeterminate {
-  background: #616ba1; }
+  background: #9e9e9e; }
 
 .monitoring-theme .mat-primary .mat-pseudo-checkbox-checked,
 .monitoring-theme .mat-primary .mat-pseudo-checkbox-indeterminate {
-  background: #30323d; }
+  background: #455a64; }
 
 .monitoring-theme .mat-warn .mat-pseudo-checkbox-checked,
 .monitoring-theme .mat-warn .mat-pseudo-checkbox-indeterminate {
-  background: #ffd896; }
+  background: #ff6d00; }
 
 .monitoring-theme .mat-pseudo-checkbox-checked.mat-pseudo-checkbox-disabled,
 .monitoring-theme .mat-pseudo-checkbox-indeterminate.mat-pseudo-checkbox-disabled {
@@ -891,15 +733,15 @@ textarea.cdk-textarea-autosize-measuring {
 
 .monitoring-theme .mat-badge-content {
   color: white;
-  background: #30323d; }
+  background: #455a64; }
 
 .monitoring-theme .mat-badge-accent .mat-badge-content {
-  background: #616ba1;
-  color: white; }
+  background: #9e9e9e;
+  color: rgba(0, 0, 0, 0.87); }
 
 .monitoring-theme .mat-badge-warn .mat-badge-content {
   color: black;
-  background: #ffd896; }
+  background: #ff6d00; }
 
 .monitoring-theme .mat-badge {
   position: relative; }
@@ -1059,27 +901,27 @@ textarea.cdk-textarea-autosize-measuring {
   color: inherit;
   background: transparent; }
   .monitoring-theme .mat-button.mat-primary, .monitoring-theme .mat-icon-button.mat-primary, .monitoring-theme .mat-stroked-button.mat-primary {
-    color: #30323d; }
+    color: #455a64; }
   .monitoring-theme .mat-button.mat-accent, .monitoring-theme .mat-icon-button.mat-accent, .monitoring-theme .mat-stroked-button.mat-accent {
-    color: #616ba1; }
+    color: #9e9e9e; }
   .monitoring-theme .mat-button.mat-warn, .monitoring-theme .mat-icon-button.mat-warn, .monitoring-theme .mat-stroked-button.mat-warn {
-    color: #ffd896; }
+    color: #ff6d00; }
   .monitoring-theme .mat-button.mat-primary[disabled], .monitoring-theme .mat-button.mat-accent[disabled], .monitoring-theme .mat-button.mat-warn[disabled], .monitoring-theme .mat-button[disabled][disabled], .monitoring-theme .mat-icon-button.mat-primary[disabled], .monitoring-theme .mat-icon-button.mat-accent[disabled], .monitoring-theme .mat-icon-button.mat-warn[disabled], .monitoring-theme .mat-icon-button[disabled][disabled], .monitoring-theme .mat-stroked-button.mat-primary[disabled], .monitoring-theme .mat-stroked-button.mat-accent[disabled], .monitoring-theme .mat-stroked-button.mat-warn[disabled], .monitoring-theme .mat-stroked-button[disabled][disabled] {
     color: rgba(255, 255, 255, 0.3); }
   .monitoring-theme .mat-button.mat-primary .mat-button-focus-overlay, .monitoring-theme .mat-icon-button.mat-primary .mat-button-focus-overlay, .monitoring-theme .mat-stroked-button.mat-primary .mat-button-focus-overlay {
-    background-color: rgba(48, 50, 61, 0.12); }
+    background-color: rgba(69, 90, 100, 0.12); }
   .monitoring-theme .mat-button.mat-accent .mat-button-focus-overlay, .monitoring-theme .mat-icon-button.mat-accent .mat-button-focus-overlay, .monitoring-theme .mat-stroked-button.mat-accent .mat-button-focus-overlay {
-    background-color: rgba(97, 107, 161, 0.12); }
+    background-color: rgba(158, 158, 158, 0.12); }
   .monitoring-theme .mat-button.mat-warn .mat-button-focus-overlay, .monitoring-theme .mat-icon-button.mat-warn .mat-button-focus-overlay, .monitoring-theme .mat-stroked-button.mat-warn .mat-button-focus-overlay {
-    background-color: rgba(255, 216, 150, 0.12); }
+    background-color: rgba(255, 109, 0, 0.12); }
   .monitoring-theme .mat-button[disabled] .mat-button-focus-overlay, .monitoring-theme .mat-icon-button[disabled] .mat-button-focus-overlay, .monitoring-theme .mat-stroked-button[disabled] .mat-button-focus-overlay {
     background-color: transparent; }
   .monitoring-theme .mat-button.mat-primary .mat-ripple-element, .monitoring-theme .mat-icon-button.mat-primary .mat-ripple-element, .monitoring-theme .mat-stroked-button.mat-primary .mat-ripple-element {
-    background-color: rgba(48, 50, 61, 0.1); }
+    background-color: rgba(69, 90, 100, 0.1); }
   .monitoring-theme .mat-button.mat-accent .mat-ripple-element, .monitoring-theme .mat-icon-button.mat-accent .mat-ripple-element, .monitoring-theme .mat-stroked-button.mat-accent .mat-ripple-element {
-    background-color: rgba(97, 107, 161, 0.1); }
+    background-color: rgba(158, 158, 158, 0.1); }
   .monitoring-theme .mat-button.mat-warn .mat-ripple-element, .monitoring-theme .mat-icon-button.mat-warn .mat-ripple-element, .monitoring-theme .mat-stroked-button.mat-warn .mat-ripple-element {
-    background-color: rgba(255, 216, 150, 0.1); }
+    background-color: rgba(255, 109, 0, 0.1); }
 
 .monitoring-theme .mat-flat-button, .monitoring-theme .mat-raised-button, .monitoring-theme .mat-fab, .monitoring-theme .mat-mini-fab {
   color: white;
@@ -1087,34 +929,34 @@ textarea.cdk-textarea-autosize-measuring {
   .monitoring-theme .mat-flat-button.mat-primary, .monitoring-theme .mat-raised-button.mat-primary, .monitoring-theme .mat-fab.mat-primary, .monitoring-theme .mat-mini-fab.mat-primary {
     color: white; }
   .monitoring-theme .mat-flat-button.mat-accent, .monitoring-theme .mat-raised-button.mat-accent, .monitoring-theme .mat-fab.mat-accent, .monitoring-theme .mat-mini-fab.mat-accent {
-    color: white; }
+    color: rgba(0, 0, 0, 0.87); }
   .monitoring-theme .mat-flat-button.mat-warn, .monitoring-theme .mat-raised-button.mat-warn, .monitoring-theme .mat-fab.mat-warn, .monitoring-theme .mat-mini-fab.mat-warn {
     color: black; }
   .monitoring-theme .mat-flat-button.mat-primary[disabled], .monitoring-theme .mat-flat-button.mat-accent[disabled], .monitoring-theme .mat-flat-button.mat-warn[disabled], .monitoring-theme .mat-flat-button[disabled][disabled], .monitoring-theme .mat-raised-button.mat-primary[disabled], .monitoring-theme .mat-raised-button.mat-accent[disabled], .monitoring-theme .mat-raised-button.mat-warn[disabled], .monitoring-theme .mat-raised-button[disabled][disabled], .monitoring-theme .mat-fab.mat-primary[disabled], .monitoring-theme .mat-fab.mat-accent[disabled], .monitoring-theme .mat-fab.mat-warn[disabled], .monitoring-theme .mat-fab[disabled][disabled], .monitoring-theme .mat-mini-fab.mat-primary[disabled], .monitoring-theme .mat-mini-fab.mat-accent[disabled], .monitoring-theme .mat-mini-fab.mat-warn[disabled], .monitoring-theme .mat-mini-fab[disabled][disabled] {
     color: rgba(255, 255, 255, 0.3); }
   .monitoring-theme .mat-flat-button.mat-primary, .monitoring-theme .mat-raised-button.mat-primary, .monitoring-theme .mat-fab.mat-primary, .monitoring-theme .mat-mini-fab.mat-primary {
-    background-color: #30323d; }
+    background-color: #455a64; }
   .monitoring-theme .mat-flat-button.mat-accent, .monitoring-theme .mat-raised-button.mat-accent, .monitoring-theme .mat-fab.mat-accent, .monitoring-theme .mat-mini-fab.mat-accent {
-    background-color: #616ba1; }
+    background-color: #9e9e9e; }
   .monitoring-theme .mat-flat-button.mat-warn, .monitoring-theme .mat-raised-button.mat-warn, .monitoring-theme .mat-fab.mat-warn, .monitoring-theme .mat-mini-fab.mat-warn {
-    background-color: #ffd896; }
+    background-color: #ff6d00; }
   .monitoring-theme .mat-flat-button.mat-primary[disabled], .monitoring-theme .mat-flat-button.mat-accent[disabled], .monitoring-theme .mat-flat-button.mat-warn[disabled], .monitoring-theme .mat-flat-button[disabled][disabled], .monitoring-theme .mat-raised-button.mat-primary[disabled], .monitoring-theme .mat-raised-button.mat-accent[disabled], .monitoring-theme .mat-raised-button.mat-warn[disabled], .monitoring-theme .mat-raised-button[disabled][disabled], .monitoring-theme .mat-fab.mat-primary[disabled], .monitoring-theme .mat-fab.mat-accent[disabled], .monitoring-theme .mat-fab.mat-warn[disabled], .monitoring-theme .mat-fab[disabled][disabled], .monitoring-theme .mat-mini-fab.mat-primary[disabled], .monitoring-theme .mat-mini-fab.mat-accent[disabled], .monitoring-theme .mat-mini-fab.mat-warn[disabled], .monitoring-theme .mat-mini-fab[disabled][disabled] {
     background-color: rgba(255, 255, 255, 0.12); }
   .monitoring-theme .mat-flat-button.mat-primary .mat-ripple-element, .monitoring-theme .mat-raised-button.mat-primary .mat-ripple-element, .monitoring-theme .mat-fab.mat-primary .mat-ripple-element, .monitoring-theme .mat-mini-fab.mat-primary .mat-ripple-element {
     background-color: rgba(255, 255, 255, 0.1); }
   .monitoring-theme .mat-flat-button.mat-accent .mat-ripple-element, .monitoring-theme .mat-raised-button.mat-accent .mat-ripple-element, .monitoring-theme .mat-fab.mat-accent .mat-ripple-element, .monitoring-theme .mat-mini-fab.mat-accent .mat-ripple-element {
-    background-color: rgba(255, 255, 255, 0.1); }
+    background-color: rgba(0, 0, 0, 0.1); }
   .monitoring-theme .mat-flat-button.mat-warn .mat-ripple-element, .monitoring-theme .mat-raised-button.mat-warn .mat-ripple-element, .monitoring-theme .mat-fab.mat-warn .mat-ripple-element, .monitoring-theme .mat-mini-fab.mat-warn .mat-ripple-element {
     background-color: rgba(0, 0, 0, 0.1); }
 
 .monitoring-theme .mat-icon-button.mat-primary .mat-ripple-element {
-  background-color: rgba(48, 50, 61, 0.2); }
+  background-color: rgba(69, 90, 100, 0.2); }
 
 .monitoring-theme .mat-icon-button.mat-accent .mat-ripple-element {
-  background-color: rgba(97, 107, 161, 0.2); }
+  background-color: rgba(158, 158, 158, 0.2); }
 
 .monitoring-theme .mat-icon-button.mat-warn .mat-ripple-element {
-  background-color: rgba(255, 216, 150, 0.2); }
+  background-color: rgba(255, 109, 0, 0.2); }
 
 .monitoring-theme .mat-button-toggle {
   color: rgba(255, 255, 255, 0.5); }
@@ -1154,13 +996,13 @@ textarea.cdk-textarea-autosize-measuring {
   background-color: #303030; }
 
 .monitoring-theme .mat-checkbox-indeterminate.mat-primary .mat-checkbox-background, .monitoring-theme .mat-checkbox-checked.mat-primary .mat-checkbox-background {
-  background-color: #30323d; }
+  background-color: #455a64; }
 
 .monitoring-theme .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .monitoring-theme .mat-checkbox-checked.mat-accent .mat-checkbox-background {
-  background-color: #616ba1; }
+  background-color: #9e9e9e; }
 
 .monitoring-theme .mat-checkbox-indeterminate.mat-warn .mat-checkbox-background, .monitoring-theme .mat-checkbox-checked.mat-warn .mat-checkbox-background {
-  background-color: #ffd896; }
+  background-color: #ff6d00; }
 
 .monitoring-theme .mat-checkbox-disabled.mat-checkbox-checked .mat-checkbox-background, .monitoring-theme .mat-checkbox-disabled.mat-checkbox-indeterminate .mat-checkbox-background {
   background-color: #686868; }
@@ -1180,13 +1022,13 @@ textarea.cdk-textarea-autosize-measuring {
     background: none; } }
 
 .monitoring-theme .mat-checkbox:not(.mat-checkbox-disabled).mat-primary .mat-checkbox-ripple .mat-ripple-element {
-  background-color: rgba(48, 50, 61, 0.26); }
+  background-color: rgba(69, 90, 100, 0.26); }
 
 .monitoring-theme .mat-checkbox:not(.mat-checkbox-disabled).mat-accent .mat-checkbox-ripple .mat-ripple-element {
-  background-color: rgba(97, 107, 161, 0.26); }
+  background-color: rgba(158, 158, 158, 0.26); }
 
 .monitoring-theme .mat-checkbox:not(.mat-checkbox-disabled).mat-warn .mat-checkbox-ripple .mat-ripple-element {
-  background-color: rgba(255, 216, 150, 0.26); }
+  background-color: rgba(255, 109, 0, 0.26); }
 
 .monitoring-theme .mat-chip.mat-standard-chip {
   background-color: #616161;
@@ -1198,7 +1040,7 @@ textarea.cdk-textarea-autosize-measuring {
     opacity: 0.54; }
 
 .monitoring-theme .mat-chip.mat-standard-chip.mat-chip-selected.mat-primary {
-  background-color: #30323d;
+  background-color: #455a64;
   color: white; }
   .monitoring-theme .mat-chip.mat-standard-chip.mat-chip-selected.mat-primary .mat-chip-remove {
     color: white;
@@ -1207,7 +1049,7 @@ textarea.cdk-textarea-autosize-measuring {
     opacity: 0.54; }
 
 .monitoring-theme .mat-chip.mat-standard-chip.mat-chip-selected.mat-warn {
-  background-color: #ffd896;
+  background-color: #ff6d00;
   color: black; }
   .monitoring-theme .mat-chip.mat-standard-chip.mat-chip-selected.mat-warn .mat-chip-remove {
     color: black;
@@ -1216,10 +1058,10 @@ textarea.cdk-textarea-autosize-measuring {
     opacity: 0.54; }
 
 .monitoring-theme .mat-chip.mat-standard-chip.mat-chip-selected.mat-accent {
-  background-color: #616ba1;
-  color: white; }
+  background-color: #9e9e9e;
+  color: rgba(0, 0, 0, 0.87); }
   .monitoring-theme .mat-chip.mat-standard-chip.mat-chip-selected.mat-accent .mat-chip-remove {
-    color: white;
+    color: rgba(0, 0, 0, 0.87);
     opacity: 0.4; }
   .monitoring-theme .mat-chip.mat-standard-chip.mat-chip-selected.mat-accent .mat-chip-remove:hover {
     opacity: 0.54; }
@@ -1279,11 +1121,11 @@ textarea.cdk-textarea-autosize-measuring {
   border-color: rgba(255, 255, 255, 0.3); }
 
 .monitoring-theme .mat-calendar-body-selected {
-  background-color: #30323d;
+  background-color: #455a64;
   color: white; }
 
 .monitoring-theme .mat-calendar-body-disabled > .mat-calendar-body-selected {
-  background-color: rgba(48, 50, 61, 0.4); }
+  background-color: rgba(69, 90, 100, 0.4); }
 
 .monitoring-theme .mat-calendar-body-today.mat-calendar-body-selected {
   box-shadow: inset 0 0 0 1px white; }
@@ -1292,26 +1134,26 @@ textarea.cdk-textarea-autosize-measuring {
   background-color: #424242;
   color: white; }
   .monitoring-theme .mat-datepicker-content.mat-accent .mat-calendar-body-selected {
-    background-color: #616ba1;
-    color: white; }
+    background-color: #9e9e9e;
+    color: rgba(0, 0, 0, 0.87); }
   .monitoring-theme .mat-datepicker-content.mat-accent .mat-calendar-body-disabled > .mat-calendar-body-selected {
-    background-color: rgba(97, 107, 161, 0.4); }
+    background-color: rgba(158, 158, 158, 0.4); }
   .monitoring-theme .mat-datepicker-content.mat-accent .mat-calendar-body-today.mat-calendar-body-selected {
-    box-shadow: inset 0 0 0 1px white; }
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.87); }
   .monitoring-theme .mat-datepicker-content.mat-warn .mat-calendar-body-selected {
-    background-color: #ffd896;
+    background-color: #ff6d00;
     color: black; }
   .monitoring-theme .mat-datepicker-content.mat-warn .mat-calendar-body-disabled > .mat-calendar-body-selected {
-    background-color: rgba(255, 216, 150, 0.4); }
+    background-color: rgba(255, 109, 0, 0.4); }
   .monitoring-theme .mat-datepicker-content.mat-warn .mat-calendar-body-today.mat-calendar-body-selected {
     box-shadow: inset 0 0 0 1px black; }
 
 .monitoring-theme .mat-datepicker-toggle-active {
-  color: #30323d; }
+  color: #455a64; }
   .monitoring-theme .mat-datepicker-toggle-active.mat-accent {
-    color: #616ba1; }
+    color: #9e9e9e; }
   .monitoring-theme .mat-datepicker-toggle-active.mat-warn {
-    color: #ffd896; }
+    color: #ff6d00; }
 
 .monitoring-theme .mat-dialog-container {
   background: #424242;
@@ -1358,37 +1200,37 @@ textarea.cdk-textarea-autosize-measuring {
   color: rgba(255, 255, 255, 0.7); }
 
 .monitoring-theme .mat-form-field.mat-focused .mat-form-field-label {
-  color: #30323d; }
+  color: #455a64; }
   .monitoring-theme .mat-form-field.mat-focused .mat-form-field-label.mat-accent {
-    color: #616ba1; }
+    color: #9e9e9e; }
   .monitoring-theme .mat-form-field.mat-focused .mat-form-field-label.mat-warn {
-    color: #ffd896; }
+    color: #ff6d00; }
 
 .monitoring-theme .mat-focused .mat-form-field-required-marker {
-  color: #616ba1; }
+  color: #9e9e9e; }
 
 .monitoring-theme .mat-form-field-ripple {
   background-color: white; }
 
 .monitoring-theme .mat-form-field.mat-focused .mat-form-field-ripple {
-  background-color: #30323d; }
+  background-color: #455a64; }
   .monitoring-theme .mat-form-field.mat-focused .mat-form-field-ripple.mat-accent {
-    background-color: #616ba1; }
+    background-color: #9e9e9e; }
   .monitoring-theme .mat-form-field.mat-focused .mat-form-field-ripple.mat-warn {
-    background-color: #ffd896; }
+    background-color: #ff6d00; }
 
 .monitoring-theme .mat-form-field.mat-form-field-invalid .mat-form-field-label {
-  color: #ffd896; }
+  color: #ff6d00; }
   .monitoring-theme .mat-form-field.mat-form-field-invalid .mat-form-field-label.mat-accent,
   .monitoring-theme .mat-form-field.mat-form-field-invalid .mat-form-field-label .mat-form-field-required-marker {
-    color: #ffd896; }
+    color: #ff6d00; }
 
 .monitoring-theme .mat-form-field.mat-form-field-invalid .mat-form-field-ripple,
 .monitoring-theme .mat-form-field.mat-form-field-invalid .mat-form-field-ripple.mat-accent {
-  background-color: #ffd896; }
+  background-color: #ff6d00; }
 
 .monitoring-theme .mat-error {
-  color: #ffd896; }
+  color: #ff6d00; }
 
 .monitoring-theme .mat-form-field-appearance-legacy .mat-form-field-label {
   color: rgba(255, 255, 255, 0.7); }
@@ -1434,16 +1276,16 @@ textarea.cdk-textarea-autosize-measuring {
   color: white; }
 
 .monitoring-theme .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
-  color: #30323d; }
+  color: #455a64; }
 
 .monitoring-theme .mat-form-field-appearance-outline.mat-focused.mat-accent .mat-form-field-outline-thick {
-  color: #616ba1; }
+  color: #9e9e9e; }
 
 .monitoring-theme .mat-form-field-appearance-outline.mat-focused.mat-warn .mat-form-field-outline-thick {
-  color: #ffd896; }
+  color: #ff6d00; }
 
 .monitoring-theme .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick {
-  color: #ffd896; }
+  color: #ff6d00; }
 
 .monitoring-theme .mat-form-field-appearance-outline.mat-form-field-disabled .mat-form-field-label {
   color: rgba(255, 255, 255, 0.5); }
@@ -1452,19 +1294,19 @@ textarea.cdk-textarea-autosize-measuring {
   color: rgba(255, 255, 255, 0.15); }
 
 .monitoring-theme .mat-icon.mat-primary {
-  color: #30323d; }
+  color: #455a64; }
 
 .monitoring-theme .mat-icon.mat-accent {
-  color: #616ba1; }
+  color: #9e9e9e; }
 
 .monitoring-theme .mat-icon.mat-warn {
-  color: #ffd896; }
+  color: #ff6d00; }
 
 .monitoring-theme .mat-input-element:disabled {
   color: rgba(255, 255, 255, 0.5); }
 
 .monitoring-theme .mat-input-element {
-  caret-color: #30323d; }
+  caret-color: #455a64; }
   .monitoring-theme .mat-input-element::placeholder {
     color: rgba(255, 255, 255, 0.5); }
   .monitoring-theme .mat-input-element::-moz-placeholder {
@@ -1475,11 +1317,11 @@ textarea.cdk-textarea-autosize-measuring {
     color: rgba(255, 255, 255, 0.5); }
 
 .monitoring-theme .mat-accent .mat-input-element {
-  caret-color: #616ba1; }
+  caret-color: #9e9e9e; }
 
 .monitoring-theme .mat-warn .mat-input-element,
 .monitoring-theme .mat-form-field-invalid .mat-input-element {
-  caret-color: #ffd896; }
+  caret-color: #ff6d00; }
 
 .monitoring-theme .mat-list .mat-list-item, .monitoring-theme .mat-nav-list .mat-list-item, .monitoring-theme .mat-selection-list .mat-list-item {
   color: white; }
@@ -1540,70 +1382,70 @@ textarea.cdk-textarea-autosize-measuring {
   border-color: rgba(255, 255, 255, 0.5); }
 
 .monitoring-theme .mat-progress-bar-background {
-  fill: #787982; }
+  fill: #90a4ae; }
 
 .monitoring-theme .mat-progress-bar-buffer {
-  background-color: #787982; }
+  background-color: #90a4ae; }
 
 .monitoring-theme .mat-progress-bar-fill::after {
-  background-color: #30323d; }
+  background-color: #455a64; }
 
 .monitoring-theme .mat-progress-bar.mat-accent .mat-progress-bar-background {
-  fill: #d0d3e3; }
+  fill: whitesmoke; }
 
 .monitoring-theme .mat-progress-bar.mat-accent .mat-progress-bar-buffer {
-  background-color: #d0d3e3; }
+  background-color: whitesmoke; }
 
 .monitoring-theme .mat-progress-bar.mat-accent .mat-progress-bar-fill::after {
-  background-color: #616ba1; }
+  background-color: #9e9e9e; }
 
 .monitoring-theme .mat-progress-bar.mat-warn .mat-progress-bar-background {
-  fill: #fbedc2; }
+  fill: #ffe0b2; }
 
 .monitoring-theme .mat-progress-bar.mat-warn .mat-progress-bar-buffer {
-  background-color: #fbedc2; }
+  background-color: #ffe0b2; }
 
 .monitoring-theme .mat-progress-bar.mat-warn .mat-progress-bar-fill::after {
-  background-color: #ffd896; }
+  background-color: #ff6d00; }
 
 .monitoring-theme .mat-progress-spinner circle, .monitoring-theme .mat-spinner circle {
-  stroke: #30323d; }
+  stroke: #455a64; }
 
 .monitoring-theme .mat-progress-spinner.mat-accent circle, .monitoring-theme .mat-spinner.mat-accent circle {
-  stroke: #616ba1; }
+  stroke: #9e9e9e; }
 
 .monitoring-theme .mat-progress-spinner.mat-warn circle, .monitoring-theme .mat-spinner.mat-warn circle {
-  stroke: #ffd896; }
+  stroke: #ff6d00; }
 
 .monitoring-theme .mat-radio-outer-circle {
   border-color: rgba(255, 255, 255, 0.7); }
 
 .monitoring-theme .mat-radio-button.mat-primary.mat-radio-checked .mat-radio-outer-circle {
-  border-color: #30323d; }
+  border-color: #455a64; }
 
 .monitoring-theme .mat-radio-button.mat-primary .mat-radio-inner-circle {
-  background-color: #30323d; }
+  background-color: #455a64; }
 
 .monitoring-theme .mat-radio-button.mat-primary .mat-radio-ripple .mat-ripple-element {
-  background-color: rgba(48, 50, 61, 0.26); }
+  background-color: rgba(69, 90, 100, 0.26); }
 
 .monitoring-theme .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
-  border-color: #616ba1; }
+  border-color: #9e9e9e; }
 
 .monitoring-theme .mat-radio-button.mat-accent .mat-radio-inner-circle {
-  background-color: #616ba1; }
+  background-color: #9e9e9e; }
 
 .monitoring-theme .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
-  background-color: rgba(97, 107, 161, 0.26); }
+  background-color: rgba(158, 158, 158, 0.26); }
 
 .monitoring-theme .mat-radio-button.mat-warn.mat-radio-checked .mat-radio-outer-circle {
-  border-color: #ffd896; }
+  border-color: #ff6d00; }
 
 .monitoring-theme .mat-radio-button.mat-warn .mat-radio-inner-circle {
-  background-color: #ffd896; }
+  background-color: #ff6d00; }
 
 .monitoring-theme .mat-radio-button.mat-warn .mat-radio-ripple .mat-ripple-element {
-  background-color: rgba(255, 216, 150, 0.26); }
+  background-color: rgba(255, 109, 0, 0.26); }
 
 .monitoring-theme .mat-radio-button.mat-radio-disabled.mat-radio-checked .mat-radio-outer-circle,
 .monitoring-theme .mat-radio-button.mat-radio-disabled .mat-radio-outer-circle {
@@ -1635,16 +1477,16 @@ textarea.cdk-textarea-autosize-measuring {
   background: rgba(255, 255, 255, 0.12); }
 
 .monitoring-theme .mat-form-field.mat-focused.mat-primary .mat-select-arrow {
-  color: #30323d; }
+  color: #455a64; }
 
 .monitoring-theme .mat-form-field.mat-focused.mat-accent .mat-select-arrow {
-  color: #616ba1; }
+  color: #9e9e9e; }
 
 .monitoring-theme .mat-form-field.mat-focused.mat-warn .mat-select-arrow {
-  color: #ffd896; }
+  color: #ff6d00; }
 
 .monitoring-theme .mat-form-field .mat-select.mat-select-invalid .mat-select-arrow {
-  color: #ffd896; }
+  color: #ff6d00; }
 
 .monitoring-theme .mat-form-field .mat-select.mat-select-disabled .mat-select-arrow {
   color: rgba(255, 255, 255, 0.5); }
@@ -1663,40 +1505,40 @@ textarea.cdk-textarea-autosize-measuring {
   background-color: rgba(189, 189, 189, 0.6); }
 
 .monitoring-theme .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
-  background-color: #b0b5d0; }
+  background-color: #eeeeee; }
 
 .monitoring-theme .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
-  background-color: rgba(176, 181, 208, 0.5); }
+  background-color: rgba(238, 238, 238, 0.5); }
 
 .monitoring-theme .mat-slide-toggle:not(.mat-checked) .mat-ripple-element {
   background-color: white; }
 
 .monitoring-theme .mat-slide-toggle .mat-ripple-element {
-  background-color: #b0b5d0; }
+  background-color: #eeeeee; }
 
 .monitoring-theme .mat-slide-toggle.mat-primary.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
-  background-color: #9fa0a6; }
+  background-color: #b0bec5; }
 
 .monitoring-theme .mat-slide-toggle.mat-primary.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
-  background-color: rgba(159, 160, 166, 0.5); }
+  background-color: rgba(176, 190, 197, 0.5); }
 
 .monitoring-theme .mat-slide-toggle.mat-primary:not(.mat-checked) .mat-ripple-element {
   background-color: white; }
 
 .monitoring-theme .mat-slide-toggle.mat-primary .mat-ripple-element {
-  background-color: #9fa0a6; }
+  background-color: #b0bec5; }
 
 .monitoring-theme .mat-slide-toggle.mat-warn.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
-  background-color: #f8e199; }
+  background-color: #ffcc80; }
 
 .monitoring-theme .mat-slide-toggle.mat-warn.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
-  background-color: rgba(248, 225, 153, 0.5); }
+  background-color: rgba(255, 204, 128, 0.5); }
 
 .monitoring-theme .mat-slide-toggle.mat-warn:not(.mat-checked) .mat-ripple-element {
   background-color: white; }
 
 .monitoring-theme .mat-slide-toggle.mat-warn .mat-ripple-element {
-  background-color: #f8e199; }
+  background-color: #ffcc80; }
 
 .monitoring-theme .mat-disabled .mat-slide-toggle-thumb {
   background-color: #424242; }
@@ -1716,7 +1558,7 @@ textarea.cdk-textarea-autosize-measuring {
 .monitoring-theme .mat-primary .mat-slider-track-fill,
 .monitoring-theme .mat-primary .mat-slider-thumb,
 .monitoring-theme .mat-primary .mat-slider-thumb-label {
-  background-color: #30323d; }
+  background-color: #455a64; }
 
 .monitoring-theme .mat-primary .mat-slider-thumb-label-text {
   color: white; }
@@ -1724,21 +1566,21 @@ textarea.cdk-textarea-autosize-measuring {
 .monitoring-theme .mat-accent .mat-slider-track-fill,
 .monitoring-theme .mat-accent .mat-slider-thumb,
 .monitoring-theme .mat-accent .mat-slider-thumb-label {
-  background-color: #616ba1; }
+  background-color: #9e9e9e; }
 
 .monitoring-theme .mat-accent .mat-slider-thumb-label-text {
-  color: white; }
+  color: rgba(0, 0, 0, 0.87); }
 
 .monitoring-theme .mat-warn .mat-slider-track-fill,
 .monitoring-theme .mat-warn .mat-slider-thumb,
 .monitoring-theme .mat-warn .mat-slider-thumb-label {
-  background-color: #ffd896; }
+  background-color: #ff6d00; }
 
 .monitoring-theme .mat-warn .mat-slider-thumb-label-text {
   color: black; }
 
 .monitoring-theme .mat-slider-focus-ring {
-  background-color: rgba(97, 107, 161, 0.2); }
+  background-color: rgba(158, 158, 158, 0.2); }
 
 .monitoring-theme .mat-slider:hover .mat-slider-track-background,
 .monitoring-theme .cdk-focused .mat-slider-track-background {
@@ -1791,7 +1633,7 @@ textarea.cdk-textarea-autosize-measuring {
   color: rgba(255, 255, 255, 0.5); }
 
 .monitoring-theme .mat-step-header .mat-step-icon {
-  background-color: #30323d;
+  background-color: #455a64;
   color: white; }
 
 .monitoring-theme .mat-step-header .mat-step-icon-not-touched {
@@ -1841,10 +1683,10 @@ textarea.cdk-textarea-autosize-measuring {
 .monitoring-theme .mat-tab-group.mat-primary .mat-tab-label.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled),
 .monitoring-theme .mat-tab-group.mat-primary .mat-tab-link.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled), .monitoring-theme .mat-tab-nav-bar.mat-primary .mat-tab-label.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled),
 .monitoring-theme .mat-tab-nav-bar.mat-primary .mat-tab-link.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled) {
-  background-color: rgba(120, 121, 130, 0.3); }
+  background-color: rgba(144, 164, 174, 0.3); }
 
 .monitoring-theme .mat-tab-group.mat-primary .mat-ink-bar, .monitoring-theme .mat-tab-nav-bar.mat-primary .mat-ink-bar {
-  background-color: #30323d; }
+  background-color: #455a64; }
 
 .monitoring-theme .mat-tab-group.mat-primary.mat-background-primary .mat-ink-bar, .monitoring-theme .mat-tab-nav-bar.mat-primary.mat-background-primary .mat-ink-bar {
   background-color: white; }
@@ -1852,21 +1694,21 @@ textarea.cdk-textarea-autosize-measuring {
 .monitoring-theme .mat-tab-group.mat-accent .mat-tab-label.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled),
 .monitoring-theme .mat-tab-group.mat-accent .mat-tab-link.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled), .monitoring-theme .mat-tab-nav-bar.mat-accent .mat-tab-label.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled),
 .monitoring-theme .mat-tab-nav-bar.mat-accent .mat-tab-link.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled) {
-  background-color: rgba(208, 211, 227, 0.3); }
+  background-color: rgba(245, 245, 245, 0.3); }
 
 .monitoring-theme .mat-tab-group.mat-accent .mat-ink-bar, .monitoring-theme .mat-tab-nav-bar.mat-accent .mat-ink-bar {
-  background-color: #616ba1; }
+  background-color: #9e9e9e; }
 
 .monitoring-theme .mat-tab-group.mat-accent.mat-background-accent .mat-ink-bar, .monitoring-theme .mat-tab-nav-bar.mat-accent.mat-background-accent .mat-ink-bar {
-  background-color: white; }
+  background-color: rgba(0, 0, 0, 0.87); }
 
 .monitoring-theme .mat-tab-group.mat-warn .mat-tab-label.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled),
 .monitoring-theme .mat-tab-group.mat-warn .mat-tab-link.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled), .monitoring-theme .mat-tab-nav-bar.mat-warn .mat-tab-label.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled),
 .monitoring-theme .mat-tab-nav-bar.mat-warn .mat-tab-link.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled) {
-  background-color: rgba(251, 237, 194, 0.3); }
+  background-color: rgba(255, 224, 178, 0.3); }
 
 .monitoring-theme .mat-tab-group.mat-warn .mat-ink-bar, .monitoring-theme .mat-tab-nav-bar.mat-warn .mat-ink-bar {
-  background-color: #ffd896; }
+  background-color: #ff6d00; }
 
 .monitoring-theme .mat-tab-group.mat-warn.mat-background-warn .mat-ink-bar, .monitoring-theme .mat-tab-nav-bar.mat-warn.mat-background-warn .mat-ink-bar {
   background-color: black; }
@@ -1874,10 +1716,10 @@ textarea.cdk-textarea-autosize-measuring {
 .monitoring-theme .mat-tab-group.mat-background-primary .mat-tab-label.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled),
 .monitoring-theme .mat-tab-group.mat-background-primary .mat-tab-link.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled), .monitoring-theme .mat-tab-nav-bar.mat-background-primary .mat-tab-label.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled),
 .monitoring-theme .mat-tab-nav-bar.mat-background-primary .mat-tab-link.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled) {
-  background-color: rgba(120, 121, 130, 0.3); }
+  background-color: rgba(144, 164, 174, 0.3); }
 
 .monitoring-theme .mat-tab-group.mat-background-primary .mat-tab-header, .monitoring-theme .mat-tab-group.mat-background-primary .mat-tab-links, .monitoring-theme .mat-tab-nav-bar.mat-background-primary .mat-tab-header, .monitoring-theme .mat-tab-nav-bar.mat-background-primary .mat-tab-links {
-  background-color: #30323d; }
+  background-color: #455a64; }
 
 .monitoring-theme .mat-tab-group.mat-background-primary .mat-tab-label, .monitoring-theme .mat-tab-group.mat-background-primary .mat-tab-link, .monitoring-theme .mat-tab-nav-bar.mat-background-primary .mat-tab-label, .monitoring-theme .mat-tab-nav-bar.mat-background-primary .mat-tab-link {
   color: white; }
@@ -1896,32 +1738,32 @@ textarea.cdk-textarea-autosize-measuring {
 .monitoring-theme .mat-tab-group.mat-background-accent .mat-tab-label.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled),
 .monitoring-theme .mat-tab-group.mat-background-accent .mat-tab-link.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled), .monitoring-theme .mat-tab-nav-bar.mat-background-accent .mat-tab-label.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled),
 .monitoring-theme .mat-tab-nav-bar.mat-background-accent .mat-tab-link.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled) {
-  background-color: rgba(208, 211, 227, 0.3); }
+  background-color: rgba(245, 245, 245, 0.3); }
 
 .monitoring-theme .mat-tab-group.mat-background-accent .mat-tab-header, .monitoring-theme .mat-tab-group.mat-background-accent .mat-tab-links, .monitoring-theme .mat-tab-nav-bar.mat-background-accent .mat-tab-header, .monitoring-theme .mat-tab-nav-bar.mat-background-accent .mat-tab-links {
-  background-color: #616ba1; }
+  background-color: #9e9e9e; }
 
 .monitoring-theme .mat-tab-group.mat-background-accent .mat-tab-label, .monitoring-theme .mat-tab-group.mat-background-accent .mat-tab-link, .monitoring-theme .mat-tab-nav-bar.mat-background-accent .mat-tab-label, .monitoring-theme .mat-tab-nav-bar.mat-background-accent .mat-tab-link {
-  color: white; }
+  color: rgba(0, 0, 0, 0.87); }
   .monitoring-theme .mat-tab-group.mat-background-accent .mat-tab-label.mat-tab-disabled, .monitoring-theme .mat-tab-group.mat-background-accent .mat-tab-link.mat-tab-disabled, .monitoring-theme .mat-tab-nav-bar.mat-background-accent .mat-tab-label.mat-tab-disabled, .monitoring-theme .mat-tab-nav-bar.mat-background-accent .mat-tab-link.mat-tab-disabled {
-    color: rgba(255, 255, 255, 0.4); }
+    color: rgba(0, 0, 0, 0.4); }
 
 .monitoring-theme .mat-tab-group.mat-background-accent .mat-tab-header-pagination-chevron, .monitoring-theme .mat-tab-nav-bar.mat-background-accent .mat-tab-header-pagination-chevron {
-  border-color: white; }
+  border-color: rgba(0, 0, 0, 0.87); }
 
 .monitoring-theme .mat-tab-group.mat-background-accent .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron, .monitoring-theme .mat-tab-nav-bar.mat-background-accent .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron {
-  border-color: rgba(255, 255, 255, 0.4); }
+  border-color: rgba(0, 0, 0, 0.4); }
 
 .monitoring-theme .mat-tab-group.mat-background-accent .mat-ripple-element, .monitoring-theme .mat-tab-nav-bar.mat-background-accent .mat-ripple-element {
-  background-color: rgba(255, 255, 255, 0.12); }
+  background-color: rgba(0, 0, 0, 0.12); }
 
 .monitoring-theme .mat-tab-group.mat-background-warn .mat-tab-label.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled),
 .monitoring-theme .mat-tab-group.mat-background-warn .mat-tab-link.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled), .monitoring-theme .mat-tab-nav-bar.mat-background-warn .mat-tab-label.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled),
 .monitoring-theme .mat-tab-nav-bar.mat-background-warn .mat-tab-link.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled) {
-  background-color: rgba(251, 237, 194, 0.3); }
+  background-color: rgba(255, 224, 178, 0.3); }
 
 .monitoring-theme .mat-tab-group.mat-background-warn .mat-tab-header, .monitoring-theme .mat-tab-group.mat-background-warn .mat-tab-links, .monitoring-theme .mat-tab-nav-bar.mat-background-warn .mat-tab-header, .monitoring-theme .mat-tab-nav-bar.mat-background-warn .mat-tab-links {
-  background-color: #ffd896; }
+  background-color: #ff6d00; }
 
 .monitoring-theme .mat-tab-group.mat-background-warn .mat-tab-label, .monitoring-theme .mat-tab-group.mat-background-warn .mat-tab-link, .monitoring-theme .mat-tab-nav-bar.mat-background-warn .mat-tab-label, .monitoring-theme .mat-tab-nav-bar.mat-background-warn .mat-tab-link {
   color: black; }
@@ -1941,13 +1783,13 @@ textarea.cdk-textarea-autosize-measuring {
   background: #212121;
   color: white; }
   .monitoring-theme .mat-toolbar.mat-primary {
-    background: #30323d;
+    background: #455a64;
     color: white; }
   .monitoring-theme .mat-toolbar.mat-accent {
-    background: #616ba1;
-    color: white; }
+    background: #9e9e9e;
+    color: rgba(0, 0, 0, 0.87); }
   .monitoring-theme .mat-toolbar.mat-warn {
-    background: #ffd896;
+    background: #ff6d00;
     color: black; }
   .monitoring-theme .mat-toolbar .mat-form-field-underline,
   .monitoring-theme .mat-toolbar .mat-form-field-ripple,
@@ -1978,17 +1820,49 @@ textarea.cdk-textarea-autosize-measuring {
 .monitoring-theme .mat-simple-snackbar-action {
   color: inherit; }
 
-table {
+.monitoring-theme mat-table {
+  width: 90vw; }
+
+.monitoring-theme mat-header-cell {
+  color: white;
+  background-color: #212121;
+  min-height: 32px;
+  max-height: 48px; }
+
+.monitoring-theme mat-header-row {
+  min-height: 32px;
+  max-height: 48px; }
+
+.monitoring-theme mat-row {
+  min-height: 32px;
+  max-height: 48px; }
+
+.monitoring-theme .button-row button,
+.monitoring-theme .button-row a {
+  font-size: 12px;
+  margin-right: 1px;
+  margin-left: 1px;
+  min-height: 14px;
+  max-height: 28px; }
+
+.monitoring-theme .mat-column-action {
+  flex: 0 0 420px;
+  white-space: nowrap !important; }
+
+.monitoring-theme table {
   width: 100%; }
 
-.example-detail-row {
+.monitoring-theme .example-detail-row {
   height: 0; }
 
-.example-element-row td {
+.monitoring-theme .example-element-row td {
   border-bottom-width: 0; }
 
-.example-element-detail {
+.monitoring-theme .example-element-detail {
   overflow: hidden;
   display: flex; }
+
+.monitoring-theme mwlResizable {
+  box-sizing: border-box; }
 
 /*# sourceMappingURL=dark.css.map */

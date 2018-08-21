@@ -10,7 +10,7 @@ export class AppComponent implements OnInit {
     $stateService: StateService;
 
     constructor( @Inject(UIRouter) private router: UIRouter,
-        // @Inject("appModel") private appModel, 
+        // @Inject("appModel") private appModel,
     ) {
         console.log(this.title + ' constructor!');
     }

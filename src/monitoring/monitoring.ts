@@ -1,5 +1,4 @@
 //ref : https://www.cc28tech.com/angular-2-multi-step-wizard-ui-router-part-1/
-
 // angular 2
 import './utils/polyfills';
 
@@ -13,10 +12,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatTableModule, MatPaginatorModule, MatButtonModule } from '@angular/material';
+import { MatTableModule, MatPaginatorModule, MatSnackBarModule,} from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { CodemirrorModule } from 'ng2-codemirror';
 import { UIRouterModule } from '@uirouter/angular';
+import { ResizableModule} from 'angular-resizable-element';
 
 /* App Utils */
 import { appProviders, appDeclarations, appRouters} from "./utils/app.states";
@@ -37,8 +38,10 @@ loadPluginCss({
         FormsModule,
         HttpModule,
         CodemirrorModule,
+        ResizableModule,
         // Mateiral Design Modules
         MatTableModule, MatPaginatorModule, MatIconModule, MatButtonModule,
+        MatSnackBarModule,
         UIRouterModule.forRoot({
             states: appRouters,
             useHash: true,
