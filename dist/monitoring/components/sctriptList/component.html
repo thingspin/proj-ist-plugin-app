@@ -17,11 +17,12 @@
     <ng-container matColumnDef="action">
         <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
         <mat-cell *matCellDef="let el">
-            <button *ngIf="!el.running" class="ml" mat-mini-fab color="primary" (click)="runAlgorithm(el.cid)">play</button>
+            <button *ngIf="!el.running" class="ml" mat-mini-fab color="primary" (click)="runAlgorithm(el.cid)">Play</button>
             <button *ngIf="el.running" class="ml" mat-mini-fab color="success" (click)="stopAlgorithm(el.cid)">Stop</button>
-            <button class="ml" mat-mini-fab color="warn" (click)="deleteConfig(el.cid)">delete</button>
-            <button class="ml" mat-mini-fab color="primary" (click)="editConfig(el.cid)">edit</button>
-            <button class="ml" mat-mini-fab color="primary" (click)="showLog(el)">log</button>
+            <button class="ml" mat-mini-fab color="primary" (click)="editConfig(el.cid)">Edit</button>
+            <button class="ml" mat-mini-fab color="warn" (click)="deleteConfig(el.cid)">Delete</button>
+            <button *ngIf="el.running" mat-mini-fab color="success" (click)="showLog(el)">Log</button>
+            <button *ngIf="!el.running && el.error" mat-mini-fab color="success" (click)="showErrorLog(el)">Error</button>
         </mat-cell>
     </ng-container>
 

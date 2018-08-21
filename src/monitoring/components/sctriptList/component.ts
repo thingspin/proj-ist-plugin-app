@@ -92,7 +92,7 @@ export class ScriptListComponent implements OnInit {
                     case 0: list[idx].running = true; break;
                     case 1: list[idx].running = false;break;
                     case 2: list[idx].running = false;
-                        console.log(message.Error);
+                        list[idx].error = message.Error;
                     break;
                 }
             }, (error: Response) => {
@@ -195,5 +195,16 @@ export class ScriptListComponent implements OnInit {
             this.xterm = undefined;
         }
         liveSrv.removeObserver(`service_${element.cid}`, null);
+    }
+
+    public showErrorLog(element: InferenceConfig): void {
+        if (this.xterm) {
+            this.xterm.destroy();
+            this.xterm = undefined;
+        }
+        this.xterm = new Terminal();
+        this.xterm.open(this.container.nativeElement);
+        fit(this.xterm);
+        this.xterm.writeln(element.error.replace("\n", "\r\n"));
     }
 }

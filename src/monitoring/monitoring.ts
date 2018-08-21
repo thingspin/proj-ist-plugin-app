@@ -1,8 +1,7 @@
 //ref : https://www.cc28tech.com/angular-2-multi-step-wizard-ui-router-part-1/
-import * as cores from 'grafana/app/core/core';
 // angular 2
 import './utils/polyfills';
-console.log(cores);
+
 /* App Root */
 import { AppComponent } from './components/app.component';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
@@ -65,8 +64,6 @@ export class Monitoring {
         this.splash = ('appModel' in this && 'baseUrl' in this.appModel) ?
             `${this.appModel.baseUrl}/img/thingspin-text-ani.svg` :
             `public/plugins/${appId}/img/thingspin-text-ani.svg`;
-
-            // console.log(liveSrv);
 
         // Ref : https://stackoverflow.com/questions/38948463/passing-server-parameters-to-ngmodule-after-rc5-upgrade
         setTimeout(() => {

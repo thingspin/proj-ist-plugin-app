@@ -9,7 +9,8 @@ export interface InferenceConfig {
     framework:      String;
     inputInfo:      String;
     outputInfo:     String;
-    running:       any;
+    running:        any;
+    error?:         string;
 }
 
 export interface AppModel {
