@@ -141,4 +141,7 @@ export class ScriptListComponent implements OnInit {
             });
         });
     }
+
+    showLog(cid: string): void {
+    }
 }

@@ -2,7 +2,7 @@
 module.exports = function(grunt) {
 
     require('load-grunt-tasks')(grunt);
-  
+
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-webpack');
@@ -25,7 +25,7 @@ module.exports = function(grunt) {
             src: ['**/sass/*'],
             dest: 'dist/css/',
             rename: function(dest, src) {
-              const filename = dest + src.replace('sass/', "").replace("scss", "css");
+              const filename = `${dest}${src.replace('sass/', "").replace("scss", "css")}`;
               console.log(`created ${filename}`);
               return filename;
             },
@@ -37,9 +37,13 @@ module.exports = function(grunt) {
           files: [{
             expand: true,
             cwd: 'src/less',
-            src: ['*.less'],
+            src: ['*'],
             dest: 'dist/css/',
-            ext: '.css',
+            rename: function(dest, src) {
+              const filename = `${dest}${src.replace("less", "css")}`;
+              console.log(`created ${filename}`);
+              return filename;
+            },
           }],
           options: {
             compress: true,
@@ -70,7 +74,7 @@ module.exports = function(grunt) {
       
       watch: {
         styles: {
-          files: ['<%= project.dev %>/sass/**/*.scss'],
+          files: ['<%= project.dev %>/**/*.scss'],
           tasks: ['sass'],
           options: {
             livereload: true

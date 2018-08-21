@@ -11,8 +11,11 @@ export class CustomLocationStrategy extends HashLocationStrategy {
 
 export const MONITORING_BASE_HREF = `/plugins/proj-edge-ai-app/page/monitoring`;
 
-export function getStyleUrls(): string[] {
-    return [
-        `${MONITORING_BASE_HREF}/${ (<any>window).thingspinBootData.user.lightTheme ? 'light' : 'dark' }.css`,
-    ];
+export function getStyleUrls(lists: string[]): string[] {
+    const baseUrl = 'public/plugins/proj-edge-ai-app';
+    const theme = (<any>window).thingspinBootData.user.lightTheme ? 'light' : 'dark' ;
+    return lists.concat([
+        `${baseUrl}/css/monitoring/${theme}.css`,
+        `${baseUrl}/css/monitoring.${theme}.css`,
+    ],);
 }

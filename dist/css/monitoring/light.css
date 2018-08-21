@@ -618,6 +618,10 @@ textarea.cdk-textarea-autosize-measuring {
   padding: 2px 0 !important;
   box-sizing: content-box !important; }
 
+.button-row button,
+.button-row a {
+  margin-right: 8px; }
+
 .monitoring-theme .mat-ripple-element {
   background-color: rgba(0, 0, 0, 0.1); }
 

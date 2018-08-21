@@ -21,6 +21,7 @@
                 <button *ngIf="el.running" class="ml mat-mini-fab" mat-mini-fab="" color="success" (click)="stopAlgorithm(el.cid)">Stop</button>
                 <button class="ml mat-mini-fab" mat-mini-fab="" color="warn" (click)="deleteConfig(el.cid)">delete</button>
                 <button class="ml mat-mini-fab" mat-mini-fab="" color="primary" (click)="editConfig(el.cid)">edit</button>
+                <button class="ml mat-mini-fab" mat-mini-fab="" color="primary" (click)="showLog(el.cid)">log</button>
             </mat-cell>
         </ng-container>
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

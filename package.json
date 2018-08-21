@@ -4,7 +4,8 @@
   "main": "dist/module",
   "scripts": {
     "build": "webpack --progress --config build/webpack.prod.js",
-    "dev": "webpack --progress --config build/webpack.dev.js"
+    "dev": "webpack --progress --config build/webpack.dev.js",
+    "watch": "grunt watch"
   },
   "keywords": [],
   "author": "gunwoo@hancommds.com",
@@ -43,14 +44,14 @@
     "webpack-cli": "~3.1.0"
   },
   "dependencies": {
-    "@angular/animations": "^6.1.2",
+    "@angular/animations": "^6.1.3",
     "@angular/cdk": "^6.4.5",
     "@angular/common": "~6.1.0",
     "@angular/compiler": "~6.1.0",
     "@angular/core": "~6.1.0",
     "@angular/forms": "~6.1.0",
     "@angular/http": "~6.1.0",
-    "@angular/material": "^6.4.5",
+    "@angular/material": "angular/material2-builds",
     "@angular/platform-browser": "~6.1.0",
     "@angular/platform-browser-dynamic": "~6.1.0",
     "@angular/platform-server": "~6.1.0",
@@ -64,12 +65,13 @@
     "events": "~3.0.0",
     "file-input-accessor": "^2.0.0",
     "fs": "0.0.1-security",
+    "mqtt": "^2.18.3",
     "ng2-bootstrap-modal": "^1.0.1",
+    "ng2-codemirror": "^1.1.3",
     "ng2-select": "^2.0.0",
     "rxjs": "6.2.2",
     "systemjs": "0.21.4",
     "timers": "~0.1.1",
-    "zone.js": "~0.8.26",
-    "ng2-codemirror":"^1.1.3"
+    "zone.js": "~0.8.26"
   }
 }
