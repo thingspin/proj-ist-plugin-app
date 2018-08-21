@@ -19,28 +19,15 @@
         <mat-cell *matCellDef="let el">
             <button *ngIf="!el.running" class="ml" mat-mini-fab color="primary" (click)="runAlgorithm(el.cid)">Play</button>
             <button *ngIf="el.running" class="ml" mat-mini-fab color="success" (click)="stopAlgorithm(el.cid)">Stop</button>
-            <button class="ml" mat-mini-fab color="primary" (click)="editConfig(el.cid)">Edit</button>
-            <button class="ml" mat-mini-fab color="warn" (click)="deleteConfig(el.cid)">Delete</button>
+            <button *ngIf="!el.running" class="ml" mat-mini-fab color="primary" (click)="editConfig(el.cid)">Edit</button>
+            <button *ngIf="!el.running" class="ml" mat-mini-fab color="warn" (click)="deleteConfig(el.cid)">Delete</button>
             <button *ngIf="el.running" mat-mini-fab color="success" (click)="showLog(el)">Log</button>
-            <button *ngIf="!el.running && el.error" mat-mini-fab color="success" (click)="showErrorLog(el)">Error</button>
-        </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="expandedDetail">
-        <mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
-            {{element.algorithmName}}
+            <button *ngIf="!el.running" mat-mini-fab color="accent" (click)="showHistory(el)">History</button>
         </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let element; columns: displayedColumns" 
-        class="example-element-row"
-        [class.example-expanded-row]="expandedElement === element">
-    </mat-row>
-    <mat-row *matRowDef="let row; columns: ['expandedDetail']" 
-        class="example-detail-row" 
-        [@detailExpand]="row === expandedElement ? 'expanded' : 'collapsed'">
-    </mat-row>
+    <mat-row *matRowDef="let element; columns: displayedColumns"></mat-row>
 </mat-table>
 <div mwlResizable [enableGhostResize]="true" [resizeEdges]="{bottom: true, right: true, top: true, left: true}">
     <div id="terminal" #terminal></div>

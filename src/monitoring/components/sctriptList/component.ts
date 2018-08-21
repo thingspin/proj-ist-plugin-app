@@ -18,7 +18,7 @@ import { MqttService } from '../../services/mqtt/mqttSrv.service';
 // codemirror : https://github.com/codemirror/CodeMirror
 import 'codemirror/mode/python/python';
 // xterm : https://xtermjs.org/
-// import xterm from 'xterm';
+import xterm from 'xterm';
 import { Terminal } from 'xterm';
 import { fit } from 'xterm/lib/addons/fit/fit';
 
@@ -51,7 +51,7 @@ export class ScriptListComponent implements OnInit {
     logObservable: any;
 
     @ViewChild('terminal') container: ElementRef;
-    private xterm: any;
+    private xterm: xterm.Terminal;
     constructor(
         @Inject(MonitoringBackendService) private backendSrv: MonitoringBackendService,
         @Inject(MqttService) private mqttSrv: MqttService,
@@ -108,6 +108,7 @@ export class ScriptListComponent implements OnInit {
             this.scriptsList.forEach((config: InferenceConfig, idx: number, arr: any) => {
                 if (config.cid === cid) {
                     arr[idx].running = true;
+                    this.startRtlog(config);
                 }
             });
             this.dataSource.data = this.scriptsList;
@@ -122,6 +123,7 @@ export class ScriptListComponent implements OnInit {
             this.scriptsList.forEach((config: InferenceConfig, idx: number, arr: any) => {
                 if (config.cid === cid) {
                     arr[idx].running = false;
+                    this.stopRtlog(config);
                 }
             });
             this.dataSource.data = this.scriptsList;
@@ -182,10 +184,10 @@ export class ScriptListComponent implements OnInit {
         this.xterm.open(this.container.nativeElement);
         fit(this.xterm);
         this.currElement = element;
-        this.xterm.write(`listening Algorithm(\x1B[1;3;31m${element.cname}\x1B[0m) logger...  `);
+        this.xterm.writeln(`listening Algorithm(\x1B[1;3;31m${element.cname}\x1B[0m) logger...`);
         this.logObservable = liveSrv.subscribe(`service_${element.cid}`);
         this.logObservable.subscribe(data => {
-            this.xterm.writeln(data);
+            this.xterm.writeln(data.data);
         });
     }
 
@@ -197,7 +199,7 @@ export class ScriptListComponent implements OnInit {
         liveSrv.removeObserver(`service_${element.cid}`, null);
     }
 
-    public showErrorLog(element: InferenceConfig): void {
+    public showHistory(element: InferenceConfig): void {
         if (this.xterm) {
             this.xterm.destroy();
             this.xterm = undefined;
@@ -205,6 +207,13 @@ export class ScriptListComponent implements OnInit {
         this.xterm = new Terminal();
         this.xterm.open(this.container.nativeElement);
         fit(this.xterm);
-        this.xterm.writeln(element.error.replace("\n", "\r\n"));
+
+        this.backendSrv.getAlgorithmLog(element.cid).then( (res: Response): void => {
+            const { log }: { log: string } = res.json();
+            log.split('\n').forEach( (str: string): void => {
+                this.xterm.writeln(str);
+            });
+        });
     }
+
 }

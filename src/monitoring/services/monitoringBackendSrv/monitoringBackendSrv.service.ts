@@ -27,4 +27,8 @@ export class MonitoringBackendService {
     deleteConfig(cid: String): Promise<Response> {
         return this.http.delete(`/api/ml/${cid}`).toPromise();
     }
+
+    getAlgorithmLog(cid: String): Promise<Response> {
+        return this.http.get(`/api/ml/${cid}/log`).toPromise();
+    }
 }
