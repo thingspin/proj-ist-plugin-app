@@ -48,16 +48,21 @@
                 <mat-row *matRowDef="let element; columns: displayedColumns"></mat-row>
 
             </mat-table>
-            <mat-paginator [length]="dataSource.length" [pageSize]="20" showFirstLastButtons></mat-paginator>
+            <mat-paginator [length]="dataSource.length" [pageSize]="20" color='primary' showFirstLastButtons></mat-paginator>
         </mat-card-content>
     </mat-card>
     <mat-divider></mat-divider>
     <div mwlResizable [enableGhostResize]="true" [resizeEdges]="{bottom: true, top: true}" [allowNegativeResizes]="true">
-        <mat-card [hidden]="!enableLog"  >
-            <mat-card-title> Algorithm Logger({{currAlgorithmName}}) </mat-card-title>
+        <mat-card [hidden]="!enableLog">
+            <mat-card-title>
+                Algorithm Logger({{currAlgorithmName}})
+            </mat-card-title>
             <mat-card-content>
-                <div id="terminal" #terminal></div>
+                <div class="terminal-title-bar">
+                    <button mat-icon-button color="primary" class="small" (click)="closeTerminal(el)"><mat-icon>clear</mat-icon></button>
+                </div>
+               <div id="terminal" #terminal></div>
             </mat-card-content>
         </mat-card>
-    </div>    
+    </div>
 </div>

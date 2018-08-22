@@ -230,4 +230,8 @@ export class ScriptListComponent implements OnInit {
         }
     }
 
+    public closeTerminal(element: InferenceConfig): void {
+        this.xterm.clear();
+        this.enableLog = false;
+    }
 }

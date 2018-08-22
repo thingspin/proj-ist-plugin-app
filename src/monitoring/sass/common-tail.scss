@@ -78,6 +78,40 @@
       white-space: nowrap !important;
     }
 
+    .terminal-title-bar {
+      min-height: 24px;
+      max-height: 24px;
+      height: 24px;
+      align-items: center;
+      background-color: mat-color($accent, 900);
+    }
+
+    .terminal-title-bar > button, .terminal-title-bar > mat-icon-button, {
+      float: right;
+    }
+
+    $icon-small-container-size: 24px;
+    $icon-small-size: 14px;
+    
+    .mat-icon-button.small {
+      width: $icon-small-container-size;
+      height: $icon-small-container-size;
+      line-height: $icon-small-container-size;
+
+      .mat-icon, .mat-icon-button i {
+        line-height: $icon-small-size;
+      }
+    
+      .mat-icon {
+        width: $icon-small-size;
+        height: $icon-small-size;
+      }
+    
+      .material-icons {
+        font-size: $icon-small-size;
+      }
+    }
+
     table {
         width: 100%;
     };
