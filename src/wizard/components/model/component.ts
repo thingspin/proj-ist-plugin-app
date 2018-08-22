@@ -28,7 +28,7 @@ export class ModelComponent implements OnInit {
     }
 
     ngOnInit() {
-        const inputId = `#${this.fileInputId}`;
+        const inputId: String = `#${this.fileInputId}`;
         this.data = this.formDataService.getModel();
 
         defaultFileinputConf.browseLabel = this.title;
@@ -41,15 +41,14 @@ export class ModelComponent implements OnInit {
         this.temp = this.data.files;
         this.temp.files = [];
         if (this.data.files && this.data.files.length !== 0) {
-            const { files } = this.data;
+            const { files }: {files: File[]} = this.data;
             this.data.files = [];
             this.temp.files = files;
             $(`#${this.fileInputId}`).fileinput("readFiles", files);
-            $(`#${this.fileInputId}`).fileinput('refresh');
         }
     }
 
-    save(form: FormGroup) {
+    save(form: FormGroup): void {
         if (!form.valid) {
             return;
         }
@@ -57,9 +56,9 @@ export class ModelComponent implements OnInit {
     }
 
     getAssistantModelname(files: File[]): string {
-        let assistantName = "";
+        let assistantName: string = String("");
 
-        files.forEach( ({name, size}) => {
+        files.forEach( ({name, size}: {name: string, size: number} ) => {
             assistantName = "";
             const names: String[] = name.split(".");
             names.forEach( (name: String, idx: Number) => {
@@ -72,19 +71,19 @@ export class ModelComponent implements OnInit {
         return assistantName;
     }
 
-    onFileinputLoaded(event, currFile: File) {
+    onFileinputLoaded(event: any, currFile: File) {
         this.setData($(`#${this.fileInputId}`).fileinput('getFileStack'));
     }
 
-    onFileinputRemoved(event, id: String, index: Number) {
+    onFileinputRemoved(event: any, id: String, index: Number) {
         this.setData($(`#${this.fileInputId}`).fileinput('getFileStack'));
     }
 
-    onFileinputCleared(event) {
+    onFileinputCleared(event: any) {
         this.setData([]);
     }
 
-    setData(files: File[]) {
+    setData(files: File[]): void {
         this.temp.files = files;
         this.data.files = files;
         this.data.models = this.getfilenames();
@@ -95,9 +94,9 @@ export class ModelComponent implements OnInit {
 
     getfilenames(): string[] {
         const res: string[] = [];
-        const {files} = this.data;
+        const { files } = this.data;
 
-        files.forEach( (file) => {
+        files.forEach( (file: File): void => {
             res.push(file.name);
         });
         return res;

@@ -59,7 +59,6 @@ export class AlgorithmComponent implements OnInit {
             this.data.files = [];
             this.temp.files = files;
             $(`#${this.fileInputId}`).fileinput("readFiles", files);
-            $(`#${this.fileInputId}`).fileinput('refresh');
         }
     }
 
