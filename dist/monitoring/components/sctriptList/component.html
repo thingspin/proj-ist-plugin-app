@@ -22,23 +22,23 @@
                 <ng-container matColumnDef="action">
                     <mat-header-cell *matHeaderCellDef class="mat-column-action"> Action </mat-header-cell>
                     <mat-cell class="mat-column-action button-row" *matCellDef="let el">
-                        <button *ngIf="!el.running" mat-stroked-button (click)="runAlgorithm(el.cid)">
+                        <button mat-stroked-button *ngIf="!el.running" (click)="runAlgorithm(el.cid)">
                             <mat-icon>play_circle_filled_white</mat-icon>Play
                         </button>
-                        <button *ngIf="!el.running" mat-stroked-button (click)="editConfig(el.cid)">
+                        <button mat-stroked-button *ngIf="!el.running" (click)="editConfig(el.cid)">
                             <mat-icon>edit</mat-icon>Edit
                         </button>
-                        <button *ngIf="!el.running" mat-stroked-button color="warn" (click)="deleteConfig(el.cid)">
+                        <button mat-stroked-button *ngIf="!el.running" (click)="deleteConfig(el.cid)" color="warn">
                             <mat-icon>delete</mat-icon>Remove
                         </button>
-                        <button *ngIf="el.running" mat-stroked-button (click)="stopAlgorithm(el.cid)">
+                        <button mat-stroked-button *ngIf="el.running" (click)="stopAlgorithm(el.cid)">
                             <mat-icon>pause</mat-icon>Stop
                         </button>
 
-                        <button *ngIf="!el.running" mat-stroked-button (click)="showHistory(el)">
+                        <button mat-stroked-button *ngIf="!el.running" (click)="showHistory(el)">
                             <mat-icon>list</mat-icon>History
                         </button>
-                        <button *ngIf="el.running" mat-stroked-button (click)="showLog(el)">
+                        <button mat-stroked-button *ngIf="el.running" (click)="showLog(el)">
                             <mat-icon>art_track</mat-icon>Log
                         </button>
                     </mat-cell>

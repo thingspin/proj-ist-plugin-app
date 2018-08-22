@@ -63,7 +63,7 @@ export class Monitoring {
     static template = require(`./monitoring.html`);
 
     /** ngInject **/
-    constructor(private backendSrv, private $location) {
+    constructor(private backendSrv, private $location, private alertSrv) {
         this.splash = ('appModel' in this && 'baseUrl' in this.appModel) ?
             `${this.appModel.baseUrl}/img/thingspin-text-ani.svg` :
             `public/plugins/${appId}/img/thingspin-text-ani.svg`;
@@ -74,6 +74,7 @@ export class Monitoring {
                 { provide: 'backendSrv', useValue: this.backendSrv },
                 { provide: 'appModel', useValue: this.appModel, },
                 { provide: '$location', useValue: this.$location, },
+                { provide: 'alertSrv', useValue: this.alertSrv, },
             ]).bootstrapModule(MonitoringModule);
         }, 500);
     }

@@ -37,14 +37,12 @@ export class ProjectComponent implements OnInit {
         this.data = this.formDataService.getProject();
         this.backendSrv.getConfigList().then( (res: Response): void => {
             const { Result }: { Result: InferenceConfig[] } = res.json();
-            console.log(Result);
             this.savedConfigs = Result;
         });
         this.nameFormCtrl.control.setValidators([Validators.required, this.nameValidator.bind(this)]);
     }
 
     private nameValidator(c: FormControl): { [key: string]: boolean } | null {
-        console.log(c);
         if (c.value !== undefined) {
             const projectName: string = c.value;
 

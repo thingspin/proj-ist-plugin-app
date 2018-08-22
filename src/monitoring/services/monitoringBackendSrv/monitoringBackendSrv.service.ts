@@ -4,31 +4,46 @@ import { Http, Response } from '@angular/http';
 @Injectable()
 export class MonitoringBackendService {
 
-    constructor( @Inject(Http) private http: Http ) {
+    constructor(
+        @Inject(Http) private http: Http,
+        @Inject("alertSrv") private alertSrv,
+     ) {
     }
 
-    getConfigList(): Promise<Response> {
+    private success(res: Response): Response {
+        return res;
+    }
+
+    private error(error: any) {
+        console.error(error);
+        this.alertSrv.set('ThingSPIN Error', error, 5000);
+    }
+
+    getConfigList(): Promise<void | Response> {
         // let Res: ConfigList[];
-        return this.http.get("/api/ml").toPromise();
+        return this.http.get("/api/ml").toPromise().then(this.success.bind(this), this.error.bind(this));
     }
 
-    getConfigStatus(cid: String): Promise<Response> {
-        return this.http.get(`/api/ml/${cid}/check`).toPromise();
+    getConfigStatus(cid: String): Promise<void | Response> {
+        return this.http.get(`/api/ml/${cid}/check`).toPromise().then(this.success.bind(this), this.error.bind(this));
     }
 
-    runAlgorithm(cid: String): Promise<Response> {
-        return this.http.post(`/api/ml/${cid}/start`, "").toPromise();
+    runAlgorithm(cid: String): Promise<void | Response> {
+        return this.http.post(`/api/ml/${cid}/start`, "").toPromise().then(this.success.bind(this), this.error.bind(this));
     }
 
-    stopAlgorithm(cid: String): Promise<Response> {
-        return this.http.post(`/api/ml/${cid}/stop`, "").toPromise();
+    stopAlgorithm(cid: String): Promise<void | Response> {
+        return this.http.post(`/api/ml/${cid}/stop`, "").toPromise().then(this.success.bind(this), this.error.bind(this));
     }
 
-    deleteConfig(cid: String): Promise<Response> {
-        return this.http.delete(`/api/ml/${cid}`).toPromise();
+    deleteConfig(cid: String): Promise<void | Response> {
+        return this.http.delete(`/api/ml/${cid}`).toPromise().then(this.success.bind(this), this.error.bind(this));
     }
 
-    getAlgorithmLog(cid: String): Promise<Response> {
-        return this.http.get(`/api/ml/${cid}/log`).toPromise();
+    getAlgorithmLog(cid: String): Promise<void | Response> {
+        return this.http.get(`/api/ml/${cid}/log`).toPromise().then(this.success.bind(this), this.error.bind(this));
+    }
+    getAlgorithmSomeLog(cid: String, line: number): Promise<void | Response> {
+        return this.http.get(`/api/ml/${cid}/log/${line}`).toPromise().then(this.success.bind(this), this.error.bind(this));
     }
 }
