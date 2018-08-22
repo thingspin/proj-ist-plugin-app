@@ -3,7 +3,7 @@
     <mat-card>
         <mat-card-title> Inference Config </mat-card-title>
         <mat-card-content>
-            <mat-table [dataSource]="dataSource" class="mat-elevation-z8" multiTemplateDataRows>
+            <mat-table #table [dataSource]="dataSource" class="mat-elevation-z8" multiTemplateDataRows>
                 <ng-container matColumnDef="cname">
                     <mat-header-cell *matHeaderCellDef> Project </mat-header-cell>
                     <mat-cell *matCellDef="let el">{{el.cname}}</mat-cell>
@@ -48,7 +48,7 @@
                 <mat-row *matRowDef="let element; columns: displayedColumns"></mat-row>
 
             </mat-table>
-            <mat-paginator [length]="dataSource.length" [pageSize]="20"></mat-paginator>
+            <mat-paginator [length]="dataSource.length" [pageSize]="20" showFirstLastButtons></mat-paginator>
         </mat-card-content>
     </mat-card>
     <mat-divider></mat-divider>

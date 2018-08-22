@@ -3,8 +3,8 @@ import { appEvents, liveSrv } from 'grafana/app/core/core';
 
 /* Angular(2+) Libraries */
 import { Response } from '@angular/http';
-import { MatPaginator, MatTableDataSource } from '@angular/material';
-import { Component, Inject, ViewChild, OnInit, ElementRef } from '@angular/core';
+import { MatPaginator, MatTableDataSource, MatTable } from '@angular/material';
+import { Component, Inject, ViewChild, OnInit, ElementRef, ChangeDetectorRef } from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 
 /* Data Structs */
@@ -45,26 +45,24 @@ export class ScriptListComponent implements OnInit {
     scriptsList: InferenceConfig[] = [];
 
     displayedColumns: string[] = ['cname', 'algorithmName', 'model', 'action'];
-    dataSource: MatTableDataSource<InferenceConfig>;
-    @ViewChild(MatPaginator) paginator: MatPaginator;
     currElement: InferenceConfig;
     logObservable: any;
     enableLog: boolean;
     currAlgorithmName: String;
 
+    dataSource: MatTableDataSource<InferenceConfig>;
     @ViewChild('terminal') container: ElementRef;
+    @ViewChild('table') table: MatTable<InferenceConfig>;
+    @ViewChild(MatPaginator) paginator: MatPaginator;
+
     private xterm: xterm.Terminal;
     constructor(
         @Inject(MonitoringBackendService) private backendSrv: MonitoringBackendService,
         @Inject(MqttService) private mqttSrv: MqttService,
         @Inject('$location') private $location,
         @Inject('appModel') private appModel,
+        @Inject(ChangeDetectorRef) private cdRef: ChangeDetectorRef,
     ) {
-        this.dataSource = new MatTableDataSource<InferenceConfig>();
-        this.updateList().then( (value) => {
-            this.dataSource.paginator = this.paginator;
-        });
-
         this.codemirrorConfig = {
             mode: 'python',
             lineNumbers: true,
@@ -72,12 +70,19 @@ export class ScriptListComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.dataSource = new MatTableDataSource<InferenceConfig>([]);
+        this.updateList().then( () => {
+            this.dataSource.paginator = this.paginator;
+        });
+
         const urlPath = "/mqtt";
         const baseUrl = `ws://${this.$location.host()}:${this.$location.port()}/api/plugin-proxy/${this.appModel.id}`;
         this.mqttSrv.connect(`${baseUrl}${urlPath}`);
+
         this.xterm = new Terminal();
         this.xterm.open(this.container.nativeElement);
         fit(this.xterm);
+
         this.enableLog = false;
     }
 
@@ -87,6 +92,7 @@ export class ScriptListComponent implements OnInit {
 
             this.scriptsList = this.updateRunning(Result);
             this.dataSource.data = Result;
+            this.table.renderRows();
         });
     }
 
@@ -117,7 +123,8 @@ export class ScriptListComponent implements OnInit {
                     this.startRtlog(config);
                 }
             });
-            this.dataSource.data = this.scriptsList;
+            this.dataSource = new MatTableDataSource<InferenceConfig>(this.scriptsList);
+            this.table.renderRows();
         }, (error: Response) => {
             console.error(error);
         });
@@ -132,7 +139,8 @@ export class ScriptListComponent implements OnInit {
                     this.stopRtlog(config);
                 }
             });
-            this.dataSource.data = this.scriptsList;
+            this.dataSource = new MatTableDataSource<InferenceConfig>(this.scriptsList);
+            this.table.renderRows();
         }, (error: Response) => {
             console.error(error);
         });
@@ -147,7 +155,9 @@ export class ScriptListComponent implements OnInit {
             onConfirm: () => {
                 this.backendSrv.deleteConfig(cid).then( (res: Response) => {
                     console.log(`removed ${cid}`);
-                    this.updateList();
+                    this.updateList().then( () => {
+                        this.cdRef.detectChanges();
+                    });
                     this.mqttPublish().then( () => {
                     });
                 });
