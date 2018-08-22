@@ -12,7 +12,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatTableModule, MatPaginatorModule, MatSnackBarModule,} from '@angular/material';
+import { MatTableModule, MatPaginatorModule, MatCardModule, MatDividerModule} from '@angular/material';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { CodemirrorModule } from 'ng2-codemirror';
@@ -41,7 +41,7 @@ loadPluginCss({
         ResizableModule,
         // Mateiral Design Modules
         MatTableModule, MatPaginatorModule, MatIconModule, MatButtonModule,
-        MatSnackBarModule,
+        MatCardModule, MatDividerModule,
         UIRouterModule.forRoot({
             states: appRouters,
             useHash: true,

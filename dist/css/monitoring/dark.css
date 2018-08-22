@@ -1820,9 +1820,6 @@ textarea.cdk-textarea-autosize-measuring {
 .monitoring-theme .mat-simple-snackbar-action {
   color: inherit; }
 
-.monitoring-theme mat-table {
-  width: 90vw; }
-
 .monitoring-theme mat-header-cell {
   color: white;
   background-color: #212121;

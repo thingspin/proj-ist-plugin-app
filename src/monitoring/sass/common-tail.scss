@@ -47,10 +47,6 @@
     $text: map-get($foreground, text);
     $card: map-get($background, card);
 
-    mat-table {
-      width: 90vw;
-    };
-
     mat-header-cell {
       color: $text;
       background-color: mat-color($accent, 900);

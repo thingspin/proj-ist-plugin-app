@@ -49,6 +49,8 @@ export class ScriptListComponent implements OnInit {
     @ViewChild(MatPaginator) paginator: MatPaginator;
     currElement: InferenceConfig;
     logObservable: any;
+    enableLog: boolean;
+    currAlgorithmName: String;
 
     @ViewChild('terminal') container: ElementRef;
     private xterm: xterm.Terminal;
@@ -73,6 +75,10 @@ export class ScriptListComponent implements OnInit {
         const urlPath = "/mqtt";
         const baseUrl = `ws://${this.$location.host()}:${this.$location.port()}/api/plugin-proxy/${this.appModel.id}`;
         this.mqttSrv.connect(`${baseUrl}${urlPath}`);
+        this.xterm = new Terminal();
+        this.xterm.open(this.container.nativeElement);
+        fit(this.xterm);
+        this.enableLog = false;
     }
 
     private updateList(): Promise<any> {
@@ -180,11 +186,10 @@ export class ScriptListComponent implements OnInit {
 
     private startRtlog(element: InferenceConfig): void {
         this.stopRtlog(element);
-        this.xterm = new Terminal();
-        this.xterm.open(this.container.nativeElement);
-        fit(this.xterm);
+        this.enableLog = true;
+        this.currAlgorithmName = element.algorithmName;
         this.currElement = element;
-        this.xterm.writeln(`listening Algorithm(\x1B[1;3;31m${element.cname}\x1B[0m) logger...`);
+        this.xterm.writeln(`listening \x1B[1;3;31m${element.cname}\x1B[0m logger...`);
         this.logObservable = liveSrv.subscribe(`service_${element.cid}`);
         this.logObservable.subscribe(data => {
             this.xterm.writeln(data.data);
@@ -192,28 +197,27 @@ export class ScriptListComponent implements OnInit {
     }
 
     private stopRtlog(element: InferenceConfig): void {
-        if (this.xterm) {
-            this.xterm.destroy();
-            this.xterm = undefined;
-        }
+        this.xterm.clear();
+        this.enableLog = false;
         liveSrv.removeObserver(`service_${element.cid}`, null);
     }
 
     public showHistory(element: InferenceConfig): void {
-        if (this.xterm) {
-            this.xterm.destroy();
-            this.xterm = undefined;
-        }
-        this.xterm = new Terminal();
-        this.xterm.open(this.container.nativeElement);
-        fit(this.xterm);
-
-        this.backendSrv.getAlgorithmLog(element.cid).then( (res: Response): void => {
-            const { log }: { log: string } = res.json();
-            log.split('\n').forEach( (str: string): void => {
-                this.xterm.writeln(str);
+        this.xterm.clear();
+        if ( this.currElement === element) {
+            this.enableLog = false;
+            this.currElement = null;
+        } else {
+            this.enableLog = true;
+            this.currElement = element;
+            this.currAlgorithmName = element.algorithmName;
+            this.backendSrv.getAlgorithmLog(element.cid).then( (res: Response): void => {
+                const { log }: { log: string } = res.json();
+                log.split('\n').forEach( (str: string): void => {
+                    this.xterm.writeln(str);
+                });
             });
-        });
+        }
     }
 
 }
