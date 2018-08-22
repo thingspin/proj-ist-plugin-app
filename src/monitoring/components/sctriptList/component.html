@@ -46,7 +46,9 @@
 
                 <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
                 <mat-row *matRowDef="let element; columns: displayedColumns"></mat-row>
+
             </mat-table>
+            <mat-paginator [length]="dataSource.length" [pageSize]="1"></mat-paginator>
         </mat-card-content>
     </mat-card>
     <mat-divider></mat-divider>
