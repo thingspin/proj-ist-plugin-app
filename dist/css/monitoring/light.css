@@ -1846,6 +1846,28 @@ textarea.cdk-textarea-autosize-measuring {
   flex: 0 0 420px;
   white-space: nowrap !important; }
 
+.monitoring-theme .terminal-title-bar {
+  min-height: 24px;
+  max-height: 24px;
+  height: 24px;
+  align-items: center;
+  background-color: #212121; }
+
+.monitoring-theme .terminal-title-bar > button, .monitoring-theme .terminal-title-bar > mat-icon-button {
+  float: right; }
+
+.monitoring-theme .mat-icon-button.small {
+  width: 24px;
+  height: 24px;
+  line-height: 24px; }
+  .monitoring-theme .mat-icon-button.small .mat-icon, .monitoring-theme .mat-icon-button.small .mat-icon-button i {
+    line-height: 14px; }
+  .monitoring-theme .mat-icon-button.small .mat-icon {
+    width: 14px;
+    height: 14px; }
+  .monitoring-theme .mat-icon-button.small .material-icons {
+    font-size: 14px; }
+
 .monitoring-theme table {
   width: 100%; }
 
