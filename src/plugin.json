@@ -16,8 +16,8 @@
     },
     "keywords": ["thingspin app"],
     "logos": {
-      "small": "img/M00.png",
-      "large": "img/M00.png"
+      "small": "img/edge_ai_64.svg",
+      "large": "img/edge_ai_64.svg"
     },
     "links": [
       {"name": "Project site", "url": ""},
