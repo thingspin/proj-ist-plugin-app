@@ -12,6 +12,7 @@
   "license": "MIT",
   "repository": "https://github.com/thingspin/proj-edge-ai-app",
   "devDependencies": {
+    "@types/angular": "^1.6.50",
     "@types/d3": "^5.0.0",
     "@types/grafana": "git+https://git@github.com/CorpGlory/types-grafana.git",
     "@types/gsap": "^1.19.2",
