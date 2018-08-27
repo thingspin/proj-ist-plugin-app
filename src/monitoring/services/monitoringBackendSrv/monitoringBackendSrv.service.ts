@@ -14,9 +14,9 @@ export class MonitoringBackendService {
         return res;
     }
 
-    private error(error: any) {
+    private error(error: Response) {
         console.error(error);
-        this.alertSrv.set('ThingSPIN Error', error, 5000);
+        this.alertSrv.set('ThingSPIN Server Error', error.json().message, 'error', 5000);
     }
 
     getConfigList(): Promise<void | Response> {

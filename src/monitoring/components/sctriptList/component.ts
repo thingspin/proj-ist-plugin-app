@@ -27,6 +27,11 @@ import './component.css';
 import 'xterm/dist/xterm.css';
 import { getStyleUrls } from '../../utils/common';
 
+interface Message {
+    stream: string;
+    data: string;
+}
+
 @Component({
     selector: 'scripts-list',
     template: require(`./component.html`),
@@ -49,6 +54,7 @@ export class ScriptListComponent implements OnInit {
     logObservable: any;
     enableLog: boolean;
     currAlgorithmName: String;
+    mlLiveObserver: any;
 
     dataSource: MatTableDataSource<InferenceConfig>;
     @ViewChild('terminal') container: ElementRef;
@@ -84,6 +90,22 @@ export class ScriptListComponent implements OnInit {
         fit(this.xterm);
 
         this.enableLog = false;
+
+        this.mlLiveObserver = liveSrv.subscribe("service_monitor");
+        this.mlLiveObserver.subscribe(this.mlLiveReceived.bind(this));
+    }
+
+    private mlLiveReceived(message: Message): void {
+        const { data }: {data: string } = message;
+        const [ targetCid, msg ] = data.split(" ");
+        // console.log(message);
+
+        const bool: Boolean = msg === "started" ? true : false;
+        this.scriptsList.forEach( ( { cid }: {cid: String}, index: number, arr: any): void => {
+            if (targetCid === cid) {
+                arr[index].running = bool;
+            }
+        });
     }
 
     private updateList(): Promise<any> {
@@ -119,7 +141,6 @@ export class ScriptListComponent implements OnInit {
         this.backendSrv.runAlgorithm(cid).then( (res: Response) => {
             this.scriptsList.forEach((config: InferenceConfig, idx: number, arr: any) => {
                 if (config.cid === cid) {
-                    arr[idx].running = true;
                     this.startRtlog(config);
                 }
             });
@@ -135,7 +156,6 @@ export class ScriptListComponent implements OnInit {
         this.backendSrv.stopAlgorithm(cid).then( (res: Response) => {
             this.scriptsList.forEach((config: InferenceConfig, idx: number, arr: any) => {
                 if (config.cid === cid) {
-                    arr[idx].running = false;
                     this.stopRtlog(config);
                 }
             });

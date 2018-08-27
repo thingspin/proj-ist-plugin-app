@@ -77,21 +77,21 @@ module.exports = function(grunt) {
           files: ['<%= project.dev %>/**/*.scss'],
           tasks: ['sass'],
           options: {
-            livereload: true
+            livereload: false
           }
         },
         markdown: {
           files: ['<%= project.dev %>/*.md'],
           tasks: ['copy:md'],
           options: {
-            livereload: true
+            livereload: false
           }
         },
         less: {
           files: ['<%= project.dev %>/less/*.less'],
           tasks: ['less:development'],
           options: {
-            livereload: true
+            livereload: false
           }
         },
         scripts: {
