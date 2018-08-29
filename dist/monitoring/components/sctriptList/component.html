@@ -35,7 +35,7 @@
                             <mat-icon>pause</mat-icon>Stop
                         </button>
 
-                        <button mat-stroked-button *ngIf="!el.running" (click)="showHistory(el)">
+                        <button mat-stroked-button *ngIf="!el.running" (click)="showHistory(el)" [color]="el.error ? 'warn' : 'accent'">
                             <mat-icon>list</mat-icon>History
                         </button>
                         <button mat-stroked-button *ngIf="el.running" (click)="showLog(el)">

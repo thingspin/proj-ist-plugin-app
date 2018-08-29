@@ -49,7 +49,7 @@
 
     mat-header-cell {
       color: $text;
-      background-color: mat-color($accent, 900);
+      background-color: mat-color(mat-palette($mat-grey), 900);
       min-height: 32px;
       max-height: 48px;
     };
@@ -83,7 +83,7 @@
       max-height: 24px;
       height: 24px;
       align-items: center;
-      background-color: mat-color($accent, 900);
+      background-color: mat-color(mat-palette($mat-grey), 900);
     }
 
     .terminal-title-bar > button, .terminal-title-bar > mat-icon-button, {
