@@ -35,6 +35,7 @@ ml = data/thingspin/ml
 |----------|-----------------------------------------|-----------------------------------------------------------------|
 | GET      | api/ml                                  |모든 등록된 configuration 정보를 가져온다.                              |
 | GET      | api/ml/:cid/log                         |특정 configuration의 log를 가져온다.                                  |
+| GET      | api/ml/:cid/log/:num                    |특정 configuration의 log를 몇라인 가져온다.                            |
 | GET      | api/ml/:cid                             |특정 configuration 정보를 가져온다.                                   |
 | GET      | api/ml/:cid/model/:fileName             |특정 configuration 에서 특정 모델 파일을 가져온다.                        |
 | GET      | api/ml/:cid/algorithm/:fileName         |특정 configuration 에서 특정 알고리즘 파일을 가져온다.                     |
