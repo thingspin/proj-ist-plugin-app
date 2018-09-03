@@ -47,7 +47,7 @@ interface Message {
 export class ScriptListComponent implements OnInit {
 
     codemirrorConfig: any;
-    scriptsList: InferenceConfig[] = [];
+    scriptsList: any = [];
 
     displayedColumns: string[] = ['cname', 'algorithmName', 'model', 'action'];
     currElement: InferenceConfig;
@@ -98,14 +98,13 @@ export class ScriptListComponent implements OnInit {
     private mlLiveReceived(message: Message): void {
         const { data }: {data: string } = message;
         const [ targetCid, msg ] = data.split(" ");
-        // console.log(message);
 
         const bool: Boolean = msg === "started" ? true : false;
-        this.scriptsList.forEach( ( { cid }: {cid: String}, index: number, arr: any): void => {
+        for (let cid  in this.scriptsList) {
             if (targetCid === cid) {
-                arr[index].running = bool;
+                this.scriptsList[cid].running = bool;
             }
-        });
+        }
     }
 
     private updateList(): Promise<any> {
@@ -113,38 +112,46 @@ export class ScriptListComponent implements OnInit {
             const { Result }: {Result: any} = res.json();
 
             this.scriptsList = this.updateRunning(Result);
-            this.dataSource.data = Result;
+            let ds: InferenceConfig[] = [];
+            for (let cid in this.scriptsList) {
+                ds.push(this.scriptsList[cid]);
+            }
+            this.dataSource.data = ds;
             this.table.renderRows();
         });
     }
 
-    private updateRunning(list: any[]): Array<InferenceConfig> {
-        list.forEach(({ cid }: {cid: String}, idx: number) => {
+    private updateRunning(list: any): Array<InferenceConfig> {
+        for (let cid in list) {
             this.backendSrv.getConfigStatus(cid).then( (res: Response) => {
+                console.log(res);
                 const message: {CodeNum: number, Error: string} = res.json();
                 switch (message.CodeNum) {
-                    case 0: list[idx].running = true; break;
-                    case 1: list[idx].running = false;break;
-                    case 2: list[idx].running = false;
-                        list[idx].error = message.Error;
+                    case 0: list[cid].running = true; break;
+                    case 1: list[cid].running = false;break;
+                    case 2: list[cid].running = false;
+                        list[cid].error = message.Error;
                     break;
                 }
             }, (error: Response) => {
                 console.error(error);
             });
-        });
+        }
         return list;
     }
 
     public runAlgorithm(cid: String): void {
         console.log(`running ${cid}`);
         this.backendSrv.runAlgorithm(cid).then( (res: Response) => {
-            this.scriptsList.forEach((config: InferenceConfig, idx: number, arr: any) => {
+            let ds: InferenceConfig[] = [];
+            for (let configCid in this.scriptsList) {
+                const config = this.scriptsList[configCid];
                 if (config.cid === cid) {
                     this.startRtlog(config);
                 }
-            });
-            this.dataSource = new MatTableDataSource<InferenceConfig>(this.scriptsList);
+                ds.push(config);
+            }
+            this.dataSource = new MatTableDataSource<InferenceConfig>(ds);
             this.table.renderRows();
         }, (error: Response) => {
             console.error(error);
@@ -154,12 +161,15 @@ export class ScriptListComponent implements OnInit {
     public stopAlgorithm(cid: String): void {
         console.log(`stoped ${cid}`);
         this.backendSrv.stopAlgorithm(cid).then( (res: Response) => {
-            this.scriptsList.forEach((config: InferenceConfig, idx: number, arr: any) => {
+            let ds: InferenceConfig[] = [];
+            for (let configCid in this.scriptsList) {
+                const config = this.scriptsList[configCid];
                 if (config.cid === cid) {
                     this.stopRtlog(config);
                 }
-            });
-            this.dataSource = new MatTableDataSource<InferenceConfig>(this.scriptsList);
+                ds.push(config);
+            }
+            this.dataSource = new MatTableDataSource<InferenceConfig>(ds);
             this.table.renderRows();
         }, (error: Response) => {
             console.error(error);
