@@ -114,6 +114,7 @@ export class ScriptListComponent implements OnInit {
             this.scriptsList = this.updateRunning(Result);
             let ds: InferenceConfig[] = [];
             for (let cid in this.scriptsList) {
+                this.scriptsList[cid].cid = cid;
                 ds.push(this.scriptsList[cid]);
             }
             this.dataSource.data = ds;
@@ -123,8 +124,8 @@ export class ScriptListComponent implements OnInit {
 
     private updateRunning(list: any): Array<InferenceConfig> {
         for (let cid in list) {
+            list[cid].cid = cid;
             this.backendSrv.getConfigStatus(cid).then( (res: Response) => {
-                console.log(res);
                 const message: {CodeNum: number, Error: string} = res.json();
                 switch (message.CodeNum) {
                     case 0: list[cid].running = true; break;
@@ -140,12 +141,14 @@ export class ScriptListComponent implements OnInit {
         return list;
     }
 
-    public runAlgorithm(cid: String): void {
+    public runAlgorithm(cid: any): void {
+        console.log(cid);
         console.log(`running ${cid}`);
         this.backendSrv.runAlgorithm(cid).then( (res: Response) => {
             let ds: InferenceConfig[] = [];
             for (let configCid in this.scriptsList) {
-                const config = this.scriptsList[configCid];
+                let config = this.scriptsList[configCid];
+                config.cid = configCid;
                 if (config.cid === cid) {
                     this.startRtlog(config);
                 }
@@ -163,7 +166,8 @@ export class ScriptListComponent implements OnInit {
         this.backendSrv.stopAlgorithm(cid).then( (res: Response) => {
             let ds: InferenceConfig[] = [];
             for (let configCid in this.scriptsList) {
-                const config = this.scriptsList[configCid];
+                let config = this.scriptsList[configCid];
+                config.cid = configCid;
                 if (config.cid === cid) {
                     this.stopRtlog(config);
                 }
