@@ -63,6 +63,7 @@ export class AlgorithmComponent implements OnInit {
     }
 
     save(form: FormGroup) {
+        console.log(form);
         if (!form.valid) {
             return;
         }
@@ -144,13 +145,11 @@ export class AlgorithmComponent implements OnInit {
                     break;
                 }
             }
-            if (!this.data.name) {
-                this.data.name = name;
-                this.selectActive = [{
-                    id: name,
-                    text: name
-                }];
-            }
+            this.data.name = name;
+            this.selectActive = [{
+                id: name,
+                text: name
+            }];
        }else {
             this.selectActive = [];
         }
@@ -169,7 +168,9 @@ export class AlgorithmComponent implements OnInit {
     }
 
     public refreshValue(value: SelectItem): void {
+        console.log(value);
         this.selectActive = [value];
         this.data.algorithm = value.text;
+        console.log(this.data);
     }
 }
