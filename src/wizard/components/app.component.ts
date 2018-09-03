@@ -59,8 +59,11 @@ export class AppComponent implements OnInit {
     }
 
     updateEditData(cid: string): Promise<any> {
-        return this.backendSrv.getConfig(cid).then((res: Response) =>
-            res.json().Result
+        return this.backendSrv.getConfig(cid).then((res: Response) => {
+            let ret = res.json().Result;
+            ret.cid = cid;
+            return ret;
+        }
         ).then(Result => this.setProject(Result)
         ).then(Result => this.setPlatform(Result)
         ).then(Result => this.setModel(Result)
