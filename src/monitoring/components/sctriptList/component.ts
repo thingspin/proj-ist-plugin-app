@@ -81,6 +81,9 @@ export class ScriptListComponent implements OnInit {
             this.dataSource.paginator = this.paginator;
         });
 
+        this.mlLiveObserver = liveSrv.subscribe("service_monitor");
+        this.mlLiveObserver.subscribe(this.mlLiveReceived.bind(this));
+
         const urlPath = "/mqtt";
         const baseUrl = `ws://${this.$location.host()}:${this.$location.port()}/api/plugin-proxy/${this.appModel.id}`;
         this.mqttSrv.connect(`${baseUrl}${urlPath}`);
@@ -90,9 +93,6 @@ export class ScriptListComponent implements OnInit {
         fit(this.xterm);
 
         this.enableLog = false;
-
-        this.mlLiveObserver = liveSrv.subscribe("service_monitor");
-        this.mlLiveObserver.subscribe(this.mlLiveReceived.bind(this));
     }
 
     private mlLiveReceived(message: Message): void {
