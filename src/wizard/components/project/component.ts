@@ -20,7 +20,7 @@ import { InferenceConfig } from 'monitoring/models/default.model';
 export class ProjectComponent implements OnInit {
     title = 'Please configure Your Inference Project';
 
-    savedConfigs: InferenceConfig[] = [];
+    savedConfigs: any = {};
     data: Project;
     @ViewChild('form') public form: NgForm;
     @ViewChild('name') public nameFormCtrl: NgModel;
@@ -36,7 +36,7 @@ export class ProjectComponent implements OnInit {
         this.formDataService.setSettings(this.appModel.jsonData);
         this.data = this.formDataService.getProject();
         this.backendSrv.getConfigList().then( (res: Response): void => {
-            const { Result }: { Result: InferenceConfig[] } = res.json();
+            const { Result }: { Result: any } = res.json();
             this.savedConfigs = Result;
         });
         this.nameFormCtrl.control.setValidators([Validators.required, this.nameValidator.bind(this)]);
@@ -46,7 +46,8 @@ export class ProjectComponent implements OnInit {
         if (c.value !== undefined) {
             const projectName: string = c.value;
 
-            for (let config of this.savedConfigs) {
+            for (let cid in this.savedConfigs) {
+                const config: InferenceConfig = this.savedConfigs[cid];
                 if ( config.cname === projectName) {
                     return {
                         isExistName: true,
