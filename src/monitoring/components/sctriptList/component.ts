@@ -99,7 +99,7 @@ export class ScriptListComponent implements OnInit {
         const { data }: {data: string } = message;
         const [ targetCid, msg ] = data.split(" ");
 
-        const bool: Boolean = msg === "Started" ? true : false;
+        const bool: Boolean = msg === "started" ? true : false;
         for (let cid  in this.scriptsList) {
             if (targetCid === cid) {
                 this.scriptsList[cid].running = bool;
