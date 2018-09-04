@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import * as mqtt from 'mqtt/dist/mqtt.min';
+import * as mqtt from 'mqtt/dist/mqtt';
 
 @Injectable()
 export class MqttService {
@@ -35,7 +35,12 @@ export class MqttService {
             if (this.client) {
                 this.client.end();
             } else {
-                this.client = mqtt.connect(host);
+                // ref: https://github.com/mqttjs/MQTT.js/#mqttclientstreambuilder-options
+                console.log(`[MQTT] ${host} connecing... `);
+                this.client = mqtt.connect(host, {
+                    connectTimeout: 10 * 1000, // 10s
+                    reconnectPeriod: 1000 * 1,
+                });
                 this.client.on('connect', this.onConnect.bind(this));
                 this.client.on('close', this.onClose.bind(this));
                 this.client.on('end', this.onEnd.bind(this));
@@ -54,16 +59,15 @@ export class MqttService {
     }
 
     onClose() {
-        console.log("[MQTT] Disconnected : " + this.host);
-        this.client = undefined;
+        console.log("[MQTT] Closed : " + this.host);
+        if (this.client) {
+            // console.log(this.client);
+            this.client.stream.socket.close();
+        }
     }
     onEnd() {
         console.log("[MQTT] Disconnected : " + this.host);
-        this.client = mqtt.connect(this.host);
-        this.client.on('connect', this.onConnect.bind(this));
-        this.client.on('close', this.onClose.bind(this));
-        this.client.on('end', this.onEnd.bind(this));
-}
+    }
 
     recvMessage(callback: any) {
         if (!this.client) {

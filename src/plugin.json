@@ -39,7 +39,7 @@
       "path": "/mqtt",
       "method": "*",
       "url": "ws://192.168.0.101:1884",
-      "reqSignedIn": true
+      "reqSignedIn": false
     }
   ],
   
