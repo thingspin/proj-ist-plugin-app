@@ -55,6 +55,7 @@ export class ScriptListComponent implements OnInit {
     enableLog: boolean;
     currAlgorithmName: String;
     mlLiveObserver: any;
+    logCid: any;
 
     dataSource: MatTableDataSource<InferenceConfig>;
     @ViewChild('terminal') container: ElementRef;
@@ -105,6 +106,9 @@ export class ScriptListComponent implements OnInit {
                 this.scriptsList[cid].running = bool;
                 if (!bool) {
                     liveSrv.removeObserver(`service_${cid}`, null);
+                    this.logObservable = undefined;
+                } else {
+                    this.onLogSubscribe(cid);
                 }
             }
         }
@@ -224,6 +228,7 @@ export class ScriptListComponent implements OnInit {
 
     public showLog(element: InferenceConfig): void {
         if ( this.currElement === element) {
+            this.enableLog = false;
             this.stopRtlog(element);
             this.currElement = null;
         } else {
@@ -233,20 +238,21 @@ export class ScriptListComponent implements OnInit {
 
     private startRtlog(element: InferenceConfig): void {
         this.stopRtlog(element);
+        this.xterm.clear();
         this.enableLog = true;
         this.currAlgorithmName = element.algorithmName;
         this.currElement = element;
         this.xterm.writeln(`listening \x1B[1;3;31m${element.cname}\x1B[0m logger...`);
-        this.logObservable = liveSrv.subscribe(`service_${element.cid}`);
-        this.logObservable.subscribe(data => {
-            this.xterm.writeln(data.data);
-        });
+        this.onLogSubscribe(element.cid);
     }
 
     private stopRtlog(element: InferenceConfig): void {
-        this.xterm.clear();
-        this.enableLog = false;
-        liveSrv.removeObserver(`service_${element.cid}`, null);
+        // this.xterm.clear();
+        // this.enableLog = false;
+        if (this.logObservable) {
+            liveSrv.removeObserver(`service_${element.cid}`, null);
+            this.logObservable = undefined;
+        }
     }
 
     public showHistory(element: InferenceConfig): void {
@@ -265,6 +271,17 @@ export class ScriptListComponent implements OnInit {
                 });
             });
         }
+    }
+
+    private onLogSubscribe(cid) {
+        if (this.logObservable) {
+            liveSrv.removeObserver(`service_${this.logCid}`, null);
+        }
+        this.logObservable = liveSrv.subscribe(`service_${cid}`);
+        this.logCid = cid;
+        this.logObservable.subscribe(data => {
+            this.xterm.writeln(data.data);
+        });
     }
 
     public closeTerminal(element: InferenceConfig): void {
