@@ -103,6 +103,9 @@ export class ScriptListComponent implements OnInit {
         for (let cid  in this.scriptsList) {
             if (targetCid === cid) {
                 this.scriptsList[cid].running = bool;
+                if (!bool) {
+                    liveSrv.removeObserver(`service_${cid}`, null);
+                }
             }
         }
     }
