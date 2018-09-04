@@ -127,6 +127,8 @@ export class ResultComponent implements OnInit {
                     this.http.post('/api/ml', this.sendData).subscribe((res: Response) => {
                         this.mqttPublish().then(() => {
                             window.location.href = "/plugins/proj-edge-ai-app/page/monitoring";
+                        }).catch(err => {
+                            console.error(err);
                         });
                     });
                 }
@@ -142,6 +144,8 @@ export class ResultComponent implements OnInit {
                     this.http.put(`/api/ml/${cid}`, this.sendData).subscribe((res: Response) => {
                         this.mqttPublish().then(() => {
                             window.location.href = "/plugins/proj-edge-ai-app/page/monitoring";
+                        }).catch( (err) => {
+                            console.error(err);
                         });
                     });
                 }

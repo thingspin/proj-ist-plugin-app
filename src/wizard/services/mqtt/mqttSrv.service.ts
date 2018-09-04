@@ -84,6 +84,8 @@ export class MqttService {
                     console.error(e);
                     return reject(e);
                 }
+            } else {
+                reject(new Error("mqtt is not constructed"));
             }
         });
     }

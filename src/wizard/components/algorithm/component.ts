@@ -171,6 +171,7 @@ export class AlgorithmComponent implements OnInit {
         console.log(value);
         this.selectActive = [value];
         this.data.algorithm = value.text;
+        this.data.name = value.text;
         console.log(this.data);
     }
 }
