@@ -257,6 +257,12 @@ export class ScriptListComponent implements OnInit {
 
     public showHistory(element: InferenceConfig): void {
         this.xterm.clear();
+
+        if (this.logObservable) {
+            liveSrv.removeObserver(`service_${this.logCid}`, null);
+            this.logObservable = undefined;
+        }
+
         if ( this.currElement === element) {
             this.enableLog = false;
             this.currElement = null;
