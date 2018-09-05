@@ -105,7 +105,7 @@ export class ScriptListComponent implements OnInit {
             if (targetCid === cid) {
                 this.scriptsList[cid].running = bool;
                 if (!bool) {
-                    liveSrv.removeObserver(`service_${cid}`, null);
+                    liveSrv.removeObserver(`service_${this.logCid}`, null);
                     this.logObservable = undefined;
                 } else {
                     this.onLogSubscribe(cid);
@@ -250,7 +250,7 @@ export class ScriptListComponent implements OnInit {
         // this.xterm.clear();
         // this.enableLog = false;
         if (this.logObservable) {
-            liveSrv.removeObserver(`service_${element.cid}`, null);
+            liveSrv.removeObserver(`service_${this.logCid}`, null);
             this.logObservable = undefined;
         }
     }
