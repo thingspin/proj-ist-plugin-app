@@ -117,8 +117,13 @@ export class ScriptListComponent implements OnInit {
     private updateList(): Promise<any> {
         return this.backendSrv.getConfigList().then((res: Response) => {
             const { Result }: {Result: any} = res.json();
+            return this.updateRunning(Result);
+        }).then( (list) => {
+            this.scriptsList = {};
+            list.forEach( item => {
+                this.scriptsList[item.cid] = item;
+            });
 
-            this.scriptsList = this.updateRunning(Result);
             let ds: InferenceConfig[] = [];
             for (let cid in this.scriptsList) {
                 this.scriptsList[cid].cid = cid;
@@ -129,23 +134,27 @@ export class ScriptListComponent implements OnInit {
         });
     }
 
-    private updateRunning(list: any): Array<InferenceConfig> {
+    private updateRunning(list: any): Promise<any> {
+        let promiseAll = [];
         for (let cid in list) {
             list[cid].cid = cid;
-            this.backendSrv.getConfigStatus(cid).then( (res: Response) => {
-                const message: {CodeNum: number, Error: string} = res.json();
-                switch (message.CodeNum) {
-                    case 0: list[cid].running = true; break;
-                    case 1: list[cid].running = false;break;
-                    case 2: list[cid].running = false;
-                        list[cid].error = message.Error;
-                    break;
-                }
-            }, (error: Response) => {
-                console.error(error);
-            });
+            promiseAll.push(new Promise( (resolve,reject) => {
+                this.backendSrv.getConfigStatus(cid).then( (res: Response) => {
+                    const message: {CodeNum: number, Error: string} = res.json();
+                    switch (message.CodeNum) {
+                        case 0: list[cid].running = true; break;
+                        case 1: list[cid].running = false;break;
+                        case 2: list[cid].running = false;
+                            list[cid].error = message.Error;
+                        break;
+                    }
+                    resolve(list[cid]);
+                }, (error: Response) => {
+                    reject(error);
+                });
+            }));
         }
-        return list;
+        return Promise.all(promiseAll);
     }
 
     public runAlgorithm(cid: any): void {
