@@ -20,6 +20,8 @@ sudo npm install grunt-cli
 ```
 yarn install
 grunt
+# 만약 grunt 에서 에러가 발생하는 경우 아래의 문법을 사용해 주세요.
+grunt dev
 ```
 # API 사용전 유의 사항
 custom.ini에 다음 사항을 추가.
