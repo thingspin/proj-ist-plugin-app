@@ -149,7 +149,9 @@
   margin: 0 0 64px; }
 
 .mat-bottom-sheet-container {
-  font: 400 14px/20px Roboto, "Helvetica Neue", sans-serif; }
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  font-weight: 400; }
 
 .mat-button, .mat-raised-button, .mat-icon-button, .mat-stroked-button,
 .mat-flat-button, .mat-fab, .mat-mini-fab {
@@ -378,7 +380,7 @@ input.mat-input-element {
   height: 1.125em; }
 
 .mat-slide-toggle-content {
-  font-family: Roboto, "Helvetica Neue", sans-serif; }
+  font: 400 14px/20px Roboto, "Helvetica Neue", sans-serif; }
 
 .mat-slider-thumb-label-text {
   font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -422,8 +424,8 @@ input.mat-input-element {
 
 .mat-tooltip-handset {
   font-size: 14px;
-  padding-top: 8px;
-  padding-bottom: 8px; }
+  padding-top: 9px;
+  padding-bottom: 9px; }
 
 .mat-list-item {
   font-family: Roboto, "Helvetica Neue", sans-serif; }
@@ -510,8 +512,7 @@ input.mat-input-element {
   font-size: 14px; }
 
 .mat-ripple {
-  overflow: hidden;
-  position: relative; }
+  overflow: hidden; }
 
 .mat-ripple.mat-ripple-unbounded {
   overflow: visible; }

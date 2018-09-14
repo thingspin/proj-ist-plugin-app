@@ -149,7 +149,9 @@
   margin: 0 0 64px; }
 
 .mat-bottom-sheet-container {
-  font: 400 14px/20px Roboto, "Helvetica Neue", sans-serif; }
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  font-weight: 400; }
 
 .mat-button, .mat-raised-button, .mat-icon-button, .mat-stroked-button,
 .mat-flat-button, .mat-fab, .mat-mini-fab {
@@ -378,7 +380,7 @@ input.mat-input-element {
   height: 1.125em; }
 
 .mat-slide-toggle-content {
-  font-family: Roboto, "Helvetica Neue", sans-serif; }
+  font: 400 14px/20px Roboto, "Helvetica Neue", sans-serif; }
 
 .mat-slider-thumb-label-text {
   font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -422,8 +424,8 @@ input.mat-input-element {
 
 .mat-tooltip-handset {
   font-size: 14px;
-  padding-top: 8px;
-  padding-bottom: 8px; }
+  padding-top: 9px;
+  padding-bottom: 9px; }
 
 .mat-list-item {
   font-family: Roboto, "Helvetica Neue", sans-serif; }
@@ -510,8 +512,7 @@ input.mat-input-element {
   font-size: 14px; }
 
 .mat-ripple {
-  overflow: hidden;
-  position: relative; }
+  overflow: hidden; }
 
 .mat-ripple.mat-ripple-unbounded {
   overflow: visible; }
@@ -1511,10 +1512,10 @@ textarea.cdk-textarea-autosize-measuring {
   background-color: rgba(139, 195, 74, 0.5); }
 
 .monitoring-theme .mat-slide-toggle:not(.mat-checked) .mat-ripple-element {
-  background-color: black; }
+  background-color: rgba(0, 0, 0, 0.06); }
 
 .monitoring-theme .mat-slide-toggle .mat-ripple-element {
-  background-color: #8bc34a; }
+  background-color: rgba(139, 195, 74, 0.12); }
 
 .monitoring-theme .mat-slide-toggle.mat-primary.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
   background-color: #3f51b5; }
@@ -1523,10 +1524,10 @@ textarea.cdk-textarea-autosize-measuring {
   background-color: rgba(63, 81, 181, 0.5); }
 
 .monitoring-theme .mat-slide-toggle.mat-primary:not(.mat-checked) .mat-ripple-element {
-  background-color: black; }
+  background-color: rgba(0, 0, 0, 0.06); }
 
 .monitoring-theme .mat-slide-toggle.mat-primary .mat-ripple-element {
-  background-color: #3f51b5; }
+  background-color: rgba(63, 81, 181, 0.12); }
 
 .monitoring-theme .mat-slide-toggle.mat-warn.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
   background-color: #ff9800; }
@@ -1535,10 +1536,10 @@ textarea.cdk-textarea-autosize-measuring {
   background-color: rgba(255, 152, 0, 0.5); }
 
 .monitoring-theme .mat-slide-toggle.mat-warn:not(.mat-checked) .mat-ripple-element {
-  background-color: black; }
+  background-color: rgba(0, 0, 0, 0.06); }
 
 .monitoring-theme .mat-slide-toggle.mat-warn .mat-ripple-element {
-  background-color: #ff9800; }
+  background-color: rgba(255, 152, 0, 0.12); }
 
 .monitoring-theme .mat-disabled .mat-slide-toggle-thumb {
   background-color: #bdbdbd; }
@@ -1680,9 +1681,11 @@ textarea.cdk-textarea-autosize-measuring {
   border-bottom: none;
   border-top: none; }
 
-.monitoring-theme .mat-tab-group.mat-primary .mat-tab-label.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled),
-.monitoring-theme .mat-tab-group.mat-primary .mat-tab-link.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled), .monitoring-theme .mat-tab-nav-bar.mat-primary .mat-tab-label.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled),
-.monitoring-theme .mat-tab-nav-bar.mat-primary .mat-tab-link.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled) {
+.monitoring-theme .mat-tab-group.mat-primary .mat-tab-label.cdk-keyboard-focused:not(.mat-tab-disabled), .monitoring-theme .mat-tab-group.mat-primary .mat-tab-label.cdk-program-focused:not(.mat-tab-disabled),
+.monitoring-theme .mat-tab-group.mat-primary .mat-tab-link.cdk-keyboard-focused:not(.mat-tab-disabled),
+.monitoring-theme .mat-tab-group.mat-primary .mat-tab-link.cdk-program-focused:not(.mat-tab-disabled), .monitoring-theme .mat-tab-nav-bar.mat-primary .mat-tab-label.cdk-keyboard-focused:not(.mat-tab-disabled), .monitoring-theme .mat-tab-nav-bar.mat-primary .mat-tab-label.cdk-program-focused:not(.mat-tab-disabled),
+.monitoring-theme .mat-tab-nav-bar.mat-primary .mat-tab-link.cdk-keyboard-focused:not(.mat-tab-disabled),
+.monitoring-theme .mat-tab-nav-bar.mat-primary .mat-tab-link.cdk-program-focused:not(.mat-tab-disabled) {
   background-color: rgba(197, 202, 233, 0.3); }
 
 .monitoring-theme .mat-tab-group.mat-primary .mat-ink-bar, .monitoring-theme .mat-tab-nav-bar.mat-primary .mat-ink-bar {
@@ -1691,9 +1694,11 @@ textarea.cdk-textarea-autosize-measuring {
 .monitoring-theme .mat-tab-group.mat-primary.mat-background-primary .mat-ink-bar, .monitoring-theme .mat-tab-nav-bar.mat-primary.mat-background-primary .mat-ink-bar {
   background-color: white; }
 
-.monitoring-theme .mat-tab-group.mat-accent .mat-tab-label.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled),
-.monitoring-theme .mat-tab-group.mat-accent .mat-tab-link.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled), .monitoring-theme .mat-tab-nav-bar.mat-accent .mat-tab-label.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled),
-.monitoring-theme .mat-tab-nav-bar.mat-accent .mat-tab-link.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled) {
+.monitoring-theme .mat-tab-group.mat-accent .mat-tab-label.cdk-keyboard-focused:not(.mat-tab-disabled), .monitoring-theme .mat-tab-group.mat-accent .mat-tab-label.cdk-program-focused:not(.mat-tab-disabled),
+.monitoring-theme .mat-tab-group.mat-accent .mat-tab-link.cdk-keyboard-focused:not(.mat-tab-disabled),
+.monitoring-theme .mat-tab-group.mat-accent .mat-tab-link.cdk-program-focused:not(.mat-tab-disabled), .monitoring-theme .mat-tab-nav-bar.mat-accent .mat-tab-label.cdk-keyboard-focused:not(.mat-tab-disabled), .monitoring-theme .mat-tab-nav-bar.mat-accent .mat-tab-label.cdk-program-focused:not(.mat-tab-disabled),
+.monitoring-theme .mat-tab-nav-bar.mat-accent .mat-tab-link.cdk-keyboard-focused:not(.mat-tab-disabled),
+.monitoring-theme .mat-tab-nav-bar.mat-accent .mat-tab-link.cdk-program-focused:not(.mat-tab-disabled) {
   background-color: rgba(220, 237, 200, 0.3); }
 
 .monitoring-theme .mat-tab-group.mat-accent .mat-ink-bar, .monitoring-theme .mat-tab-nav-bar.mat-accent .mat-ink-bar {
@@ -1702,9 +1707,11 @@ textarea.cdk-textarea-autosize-measuring {
 .monitoring-theme .mat-tab-group.mat-accent.mat-background-accent .mat-ink-bar, .monitoring-theme .mat-tab-nav-bar.mat-accent.mat-background-accent .mat-ink-bar {
   background-color: rgba(0, 0, 0, 0.87); }
 
-.monitoring-theme .mat-tab-group.mat-warn .mat-tab-label.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled),
-.monitoring-theme .mat-tab-group.mat-warn .mat-tab-link.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled), .monitoring-theme .mat-tab-nav-bar.mat-warn .mat-tab-label.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled),
-.monitoring-theme .mat-tab-nav-bar.mat-warn .mat-tab-link.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled) {
+.monitoring-theme .mat-tab-group.mat-warn .mat-tab-label.cdk-keyboard-focused:not(.mat-tab-disabled), .monitoring-theme .mat-tab-group.mat-warn .mat-tab-label.cdk-program-focused:not(.mat-tab-disabled),
+.monitoring-theme .mat-tab-group.mat-warn .mat-tab-link.cdk-keyboard-focused:not(.mat-tab-disabled),
+.monitoring-theme .mat-tab-group.mat-warn .mat-tab-link.cdk-program-focused:not(.mat-tab-disabled), .monitoring-theme .mat-tab-nav-bar.mat-warn .mat-tab-label.cdk-keyboard-focused:not(.mat-tab-disabled), .monitoring-theme .mat-tab-nav-bar.mat-warn .mat-tab-label.cdk-program-focused:not(.mat-tab-disabled),
+.monitoring-theme .mat-tab-nav-bar.mat-warn .mat-tab-link.cdk-keyboard-focused:not(.mat-tab-disabled),
+.monitoring-theme .mat-tab-nav-bar.mat-warn .mat-tab-link.cdk-program-focused:not(.mat-tab-disabled) {
   background-color: rgba(255, 224, 178, 0.3); }
 
 .monitoring-theme .mat-tab-group.mat-warn .mat-ink-bar, .monitoring-theme .mat-tab-nav-bar.mat-warn .mat-ink-bar {
@@ -1713,9 +1720,11 @@ textarea.cdk-textarea-autosize-measuring {
 .monitoring-theme .mat-tab-group.mat-warn.mat-background-warn .mat-ink-bar, .monitoring-theme .mat-tab-nav-bar.mat-warn.mat-background-warn .mat-ink-bar {
   background-color: black; }
 
-.monitoring-theme .mat-tab-group.mat-background-primary .mat-tab-label.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled),
-.monitoring-theme .mat-tab-group.mat-background-primary .mat-tab-link.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled), .monitoring-theme .mat-tab-nav-bar.mat-background-primary .mat-tab-label.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled),
-.monitoring-theme .mat-tab-nav-bar.mat-background-primary .mat-tab-link.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled) {
+.monitoring-theme .mat-tab-group.mat-background-primary .mat-tab-label.cdk-keyboard-focused:not(.mat-tab-disabled), .monitoring-theme .mat-tab-group.mat-background-primary .mat-tab-label.cdk-program-focused:not(.mat-tab-disabled),
+.monitoring-theme .mat-tab-group.mat-background-primary .mat-tab-link.cdk-keyboard-focused:not(.mat-tab-disabled),
+.monitoring-theme .mat-tab-group.mat-background-primary .mat-tab-link.cdk-program-focused:not(.mat-tab-disabled), .monitoring-theme .mat-tab-nav-bar.mat-background-primary .mat-tab-label.cdk-keyboard-focused:not(.mat-tab-disabled), .monitoring-theme .mat-tab-nav-bar.mat-background-primary .mat-tab-label.cdk-program-focused:not(.mat-tab-disabled),
+.monitoring-theme .mat-tab-nav-bar.mat-background-primary .mat-tab-link.cdk-keyboard-focused:not(.mat-tab-disabled),
+.monitoring-theme .mat-tab-nav-bar.mat-background-primary .mat-tab-link.cdk-program-focused:not(.mat-tab-disabled) {
   background-color: rgba(197, 202, 233, 0.3); }
 
 .monitoring-theme .mat-tab-group.mat-background-primary .mat-tab-header, .monitoring-theme .mat-tab-group.mat-background-primary .mat-tab-links, .monitoring-theme .mat-tab-nav-bar.mat-background-primary .mat-tab-header, .monitoring-theme .mat-tab-nav-bar.mat-background-primary .mat-tab-links {
@@ -1735,9 +1744,11 @@ textarea.cdk-textarea-autosize-measuring {
 .monitoring-theme .mat-tab-group.mat-background-primary .mat-ripple-element, .monitoring-theme .mat-tab-nav-bar.mat-background-primary .mat-ripple-element {
   background-color: rgba(255, 255, 255, 0.12); }
 
-.monitoring-theme .mat-tab-group.mat-background-accent .mat-tab-label.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled),
-.monitoring-theme .mat-tab-group.mat-background-accent .mat-tab-link.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled), .monitoring-theme .mat-tab-nav-bar.mat-background-accent .mat-tab-label.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled),
-.monitoring-theme .mat-tab-nav-bar.mat-background-accent .mat-tab-link.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled) {
+.monitoring-theme .mat-tab-group.mat-background-accent .mat-tab-label.cdk-keyboard-focused:not(.mat-tab-disabled), .monitoring-theme .mat-tab-group.mat-background-accent .mat-tab-label.cdk-program-focused:not(.mat-tab-disabled),
+.monitoring-theme .mat-tab-group.mat-background-accent .mat-tab-link.cdk-keyboard-focused:not(.mat-tab-disabled),
+.monitoring-theme .mat-tab-group.mat-background-accent .mat-tab-link.cdk-program-focused:not(.mat-tab-disabled), .monitoring-theme .mat-tab-nav-bar.mat-background-accent .mat-tab-label.cdk-keyboard-focused:not(.mat-tab-disabled), .monitoring-theme .mat-tab-nav-bar.mat-background-accent .mat-tab-label.cdk-program-focused:not(.mat-tab-disabled),
+.monitoring-theme .mat-tab-nav-bar.mat-background-accent .mat-tab-link.cdk-keyboard-focused:not(.mat-tab-disabled),
+.monitoring-theme .mat-tab-nav-bar.mat-background-accent .mat-tab-link.cdk-program-focused:not(.mat-tab-disabled) {
   background-color: rgba(220, 237, 200, 0.3); }
 
 .monitoring-theme .mat-tab-group.mat-background-accent .mat-tab-header, .monitoring-theme .mat-tab-group.mat-background-accent .mat-tab-links, .monitoring-theme .mat-tab-nav-bar.mat-background-accent .mat-tab-header, .monitoring-theme .mat-tab-nav-bar.mat-background-accent .mat-tab-links {
@@ -1757,9 +1768,11 @@ textarea.cdk-textarea-autosize-measuring {
 .monitoring-theme .mat-tab-group.mat-background-accent .mat-ripple-element, .monitoring-theme .mat-tab-nav-bar.mat-background-accent .mat-ripple-element {
   background-color: rgba(0, 0, 0, 0.12); }
 
-.monitoring-theme .mat-tab-group.mat-background-warn .mat-tab-label.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled),
-.monitoring-theme .mat-tab-group.mat-background-warn .mat-tab-link.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled), .monitoring-theme .mat-tab-nav-bar.mat-background-warn .mat-tab-label.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled),
-.monitoring-theme .mat-tab-nav-bar.mat-background-warn .mat-tab-link.cdk-focused:not(.cdk-mouse-focused):not(.mat-tab-disabled) {
+.monitoring-theme .mat-tab-group.mat-background-warn .mat-tab-label.cdk-keyboard-focused:not(.mat-tab-disabled), .monitoring-theme .mat-tab-group.mat-background-warn .mat-tab-label.cdk-program-focused:not(.mat-tab-disabled),
+.monitoring-theme .mat-tab-group.mat-background-warn .mat-tab-link.cdk-keyboard-focused:not(.mat-tab-disabled),
+.monitoring-theme .mat-tab-group.mat-background-warn .mat-tab-link.cdk-program-focused:not(.mat-tab-disabled), .monitoring-theme .mat-tab-nav-bar.mat-background-warn .mat-tab-label.cdk-keyboard-focused:not(.mat-tab-disabled), .monitoring-theme .mat-tab-nav-bar.mat-background-warn .mat-tab-label.cdk-program-focused:not(.mat-tab-disabled),
+.monitoring-theme .mat-tab-nav-bar.mat-background-warn .mat-tab-link.cdk-keyboard-focused:not(.mat-tab-disabled),
+.monitoring-theme .mat-tab-nav-bar.mat-background-warn .mat-tab-link.cdk-program-focused:not(.mat-tab-disabled) {
   background-color: rgba(255, 224, 178, 0.3); }
 
 .monitoring-theme .mat-tab-group.mat-background-warn .mat-tab-header, .monitoring-theme .mat-tab-group.mat-background-warn .mat-tab-links, .monitoring-theme .mat-tab-nav-bar.mat-background-warn .mat-tab-header, .monitoring-theme .mat-tab-nav-bar.mat-background-warn .mat-tab-links {
