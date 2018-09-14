@@ -279,7 +279,7 @@ export class ScriptListComponent implements OnInit {
             this.enableLog = true;
             this.currElement = element;
             this.currAlgorithmName = element.algorithmName;
-            this.backendSrv.getAlgorithmLog(element.cid).then( (res: Response): void => {
+            this.backendSrv.getAlgorithmSomeLog(element.cid, 500).then( (res: Response): void => {
                 const { log }: { log: string } = res.json();
                 log.split('\n').forEach( (str: string): void => {
                     this.xterm.writeln(str);
