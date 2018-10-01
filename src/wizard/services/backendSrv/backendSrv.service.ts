@@ -14,9 +14,9 @@ export class BackendService {
         return res;
     }
 
-    private error(error: any) {
+    private error(error: Response) {
         console.error(error);
-        this.alertSrv.set('ThingSPIN Error', error, 5000);
+        this.alertSrv.set('ThingSPIN Error', error.toString(), 5000);
     }
 
     getConfigList(): Promise<void | Response> {
@@ -44,6 +44,14 @@ export class BackendService {
     deleteConfig(cid: String): Promise<void | Response> {
         return this.http.delete(`/api/ml/${cid}`).toPromise().then(this.success.bind(this), this.error.bind(this));
 
+    }
+
+    saveConfig(sendData: FormData): Promise<void | Response> {
+        return this.http.post('/api/ml', sendData).toPromise().then(this.success.bind(this), this.error.bind(this));
+    }
+
+    updateConfig(cid: String, sendData: FormData): Promise<void | Response> {
+        return this.http.put(`/api/ml/${cid}`, sendData).toPromise().then(this.success.bind(this), this.error.bind(this));
     }
 
     getModelFile(cid: String, fileName: string): Promise<void | any> {

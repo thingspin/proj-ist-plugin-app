@@ -4,7 +4,7 @@ import { getStyleUrls }    from '../../utils/app.style';
 import * as CustomFormData          from '../../services/formData/formData.model';
 import { FormDataService }            from '../../services/formData/formData.service';
 import { FormGroup } from '@angular/forms';
-import { Http, Response } from '@angular/http';
+import { Response } from '@angular/http';
 
 // Thingspin(grafana) Libraries
 import appEvents  from 'grafana/app/core/app_events';
@@ -27,11 +27,11 @@ export class ResultComponent implements OnInit {
 
     constructor(
         @Inject(FormDataService)    private formDataService:    FormDataService,
-        @Inject(Http)               private http:               Http,
         @Inject(MqttService) private mqttSrv: MqttService,
         @Inject('$location') private $location,
         @Inject('appModel') private appModel,
         @Inject(BackendService) private backendSrv: BackendService,
+        // @Inject('alertSrv') private alertSrv,
     ) {
     }
 
@@ -124,10 +124,11 @@ export class ResultComponent implements OnInit {
                 yesText: "Add",
                 icon: "fa-thumbs-o-up",
                 onConfirm: () => {
-                    this.http.post('/api/ml', this.sendData).subscribe((res: Response) => {
+                    this.backendSrv.saveConfig(this.sendData).then( () => {
                         this.mqttPublish().then(() => {
                             window.location.href = "/plugins/proj-edge-ai-app/page/monitoring";
                         }).catch(err => {
+                            // this.alertSrv.set('ThingSPIN Error', err, 5000);
                             console.error(err);
                         });
                     });
@@ -141,10 +142,11 @@ export class ResultComponent implements OnInit {
                 yesText: "Edit",
                 icon: "fa-thumbs-o-up",
                 onConfirm: () => {
-                    this.http.put(`/api/ml/${cid}`, this.sendData).subscribe((res: Response) => {
+                    this.backendSrv.updateConfig(cid, this.sendData).then( () => {
                         this.mqttPublish().then(() => {
                             window.location.href = "/plugins/proj-edge-ai-app/page/monitoring";
                         }).catch( (err) => {
+                            // this.alertSrv.set('ThingSPIN Error', err, 5000);
                             console.error(err);
                         });
                     });
