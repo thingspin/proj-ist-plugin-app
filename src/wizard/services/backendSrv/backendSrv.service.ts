@@ -16,7 +16,7 @@ export class BackendService {
 
     private error(error: Response) {
         console.error(error);
-        this.alertSrv.set('ThingSPIN Error', error.toString(), 5000);
+        this.alertSrv.set('ThingSPIN Error', error.json().message, 5000);
     }
 
     getConfigList(): Promise<void | Response> {
