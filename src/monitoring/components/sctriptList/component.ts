@@ -102,7 +102,7 @@ export class ScriptListComponent implements OnInit {
 
         const bool: Boolean = msg === "started" ? true : false;
         for (let cid  in this.scriptsList) {
-            if (targetCid === cid) {
+            if (targetCid === cid && !this.enableLog) {
                 this.scriptsList[cid].running = bool;
                 if (!bool) {
                     liveSrv.removeObserver(`service_${this.logCid}`, null);
