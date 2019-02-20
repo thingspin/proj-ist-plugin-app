@@ -172,8 +172,12 @@ export class ScriptListComponent implements OnInit {
                 }
                 ds.push(config);
             }
-            this.dataSource = new MatTableDataSource<InferenceConfig>(ds);
+            //this.dataSource = new MatTableDataSource<InferenceConfig>(ds);
+            //console.log(ds);
+            //console.log(this.dataSource);
+            this.dataSource.data = ds;
             this.table.renderRows();
+            //this.cdRef.detectChanges();
         }, (error: Response) => {
             console.error(error);
         });
@@ -191,8 +195,15 @@ export class ScriptListComponent implements OnInit {
                 }
                 ds.push(config);
             }
+            /*
             this.dataSource = new MatTableDataSource<InferenceConfig>(ds);
+            his.dataSource.data = ds;
+            console.log(ds);
+            console.log(this.dataSource);
+            */
+            this.dataSource.data = ds;
             this.table.renderRows();
+            //this.cdRef.detectChanges();
         }, (error: Response) => {
             console.error(error);
         });
