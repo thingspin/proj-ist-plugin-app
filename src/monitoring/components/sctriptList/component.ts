@@ -47,7 +47,7 @@ interface Message {
 export class ScriptListComponent implements OnInit {
 
     codemirrorConfig: any;
-    //scriptsList: any = [];
+    scriptsList: any = [];
 
     displayedColumns: string[] = ['cname', 'algorithmName', 'model', 'action'];
     currElement: InferenceConfig;

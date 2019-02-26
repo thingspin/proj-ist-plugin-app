@@ -22,7 +22,7 @@
                 <ng-container matColumnDef="action">
                     <mat-header-cell *matHeaderCellDef class="mat-column-action"> Action </mat-header-cell>
                     <mat-cell class="mat-column-action button-row" *matCellDef="let el">
-                        <button mat-stroked-button *ngIf="!el.running" (click)="runAlgorithm(el.cid)">
+                        <button mat-stroked-button *ngIf="!el.running" (click)="runAlgorithm(el)">
                             <mat-icon>play_circle_filled_white</mat-icon>Play
                         </button>
                         <button mat-stroked-button *ngIf="!el.running" (click)="editConfig(el.cid)">
@@ -31,7 +31,7 @@
                         <button mat-stroked-button *ngIf="!el.running" (click)="deleteConfig(el.cid)" color="warn">
                             <mat-icon>delete</mat-icon>Remove
                         </button>
-                        <button mat-stroked-button *ngIf="el.running" (click)="stopAlgorithm(el.cid)">
+                        <button mat-stroked-button *ngIf="el.running" (click)="stopAlgorithm(el)">
                             <mat-icon>pause</mat-icon>Stop
                         </button>
 
