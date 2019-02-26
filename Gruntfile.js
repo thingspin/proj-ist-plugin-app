@@ -108,7 +108,7 @@ module.exports = function(grunt) {
       }
     });
   
-    grunt.registerTask('default', [ 'clean', 'copy:md', 'less:development', 'sass', 'webpack:prod', ]);
-    grunt.registerTask('dev',     [ 'clean', 'copy:md', 'less:development', 'sass', 'webpack:dev',  ]);
+    grunt.registerTask('default', [ 'clean', 'copy:md','sass', 'webpack:prod', ]);
+    grunt.registerTask('dev',     [ 'clean', 'copy:md','sass', 'webpack:dev',  ]);
   };
   

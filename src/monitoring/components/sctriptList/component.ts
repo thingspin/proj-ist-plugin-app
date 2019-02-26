@@ -47,7 +47,7 @@ interface Message {
 export class ScriptListComponent implements OnInit {
 
     codemirrorConfig: any;
-    scriptsList: any = [];
+    //scriptsList: any = [];
 
     displayedColumns: string[] = ['cname', 'algorithmName', 'model', 'action'];
     currElement: InferenceConfig;
@@ -97,6 +97,22 @@ export class ScriptListComponent implements OnInit {
     }
 
     private mlLiveReceived(message: Message): void {
+        // change the config's running state based on msg
+        const { data }: {data: string } = message;
+        const [ targetCid, msg ] = data.split(" ");
+        const bool: Boolean = msg === "started" ? true : false;
+        for (let config of this.dataSource.data) {
+            if (targetCid === config.cid) {
+                config.running = bool;
+                break;
+            }
+        }
+        this.table.renderRows();
+        this.cdRef.detectChanges();
+        console.log("service monitor : " + targetCid + " " + msg);
+    }
+    /*
+    private mlLiveReceived(message: Message): void {
         const { data }: {data: string } = message;
         const [ targetCid, msg ] = data.split(" ");
 
@@ -115,7 +131,23 @@ export class ScriptListComponent implements OnInit {
             }
         }
     }
+    */
 
+   private updateList(): Promise<any> {
+        // get all configs with running state
+        return this.backendSrv.getConfigList().then((res: Response) => {
+            const { Result }: {Result: any} = res.json();
+            return this.updateRunning(Result);
+        }).then( (list) => {
+            let ds: InferenceConfig[] = [];
+            list.forEach( item => {
+                ds.push(item)
+            });
+            this.dataSource.data = ds;
+            this.table.renderRows();
+        });
+    }
+   /*
     private updateList(): Promise<any> {
         return this.backendSrv.getConfigList().then((res: Response) => {
             const { Result }: {Result: any} = res.json();
@@ -135,8 +167,9 @@ export class ScriptListComponent implements OnInit {
             this.table.renderRows();
         });
     }
-
+    */
     private updateRunning(list: any): Promise<any> {
+        // update running states of all configs
         let promiseAll = [];
         for (let cid in list) {
             list[cid].cid = cid;
@@ -159,6 +192,71 @@ export class ScriptListComponent implements OnInit {
         return Promise.all(promiseAll);
     }
 
+    public runAlgorithm(config: InferenceConfig): void {
+        // run the algorithm and then scan logs from it
+        console.log(`running ${config.cid}`);
+        this.backendSrv.runAlgorithm(config.cid).then( (res: Response) => {
+            this.startRtlog(config);
+        }, (error: Response) => {
+            console.error(error);
+        });
+    }
+
+    public stopAlgorithm(config: InferenceConfig): void {
+        // stop the algorithm and then stop scanning logs from it
+        console.log(`stoped ${config.cid}`);
+        this.backendSrv.stopAlgorithm(config.cid).then( (res: Response) => {
+            this.stopRtlog(config);
+        }, (error: Response) => {
+            console.error(error);
+        });
+    }
+
+    public deleteConfig(cid): void {
+        appEvents.emit('confirm-modal', {
+            title: 'Delete Inference Configuration',
+            text: 'Are you sure you want to delete?',
+            yesText: "Delete",
+            icon: "fa-trash",
+            onConfirm: () => {
+                this.backendSrv.deleteConfig(cid).then( (res: Response) => {
+                    console.log(`removed ${cid}`);
+                    this.updateList().then( () => {
+                        this.cdRef.detectChanges();
+                    });
+                    this.mqttPublish().then( () => {
+                    });
+                });
+            }
+        });
+    }
+
+    /*
+    private updateRunning(list: any): Promise<any> {
+        let promiseAll = [];
+        for (let cid in list) {
+            list[cid].cid = cid;
+            promiseAll.push(new Promise( (resolve,reject) => {
+                this.backendSrv.getConfigStatus(cid).then( (res: Response) => {
+                    const message: {CodeNum: number, Error: string} = res.json();
+                    switch (message.CodeNum) {
+                        case 0: list[cid].running = true; break;
+                        case 1: list[cid].running = false;break;
+                        case 2: list[cid].running = false;
+                            list[cid].error = message.Error;
+                        break;
+                    }
+                    resolve(list[cid]);
+                }, (error: Response) => {
+                    reject(error);
+                });
+            }));
+        }
+        return Promise.all(promiseAll);
+    }
+    */
+
+    /*
     public runAlgorithm(cid: any): void {
         console.log(cid);
         console.log(`running ${cid}`);
@@ -195,12 +293,12 @@ export class ScriptListComponent implements OnInit {
                 }
                 ds.push(config);
             }
-            /*
-            this.dataSource = new MatTableDataSource<InferenceConfig>(ds);
-            his.dataSource.data = ds;
-            console.log(ds);
-            console.log(this.dataSource);
-            */
+            
+            //this.dataSource = new MatTableDataSource<InferenceConfig>(ds);
+            //his.dataSource.data = ds;
+            //console.log(ds);
+            //console.log(this.dataSource);
+            
             this.dataSource.data = ds;
             this.table.renderRows();
             //this.cdRef.detectChanges();
@@ -227,7 +325,7 @@ export class ScriptListComponent implements OnInit {
             }
         });
     }
-
+    */
     editConfig(cid: string): void {
         window.location.href = `/plugins/proj-edge-ai-app/page/wizard?cid=${cid}`;
     }
