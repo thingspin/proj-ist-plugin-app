@@ -1,23 +1,18 @@
 {
   "type": "app",
-  "name": "Edge AI",
-  "id": "proj-edge-ai-app",
-
-  "css": {
-    "dark":  "css/proj-edge-ai-app.dark.css",
-    "light":  "css/proj-edge-ai-app.light.css"
-  },
+  "name": "소포제",
+  "id": "proj-ist-plugin-app",
 
   "info": {
-    "description": "ThingSPIN Edge AI",
+    "description": "ThingSPIN ist",
     "author": {
-      "name": "gunwoo@hancommds.com",
+      "name": "daseul@hancommds.com",
       "url": "http://thingspin.io"
     },
     "keywords": ["thingspin app"],
     "logos": {
-      "small": "img/edge_ai_64.svg",
-      "large": "img/edge_ai_64.svg"
+      "small": "img/M03.jpg",
+      "large": "img/M03.jpg"
     },
     "links": [
       {"name": "Project site", "url": ""},
@@ -28,17 +23,17 @@
   },
 
   "HideFromList": false,
-  "putSideBottom": true,
   "includes": [
-    {"type": "menu", "name": "Edge AI", "slug":"monitoring", "component": "Monitoring",  "mainMenu": true, "uid": "TE0000000001", "img":"img/M01.png", "menuId": 0},
-    {"type": "page", "name": "Monitoring","component": "Monitoring", "AddToNav": true, "menuID": 0, "ico":"fa fa-list-ul"},
-    {"type": "page", "name": "Wizard","component": "Wizard", "AddToNav": true, "menuID": 0, "ico":"fa fa-magic"}
+    {"type": "menu", "name": "소포제", "mainMenu": true, "slug": "saengsan-gyehoeg", "img":"img/M03.jpg", "menuId": 0},
+    {"type": "dashboard", "name": "모니터링", "path": "dashboards/ist-01.json", "AddToNav": true, "menuID": 0, "ico":"fa fa-industry"},
+    {"type": "dashboard", "name": "제어", "path": "dashboards/ist-02.json", "AddToNav": true, "menuID": 0, "ico":"fa fa-industry"}
+    
   ],
   "routes": [
     {
       "path": "/mqtt",
       "method": "*",
-      "url": "ws://localhost:1884",
+      "url": "ws://219.251.4.237:1884",
       "reqSignedIn": false
     }
   ],
