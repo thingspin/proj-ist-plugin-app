@@ -33,7 +33,7 @@
     {
       "path": "/mqtt",
       "method": "*",
-      "url": "ws://219.251.4.237:1884",
+      "url": "ws://localhost:1884",
       "reqSignedIn": false
     }
   ],

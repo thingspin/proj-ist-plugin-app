@@ -7,9 +7,9 @@
     "dev": "webpack --progress --config build/webpack.dev.js"
   },
   "keywords": [],
-  "author": "Alexey Velikiy",
+  "author": "Daseul Cho",
   "license": "MIT",
-  "repository": "https://github.com/thingspin/proj-ist-plugin-app",
+  "repository": "https://github.com/thingspin/proj-ist-plugin-app.git",
   "devDependencies": {
     "@types/grafana": "git+https://git@github.com/CorpGlory/types-grafana.git",
     "@types/gsap": "^1.19.2",

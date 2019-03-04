@@ -1,18 +1,13 @@
-//import {loadPluginCss} from 'grafana/app/plugins/sdk';
-
-// MQTT service
-
+import {loadPluginCss} from 'grafana/app/plugins/sdk';
 import {AppConfigCtrl} from './app-config/config';
 
-/*
 const appId = "proj-ist-plugin-app";
-const baseCssFilename = "ist-plugin-app";
 
 loadPluginCss({
-  dark: `plugins/${appId}/css/${baseCssFilename}.dark.css`,
-  light: `plugins/${appId}/css/${baseCssFilename}.light.css`
+  dark: `plugins/${appId}/css/dark.css`,
+  light: `plugins/${appId}/css/light.css`
 });
-*/
+
 export {
   AppConfigCtrl as ConfigCtrl,
 };

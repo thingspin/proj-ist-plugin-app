@@ -1,4 +1,4 @@
-define(function() { return /******/ (function(modules) { // webpackBootstrap
+define(["app/plugins/sdk"], function(__WEBPACK_EXTERNAL_MODULE_grafana_app_plugins_sdk__) { return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -117,7 +117,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _app_config_config__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app-config/config */ \"./app-config/config.ts\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"ConfigCtrl\", function() { return _app_config_config__WEBPACK_IMPORTED_MODULE_0__[\"AppConfigCtrl\"]; });\n\n//import {loadPluginCss} from 'grafana/app/plugins/sdk';\r\n// MQTT service\r\n\r\n/*\r\nconst appId = \"proj-ist-plugin-app\";\r\nconst baseCssFilename = \"ist-plugin-app\";\r\n\r\nloadPluginCss({\r\n  dark: `plugins/${appId}/css/${baseCssFilename}.dark.css`,\r\n  light: `plugins/${appId}/css/${baseCssFilename}.light.css`\r\n});\r\n*/\r\n\r\n\n\n//# sourceURL=webpack:///./module.ts?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! grafana/app/plugins/sdk */ \"grafana/app/plugins/sdk\");\n/* harmony import */ var grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _app_config_config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./app-config/config */ \"./app-config/config.ts\");\n/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \"ConfigCtrl\", function() { return _app_config_config__WEBPACK_IMPORTED_MODULE_1__[\"AppConfigCtrl\"]; });\n\n\r\n\r\nvar appId = \"proj-ist-plugin-app\";\r\nObject(grafana_app_plugins_sdk__WEBPACK_IMPORTED_MODULE_0__[\"loadPluginCss\"])({\r\n    dark: \"plugins/\" + appId + \"/css/dark.css\",\r\n    light: \"plugins/\" + appId + \"/css/light.css\"\r\n});\r\n\r\n\n\n//# sourceURL=webpack:///./module.ts?");
+
+/***/ }),
+
+/***/ "grafana/app/plugins/sdk":
+/*!**********************************!*\
+  !*** external "app/plugins/sdk" ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = __WEBPACK_EXTERNAL_MODULE_grafana_app_plugins_sdk__;\n\n//# sourceURL=webpack:///external_%22app/plugins/sdk%22?");
 
 /***/ })
 

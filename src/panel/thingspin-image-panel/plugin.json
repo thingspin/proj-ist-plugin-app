@@ -4,7 +4,7 @@
   "id": "thingspin-image-panel",
 
   "info": {
-    "description": "image processing in ThingSPIN",
+    "description": "image loader in ThingSPIN",
     "author": {
       "name": "Daseul Cho"
     },
