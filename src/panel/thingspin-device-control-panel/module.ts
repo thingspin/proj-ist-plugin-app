@@ -30,7 +30,7 @@ class ThingspinDeviceControlPanelCtrl extends MetricsPanelCtrl {
     
     // get mqtt info from the parent app
     this.backendSrv.get(`api/plugins/${this.appInfo["id"]}/settings`).then(result => {  
-      if (result.hasOwnProperty('jsonData')) {
+      if (result.hasOwnProperty('jsonData') && result['jsonData'] != null) {
         this.mqttInfo.base = result['jsonData']['base'];
         //this.mqttInfo.brocker = result['jsonData']['brocker'];
         this.mqttInfo.inprefix = result['jsonData']['inprefix'];
