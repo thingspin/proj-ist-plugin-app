@@ -1,0 +1,13 @@
+{
+  "type": "panel",
+  "name": "stop control",
+  "id": "thingspin-stop-control-panel",
+
+  "info": {
+    "description": "ThingSPIN stop control panel",
+    "author": {
+      "name": "daseul@thingspin.io",
+      "url": "http://thingspin.io"
+    }
+  }
+}

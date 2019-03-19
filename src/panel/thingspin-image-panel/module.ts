@@ -15,7 +15,7 @@ class ThingspinImageCtrl extends MetricsPanelCtrl  {
 			imageWidthStr: '500px',
 			imageHeightStr: '500px',
 		});
-		this.appInfo = require("../../plugin.json");
+		//this.appInfo = require("../../plugin.json");
   
     this.events.on('init-edit-mode', this.onInitEditMode.bind(this));
     this.events.on('panel-initialized', this.render.bind(this));

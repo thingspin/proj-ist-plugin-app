@@ -11,7 +11,8 @@ module.exports = {
   context: resolve('src'),
   entry:{
     'module.js' : './module.ts',
-    'panel/thingspin-device-control-panel/module.js' : './panel/thingspin-device-control-panel/module.ts',
+    'panel/thingspin-start-control-panel/module.js' : './panel/thingspin-start-control-panel/module.ts',
+    'panel/thingspin-stop-control-panel/module.js' : './panel/thingspin-stop-control-panel/module.ts',
     'panel/thingspin-image-panel/module.js' : './panel/thingspin-image-panel/module.ts',
     'panel/thingspin-image-processing-panel/module.js' : './panel/thingspin-image-processing-panel/module.ts'
   },

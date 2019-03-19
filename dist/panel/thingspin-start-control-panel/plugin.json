@@ -1,10 +1,10 @@
 {
   "type": "panel",
-  "name": "Device control",
-  "id": "thingspin-device-control-panel",
+  "name": "start control",
+  "id": "thingspin-start-control-panel",
 
   "info": {
-    "description": "ThingSPIN device control panel",
+    "description": "ThingSPIN start control panel",
     "author": {
       "name": "daseul@thingspin.io",
       "url": "http://thingspin.io"

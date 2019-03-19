@@ -15,22 +15,611 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
+  "id": 23,
   "links": [],
   "panels": [
     {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": null,
-      "fill": 1,
+      "content": "<h2>1. 소포제 투입 장비 모니터링 </h2>",
       "gridPos": {
-        "h": 9,
-        "w": 12,
+        "h": 2,
+        "w": 24,
         "x": 0,
         "y": 0
       },
+      "id": 16,
+      "links": [],
+      "mode": "html",
+      "title": " ",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "datasource": null,
+      "gridPos": {
+        "h": 4,
+        "w": 2,
+        "x": 0,
+        "y": 2
+      },
       "id": 2,
+      "kernel": null,
+      "links": [],
+      "mqttInfo": {
+        "base": "THINGSPIN/IST",
+        "inprefix": "IN",
+        "outprefix": "OUT",
+        "routes": {
+          "method": "*",
+          "path": "/mqtt",
+          "reqSignedIn": false,
+          "url": "ws://localhost:1884"
+        },
+        "topic": ""
+      },
+      "reportScript": "// supported ES6\n// self === this ( something panelCtrl)\nclass ExportData_null_2 {\n  constructor(panelCtrl, res) {\n    this.result = res;\n    this.panelCtrl = panelCtrl;\n  }\n\n  convertData() {\n    return this.result;\n  }\n}\nconst convClass = new ExportData_null_2(self, result);\nreturn convClass.convertData();",
+      "scripts": "",
+      "state": false,
+      "targets": [
+        {
+          "refId": "A"
+        }
+      ],
+      "title": "Defoamer Controller",
+      "transparent": true,
+      "type": "thingspin-device-control-panel"
+    },
+    {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": false,
+      "colors": [
+        "#299c46",
+        "rgba(237, 129, 40, 0.89)",
+        "#d44a3a"
+      ],
+      "datasource": "test1",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 2,
+        "y": 2
+      },
+      "id": 6,
+      "interval": null,
+      "kernel": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "reportScript": "// supported ES6\n// self === this ( something panelCtrl)\nclass ExportData_23_6 {\n  constructor(panelCtrl, res) {\n    this.result = res;\n    this.panelCtrl = panelCtrl;\n  }\n\n  convertData() {\n    return this.result;\n  }\n}\nconst convClass = new ExportData_23_6(self, result);\nreturn convClass.convertData();",
+      "scripts": "",
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "alias": "",
+          "format": "time_series",
+          "rawSql": "SELECT UNIX_TIMESTAMP(time) as time_sec, outState FROM test4 ORDER BY time DESC limit 1",
+          "refId": "A"
+        }
+      ],
+      "thresholds": "",
+      "title": "Current DO state",
+      "transparent": true,
+      "type": "singlestat",
+      "valueFontSize": "80%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "ON",
+          "value": "1"
+        },
+        {
+          "op": "=",
+          "text": "OFF",
+          "value": "0"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "circleBackground": false,
+      "colorBackground": false,
+      "colorValue": false,
+      "datasource": "test1",
+      "defaultColor": "rgb(117, 117, 117)",
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 5,
+        "y": 2
+      },
+      "id": 8,
+      "interval": null,
+      "kernel": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "math": "inState? (outState ? 1 : 2) : 0",
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "reportScript": "// supported ES6\n// self === this ( something panelCtrl)\nclass ExportData_23_8 {\n  constructor(panelCtrl, res) {\n    this.result = res;\n    this.panelCtrl = panelCtrl;\n  }\n\n  convertData() {\n    return this.result;\n  }\n}\nconst convClass = new ExportData_23_8(self, result);\nreturn convClass.convertData();",
+      "scripts": "",
+      "sortOrder": "asc",
+      "sortOrderOptions": [
+        {
+          "text": "Ascending",
+          "value": "asc"
+        },
+        {
+          "text": "Descending",
+          "value": "desc"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "alias": "",
+          "format": "time_series",
+          "rawSql": "SELECT UNIX_TIMESTAMP(time) as time_sec, inState, outState FROM test4 ORDER BY time DESC limit 1",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "title": "Current DIN state",
+      "tooltip": {
+        "show": false
+      },
+      "transparent": true,
+      "type": "blackmirror1-singlestat-math-panel",
+      "valueFontSize": "70%",
+      "valueMappingColorBackground": "#767171",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "OFF",
+          "value": "0"
+        },
+        {
+          "op": "=",
+          "text": "On by me",
+          "value": "1"
+        },
+        {
+          "op": "=",
+          "text": "On by else",
+          "value": "2"
+        }
+      ],
+      "valueName": "current"
+    },
+    {
+      "cacheTimeout": null,
+      "circleBackground": false,
+      "colorBackground": false,
+      "colorValue": false,
+      "datasource": "test1",
+      "decimals": 2,
+      "defaultColor": "rgb(117, 117, 117)",
+      "format": "s",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 3,
+        "x": 8,
+        "y": 2
+      },
+      "id": 10,
+      "interval": null,
+      "kernel": null,
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "math": "",
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "reportScript": "// supported ES6\n// self === this ( something panelCtrl)\nclass ExportData_23_10 {\n  constructor(panelCtrl, res) {\n    this.result = res;\n    this.panelCtrl = panelCtrl;\n  }\n\n  convertData() {\n    return this.result;\n  }\n}\nconst convClass = new ExportData_23_10(self, result);\nreturn convClass.convertData();",
+      "scripts": "",
+      "sortOrder": "asc",
+      "sortOrderOptions": [
+        {
+          "text": "Ascending",
+          "value": "asc"
+        },
+        {
+          "text": "Descending",
+          "value": "desc"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": false,
+        "lineColor": "rgb(31, 120, 193)",
+        "show": false
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "alias": "",
+          "format": "time_series",
+          "rawSql": "SELECT time, duration FROM test4 WHERE DATE(time) = CURDATE();",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "title": "금일 총 가동시간",
+      "tooltip": {
+        "show": true
+      },
+      "transparent": true,
+      "type": "blackmirror1-singlestat-math-panel",
+      "valueFontSize": "80%",
+      "valueMappingColorBackground": "#767171",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "No data",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
+    },
+    {
+      "aliasColors": {
+        "TIMESTAMPDIFF(SECOND,startTime,time)": "#0a50a1",
+        "duration": "#70dbed"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "test1",
+      "fill": 1,
+      "gridPos": {
+        "h": 5,
+        "w": 13,
+        "x": 11,
+        "y": 2
+      },
+      "id": 14,
+      "kernel": null,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": true,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null as zero",
+      "percentage": false,
+      "pointradius": 2,
+      "points": true,
+      "renderer": "flot",
+      "reportScript": "// supported ES6\n// self === this ( something panelCtrl)\nclass ExportData_23_14 {\n  constructor(panelCtrl, res) {\n    this.result = res;\n    this.panelCtrl = panelCtrl;\n  }\n\n  convertData() {\n    return this.result;\n  }\n}\nconst convClass = new ExportData_23_14(self, result);\nreturn convClass.convertData();",
+      "scripts": "",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "",
+          "format": "time_series",
+          "rawSql": "SELECT time, TIMESTAMPDIFF(SECOND,startTime,time) as duration FROM test4 WHERE $__timeFilter(time) ORDER BY time ",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Defoamer 트렌드 분석",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transparent": true,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "s",
+          "label": "가동시간",
+          "logBase": 1,
+          "max": null,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "content": "<h2>2. 거품량 모니터링 </h2>",
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 7
+      },
+      "id": 17,
+      "links": [],
+      "mode": "html",
+      "title": " ",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "bgimage": "public/img/rtsp_images/out.png?1552293953355",
+      "bgimagePath": "public/img/rtsp_images/out.png",
+      "datasource": null,
+      "enableScript": false,
+      "gridPos": {
+        "h": 10,
+        "w": 7,
+        "x": 0,
+        "y": 9
+      },
+      "id": 23,
+      "imageHeight": "300",
+      "imageHeightStr": "300px",
+      "imageWidth": "400",
+      "imageWidthStr": "400px",
+      "kernel": "python3",
+      "links": [],
+      "mouseXlocation": 69,
+      "mouseYlocation": 47,
+      "reportScript": "// supported ES6\n// self === this ( something panelCtrl)\nclass ExportData_23_23 {\n  constructor(panelCtrl, res) {\n    this.result = res;\n    this.panelCtrl = panelCtrl;\n  }\n\n  convertData() {\n    return this.result;\n  }\n}\nconst convClass = new ExportData_23_23(self, result);\nreturn convClass.convertData();",
+      "roiParam": {
+        "roiHeight": "100",
+        "roiThreshold": 100,
+        "roiWidth": "200",
+        "roiXlocation": "150",
+        "roiYlocation": "50"
+      },
+      "roiXlocationStr": "150px",
+      "roiYlocationStr": "50px",
+      "scripts": "import os\r\nimport json\r\n\r\nwith open(os.getcwd() + \"/data/thingspin/ffmpeg/cam.json\") as f:\r\n    configs = json.load(f)\r\n\r\nname = \"cam1\"\r\n# update\r\nconfigs[name][\"roi\"][\"xLocation\"] = roiX\r\nconfigs[name][\"roi\"][\"yLocation\"] = roiY\r\nconfigs[name][\"roi\"][\"width\"] = roiW\r\nconfigs[name][\"roi\"][\"height\"] = roiH\r\nconfigs[name][\"roi\"][\"threshold\"] = roiT\r\n\r\nwith open(os.getcwd() + \"/data/thingspin/ffmpeg/cam.json\", 'w') as outfile:\r\n    json.dump(configs,outfile,indent=4)",
+      "targets": [
+        {
+          "refId": "A"
+        }
+      ],
+      "title": " ",
+      "transparent": true,
+      "type": "thingspin-image-processing-panel"
+    },
+    {
+      "bgimage": "public/img/rtsp_images/test.png?1552293953357",
+      "bgimagePath": "public/img/rtsp_images/test.png",
+      "datasource": null,
+      "gridPos": {
+        "h": 7,
+        "w": 4,
+        "x": 7,
+        "y": 9
+      },
+      "id": 28,
+      "imageHeight": "200",
+      "imageHeightStr": "200px",
+      "imageWidth": "200",
+      "imageWidthStr": "200px",
+      "kernel": null,
+      "links": [],
+      "reportScript": "// supported ES6\n// self === this ( something panelCtrl)\nclass ExportData_23_28 {\n  constructor(panelCtrl, res) {\n    this.result = res;\n    this.panelCtrl = panelCtrl;\n  }\n\n  convertData() {\n    return this.result;\n  }\n}\nconst convClass = new ExportData_23_28(self, result);\nreturn convClass.convertData();",
+      "scripts": "",
+      "targets": [
+        {
+          "refId": "A"
+        }
+      ],
+      "title": " ",
+      "transparent": true,
+      "type": "thingspin-image-panel"
+    },
+    {
+      "bgimage": "public/img/rtsp_images/out2.png?1552293953364",
+      "bgimagePath": "public/img/rtsp_images/out2.png",
+      "datasource": null,
+      "enableScript": false,
+      "gridPos": {
+        "h": 10,
+        "w": 7,
+        "x": 12,
+        "y": 9
+      },
+      "id": 25,
+      "imageHeight": "300",
+      "imageHeightStr": "300px",
+      "imageWidth": "400",
+      "imageWidthStr": "400px",
+      "kernel": "python3",
+      "links": [],
+      "mouseXlocation": 49,
+      "mouseYlocation": 162,
+      "reportScript": "// supported ES6\n// self === this ( something panelCtrl)\nclass ExportData_23_23 {\n  constructor(panelCtrl, res) {\n    this.result = res;\n    this.panelCtrl = panelCtrl;\n  }\n\n  convertData() {\n    return this.result;\n  }\n}\nconst convClass = new ExportData_23_23(self, result);\nreturn convClass.convertData();",
+      "roiParam": {
+        "roiHeight": "100",
+        "roiThreshold": 100,
+        "roiWidth": "200",
+        "roiXlocation": "130",
+        "roiYlocation": "80"
+      },
+      "roiXlocationStr": "130px",
+      "roiYlocationStr": "80px",
+      "scripts": "import os\r\nimport json\r\n\r\nwith open(os.getcwd() + \"/data/thingspin/ffmpeg/cam.json\") as f:\r\n    configs = json.load(f)\r\n\r\nname = \"cam2\"\r\n# update\r\nconfigs[name][\"roi\"][\"xLocation\"] = roiX\r\nconfigs[name][\"roi\"][\"yLocation\"] = roiY\r\nconfigs[name][\"roi\"][\"width\"] = roiW\r\nconfigs[name][\"roi\"][\"height\"] = roiH\r\nconfigs[name][\"roi\"][\"threshold\"] = roiT\r\n\r\nwith open(os.getcwd() + \"/data/thingspin/ffmpeg/cam.json\", 'w') as outfile:\r\n    json.dump(configs,outfile,indent=4)",
+      "targets": [
+        {
+          "refId": "A"
+        }
+      ],
+      "title": " ",
+      "transparent": true,
+      "type": "thingspin-image-processing-panel"
+    },
+    {
+      "bgimage": "public/img/rtsp_images/test2.png?1552293953360",
+      "bgimagePath": "public/img/rtsp_images/test2.png",
+      "datasource": null,
+      "gridPos": {
+        "h": 10,
+        "w": 4,
+        "x": 20,
+        "y": 9
+      },
+      "id": 30,
+      "imageHeight": "200",
+      "imageHeightStr": "200px",
+      "imageWidth": "200",
+      "imageWidthStr": "200px",
+      "kernel": null,
+      "links": [],
+      "reportScript": "// supported ES6\n// self === this ( something panelCtrl)\nclass ExportData_23_28 {\n  constructor(panelCtrl, res) {\n    this.result = res;\n    this.panelCtrl = panelCtrl;\n  }\n\n  convertData() {\n    return this.result;\n  }\n}\nconst convClass = new ExportData_23_28(self, result);\nreturn convClass.convertData();",
+      "scripts": "",
+      "targets": [
+        {
+          "refId": "A"
+        }
+      ],
+      "title": " ",
+      "transparent": true,
+      "type": "thingspin-image-panel"
+    },
+    {
+      "aliasColors": {
+        "A-series": "#82b5d8",
+        "거품량": "#dedaf7"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "test1",
+      "fill": 1,
+      "gridPos": {
+        "h": 9,
+        "w": 6,
+        "x": 0,
+        "y": 19
+      },
+      "id": 20,
       "kernel": null,
       "legend": {
         "avg": false,
@@ -43,29 +632,409 @@
       },
       "lines": true,
       "linewidth": 1,
+      "links": [],
       "nullPointMode": "null",
       "percentage": false,
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "reportScript": "// supported ES6\n// self === this ( something panelCtrl)\nclass ExportData_null_2 {\n  constructor(panelCtrl, res) {\n    this.result = res;\n    this.panelCtrl = panelCtrl;\n  }\n\n  convertData() {\n    return this.result;\n  }\n}\nconst convClass = new ExportData_null_2(self, result);\nreturn convClass.convertData();",
+      "reportScript": "// supported ES6\n// self === this ( something panelCtrl)\nclass ExportData_23_20 {\n  constructor(panelCtrl, res) {\n    this.result = res;\n    this.panelCtrl = panelCtrl;\n  }\n\n  convertData() {\n    return this.result;\n  }\n}\nconst convClass = new ExportData_23_20(self, result);\nreturn convClass.convertData();",
       "scripts": "",
       "seriesOverrides": [],
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
       "targets": [
-        {}
+        {
+          "alias": "",
+          "format": "time_series",
+          "rawSql": "SELECT UNIX_TIMESTAMP(time) as time_sec, fcnt as \"거품량\" FROM foam WHERE $__timeFilter(time) ORDER BY time ASC",
+          "refId": "A"
+        }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeShift": null,
-      "title": " ",
+      "title": "CAM1 거품량",
       "tooltip": {
         "shared": true,
         "sort": 0,
         "value_type": "individual"
       },
+      "transparent": true,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "거품량": "#dedaf7",
+        "정상": "#5195ce"
+      },
+      "breakPoint": "50%",
+      "cacheTimeout": null,
+      "combine": {
+        "label": "Others",
+        "threshold": 0
+      },
+      "datasource": "test1",
+      "fontSize": "120%",
+      "format": "percent",
+      "gridPos": {
+        "h": 8,
+        "w": 5,
+        "x": 6,
+        "y": 19
+      },
+      "id": 32,
+      "interval": null,
+      "kernel": null,
+      "legend": {
+        "show": true,
+        "values": true
+      },
+      "legendType": "On graph",
+      "links": [],
+      "maxDataPoints": 3,
+      "nullPointMode": "connected",
+      "pieType": "pie",
+      "reportScript": "// supported ES6\n// self === this ( something panelCtrl)\nclass ExportData_23_32 {\n  constructor(panelCtrl, res) {\n    this.result = res;\n    this.panelCtrl = panelCtrl;\n  }\n\n  convertData() {\n    return this.result;\n  }\n}\nconst convClass = new ExportData_23_32(self, result);\nreturn convClass.convertData();",
+      "scripts": "",
+      "strokeWidth": 1,
+      "targets": [
+        {
+          "alias": "",
+          "format": "time_series",
+          "rawSql": "SELECT UNIX_TIMESTAMP(time) as time_sec, fcnt  as \"거품량\", ocnt as \"정상\" FROM foam WHERE $__timeFilter(time) ORDER BY time",
+          "refId": "A"
+        }
+      ],
+      "title": " ",
+      "transparent": true,
+      "type": "grafana-piechart-panel",
+      "valueName": "current"
+    },
+    {
+      "aliasColors": {
+        "A-series": "#1f78c1",
+        "거품량": "#dedaf7"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "test1",
+      "fill": 1,
+      "gridPos": {
+        "h": 9,
+        "w": 7,
+        "x": 12,
+        "y": 19
+      },
+      "id": 26,
+      "kernel": null,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "reportScript": "// supported ES6\n// self === this ( something panelCtrl)\nclass ExportData_23_20 {\n  constructor(panelCtrl, res) {\n    this.result = res;\n    this.panelCtrl = panelCtrl;\n  }\n\n  convertData() {\n    return this.result;\n  }\n}\nconst convClass = new ExportData_23_20(self, result);\nreturn convClass.convertData();",
+      "scripts": "",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "",
+          "format": "time_series",
+          "rawSql": "SELECT UNIX_TIMESTAMP(time) as time_sec, fcnt as \"거품량\" FROM foam2 WHERE $__timeFilter(time) ORDER BY time ASC",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "CAM2 거품량",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transparent": true,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "거품량": "#dedaf7",
+        "정상": "#5195ce"
+      },
+      "breakPoint": "50%",
+      "cacheTimeout": null,
+      "combine": {
+        "label": "Others",
+        "threshold": 0
+      },
+      "datasource": "test1",
+      "fontSize": "120%",
+      "format": "percent",
+      "gridPos": {
+        "h": 8,
+        "w": 5,
+        "x": 19,
+        "y": 19
+      },
+      "id": 33,
+      "interval": null,
+      "kernel": null,
+      "legend": {
+        "show": true,
+        "values": true
+      },
+      "legendType": "On graph",
+      "links": [],
+      "maxDataPoints": 3,
+      "nullPointMode": "connected",
+      "pieType": "pie",
+      "reportScript": "// supported ES6\n// self === this ( something panelCtrl)\nclass ExportData_23_32 {\n  constructor(panelCtrl, res) {\n    this.result = res;\n    this.panelCtrl = panelCtrl;\n  }\n\n  convertData() {\n    return this.result;\n  }\n}\nconst convClass = new ExportData_23_32(self, result);\nreturn convClass.convertData();",
+      "scripts": "",
+      "strokeWidth": 1,
+      "targets": [
+        {
+          "alias": "",
+          "format": "time_series",
+          "rawSql": "SELECT UNIX_TIMESTAMP(time) as time_sec, fcnt  as \"거품량\", ocnt as \"정상\" FROM foam2 WHERE $__timeFilter(time) ORDER BY time",
+          "refId": "A"
+        }
+      ],
+      "title": " ",
+      "transparent": true,
+      "type": "grafana-piechart-panel",
+      "valueName": "current"
+    },
+    {
+      "content": "<h2>3. 센서 모니터링 </h2>",
+      "gridPos": {
+        "h": 2,
+        "w": 24,
+        "x": 0,
+        "y": 28
+      },
+      "id": 18,
+      "links": [],
+      "mode": "html",
+      "title": " ",
+      "transparent": true,
+      "type": "text"
+    },
+    {
+      "aliasColors": {
+        "A-series": "#ef843c"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "-- Simulator --",
+      "fill": 1,
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 30
+      },
+      "id": 21,
+      "kernel": null,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "reportScript": "// supported ES6\n// self === this ( something panelCtrl)\nclass ExportData_23_20 {\n  constructor(panelCtrl, res) {\n    this.result = res;\n    this.panelCtrl = panelCtrl;\n  }\n\n  convertData() {\n    return this.result;\n  }\n}\nconst convClass = new ExportData_23_20(self, result);\nreturn convClass.convertData();",
+      "scripts": "",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "부유물 센서",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transparent": true,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {
+        "A-series": "#e0752d"
+      },
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "-- Simulator --",
+      "fill": 1,
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 30
+      },
+      "id": 24,
+      "kernel": null,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "reportScript": "// supported ES6\n// self === this ( something panelCtrl)\nclass ExportData_23_20 {\n  constructor(panelCtrl, res) {\n    this.result = res;\n    this.panelCtrl = panelCtrl;\n  }\n\n  convertData() {\n    return this.result;\n  }\n}\nconst convClass = new ExportData_23_20(self, result);\nreturn convClass.convertData();",
+      "scripts": "",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "수온 센서",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "transparent": true,
       "type": "graph",
       "xaxis": {
         "buckets": null,
@@ -98,6 +1067,7 @@
       }
     }
   ],
+  "refresh": "5s",
   "schemaVersion": 16,
   "style": "dark",
   "tags": [],
@@ -105,7 +1075,7 @@
     "list": []
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {
@@ -135,5 +1105,6 @@
   },
   "timezone": "",
   "title": "모니터링",
-  "version": 1
+  "uid": "X4sO9HCmz",
+  "version": 102
 }

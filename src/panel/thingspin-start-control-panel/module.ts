@@ -1,41 +1,41 @@
 import {MetricsPanelCtrl} from  'grafana/app/plugins/sdk';
+import _ from 'lodash';
 
-class ThingspinDeviceControlPanelCtrl extends MetricsPanelCtrl {
+class ThingspinStartControlPanelCtrl extends MetricsPanelCtrl {
   static template = require("./templet.html");
-  appInfo = require("../../plugin.json");
+  appInfo = require("../../plugin.json");  
   
   backendSrv: any;
-  
   mqttSrv: any;
   baseUrl: string;
-  mqttInfo: any;
-
   location: any;
 
   constructor($scope, $injector,$location,mqttSrv,backendSrv) {
     super($scope, $injector);
-    this.backendSrv = backendSrv;
-    this.location = $location;
-    this.mqttInfo = {
+    _.defaults(this.panel, {
+      mqttInfo : {
         //brocker: 'localhost:1883',
         base: 'THINGSPIN/IST',
         topic: '',
         inprefix: 'IN',
         outprefix: 'OUT',
-        routes:this.appInfo["routes"][0]
-    }
+        routes:this.appInfo["routes"][0],
+      },
+      state : false
+		});
+    this.backendSrv = backendSrv;
+    this.location = $location;
     this.mqttSrv = mqttSrv;
-    
-    this.baseUrl = `ws://${this.location.host()}:${this.location.port()}/api/plugin-proxy/${this.appInfo["id"]}${this.mqttInfo.routes["path"]}`;
+    this.baseUrl = `ws://${this.location.host()}:${this.location.port()}/api/plugin-proxy/${this.appInfo["id"]}${this.panel.mqttInfo.routes["path"]}`;
     
     // get mqtt info from the parent app
     this.backendSrv.get(`api/plugins/${this.appInfo["id"]}/settings`).then(result => {  
       if (result.hasOwnProperty('jsonData') && result['jsonData'] != null) {
-        this.mqttInfo.base = result['jsonData']['base'];
+        this.panel.mqttInfo.base = result['jsonData']['base'];
         //this.mqttInfo.brocker = result['jsonData']['brocker'];
-        this.mqttInfo.inprefix = result['jsonData']['inprefix'];
-        this.mqttInfo.outprefix = result['jsonData']['outprefix'];
-        this.baseUrl = `ws://${this.location.host()}:${this.location.port()}/api/plugin-proxy/${this.appInfo["id"]}${this.mqttInfo.routes["path"]}`;
+        this.panel.mqttInfo.inprefix = result['jsonData']['inprefix'];
+        this.panel.mqttInfo.outprefix = result['jsonData']['outprefix'];
+        this.baseUrl = `ws://${this.location.host()}:${this.location.port()}/api/plugin-proxy/${this.appInfo["id"]}${this.panel.mqttInfo.routes["path"]}`;
       }
     });
 
@@ -53,11 +53,10 @@ class ThingspinDeviceControlPanelCtrl extends MetricsPanelCtrl {
   onClicked(flag) {
     console.log("mqtt start : " + flag);
     let topic;
-    
-    if (this.mqttInfo.topic == "") {
-      topic = this.mqttInfo.base + "/" + this.mqttInfo.outprefix;
+    if (this.panel.mqttInfo.topic == "") {
+      topic = this.panel.mqttInfo.base + "/" + this.panel.mqttInfo.outprefix;
     } else {
-      topic = this.mqttInfo.base + "/" + this.mqttInfo.topic + "/" + this.mqttInfo.outprefix;
+      topic = this.panel.mqttInfo.base + "/" + this.panel.mqttInfo.topic + "/" + this.panel.mqttInfo.outprefix;
     }
     let data = {
       "flag":flag
@@ -70,7 +69,7 @@ class ThingspinDeviceControlPanelCtrl extends MetricsPanelCtrl {
   }
 
   onInitEditMode() {
-     this.addEditorTab('Options', `public/plugins/${this.appInfo["id"]}/panel/thingspin-device-control-panel/options.html`, 2);
+     this.addEditorTab('Options', `public/plugins/${this.appInfo["id"]}/panel/thingspin-start-control-panel/options.html`, 2);
   }
 
   onDataReceived(dataList) {
@@ -84,5 +83,5 @@ class ThingspinDeviceControlPanelCtrl extends MetricsPanelCtrl {
 }
 
 export {
-  ThingspinDeviceControlPanelCtrl as PanelCtrl
+  ThingspinStartControlPanelCtrl as PanelCtrl
 };
