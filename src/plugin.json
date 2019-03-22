@@ -24,8 +24,6 @@
 
   "HideFromList": false,
   "includes": [
-    {"type": "menu", "name": "소포제", "mainMenu": true, "slug": "saengsan-gyehoeg", "img":"img/M03.jpg", "menuId": 0},
-    {"type": "dashboard", "name": "모니터링", "path": "dashboards/ist-01.json", "AddToNav": true, "menuID": 0, "ico":"fa fa-industry"} 
   ],
   "routes": [
     {

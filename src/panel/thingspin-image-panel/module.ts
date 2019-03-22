@@ -16,7 +16,6 @@ class ThingspinImageCtrl extends MetricsPanelCtrl  {
 			imageHeightStr: '500px',
 		});
 		//this.appInfo = require("../../plugin.json");
-  
     this.events.on('init-edit-mode', this.onInitEditMode.bind(this));
     this.events.on('panel-initialized', this.render.bind(this));
 	  this.events.on('data-received', this.onDataReceived.bind(this));
@@ -38,7 +37,8 @@ class ThingspinImageCtrl extends MetricsPanelCtrl  {
 			ctrl.panel.imageHeightStr = ctrl.panel.imageHeight.toString() + "px";
 			
 			//refresh background image
-			ctrl.panel.bgimage = ctrl.panel.bgimagePath + "?"+new Date().getTime();
+      ctrl.panel.bgimage = ctrl.panel.bgimagePath + "?";
+      ctrl.getTime = new Date().getTime();
     }
 
     this.events.on('render', function() {

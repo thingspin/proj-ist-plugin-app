@@ -4,8 +4,10 @@ import {MetricsPanelCtrl} from 'grafana/app/plugins/sdk';
 class ThingspinImageProcessingCtrl extends MetricsPanelCtrl  {
 	static template = require("./module.html");
 	appInfo = require("../../plugin.json");
-  
-  constructor($scope, $injector) {
+  mouseXlocation: any;
+	mouseYlocation: any;
+	
+	constructor($scope, $injector) {
     super($scope, $injector);
     _.defaults(this.panel, {
 			bgimagePath: '',
@@ -25,7 +27,8 @@ class ThingspinImageProcessingCtrl extends MetricsPanelCtrl  {
 			roiYlocationStr: "0px",
 		});
 		this.appInfo = require("../../plugin.json");
-  
+		this.mouseXlocation = 0;
+		this.mouseYlocation = 0;
     this.events.on('init-edit-mode', this.onInitEditMode.bind(this));
     this.events.on('panel-initialized', this.render.bind(this));
 	  this.events.on('data-received', this.onDataReceived.bind(this));
@@ -33,8 +36,8 @@ class ThingspinImageProcessingCtrl extends MetricsPanelCtrl  {
   }
 	
 	onMouseMove(evt){
-		this.panel.mouseXlocation = evt.offsetX;
-		this.panel.mouseYlocation = evt.offsetY;
+		this.mouseXlocation = evt.offsetX;
+		this.mouseYlocation = evt.offsetY;
 	}
 
   onDataReceived(dataList) {	
@@ -55,7 +58,8 @@ class ThingspinImageProcessingCtrl extends MetricsPanelCtrl  {
 			ctrl.panel.imageHeightStr = ctrl.panel.imageHeight.toString() + "px";
 			
 			//refresh background image
-			ctrl.panel.bgimage = ctrl.panel.bgimagePath + "?"+new Date().getTime();
+			ctrl.panel.bgimage = ctrl.panel.bgimagePath + "?";
+			ctrl.getTime = +new Date().getTime();
     }
 
     this.events.on('render', function() {

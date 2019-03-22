@@ -1,4 +1,4 @@
-<div ng-mousemove="ctrl.onMouseMove($event)" ng-style="{height:ctrl.panel.imageHeightStr,width:ctrl.panel.imageWidthStr,'background-repeat':'no-repeat','background-image':'url('+ctrl.panel.bgimage+')','background-size':'100% 100%'}">
+<div ng-mousemove="ctrl.onMouseMove($event)" ng-style="{height:ctrl.panel.imageHeightStr,width:ctrl.panel.imageWidthStr,'background-repeat':'no-repeat','background-image':'url('+ctrl.panel.bgimage+ctrl.getTime+')','background-size':'100% 100%'}">
 	
 	<div ng-style="{position: 'relative', left:ctrl.panel.roiXlocationStr, top:ctrl.panel.roiYlocationStr}">
 		<div ng-style="{'border':'solid 3px blue', position: 'absolute', top: 0, left: 0, 'width':ctrl.panel.roiParam.roiWidth,'height':ctrl.panel.roiParam.roiHeight}"/>
@@ -7,5 +7,5 @@
 </div>
 <br>
 <div>
-		<h1 class="panel-header grid-drag-handle">Coordinates: ({{ctrl.panel.mouseXlocation}},{{ctrl.panel.mouseYlocation}}) </h1>
+		<h1 class="panel-header grid-drag-handle">Coordinates: ({{ctrl.mouseXlocation}},{{ctrl.mouseYlocation}}) </h1>
 </div>
