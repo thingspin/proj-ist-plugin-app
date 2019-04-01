@@ -52,6 +52,10 @@ class ThingspinStartControlPanelCtrl extends MetricsPanelCtrl {
 
   onClicked(flag) {
     console.log("mqtt start : " + flag);
+    if(this.mqttSrv._client === undefined){
+      console.log("MQTT reconnect");
+      this.mqttSrv.connect(this.baseUrl);
+    }
     let topic;
     if (this.panel.mqttInfo.topic == "") {
       topic = this.panel.mqttInfo.base + "/" + this.panel.mqttInfo.outprefix;
