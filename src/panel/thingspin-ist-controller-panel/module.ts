@@ -1,7 +1,7 @@
 import {MetricsPanelCtrl} from  'grafana/app/plugins/sdk';
 import _ from 'lodash';
 
-class ThingspinStopControlPanelCtrl extends MetricsPanelCtrl {
+class ThingspinStartControlPanelCtrl extends MetricsPanelCtrl {
   static template = require("./templet.html");
   appInfo = require("../../plugin.json");  
   
@@ -16,7 +16,7 @@ class ThingspinStopControlPanelCtrl extends MetricsPanelCtrl {
       mqttInfo : {
         //brocker: 'localhost:1883',
         base: 'THINGSPIN/IST',
-        topic: '',
+        topic: 'CONTROLLER',
         inprefix: 'IN',
         outprefix: 'OUT',
         routes:this.appInfo["routes"][0],
@@ -51,7 +51,7 @@ class ThingspinStopControlPanelCtrl extends MetricsPanelCtrl {
   }
 
   onClicked(flag) {
-    console.log("mqtt stop : " + flag);
+    console.log("mqtt start : " + flag);
     if(this.mqttSrv._client === undefined){
       console.log("MQTT reconnect");
       this.mqttSrv.connect(this.baseUrl);
@@ -73,7 +73,7 @@ class ThingspinStopControlPanelCtrl extends MetricsPanelCtrl {
   }
 
   onInitEditMode() {
-     this.addEditorTab('Options', `public/plugins/${this.appInfo["id"]}/panel/thingspin-stop-control-panel/options.html`, 2);
+     //this.addEditorTab('Options', `public/plugins/${this.appInfo["id"]}/panel/thingspin-start-control-panel/options.html`, 2);
   }
 
   onDataReceived(dataList) {
@@ -87,5 +87,5 @@ class ThingspinStopControlPanelCtrl extends MetricsPanelCtrl {
 }
 
 export {
-  ThingspinStopControlPanelCtrl as PanelCtrl
+  ThingspinStartControlPanelCtrl as PanelCtrl
 };

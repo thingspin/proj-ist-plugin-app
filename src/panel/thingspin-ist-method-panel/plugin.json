@@ -1,10 +1,10 @@
 {
   "type": "panel",
-  "name": "stop control",
-  "id": "thingspin-stop-control-panel",
+  "name": "ist method",
+  "id": "thingspin-ist-method-panel",
 
   "info": {
-    "description": "ThingSPIN stop control panel",
+    "description": "ThingSPIN ist method panel",
     "author": {
       "name": "daseul@thingspin.io",
       "url": "http://thingspin.io"

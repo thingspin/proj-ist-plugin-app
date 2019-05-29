@@ -1,0 +1,81 @@
+<div class="editor-row">
+	<h6 class="section-heading">수동 설정</h5>
+	<div class="section gf-form-group">
+			<div class="gf-form">
+				<label class="gf-form-label width-5">Hz</label>
+				<input type="number" class="input-small gf-form-input width-5" ng-model="ctrl.panel.hz" ng-change="ctrl.render()" ng-model-onblur />
+			</div>
+	</div>
+</div>
+<!--
+<div class="editor-row">
+	<div class="gf-form">
+		<span class="gf-form-label width-5">Camera</span>
+		<div class="gf-form-select-wrapper max-width-18">
+			<select class="gf-form-input ng-pristine ng-untouched ng-valid ng-empty" ng-model="ctrl.panel.cam">
+				<option value="cam1">cam1</option>
+				<option value="cam2">cam2</option>
+			</select>
+		</div>
+	</div>
+</div>
+<br>
+-->
+
+<div class="editor-row">
+	<h5 class="section-heading">카메라1 - 자동 조건</h5><br>
+	<div class="gf-form">
+		<span class="gf-form-label">
+			<i class="fa fa-clock-o"></i>
+		</span>
+		<label class="gf-form-label width-6">From</label>
+		<input type="number" class="input-small gf-form-input width-3" ng-model="ctrl.panel.cam1.fHour" ng-change="ctrl.render()" ng-model-onblur />시
+		<input type="number" class="input-small gf-form-input width-3" ng-model="ctrl.panel.cam1.fMin" ng-change="ctrl.render()" ng-model-onblur />분
+	</div>
+	
+	<div class="gf-form">
+		<span class="gf-form-label">
+			<i class="fa fa-clock-o"></i>
+		</span>
+		<label class="gf-form-label width-6">To</label>
+		<input type="number" class="input-small gf-form-input width-3" ng-model="ctrl.panel.cam1.tHour" ng-change="ctrl.render()" ng-model-onblur />시
+		<input type="number" class="input-small gf-form-input width-3" ng-model="ctrl.panel.cam1.tMin" ng-change="ctrl.render()" ng-model-onblur />분
+	</div><br>
+	<div ng-repeat="item in ctrl.panel.cam1.level" class="section gf-form-group">
+			<h6>Level {{item.level}}</h6>
+			<div class="gf-form">
+				<label class="gf-form-label width-6">Foam &emsp;&#8807;</label>
+				<input type="number" class="input-small gf-form-input width-5" ng-model="item.foam" ng-change="ctrl.render()" ng-model-onblur />
+			</div>
+			<div class="gf-form">
+				<label class="gf-form-label width-5">Hz</label>
+				<input type="number" class="input-small gf-form-input width-5" ng-model="item.hz" ng-change="ctrl.render()" ng-model-onblur />
+			</div>
+	</div>
+</div>
+
+<div class="editor-row">
+	<h5 class="section-heading">카메라2 - 자동 조건</h5><br>
+	<div class="gf-form">
+		<label class="gf-form-label width-6">From</label>
+		<input type="number" class="input-small gf-form-input width-3" ng-model="ctrl.panel.cam2.fHour" ng-change="ctrl.render()" ng-model-onblur />시
+		<input type="number" class="input-small gf-form-input width-3" ng-model="ctrl.panel.cam2.fMin" ng-change="ctrl.render()" ng-model-onblur />분
+	</div>
+	
+	<div class="gf-form">
+		<label class="gf-form-label width-6">To</label>
+		<input type="number" class="input-small gf-form-input width-3" ng-model="ctrl.panel.cam2.tHour" ng-change="ctrl.render()" ng-model-onblur />시
+		<input type="number" class="input-small gf-form-input width-3" ng-model="ctrl.panel.cam2.tMin" ng-change="ctrl.render()" ng-model-onblur />분
+	</div><br>	
+	<div ng-repeat="item in ctrl.panel.cam2.level" class="section gf-form-group">
+			<h6>Level {{item.level}}</h6>
+			<div class="gf-form">
+				<label class="gf-form-label width-6">Foam &emsp;&#8807;</label>
+				<input type="number" class="input-small gf-form-input width-5" ng-model="item.foam" ng-change="ctrl.render()" ng-model-onblur />
+			</div>
+			<div class="gf-form">
+				<label class="gf-form-label width-5">Hz</label>
+				<input type="number" class="input-small gf-form-input width-5" ng-model="item.hz" ng-change="ctrl.render()" ng-model-onblur />
+			</div>
+	</div>
+</div>
